@@ -28,7 +28,7 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/pre-order.html',
-        controller: 'Pre-orderCtrl',
+        controller: 'preorderctrl',
         controllerAs: 'main'
       })
       .when('/top-up', {

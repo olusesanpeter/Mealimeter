@@ -8,7 +8,7 @@
  * Controller of the mealimeterApp
  */
 angular.module('mealimeterApp')
-  .controller('Pre-orderCtrl',['$scope','$http','$rootScope', '$scope', '$state', '$window', '$localStorage','$location',function ($scope,$http,$rootScope, $scope, $state, $window, $localStorage,$location) {
+  .controller('preorderctrl',['$scope','$http','$rootScope','$window','$localStorage','$location',function ($scope,$http,$rootScope, $window, $localStorage,$location) {
   	//////meant for localstorage
     $localStorage.data = {
 		"error": false,
