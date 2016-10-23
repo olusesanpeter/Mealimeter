@@ -15,8 +15,15 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ngStorage'
   ])
+  .run(['$localStorage','$rootScope',function($localStorage,$rootScope){
+    // $rootScope.mealimeter = "http://mealimeter.herokuapp.com/";
+    // $rootScope.mealimeterassets = "http://mealimeter.herokuapp.com/";
+    $rootScope.mealimeter = "http://localhost/mealimeter/index.php/";
+    $rootScope.mealimeterassets = "http://localhost/mealimeter/";
+  }]);
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
