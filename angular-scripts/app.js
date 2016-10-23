@@ -23,7 +23,7 @@ angular
     // $rootScope.mealimeterassets = "http://mealimeter.herokuapp.com/";
     $rootScope.mealimeter = "http://localhost/mealimeter/index.php/";
     $rootScope.mealimeterassets = "http://localhost/mealimeter/";
-  }]);
+  }])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

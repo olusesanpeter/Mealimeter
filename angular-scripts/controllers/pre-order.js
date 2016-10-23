@@ -10,7 +10,7 @@
 angular.module('mealimeterApp')
   .controller('Pre-orderCtrl',['$scope','$http','$rootScope', '$scope', '$state', '$window', '$localStorage','$location',function ($scope,$http,$rootScope, $scope, $state, $window, $localStorage,$location) {
   	//////meant for localstorage
-    var logindata = {
+    $localStorage.data = {
 		"error": false,
 		"data": {
 			"token": "79ebba912dd57c6b6d7e58653ed10a24",
@@ -29,16 +29,17 @@ angular.module('mealimeterApp')
 		},
 		"description": "Success"
 	};
-	var data = 
-	$http({
-	    method : "POST",
-	    url: $,
-	    data: data,
-	    headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'} 
-	}).then(function(result) {
-	  console.log(result);
-	}, function(error) {
-	  console.log(error);
-	});
+	console.log($localStorage.data);
+	var data = "";
+	// $http({
+	//     method : "POST",
+	//     url: $,
+	//     data: data,
+	//     headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'} 
+	// }).then(function(result) {
+	//   console.log(result);
+	// }, function(error) {
+	//   console.log(error);
+	// });
 
   }]);
