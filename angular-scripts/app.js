@@ -29,7 +29,7 @@ angular
         controller: 'Top-upCtrl',
         controllerAs: 'about'
       })
-      .when('/account-settings', {
+      .when('/account', {
         templateUrl: 'views/account-settings.html',
         controller: 'Account-settingsCtrl',
         controllerAs: 'about'
