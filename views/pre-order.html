@@ -43,7 +43,7 @@
               <div class="col-md-3">
                     <img src="assets/images/rice.jpg" class="img-responsive">
                     <div class="box-header dker2">
-                    <h3>{{meal.option1.name}}</h3>
+                    <h3>{{meal.option.name}}</h3>
                     </div>
               </div>
               <div class="col-md-9">
@@ -51,67 +51,67 @@
                 Extras
               </div>
               <div class="box-body dker">
-
-              <div class="row">
-                <div class="col-sm-10 ">
-                  <div class="input-group select2-bootstrap-prepend m-b text-left">
-                      <div class="input-group-btn">
-                        <button class="btn btn-default" type="button" data-select2-open="select2-button-addons-single-input-group-sm">
-                         + Plantain + 1 Piece of Fish
-                        </button>
+                <div ng-repeat="additive in meal.option.additives">
+                  <div class="row">
+                    <div class="col-sm-10 ">
+                      <div class="input-group select2-bootstrap-prepend m-b text-left">
+                          <div class="input-group-btn">
+                            <button class="btn btn-default" type="button" data-select2-open="select2-button-addons-single-input-group-sm">
+                             + {{additive}} ({{meal.option.prices[$index]}})
+                            </button>
+                          </div>
                       </div>
-                  </div>
-                </div>
-                <div class="col-sm-2">
-                  <div>
-                    <a href="">
-                    <i class="material-icons icon-add">&#xe148;</i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <hr>
-
-              <div class="row">
-                <div class="col-sm-10 ">
-                  <div class="input-group select2-bootstrap-prepend m-b text-left">
-                      <div class="input-group-btn">
-                        <button class="btn btn-default" type="button" data-select2-open="select2-button-addons-single-input-group-sm">
-                         + Plantain + 1 Piece of Fish + Beef
-                        </button>
+                    </div>
+                    <div class="col-sm-2">
+                      <div>
+                        <a href="">
+                        <i class="material-icons icon-add">&#xe148;</i>
+                        </a>
                       </div>
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+                <!-- 
+                <div class="row">
+                  <div class="col-sm-10 ">
+                    <div class="input-group select2-bootstrap-prepend m-b text-left">
+                        <div class="input-group-btn">
+                          <button class="btn btn-default" type="button" data-select2-open="select2-button-addons-single-input-group-sm">
+                           + Plantain + 1 Piece of Fish + Beef
+                          </button>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <div>
+                      <a href="">
+                      <i class="material-icons icon-add">&#xe148;</i>
+                      </a>
+                    </div>
                   </div>
                 </div>
-                <div class="col-sm-2">
-                  <div>
-                    <a href="">
-                    <i class="material-icons icon-add">&#xe148;</i>
-                    </a>
-                  </div>
-                </div>
-              </div>
 
-              <hr>
+                <hr>
 
-              <div class="row">
-                <div class="col-sm-10 ">
-                  <div class="input-group select2-bootstrap-prepend m-b text-left">
-                      <div class="input-group-btn">
-                        <button class="btn btn-default" type="button" data-select2-open="select2-button-addons-single-input-group-sm">
-                         + Plantain + 1 Piece of Fish
-                        </button>
-                      </div>
+                <div class="row">
+                  <div class="col-sm-10 ">
+                    <div class="input-group select2-bootstrap-prepend m-b text-left">
+                        <div class="input-group-btn">
+                          <button class="btn btn-default" type="button" data-select2-open="select2-button-addons-single-input-group-sm">
+                           + Plantain + 1 Piece of Fish
+                          </button>
+                        </div>
+                    </div>
                   </div>
-                </div>
-                <div class="col-sm-2">
-                  <div>
-                    <a href="">
-                    <i class="material-icons icon-add">&#xe148;</i>
-                    </a>
+                  <div class="col-sm-2">
+                    <div>
+                      <a href="">
+                      <i class="material-icons icon-add">&#xe148;</i>
+                      </a>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </div> -->
 
               </div>
               </div>
