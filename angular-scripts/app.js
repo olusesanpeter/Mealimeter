@@ -9,15 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('mealimeterApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'ngStorage'
-  ])
+  .module('mealimeterApp', ['ngAnimate','ngCookies','ngResource','ngRoute','ngSanitize','ngTouch','ngStorage'])
   .run(['$localStorage','$rootScope','$location',function($localStorage,$rootScope,$location){
     // $rootScope.mealimeter = "http://mealimeter.herokuapp.com/";
     // $rootScope.mealimeterassets = "http://mealimeter.herokuapp.com/";

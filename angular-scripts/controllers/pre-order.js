@@ -42,7 +42,10 @@ angular.module('mealimeterApp')
 	}).then(function(result) {
 	  $scope.snacks = result.data.snacks;
 	  $scope.drinks = result.data.drinks;
-	  $scope.food = result.data.preorderList;
+	  $scope.meals = result.data.preorderList;
+	  console.log($scope.meals);
+	  console.log($scope.drinks);
+	  console.log($scope.snacks);
 
 	}, function(error) {
 	  console.log(error);

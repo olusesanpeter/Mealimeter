@@ -39,11 +39,11 @@
           <div id="#/main-meals">
             <h5>Main Meals and Cousines</h5>
             <hr>
-            <div class="row text-center">
+            <div class="row text-center" ng-repeat="meal in meals[0].options">
               <div class="col-md-3">
                     <img src="assets/images/rice.jpg" class="img-responsive">
                     <div class="box-header dker2">
-                    <h3>White Rice : ₦500</h3>
+                    <h3>{{meal.option1.name}}</h3>
                     </div>
               </div>
               <div class="col-md-9">
@@ -121,29 +121,39 @@
           <div id="#/snacks">
             <h5>Snacks</h5>
             <hr>
+            <div ng-repeat="snack in snacks">
+              <!-- <h1>{{snack}}</h1> -->
+              <div class="row">
+                <div class="col-sm-10 ">
+                  <div class="input-group select2-bootstrap-prepend m-b text-left">
+                      <div class="input-group-btn">
+                        <button class="btn btn-default" type="button" data-select2-open="select2-button-addons-single-input-group-sm">
+                         {{snack.name}}
+                        </button>
+                      </div>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <div>
+                    <a href="">
+                    <i class="material-icons icon-add">&#xe148;</i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div id="#/drinks">
             <h5>Drinks</h5>
             <hr>
-            <div class="row text-center">
-              <div class="col-md-3">
-                    <img src="assets/images/rice.jpg" class="img-responsive">
-                    <div class="box-header dker2">
-                    <h3>White Rice : ₦500</h3>
-                    </div>
-              </div>
-              <div class="col-md-9">
-              <div class="box-header primary">
-                Extras
-              </div>
-              <div class="box-body dker">
-
+            <div ng-repeat="drink in drinks">
+              <!-- <h1>{{drink}}</h1> -->
               <div class="row">
                 <div class="col-sm-10 ">
                   <div class="input-group select2-bootstrap-prepend m-b text-left">
                       <div class="input-group-btn">
                         <button class="btn btn-default" type="button" data-select2-open="select2-button-addons-single-input-group-sm">
-                         + Plantain + 1 Piece of Fish
+                         {{drink.name}}
                         </button>
                       </div>
                   </div>
@@ -155,51 +165,6 @@
                     </a>
                   </div>
                 </div>
-              </div>
-
-              <hr>
-
-              <div class="row">
-                <div class="col-sm-10 ">
-                  <div class="input-group select2-bootstrap-prepend m-b text-left">
-                      <div class="input-group-btn">
-                        <button class="btn btn-default" type="button" data-select2-open="select2-button-addons-single-input-group-sm">
-                         + Plantain + 1 Piece of Fish + Beef
-                        </button>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-sm-2">
-                  <div>
-                    <a href="">
-                    <i class="material-icons icon-add">&#xe148;</i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <hr>
-
-              <div class="row">
-                <div class="col-sm-10 ">
-                  <div class="input-group select2-bootstrap-prepend m-b text-left">
-                      <div class="input-group-btn">
-                        <button class="btn btn-default" type="button" data-select2-open="select2-button-addons-single-input-group-sm">
-                         + Plantain + 1 Piece of Fish
-                        </button>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-sm-2">
-                  <div>
-                    <a href="">
-                    <i class="material-icons icon-add">&#xe148;</i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              </div>
               </div>
             </div>
           </div>
