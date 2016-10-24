@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc function
- * @name mealimeterApp.controller:AboutCtrl
+ * @name mealimeterApp.controller:preorderctrl
  * @description
- * # AboutCtrl
+ * # preorderctrl
  * Controller of the mealimeterApp
  */
 angular.module('mealimeterApp')
   .controller('preorderctrl',['$scope','$http','$rootScope','$window','$localStorage','$location',function ($scope,$http,$rootScope, $window, $localStorage,$location) {
-  	//////meant for localstorage
+  	//////data from login
     $localStorage.data = {
 		"error": false,
 		"data": {
