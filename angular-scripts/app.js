@@ -18,11 +18,15 @@ angular
     'ngTouch',
     'ngStorage'
   ])
-  .run(['$localStorage','$rootScope',function($localStorage,$rootScope){
+  .run(['$localStorage','$rootScope','$location',function($localStorage,$rootScope,$location){
     // $rootScope.mealimeter = "http://mealimeter.herokuapp.com/";
     // $rootScope.mealimeterassets = "http://mealimeter.herokuapp.com/";
     $rootScope.mealimeter = "http://localhost/mealimeter/index.php/";
     $rootScope.mealimeterassets = "http://localhost/mealimeter/";
+    var path = function() { return $location.path();};
+       $rootScope.$watch(path, function(newVal, oldVal){
+         $rootScope.activetab = newVal;
+       });
   }])
   .config(function ($routeProvider) {
     $routeProvider

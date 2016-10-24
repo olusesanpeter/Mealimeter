@@ -31,18 +31,18 @@ angular.module('mealimeterApp')
 	};
 	var data = "token="+$localStorage.data.data.token;
 	var link = $rootScope.mealimeter;
-	var drinks = [];
-	var snacks = [];
-	var food = [];
+	$scope.drinks = [];
+	$scope.snacks = [];
+	$scope.food = [];
 	$http({
 	    method : "POST",
 	    url: link+"getmealspreorder",
 	    data: data,
 	    headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'} 
 	}).then(function(result) {
-	  snacks = result.data.snacks;
-	  drinks = result.data.drinks;
-	  food = result.data.preorderList;
+	  $scope.snacks = result.data.snacks;
+	  $scope.drinks = result.data.drinks;
+	  $scope.food = result.data.preorderList;
 
 	}, function(error) {
 	  console.log(error);
