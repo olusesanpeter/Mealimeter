@@ -28,11 +28,30 @@ angular.module('mealimeterApp')
 	// 		"office_payment_amount": "2000"
 	// 	},
 	// 	"description": "Success"
-	// };
-
-	var data = "token="+$localStorage.data.token;
+	// };/////online
+	$localStorage.data = {
+	  "error": false,
+	  "data": {
+	    "token": "5d479b28703f21cc5810335a9d23d9a6",
+	    "username": "godwin",
+	    "email": "olatundegodwin1@gmail.com"
+	  },
+	  "admin": false,
+	  "officedata": {
+	    "office_name": "Chevron",
+	    "office_address": "Lekki",
+	    "office_location": "Island",
+	    "office_admin": "Chevron",
+	    "office_payment_type": "company",
+	    "office_payment_status": "",
+	    "office_payment_amount": "2000"
+	  },
+	  "description": "Success"
+	}
+	$scope.cart = [];
+	var data = "token="+$localStorage.data.data.token;
 	var link = $rootScope.mealimeter;
-	$scope.username =  $localStorage.data.username;
+	$scope.username =  $localStorage.data.data.username;
 	console.log($localStorage.data);
 	$scope.drinks = [];
 	$scope.snacks = [];
@@ -43,6 +62,7 @@ angular.module('mealimeterApp')
 	    data: data,
 	    headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'} 
 	}).then(function(result) {
+		console.log(result);
 	  $scope.snacks = result.data.snacks;
 	  $scope.drinks = result.data.drinks;
 	  $scope.meals = result.data.preorderList;
@@ -53,5 +73,38 @@ angular.module('mealimeterApp')
 	}, function(error) {
 	  console.log(error);
 	});
+
+	$scope.addtocart = function(id,len){
+		var main = $scope.meals[0].options[len].option.name;
+		var additive = $scope.meals[0].options[len].option.additives[id];
+		var price = $scope.meals[0].options[len].option.prices[id];
+		if(len == 0){
+			var newid = (len + 1)*(id + 1);
+		}
+		else{
+			var prevsize = 0;
+			for(var i = 0;i<len;i++){
+				prevsize += $scope.meals[0].options[i].option.additives.length;
+			}
+			var newid = prevsize + (id+1);
+		}
+		var t = false;
+		var currentposition = 0;
+		for (var i = 0; i < $scope.cart.length; i++) {
+			if(newid == $scope.cart[i].id){
+				t = true;
+				currentposition = i;
+			}
+		}
+		if(t == false){
+			$scope.cart.push({'id':newid,'mainmeal':main,'additive':additive,'price':price,'quantity':1});
+		}
+		else{
+			var oldquantity = $scope.cart[currentposition].quantity;
+			var newquantity = oldquantity+1;
+			$scope.cart[currentposition] = {'id':newid,'mainmeal':main,'additive':additive,'price':price,'quantity':newquantity};
+		}
+		console.log($scope.cart);
+	}
 
   }]);
