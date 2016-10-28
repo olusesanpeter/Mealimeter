@@ -53,6 +53,6 @@ angular
         controllerAs: 'account-settings'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/login'
       });
   });
