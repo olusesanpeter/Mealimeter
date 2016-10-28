@@ -9,10 +9,10 @@
  */
 angular.module('mealimeterApp')
   .controller('preorderCtrl',['$scope','$http','$rootScope','$window','$localStorage','$location',function ($scope,$http,$rootScope, $window, $localStorage,$location) {
-  	var data = "token="+$localStorage.data.token;
+  	var data = "token="+$localStorage.data.data.token;
 	var link = $rootScope.mealimeter;
-	$scope.username =  $localStorage.data.data.username;
 	console.log($localStorage.data);
+	$scope.username =  $localStorage.data.data.username;
 	$scope.drinks = [];
 	$scope.snacks = [];
 	$scope.food = [];
@@ -33,6 +33,14 @@ angular.module('mealimeterApp')
 	}, function(error) {
 	  console.log(error);
 	});
+	if($localStorage.cart == undefined){
+		$localStorage.cart = [];
+		$localStorage.total = 0;
+	}
+	else{
+		$scope.cart = $localStorage.cart ;
+		$scope.total = $localStorage.total;
+	}
 	$scope.addtocart = function(id,len){
 		var main = $scope.meals[0].options[len].option.name;
 		var additive = $scope.meals[0].options[len].option.additives[id];
@@ -49,7 +57,7 @@ angular.module('mealimeterApp')
 		}
 		var t = false;
 		var currentposition = 0;
-		var total = 0;
+		var total = 0
 		for (var i = 0; i < $scope.cart.length; i++) {
 			if(newid == $scope.cart[i].id){
 				t = true;

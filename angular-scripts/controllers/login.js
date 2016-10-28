@@ -28,7 +28,7 @@ angular.module('mealimeterApp')
     	 	if(response.data.data != undefined){
 		    	if(response.data.error == false){
 		    		console.log("got here");
-		    		$localStorage.data = response.data.data;
+		    		$localStorage.data = response.data;
 					$window.location.href="#/pre-order";
 		    	}
 	    	}
