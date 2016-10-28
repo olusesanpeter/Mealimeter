@@ -5,7 +5,7 @@
 </div>
 <div class="padding">
   <div class="row">
-    <div class="col-md-2" >
+    <!-- <div class="col-md-2" >
       <div class="list-group m-b" style="position: fixed;">
             <a href="#main-meals" class="list-group-item b-l-primary">
               <span class="pull-right text-primary"></span>
@@ -20,9 +20,9 @@
               Drinks
             </a>
           </div>
-    </div>
+    </div> -->
 
-    <div class="col-md-7">
+    <div class="col-md-8">
       <div class="box">
         <div class="box-header dker2">
           <nav>
@@ -44,11 +44,12 @@
                     <img src="assets/images/rice.jpg" class="img-responsive">
                     <div class="box-header dker2">
                     <h3>{{meal.option.name}}</h3>
+                    <h3 ng-hide="true">{{x = $index}}</h3>
                     </div>
               </div>
               <div class="col-md-9">
               <div class="box-header primary">
-                Extras
+                Topping(s)
               </div>
               <div class="box-body dker">
                 <div ng-repeat="additive in meal.option.additives">
@@ -65,7 +66,7 @@
                     <div class="col-sm-2">
                       <div>
                         <a href="">
-                        <i class="material-icons icon-add">&#xe148;</i>
+                        <i class="material-icons icon-add" ng-click="addtocart($index,x)">&#xe148;</i>
                         </a>
                       </div>
                     </div>
@@ -135,8 +136,8 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3" >
-          <div class="box"  style="position: fixed;">
+    <div class="col-md-4" >
+          <div class="box"  style="position: relative;">
               <div class="box-header dker2">
                     Your Order
               </div>
@@ -145,7 +146,7 @@
                   <thead class="">
                     <tr>
                      <th>
-                       Quantity
+                       Qty.
                      </th>
                      <th>
                        Food Item
@@ -155,32 +156,21 @@
                      </th>
                    </tr>
                   </thead>
-                 <tbody>
-                   <tr>
-                   <td>
-                     1x
-                    </td>
-                    <td>
-                      White Rice
-                      <br>
-                      TOPPINGS:
-                      <br>
-                      Moi Moi
-                    </td>
-                    <td>
-                      1250
-                    </td>
-                   </tr>
-                   <tr>
-                    <td>
-                      1x
-                    </td>
-                    <td>
-                      White Rice
-                    </td>
-                    <td>
-                      1250
-                    </td>
+                  <tbody>
+                   <tr ng-repeat="item in cart">
+                     <td>
+                       {{item.quantity}}x
+                      </td>
+                      <td>
+                        {{item.mainmeal}}
+                        <br>
+                        Topping(s):
+                        <br>
+                        {{item.additive}}
+                      </td>
+                      <td>
+                        {{item.price}}
+                      </td>
                    </tr>
                  </tbody>
                 </table>
@@ -188,11 +178,21 @@
                  <tbody>
                    <tr>
                      <td class="total">Total</td>
-                     <td class="price">₦6000</td>
+                     <td class="price">₦{{total}}</td>
+                   </tr>
+                   <tr>
+                     <td class="total">Company subsidy</td>
+                     <td class="price">- ₦1500</td>
+                   </tr>
+                   <tr>
+                     <td class="total">Total Amount Due</td>
+                     <td class="amount-due">- ₦1500</td>
                    </tr>
                  </tbody>
                 </table>
-                <button class="btn btn-block btn-fw primary">Pre-Order</button>
+                <button class="btn btn-fw primary">Pre-Order</button>
+                <button class="btn btn-fw primary">Checkout</button>
+
               </div>
           </div>
     </div>
