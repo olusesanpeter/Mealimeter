@@ -48,30 +48,30 @@
       <div class="m-b text-sm">
         Sign up for your Mealimeter Account
       </div>
-      <form name="form">
+      <form name="form" ng-submit="register(data)" method="POST">
         <div class="md-form-group float-label">
-          <input type="text" class="md-input" ng-model="" required>
+          <input type="text" class="md-input" ng-model="data.firstname" required>
           <label>First Name</label>
         </div>
         <div class="md-form-group float-label">
-          <input type="text" class="md-input" ng-model="" required>
+          <input type="text" class="md-input" ng-model="data.lastname" required>
           <label>Last Name</label>
         </div>
         <div class="md-form-group float-label">
-          <input type="email" class="md-input" ng-model="" required>
+          <input type="email" class="md-input" ng-model="data.emailfield" required>
           <label>Email</label>
         </div>
         <div class="md-form-group float-label">
-          <input type="number" class="md-input" ng-model="" required>
+          <input type="number" class="md-input" ng-model="data.phoneNo" required>
           <label>Phone Number</label>
         </div>
         <div class="md-form-group float-label">
-          <input type="password" class="md-input" ng-model="" required>
+          <input type="password" class="md-input" ng-model="data.passwordfield" required>
           <label>Password</label>
         </div>  
         <div class="md-form-group float-label">
           <select name="" id="input" class="form-control" required="required" placeholder="Select Company">
-            <option value=""></option>
+            <option value="">{{getCompanies}}</option>
           </select>
         </div>
         <div class="m-b-md">        
@@ -80,16 +80,16 @@
           </label>
         </div> 
         <div class="md-form-group float-label" ng-show="checked">
-          <input type="text" class="md-input" ng-model="" required>
+          <input type="text" class="md-input" ng-model="data.officename" required>
           <label>Company Name</label>
         </div>
         <div class="md-form-group float-label" ng-show="checked">
-          <input type="text" class="md-input" ng-model="" required>
-          <label>Compnay Address</label>
+          <input type="text" class="md-input" ng-model="data.officeaddress" required>
+          <label>Company Address</label>
         </div>
         <div class="md-form-group float-label" ng-show="checked">
-          <input type="text" class="md-input" ng-model="" required>
-          <label>Compnay Location</label>
+          <input type="text" class="md-input" ng-model="data.officelocation" required>
+          <label>Company Location</label>
         </div>
         <button type="submit" class="btn primary btn-block p-x-md">Sign up</button>
       </form>

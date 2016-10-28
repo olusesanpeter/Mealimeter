@@ -11,7 +11,7 @@ angular.module('mealimeterApp')
   .controller('LoginCtrl',['$scope','$http','$rootScope','$window','$localStorage','$location',function ($scope,$http,$rootScope, $window, $localStorage,$location) {
   	//////data from login
     $scope.logins = function(data){
-    	
+
     	// alert(data.usernamefield);
     	// alert(data.passwordfield);
     	var link = $rootScope.mealimeter;
