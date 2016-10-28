@@ -15,9 +15,6 @@ angular.module('mealimeterApp')
     }
     else{
         $scope.logins = function(data){
-
-            // alert(data.usernamefield);
-            // alert(data.passwordfield);
             var link = $rootScope.mealimeter;
             var logindata = "email="+data.usernamefield+"&password="+data.passwordfield;
             console.log(logindata);
@@ -38,13 +35,11 @@ angular.module('mealimeterApp')
                 }
                 else{
                     if(response.data.description == "Not Activated"){
-                        $('#error').html('Not Activated Your Account <a href="#fakelink" class="alert-link">Please check your email</a>.');
-                        $('#error').show();
+                        $scope.error = 'Not Activated Your Account.Please check your email';
+                        
                     }
                     else{
-                        $('#error').html('Incorrect Credentials <a href="#fakelink" class="alert-link">Please try again</a>.');
-                        $('#error').show();
-
+                        $scope.error = 'Incorrect Credentials. Please try again';
                     }
                 }
             }, function(error) {
