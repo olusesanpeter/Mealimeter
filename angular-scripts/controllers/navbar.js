@@ -9,12 +9,23 @@
  */
 angular.module('mealimeterApp')
   .controller('navbarCtrl',['$scope','$http','$rootScope','$window','$localStorage','$location',function ($scope,$http,$rootScope, $window, $localStorage,$location) {
-  	
+	if($localStorage.data == undefined){
+		$scope.show = false;
+	}
+	else{
+		$scope.show = true;
+		$scope.username =  $localStorage.data.data.username;
+	}
 
-	var data = "token="+$localStorage.data.token;
-	var link = $rootScope.mealimeter;
-	$scope.username =  $localStorage.data.username;
-	console.log($localStorage.data);
+	$scope.signout = function(){
+		delete $localStorage.data;
+		delete $localStorage.cart;
+		delete $localStorage.total;
+		delete $localStorage.due;
+		$window.location.href = "#/login";
+	}
+
+  console.log($scope.show);
 	
 
   }]);

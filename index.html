@@ -48,6 +48,7 @@
     <script src="angular-scripts/app/app.js"></script>
     <script src="angular-scripts/controllers/pre-order.js"></script>
     <script src="angular-scripts/controllers/top-up.js"></script>
+    <script src="angular-scripts/controllers/navbar.js"></script>
     <script src="angular-scripts/controllers/account-settings.js"></script>
     <script src="angular-scripts/controllers/login.js"></script>
     <script src="angular-scripts/controllers/signup.js"></script>
@@ -83,67 +84,7 @@
   
   <!-- content -->
   <div id="content" class="app-content box-shadow-z0" role="main">
-    <div class="app-header primary box-shadow">
-
-    <div class="navbar" ng-model="navbar">
-    <!-- Open side - Naviation on mobile -->
-    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up">
-      <i class="material-icons">&#xe5d2;</i>
-    </a>
-    <!-- / -->
-
-    <!-- Page title - Bind to $state's title -->
-    <div class="navbar-item pull-left h5" ng-bind="$state.current.data.title" id="pageTitle"></div>
-
-    <!-- navbar right -->
-    <ul class="nav navbar-nav pull-right">
-        <li class="nav-item dropdown">
-
-         {{username}}
-
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link" href data-toggle="dropdown">
-          Sign Out
-          </a>
-        </li>
-      </ul>
-    <!-- / navbar right -->
-
-    <!-- navbar collapse -->
-    <div class="collapse navbar-toggleable-sm" id="collapse">
-      <div ui-include="'../views/blocks/navbar.form.right.html'"></div>
-      <!-- link and dropdown -->
-      <ul class="nav navbar-nav">
-        <li class="nav-item dropdown">
-          <a class="nav-link" ng-href="#" data-toggle="dropdown">
-            <img src="assets/images/logo-m.png" alt="" width="150px">
-          </a>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link" ng-href="#/pre-order">
-            Pre-Order Meals
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link" ng-href="#/top-up">
-            Top-Up Account
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link" ng-href="#/account-settings">
-            Account Settings
-          </a>
-        </li>
-       
-      </ul>
-      <!-- / -->
-    </div>
-    <!-- / navbar collapse -->
-</div>
-        
-    </div>
+    
     <div class="app-footer">
       <div class="p-a text-xs">
         <div class="pull-right text-muted">

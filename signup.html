@@ -58,7 +58,7 @@
           <label>Company Location</label>
         </div>
         <button type="submit" class="btn primary btn-block p-x-md">Sign up</button>
-        <button class="btn warning">{{error}}</button>
+        <button class="btn warning" ng-if="error != undefined">{{error}}</button>
       </form>
     </div>
 
