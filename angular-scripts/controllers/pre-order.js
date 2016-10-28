@@ -48,7 +48,15 @@ angular.module('mealimeterApp')
 	  },
 	  "description": "Success"
 	}
-	$scope.cart = [];
+	if($localStorage.cart != undefined){
+		$scope.cart = $localStorage.cart;
+		$scope.total = $localStorage.total;
+	}
+	else{
+		$scope.cart = [];
+		$scope.total = 0;
+	}
+	
 	var data = "token="+$localStorage.data.data.token;
 	var link = $rootScope.mealimeter;
 	$scope.username =  $localStorage.data.data.username;
@@ -73,7 +81,6 @@ angular.module('mealimeterApp')
 	}, function(error) {
 	  console.log(error);
 	});
-
 	$scope.addtocart = function(id,len){
 		var main = $scope.meals[0].options[len].option.name;
 		var additive = $scope.meals[0].options[len].option.additives[id];
@@ -90,21 +97,29 @@ angular.module('mealimeterApp')
 		}
 		var t = false;
 		var currentposition = 0;
+		var total = 0;
 		for (var i = 0; i < $scope.cart.length; i++) {
 			if(newid == $scope.cart[i].id){
 				t = true;
 				currentposition = i;
 			}
+			total += Number.parseInt($scope.cart[i].price);
 		}
 		if(t == false){
 			$scope.cart.push({'id':newid,'mainmeal':main,'additive':additive,'price':price,'quantity':1});
+			total += Number.parseInt(price);
 		}
 		else{
 			var oldquantity = $scope.cart[currentposition].quantity;
 			var newquantity = oldquantity+1;
-			$scope.cart[currentposition] = {'id':newid,'mainmeal':main,'additive':additive,'price':price,'quantity':newquantity};
+			var oldprice = $scope.cart[currentposition].price;
+			var newprice = ((oldprice)/oldquantity) * newquantity;
+			total = total - oldprice + newprice;
+			$scope.cart[currentposition] = {'id':newid,'mainmeal':main,'additive':additive,'price':newprice,'quantity':newquantity};
 		}
-		console.log($scope.cart);
+		$scope.total = total;
+		$localStorage.cart = $scope.cart;
+		$localStorage.total = $scope.total;
 	}
 
   }]);

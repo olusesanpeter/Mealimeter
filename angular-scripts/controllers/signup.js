@@ -11,6 +11,13 @@ angular.module('mealimeterApp')
   .controller('SignupCtrl',['$scope','$http','$rootScope','$window','$localStorage','$location',function ($scope,$http,$rootScope, $window, $localStorage,$location) {
   	//////data from login
     $scope.register = function(data){
+        console.log(data.checked);
+        if (data.checked == true){
+        var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&password="+data.passwordfield;
+        }
+        else{
+        var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&password="+data.passwordfield;
+        }
     	
     	var link = $rootScope.mealimeter;
     	var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&password="+data.passwordfield;
@@ -23,14 +30,13 @@ angular.module('mealimeterApp')
     	})
     	.then(function(response) {
     	 	console.log(response.data);
-    	 	
-    	 	if(response.data.data != undefined){
 		    	if(response.data.error == false){
 		    		console.log("Registration Successful");
-		    		$localStorage.data = response.data.data;
 					$window.location.href="#/login";
 		    	}
-	    	}
+                else{
+                    console.log("Registration Failed");
+                }
     	}, 
     	function(error) {
     	  console.log(error);
@@ -41,7 +47,7 @@ angular.module('mealimeterApp')
 		    dataType: "json"
 		})
 		.then(function(response) {
-    	 	console.log(response.COMPANIES);
+    	 	console.log(response.companies);
     	}, 
     	function(error) {
     	  console.log(error);

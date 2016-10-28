@@ -7,15 +7,23 @@
 /*Styles for Table*/
 
 .td {
+
   padding-top: 15px;
 }
 
 .price {
-    font-size: 30px;
+    font-size: 15px;
     text-align: right;
 }
 
 .total {
+  text-align: left;
+  vertical-align: bottom;
+}
+
+.amount-due {
+  text-align: right;
+  font-size: 30px;
   vertical-align: bottom;
 }
 
