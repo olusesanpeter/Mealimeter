@@ -8,29 +8,32 @@
  * Controller of the mealimeterApp
  */
 angular.module('mealimeterApp')
-  .controller('preorderctrl',['$scope','$http','$rootScope','$window','$localStorage','$location',function ($scope,$http,$rootScope, $window, $localStorage,$location) {
+  .controller('preorderCtrl',['$scope','$http','$rootScope','$window','$localStorage','$location',function ($scope,$http,$rootScope, $window, $localStorage,$location) {
   	//////data from login
-    $localStorage.data = {
-		"error": false,
-		"data": {
-			"token": "79ebba912dd57c6b6d7e58653ed10a24",
-			"username": "godwin",
-			"email": "olatundegodwin1@gmail.com"
-		},
-		"admin": false,
-		"officedata": {
-			"office_name": "Chevron",
-			"office_address": "Lekki",
-			"office_location": "Island",
-			"office_admin": "Chevron",
-			"office_payment_type": "company",
-			"office_payment_status": "",
-			"office_payment_amount": "2000"
-		},
-		"description": "Success"
-	};
-	var data = "token="+$localStorage.data.data.token;
+ //    $localStorage.data = {
+	// 	"error": false,
+	// 	"data": {
+	// 		"token": "79ebba912dd57c6b6d7e58653ed10a24",
+	// 		"username": "godwin",
+	// 		"email": "olatundegodwin1@gmail.com"
+	// 	},
+	// 	"admin": false,
+	// 	"officedata": {
+	// 		"office_name": "Chevron",
+	// 		"office_address": "Lekki",
+	// 		"office_location": "Island",
+	// 		"office_admin": "Chevron",
+	// 		"office_payment_type": "company",
+	// 		"office_payment_status": "",
+	// 		"office_payment_amount": "2000"
+	// 	},
+	// 	"description": "Success"
+	// };
+
+	var data = "token="+$localStorage.data.token;
 	var link = $rootScope.mealimeter;
+	$scope.username =  $localStorage.data.username;
+	console.log($localStorage.data);
 	$scope.drinks = [];
 	$scope.snacks = [];
 	$scope.food = [];

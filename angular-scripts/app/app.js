@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('mealimeterApp', ['ngAnimate','ngCookies','ngResource','ngRoute','ngSanitize','ngTouch','ngStorage'])
+  .module('mealimeterApp', ['ngAnimate','ngCookies','ngResource','ngRoute','ngSanitize','ngTouch','ngStorage','ui.router'])
   .run(['$localStorage','$rootScope','$location',function($localStorage,$rootScope,$location){
     $rootScope.mealimeter = "http://mealimeter.herokuapp.com/";
     $rootScope.mealimeterassets = "http://mealimeter.herokuapp.com/";
@@ -22,9 +22,24 @@ angular
   }])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/login', {
+        templateUrl: 'login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
+      .when('/signup', {
+        templateUrl: 'signup.html',
+        controller: 'SignupCtrl',
+        controllerAs: 'signup'
+      })
+      .when('/forgot-password', {
+        templateUrl: 'forgot-password.html',
+        controller: 'Forgot-passwordCtrl',
+        controllerAs: 'forgot-password'
+      })
+      .when('/pre-order', {
         templateUrl: 'views/pre-order.html',
-        controller: 'preorderctrl',
+        controller: 'preorderCtrl',
         controllerAs: 'pre-order'
       })
       .when('/top-up', {

@@ -27,6 +27,9 @@
   <link rel="stylesheet" href="assets/styles/app.css" type="text/css" />
   <!-- endbuild -->
   <link rel="stylesheet" href="assets/styles/font.css" type="text/css" />
+
+  
+
 </head>
 <body>
   <div class="app" id="app">
@@ -59,13 +62,35 @@
           <label>Email</label>
         </div>
         <div class="md-form-group float-label">
+          <input type="number" class="md-input" ng-model="" required>
+          <label>Phone Number</label>
+        </div>
+        <div class="md-form-group float-label">
           <input type="password" class="md-input" ng-model="" required>
           <label>Password</label>
         </div>  
         <div class="md-form-group float-label">
-          <input type="password" class="md-input" ng-model="" required>
-          <label>Re-type Password</label>
-        </div>  
+          <select name="" id="input" class="form-control" required="required" placeholder="Select Company">
+            <option value=""></option>
+          </select>
+        </div>
+        <div class="m-b-md">        
+          <label class="md-check">
+            <input type="checkbox" ng-model="checked" aria-label="Toggle ngShow"><i class="primary"></i> Company not on the list?
+          </label>
+        </div> 
+        <div class="md-form-group float-label" ng-show="checked">
+          <input type="text" class="md-input" ng-model="" required>
+          <label>Company Name</label>
+        </div>
+        <div class="md-form-group float-label" ng-show="checked">
+          <input type="text" class="md-input" ng-model="" required>
+          <label>Compnay Address</label>
+        </div>
+        <div class="md-form-group float-label" ng-show="checked">
+          <input type="text" class="md-input" ng-model="" required>
+          <label>Compnay Location</label>
+        </div>
         <button type="submit" class="btn primary btn-block p-x-md">Sign up</button>
       </form>
     </div>
@@ -85,7 +110,7 @@
   </div>
 <!-- build:js scripts/app.html.js -->
 <!-- jQuery -->
-  <script src="libs/jquery/jquery/dist/jquery.js"></script>
+  <script src="libs/jquery/jquery/dist/jquery.js"></script>z
 <!-- Bootstrap -->
   <script src="libs/jquery/tether/dist/js/tether.min.js"></script>
   <script src="libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
