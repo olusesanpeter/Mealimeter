@@ -1,12 +1,3 @@
-<div class="frame" style="position:absolute;height: 100%;width: 100%;background-color: white;z-index:1000;margin-top:60px" ng-show="showframe">
-  <div style="position: relative;">
-    <div style="z-index:1000">
-      <a style="float:right;padding-right: 20px" ng-click="closeframe" style="cursor: pointer"><b>x</b></a>
-    </div>
-    <iframe  ng-src="{{imgsrc}}" frameborder="0" style="overflow:hidden;height:100vh;width:100%;margin-top:-20px;z-index:1" height="100%" width="100%">
-    </iframe>
-  </div>
-</div>
 <div class="m-b">
       <ol class="breadcrumb">
         <li class="breadcrumb-item active">Top-up Account</li>
@@ -25,21 +16,20 @@
         </div>
         <div class="box-divider m-a-0"></div>
         <div class="box-body">
-          <form role="form" ng-submit="topup(data)" method="POST">
+          <form role="form">
             <div class="form-group">
               <label for="exampleInputEmail1">Top-up amount</label>
-              <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Enter amount" ng-model="data.amount">
+              <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Enter amount">
             </div>
             <button type="submit" class="btn white m-b">Top-up</button>
-          </form>
-          <form >
-            <script src="https://js.paystack.co/v1/inline.js"></script>
           </form>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
 <!-- ############ PAGE END-->
 
 </div>
