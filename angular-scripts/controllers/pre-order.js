@@ -38,6 +38,7 @@ angular.module('mealimeterApp')
 		}, function(error) {
 		  console.log(error);
 		});
+		console.log($localStorage.cart);
 		if($localStorage.cart == undefined){
 			$localStorage.cart = [];
 			$localStorage.total = 0;
