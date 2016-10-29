@@ -1,0 +1,217 @@
+<div class="app-header primary box-shadow">
+<div ng-controller="navbarCtrl"> 
+      <div ng-include="'views/partials/navbar.html'" ng-show="show"></div>
+    </div>   
+</div>
+<div class="m-b">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Pre-order Meals</li>
+      </ol>
+</div>
+<div class="padding">
+  <div class="row">
+    <!-- <div class="col-md-2" >
+      <div class="list-group m-b" style="position: fixed;">
+            <a href="#main-meals" class="list-group-item b-l-primary">
+              <span class="pull-right text-primary"></span>
+              Main Meals and Cousines
+            </a>
+            <a href="#snacks" class="list-group-item b-l-primary">
+              <span class="pull-right text-primary"></span>
+              Snacks
+            </a>
+            <a href="#drinks" class="list-group-item b-l-primary">
+              <span class="pull-right text-primary"></span>
+              Drinks
+            </a>
+          </div>
+    </div> -->
+
+    <div class="col-md-8">
+      <div class="box">
+        <div class="box-header dker2">
+          <nav>
+            <ol class="cd-multi-steps text-top">
+              <li class="current"><a href="#/">Monday</a></li>
+              <li class="" ><a href="#/">Tuesday</a></li>
+              <li class=""><a href="#/">Wednesday</a></li>
+              <li class=""><a href="#/">Thursday</a></li>
+              <li class=""><a href="#/">Friday</a></li>
+            </ol>
+          </nav>
+        </div>
+        <div class="box-body ">
+          <div id="#/main-meals">
+            <h5>Main Meals and Cousines{{username}}</h5>
+            <hr>
+            <div class="row text-center" ng-repeat="meal in meals[0].options">
+              <div class="col-md-3">
+                    <img src="assets/images/rice.jpg" class="img-responsive">
+                    <div class="box-header dker2">
+                    <h3>{{meal.option.name}}</h3>
+                    <h3 ng-hide="true">{{x = $index}}</h3>
+                    </div>
+              </div>
+              <div class="col-md-9">
+              <div class="box-header primary">
+                Topping(s)
+              </div>
+              <div class="box-body dker">
+                <div ng-repeat="additive in meal.option.additives">
+                  <div class="row">
+                    <div class="col-sm-10 ">
+                      <div class="input-group select2-bootstrap-prepend m-b text-left">
+                          <div class="input-group-btn">
+                            <button class="btn btn-default" type="button" data-select2-open="select2-button-addons-single-input-group-sm">
+                             + {{additive}} ({{meal.option.prices[$index]}})
+                            </button>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div>
+                        <a href="">
+                        <i class="material-icons icon-add" ng-click="addtocart($index,x)">&#xe148;</i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                
+                <hr>
+
+              </div>
+
+              </div>
+
+            </div>
+            <hr>
+          </div>
+          <div id="#/snacks">
+            <h5>Snacks</h5>
+            <hr>
+            <div ng-repeat="snack in snacks">
+              <!-- <h1>{{snack}}</h1> -->
+              <div class="row">
+                <div class="col-sm-10 ">
+                  <div class="input-group select2-bootstrap-prepend m-b text-left">
+                      <div class="input-group-btn">
+                        <button class="btn btn-default" type="button" data-select2-open="select2-button-addons-single-input-group-sm">
+                         {{snack.name}}
+                        </button>
+                      </div>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <div>
+                    <a href="">
+                    <i class="material-icons icon-add">&#xe148;</i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="#/drinks">
+            <h5>Drinks</h5>
+            <hr>
+            <div ng-repeat="drink in drinks">
+              <!-- <h1>{{drink}}</h1> -->
+              <div class="row">
+                <div class="col-sm-10 ">
+                  <div class="input-group select2-bootstrap-prepend m-b text-left">
+                      <div class="input-group-btn">
+                        <button class="btn btn-default" type="button" data-select2-open="select2-button-addons-single-input-group-sm">
+                         {{drink.name}}
+                        </button>
+                      </div>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <div>
+                    <a href="">
+                    <i class="material-icons icon-add">&#xe148;</i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4" >
+          <div class="box"  style="position: relative;">
+              <div class="box-header dker2">
+                    Your Order
+              </div>
+              <div class="p-a-md text-center">
+                <table class="table table-hover text-left">
+                  <thead class="">
+                    <tr>
+                     <th>
+                       Qty.
+                     </th>
+                     <th>
+                       Food Item
+                     </th>
+                     <th>
+                       Price
+                     </th>
+                   </tr>
+                  </thead>
+                  <tbody>
+                   <tr ng-repeat="item in cart">
+                     <td>
+                       {{item.quantity}}x
+                      </td>
+                      <td>
+                        {{item.mainmeal}}
+                        <br>
+                        Topping(s):
+                        <br>
+                        {{item.additive}}
+                      </td>
+                      <td>
+                        {{item.price}}
+                      </td>
+                   </tr>
+                 </tbody>
+                </table>
+                <table class="table">
+                 <tbody>
+                   <tr>
+                     <td class="total">Total</td>
+                     <td class="price">₦{{total}}</td>
+                   </tr>
+                   <tr>
+                     <td class="total">Company subsidy</td>
+                     <td class="price">- ₦{{companysubsidy}}</td>
+                   </tr>
+                   <tr>
+                     <td class="total">Total Amount Due</td>
+                     <td class="amount-due">₦{{due}}</td>
+                   </tr>
+                 </tbody>
+                </table>
+                <button class="btn btn-fw primary">Pre-Order</button>
+                <button class="btn btn-fw primary">Checkout</button>
+
+              </div>
+          </div>
+    </div>
+    <!-- <div class="col-md-3" >
+          <div class="box"  style="position: fixed;">
+              <div class="box-header dker2">
+                        Your Order
+              </div>
+              <div class="p-a-md text-center">
+                <img src="assets/images/food-basket.png" alt="" width="75px">
+                <hr>
+                <p>Add menu items into your basket</p>
+              </div>
+          </div>
+    </div> -->
+  </div>
+</div>
