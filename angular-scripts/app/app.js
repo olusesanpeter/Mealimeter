@@ -42,6 +42,31 @@ angular
         controller: 'preorderCtrl',
         controllerAs: 'pre-order'
       })
+      .when('/pre-order/monday', {
+        templateUrl: 'views/pre-order-monday.html',
+        controller: 'preorderCtrl',
+        controllerAs: 'pre-order'
+      })
+      .when('/pre-order/tuesday', {
+        templateUrl: 'views/pre-order-tuesday.html',
+        controller: 'preorderCtrl',
+        controllerAs: 'pre-order'
+      })
+      .when('/pre-order/wednesday', {
+        templateUrl: 'views/pre-order-wednesday.html',
+        controller: 'preorderCtrl',
+        controllerAs: 'pre-order'
+      })
+      .when('/pre-order/thursday', {
+        templateUrl: 'views/pre-order-thursday.html',
+        controller: 'preorderCtrl',
+        controllerAs: 'pre-order'
+      })
+      .when('/pre-order/friday', {
+        templateUrl: 'views/pre-order-friday.html',
+        controller: 'preorderCtrl',
+        controllerAs: 'pre-order'
+      })
       .when('/top-up', {
         templateUrl: 'views/top-up.html',
         controller: 'Top-upCtrl',
