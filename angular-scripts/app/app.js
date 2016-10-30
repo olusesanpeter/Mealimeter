@@ -37,31 +37,31 @@ angular
         controller: 'Forgot-passwordCtrl',
         controllerAs: 'forgot-password'
       })
-      .when('/pre-order/monday', {
+      .when('/pre-order/:day', {
         templateUrl: 'views/pre-order.html',
         controller: 'preorderCtrl',
         controllerAs: 'pre-order'
       })
-      .when('/pre-order/tuesday', {
-        templateUrl: 'views/pre-order.html',
-        controller: 'preorderCtrl',
-        controllerAs: 'pre-order'
-      })
-      .when('/pre-order/wednesday', {
-        templateUrl: 'views/pre-order.html',
-        controller: 'preorderCtrl',
-        controllerAs: 'pre-order'
-      })
-      .when('/pre-order/thursday', {
-        templateUrl: 'views/pre-order.html',
-        controller: 'preorderCtrl',
-        controllerAs: 'pre-order'
-      })
-      .when('/pre-order/friday', {
-        templateUrl: 'views/pre-order.html',
-        controller: 'preorderCtrl',
-        controllerAs: 'pre-order'
-      })
+      // .when('/pre-order/tuesday', {
+      //   templateUrl: 'views/pre-order.html',
+      //   controller: 'preorderCtrl',
+      //   controllerAs: 'pre-order'
+      // })
+      // .when('/pre-order/wednesday', {
+      //   templateUrl: 'views/pre-order.html',
+      //   controller: 'preorderCtrl',
+      //   controllerAs: 'pre-order'
+      // })
+      // .when('/pre-order/thursday', {
+      //   templateUrl: 'views/pre-order.html',
+      //   controller: 'preorderCtrl',
+      //   controllerAs: 'pre-order'
+      // })
+      // .when('/pre-order/friday', {
+      //   templateUrl: 'views/pre-order.html',
+      //   controller: 'preorderCtrl',
+      //   controllerAs: 'pre-order'
+      // })
       .when('/top-up', {
         templateUrl: 'views/top-up.html',
         controller: 'Top-upCtrl',
