@@ -15,21 +15,26 @@ angular.module('mealimeterApp')
   	else{
   		if($location.path().split('/')[2] == "monday"){
   			$scope.day= 0;
+  			$scope.daytext= "Monday";
   		}
   		else if($location.path().split('/')[2] == "tuesday"){
   			$scope.day= 1;
+  			$scope.daytext= "Tuesday";
   		}
   		else if($location.path().split('/')[2] == "wednesday"){
   			$scope.day= 2;
+  			$scope.daytext= "Wednesday";
   		}
   		else if($location.path().split('/')[2] == "thursday"){
   			$scope.day= 3;
+  			$scope.daytext= "Thursday";
   		}
   		else if($location.path().split('/')[2] == "friday"){
   			$scope.day= 4;
+  			$scope.daytext= "Friday";
   		}
   		else{
-  			
+  			$window.location.href = "#/pre-order/monday";
   		}
 	  	var data = "token="+$localStorage.data.data.token;
 	  	$scope.companysubsidy = $localStorage.data.officedata.office_payment_amount;
