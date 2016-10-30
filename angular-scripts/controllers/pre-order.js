@@ -61,6 +61,9 @@ angular.module('mealimeterApp')
 				$scope.snacks = result.data.snacks;
 				$scope.drinks = result.data.drinks;
 				$scope.meals = result.data.preorderList;
+				$scope.done = true;
+				$scope.notdone = false;
+				
 				// console.log($scope.meals);
 			}
 		  

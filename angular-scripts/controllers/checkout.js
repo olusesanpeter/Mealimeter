@@ -112,30 +112,31 @@ angular.module('mealimeterApp')
 			    headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'} 
 			}).then(function(result) {
 			  $scope.balance = result.data.balance;
+			  if(Number.parseInt($scope.balance) > due){
+			  	var data = "token="+$localStorage.data.data.token+"&total="+total+"&subsidy="+companysubsidy+"&paid="+due+"&food="+food+"&price="+price+"&quantity="+quantity;
+			  	var link = $rootScope.mealimeter;
+			  	$http({
+			  	    method : "POST",
+			  	    url: link+"buywallet",
+			  	    data: data,
+			  	    headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'} 
+			  	}).then(function(result) {
+			  		delete $localStorage.due;
+			  		delete $localStorage.total;
+			  		delete $localStorage.cart;
+			  		alert("Your order has been taken");
+			  		$window.location.href = "#/pre-order/monday";
+			  	}, function(error) {
+			  	  console.log(error);
+			  	});
+			  }
+			  else{
+			  	alert("Your wallet balance isn't sufficient.Please Top Up");
+			  }
 			}, function(error) {
 			  console.log(error);
 			});
-			if($scope.balance > due){
-				var data = "token="+$localStorage.data.data.token+"&total="+total+"&subsidy="+companysubsidy+"&paid="+due+"&food="+food+"&price="+price+"&quantity="+quantity;
-				var link = $rootScope.mealimeter;
-				$http({
-				    method : "POST",
-				    url: link+"buywallet",
-				    data: data,
-				    headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'} 
-				}).then(function(result) {
-					delete $localStorage.due;
-					delete $localStorage.total;
-					delete $localStorage.cart;
-					alert("Your order has been taken");
-					$window.location.href = "#/pre-order/monday";
-				}, function(error) {
-				  console.log(error);
-				});
-			}
-			else{
-				alert("Your wallet balance isn't sufficient.Please Top Up");
-			}
+			
 			
 			
 			// console.log(food);
