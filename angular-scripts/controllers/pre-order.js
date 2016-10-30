@@ -48,7 +48,7 @@ angular.module('mealimeterApp')
 		  $scope.snacks = result.data.snacks;
 		  $scope.drinks = result.data.drinks;
 		  $scope.meals = result.data.preorderList;
-		  // console.log($scope.meals);
+		  console.log($scope.meals);
 		  // console.log($scope.drinks);
 		  // console.log($scope.snacks);
 
@@ -58,8 +58,8 @@ angular.module('mealimeterApp')
 		if($localStorage.cart == undefined){
 			// alert("empty");
 			$localStorage.cart = [];
-			$localStorage.total = 0;
-			$localStorage.due = 0;
+			$localStorage.total = [];
+			$localStorage.due = [];
 			$scope.cart = [];
 			$scope.total = 0;
 			$scope.due = 0;
@@ -68,11 +68,9 @@ angular.module('mealimeterApp')
 		}
 		else{
 			if($localStorage.cart[$scope.day] == undefined){
-				console.log($scope.day);
-				console.log($localStorage.cart);
 				$localStorage.cart[$scope.day] = [];
-				$localStorage.total[$scope.day] = 0;
-				$localStorage.due[$scope.day] = 0;
+				$localStorage.total = [];
+				$localStorage.due = [];
 				$scope.cart = [];
 				$scope.total = 0;
 				$scope.due = 0;
@@ -82,6 +80,7 @@ angular.module('mealimeterApp')
 			else{
 				console.log($scope.day);
 				console.log($localStorage.cart);
+				console.log($localStorage.total);
 				$scope.cart = $localStorage.cart[$scope.day];
 				$scope.total = $localStorage.total[$scope.day];
 				$scope.due = $localStorage.due[$scope.day];
