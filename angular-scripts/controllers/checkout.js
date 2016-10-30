@@ -25,4 +25,39 @@ angular.module('mealimeterApp')
 	$scope.redirect5 = function(){
   		$window.location.href = "#/pre-order/friday";
 	};
+	$scope.companysubsidy = $localStorage.data.officedata.office_payment_amount;
+	if($localStorage.cart[0] != undefined){
+		$scope.monday = $localStorage.cart[0];
+	}
+	else{
+		$scope.monday = [];
+	}
+
+	if($localStorage.cart[1] != undefined){
+		$scope.tuesday = $localStorage.cart[1];
+	}
+	else{
+		$scope.tuesday = [];
+	}
+
+	if($localStorage.cart[2] != undefined){
+		$scope.wednesday = $localStorage.cart[2];
+	}
+	else{
+		$scope.wednesday = [];
+	}
+
+	if($localStorage.cart[3] != undefined){
+		$scope.thursday = $localStorage.cart[3];
+	}
+	else{
+		$scope.thursday = [];
+	}
+
+	if($localStorage.cart[4] != undefined){
+		$scope.friday = $localStorage.cart[4];
+	}
+	else{
+		$scope.friday = [];
+	}
   }]);
