@@ -3,6 +3,19 @@
       <div ng-include="'views/partials/navbar.html'" ng-show="show"></div>
     </div>   
 </div>
+<div class="item">
+  <div class="item-bg" >
+  </div>
+  <div class="hero">
+    <div class="row">
+      <div class="col-sm-12" text-center>
+          <span>
+            <h1 style="font-size: 70px; text-align: center; color: white">Wednesday</h1>
+          </span>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="m-b">
       <ol class="breadcrumb">
         <li class="breadcrumb-item active">Pre-order Meals</li>
@@ -44,7 +57,7 @@
           <div id="#/main-meals">
             <h5>Main Meals and Cousines</h5>
             <hr>
-            <div class="row text-center" ng-repeat="meal in meals[0].options">
+            <div class="row text-center" ng-repeat="meal in meals[day].options">
               <div class="col-md-3">
                     <img src="assets/images/rice.jpg" class="img-responsive">
                     <div class="box-header dker2">
@@ -141,7 +154,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4" >
+    <div class="col-md-4" style="display:{{one}}">
           <div class="box"  style="position: relative;">
               <div class="box-header dker2">
                     Your Order
@@ -201,7 +214,7 @@
               </div>
           </div>
     </div>
-    <!-- <div class="col-md-3" >
+    <div class="col-md-4" style="display:{{two}}">
           <div class="box"  style="position: fixed;">
               <div class="box-header dker2">
                         Your Order
@@ -212,6 +225,6 @@
                 <p>Add menu items into your basket</p>
               </div>
           </div>
-    </div> -->
+    </div>
   </div>
 </div>
