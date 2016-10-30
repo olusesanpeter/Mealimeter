@@ -29,12 +29,12 @@ angular.module('mealimeterApp')
   			$scope.day= 4;
   		}
   		else{
-  			alert('weird');
+  			
   		}
 	  	var data = "token="+$localStorage.data.data.token;
 	  	$scope.companysubsidy = $localStorage.data.officedata.office_payment_amount;
 		var link = $rootScope.mealimeter;
-		console.log($localStorage.data);
+		// console.log($localStorage.data);
 		$scope.username =  $localStorage.data.data.username;
 		$scope.drinks = [];
 		$scope.snacks = [];
@@ -45,28 +45,49 @@ angular.module('mealimeterApp')
 		    data: data,
 		    headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'} 
 		}).then(function(result) {
-			console.log(result);
 		  $scope.snacks = result.data.snacks;
 		  $scope.drinks = result.data.drinks;
 		  $scope.meals = result.data.preorderList;
-		  console.log($scope.meals);
-		  console.log($scope.drinks);
-		  console.log($scope.snacks);
+		  // console.log($scope.meals);
+		  // console.log($scope.drinks);
+		  // console.log($scope.snacks);
 
 		}, function(error) {
 		  console.log(error);
 		});
-		console.log($localStorage.cart);
 		if($localStorage.cart == undefined){
+			// alert("empty");
 			$localStorage.cart = [];
 			$localStorage.total = 0;
 			$localStorage.due = 0;
-			console.log("advdsasda");
+			$scope.cart = [];
+			$scope.total = 0;
+			$scope.due = 0;
+			$scope.one = "hide";
+			$scope.two = "block";
 		}
 		else{
-			$scope.cart = $localStorage.cart ;
-			$scope.total = $localStorage.total;
-			$scope.due = $localStorage.due;
+			if($localStorage.cart[$scope.day] == undefined){
+				console.log($scope.day);
+				console.log($localStorage.cart);
+				$localStorage.cart[$scope.day] = [];
+				$localStorage.total[$scope.day] = 0;
+				$localStorage.due[$scope.day] = 0;
+				$scope.cart = [];
+				$scope.total = 0;
+				$scope.due = 0;
+				$scope.one = "none";
+				$scope.two = "block";
+			}
+			else{
+				console.log($scope.day);
+				console.log($localStorage.cart);
+				$scope.cart = $localStorage.cart[$scope.day];
+				$scope.total = $localStorage.total[$scope.day];
+				$scope.due = $localStorage.due[$scope.day];
+				$scope.one = "block";
+				$scope.two = "none";
+			}
 		}
 		$scope.addtocart = function(id,len){
 			var main = $scope.meals[$scope.day].options[len].option.name;
@@ -84,7 +105,7 @@ angular.module('mealimeterApp')
 			}
 			var t = false;
 			var currentposition = 0;
-			var total = 0
+			var total = 0;
 			for (var i = 0; i < $scope.cart.length; i++) {
 				if(newid == $scope.cart[i].id){
 					t = true;
@@ -106,10 +127,12 @@ angular.module('mealimeterApp')
 			}
 			$scope.total = total;
 			$scope.due = $scope.total - $scope.companysubsidy;
-			console.log($scope.due);
-			$localStorage.cart = $scope.cart;
-			$localStorage.total = $scope.total;
-			$localStorage.due = $scope.due;
+			$localStorage.cart[$scope.day] = $scope.cart;
+			$localStorage.total[$scope.day] = $scope.total;
+			$localStorage.due[$scope.day] = $scope.due;
+			$scope.empty = false;
+			$scope.one = "block";
+			$scope.two = "none";
 		}
   	}
 

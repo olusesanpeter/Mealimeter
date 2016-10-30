@@ -30,7 +30,7 @@ angular.module('mealimeterApp')
                     if(response.data.error == false){
                         console.log("got here");
                         $localStorage.data = response.data;
-                        $window.location.href="#/pre-order";
+                        $window.location.href="#/pre-order/monday";
                     }
                 }
                 else{
