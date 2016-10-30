@@ -24,6 +24,18 @@ angular.module('mealimeterApp')
 		delete $localStorage.due;
 		$window.location.href = "#/login";
 	}
+	  	var data = "token="+$localStorage.data.data.token;
+		var link = $rootScope.mealimeter;
+	$http({
+	    method : "POST",
+	    url: link+"getBalance",
+	    data: data,
+	    headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'} 
+	}).then(function(result) {
+	  $scope.balance = result.data.balance;
+	}, function(error) {
+	  console.log(error);
+	});
 
   // console.log($scope.show);
 	

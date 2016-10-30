@@ -41,7 +41,7 @@
     </div> -->
 
     <div class="col-md-8">
-      <div class="box">
+      <div class="box" ng-show="done">
         <div class="box-header dker2">
           <nav>
             <ol class="cd-multi-steps text-top">
@@ -53,7 +53,7 @@
             </ol>
           </nav>
         </div>
-        <div class="box-body ">
+        <div class="box-body " >
           <div id="#/main-meals">
             <h5>Main Meals and Cousines</h5>
             <hr>
@@ -150,6 +150,10 @@
             </div>
           </div> -->
         </div>
+        
+      </div>
+      <div class="box" ng-show="notdone" style="padding:30px">
+          <h1 style="text-align:center">Your Order has been taken </h1>
       </div>
     </div>
     <div class="col-md-4" style="display:{{one}}">

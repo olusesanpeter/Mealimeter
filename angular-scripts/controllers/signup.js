@@ -26,10 +26,10 @@ angular.module('mealimeterApp')
 
     	console.log(data.checked);
         if (data.checked == true){
-        var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&password="+data.passwordfield+"&officename="+data.officename+"&officeaddress="+data.officeaddress+"&officelocation="+data.officelocation;
+        var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&day="+data.dayfield+"&month="+data.monthfield+"&gender="+data.genderfield+"&password="+data.passwordfield+"&officename="+data.officename+"&officeaddress="+data.officeaddress+"&officelocation="+data.officelocation;
         }
         else{
-        var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&password="+data.passwordfield+"&officeid="+data.companies;
+        var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&day="+data.dayfield+"&month="+data.monthfield+"&gender="+data.genderfield+"&password="+data.passwordfield+"&officeid="+data.companies;
         }
     	
     	$http({
@@ -39,17 +39,25 @@ angular.module('mealimeterApp')
     	    headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'} 
     	   }).then(function(response) {
     	 	console.log(response.data.result);
+                $scope.show = false;
 		    	if(response.data.result.error == false){
 		    		console.log("Registration Successful");
-					$window.location.href="#/login";
+                    setTimeout(function(){
+                    $window.location.href="#/login";
+                    }, 10000);
+                    $scope.show = true;
 		    	}
                 else{
                     console.log("Registration Failed");
                     $scope.error = response.data.result.errors[0];
+                    $scope.show = true;
                 }
     	},
+
+        
+
     	function(error) {
-    	  console.log(error);
+    	console.log(error);
     	});
 
     	

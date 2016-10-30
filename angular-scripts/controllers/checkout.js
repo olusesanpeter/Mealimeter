@@ -93,16 +93,16 @@ angular.module('mealimeterApp')
 					food += ";";
 					price += ";";
 					quantity += ";";
-					console.log($localStorage.due[i]);
+					// console.log($localStorage.due[i]);
 					total += Number.parseInt($localStorage.total[i]);
 					due += Number.parseInt($localStorage.due[i]);
 					companysubsidy +=  Number.parseInt($scope.companysubsidy);
 				}
 				
-			}
-			console.log(due);
-			console.log(total);
-			console.log(price);
+			// }
+			// console.log(due);
+			// console.log(total);
+			// console.log(price);
 			var data = "token="+$localStorage.data.data.token+"&total="+total+"&subsidy="+companysubsidy+"&paid="+due+"&food="+food+"&price="+price+"&quantity="+quantity;
 			var link = $rootScope.mealimeter;
 			$http({
@@ -111,7 +111,10 @@ angular.module('mealimeterApp')
 			    data: data,
 			    headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'} 
 			}).then(function(result) {
-				console.log(result);
+				// console.log(result);
+				delete $localStorage.due;
+				delete $localStorage.total;
+				delete $localStorage.cart;
 			}, function(error) {
 			  console.log(error);
 			});

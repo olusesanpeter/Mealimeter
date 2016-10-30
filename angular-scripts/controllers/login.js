@@ -25,21 +25,23 @@ angular.module('mealimeterApp')
                 headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'} 
             }).then(function(response) {
                 console.log(response.data);
-                
+                $scope.show = false;
                 if(response.data.data != undefined){
                     if(response.data.error == false){
-                        console.log("got here");
+                        console.log("Login Successful");
                         $localStorage.data = response.data;
                         $window.location.href="#/pre-order/monday";
                     }
                 }
                 else{
                     if(response.data.description == "Not Activated"){
-                        $scope.error = 'Not Activated Your Account.Please check your email';
+                        $scope.error = 'Your account is not yet activated, Please check your email.';
+                        $scope.show = true;
                         
                     }
                     else{
                         $scope.error = 'Incorrect Credentials. Please try again';
+                         $scope.show = true;
                     }
                 }
             }, function(error) {

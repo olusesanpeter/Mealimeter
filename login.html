@@ -21,6 +21,12 @@
       
     </div>
     <img src="assets/images/logo-m.png" class="img-responsive" alt="Mealimeter Logo">
+
+    <div class="alert alert-success" role="alert" ng-show="show">
+      <button class="close" data-dismiss="alert"></button>
+      <strong>{{error}}</strong>
+    </div>
+
     <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
       <div class="m-b text-sm">
         Sign in to your Mealimeter Account
@@ -35,7 +41,6 @@
           <label>Password</label>
         </div>     
         <button type="submit" class="btn primary btn-block p-x-md">Sign in</button>
-        <p style="color:red">{{error}}</p>
       </form>
     </div>
 

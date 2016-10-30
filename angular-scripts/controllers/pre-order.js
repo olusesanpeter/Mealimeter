@@ -44,16 +44,26 @@ angular.module('mealimeterApp')
 		$scope.drinks = [];
 		$scope.snacks = [];
 		$scope.food = [];
+		$scope.done = true;
+		$scope.notdone = false;
 		$http({
 		    method : "POST",
 		    url: link+"getmealspreorder",
 		    data: data,
 		    headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'} 
 		}).then(function(result) {
-		  $scope.snacks = result.data.snacks;
-		  $scope.drinks = result.data.drinks;
-		  $scope.meals = result.data.preorderList;
-		  console.log($scope.meals);
+			// console.log(result.data);
+			if(result.data.description == "Already Preordered"){
+				$scope.done = false;
+				$scope.notdone = true;
+			}
+			else{
+				$scope.snacks = result.data.snacks;
+				$scope.drinks = result.data.drinks;
+				$scope.meals = result.data.preorderList;
+				// console.log($scope.meals);
+			}
+		  
 		  // console.log($scope.drinks);
 		  // console.log($scope.snacks);
 
@@ -61,21 +71,7 @@ angular.module('mealimeterApp')
 		  console.log(error);
 		});
 
-		$http({
-		    method : "POST",
-		    url: link+"getBalance",
-		    data: data,
-		    headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'} 
-		}).then(function(result) {
-		  console.log($scope.result);
-		  // console.log($scope.drinks);
-		  // console.log($scope.snacks);
-
-		}, function(error) {
-		  console.log(error);
-		});
-
-
+		
 		if($localStorage.cart == undefined){
 			// alert("empty");
 			$localStorage.cart = [];
