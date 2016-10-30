@@ -13,6 +13,24 @@ angular.module('mealimeterApp')
   		$window.location.href = "#/login";
   	}
   	else{
+  		if($location.path().split('/')[2] == "monday"){
+  			$scope.day= 0;
+  		}
+  		else if($location.path().split('/')[2] == "tuesday"){
+  			$scope.day= 1;
+  		}
+  		else if($location.path().split('/')[2] == "wednesday"){
+  			$scope.day= 2;
+  		}
+  		else if($location.path().split('/')[2] == "thursday"){
+  			$scope.day= 3;
+  		}
+  		else if($location.path().split('/')[2] == "friday"){
+  			$scope.day= 4;
+  		}
+  		else{
+  			alert('weird');
+  		}
 	  	var data = "token="+$localStorage.data.data.token;
 	  	$scope.companysubsidy = $localStorage.data.officedata.office_payment_amount;
 		var link = $rootScope.mealimeter;
@@ -51,16 +69,16 @@ angular.module('mealimeterApp')
 			$scope.due = $localStorage.due;
 		}
 		$scope.addtocart = function(id,len){
-			var main = $scope.meals[0].options[len].option.name;
-			var additive = $scope.meals[0].options[len].option.additives[id];
-			var price = $scope.meals[0].options[len].option.prices[id];
+			var main = $scope.meals[$scope.day].options[len].option.name;
+			var additive = $scope.meals[$scope.day].options[len].option.additives[id];
+			var price = $scope.meals[$scope.day].options[len].option.prices[id];
 			if(len == 0){
 				var newid = (len + 1)*(id + 1);
 			}
 			else{
 				var prevsize = 0;
 				for(var i = 0;i<len;i++){
-					prevsize += $scope.meals[0].options[i].option.additives.length;
+					prevsize += $scope.meals[$scope.day].options[i].option.additives.length;
 				}
 				var newid = prevsize + (id+1);
 			}
