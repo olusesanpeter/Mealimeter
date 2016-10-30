@@ -56,6 +56,7 @@ angular.module('mealimeterApp')
 		  console.log(error);
 		});
 		if($localStorage.cart == undefined){
+			// alert("empty");
 			$localStorage.cart = [];
 			$localStorage.total = [];
 			$localStorage.due = [];
@@ -65,14 +66,16 @@ angular.module('mealimeterApp')
 		}
 		else{
 			if($localStorage.cart[$scope.day] == undefined){
-				$localStorage.cart = [];
-				$localStorage.total = [];
-				$localStorage.due = [];
+				// alert("empty day");
+				$localStorage.cart[$scope.day] = [];
+				$localStorage.total[$scope.day] = [];
+				$localStorage.due[$scope.day] = [];
 				$scope.cart = [];
 				$scope.total = 0;
 				$scope.due = 0;
 			}
 			else{
+				// alert("fine");
 				$scope.cart = $localStorage.cart[$scope.day];
 				$scope.total = $localStorage.total[$scope.day];
 				$scope.due = $localStorage.due[$scope.day];
