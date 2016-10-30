@@ -2595,6 +2595,18 @@ body {
   height: 100%;
   background-size: contain; }
 
+.checkout-bg {
+background: url(../../assets/images/pattern.jpg) no-repeat center center;
+background-size: cover;
+position: absolute;
+width: 100%;
+height: 100%;}
+
+.checkout-bg img {
+  width: 100%;
+  height: 100%;
+  background-size: contain; }
+
 /*#hero-bg {
   position: fixed; 
   top: -50%; 
