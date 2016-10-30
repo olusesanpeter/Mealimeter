@@ -12,24 +12,24 @@ angular.module('mealimeterApp')
   	//////data from login
   	var link = $rootScope.mealimeter;
   	$http({
-    		method : "GET",
-    		url: link+"getCompanies"
-		}).then(function(response) {
-		console.log(response);
-	  	$scope.companies = response.data.companies;
-	  	console.log($scope.companies);
-		}, 
-		function(error) {
-		  console.log(error);
-		});
-    	$scope.register = function(data){
-
+		method : "GET",
+		url: link+"getCompanies"
+	}).then(function(response) {
+	console.log(response);
+  	$scope.companies = response.data.companies;
+  	console.log($scope.companies);
+	}, 
+	function(error) {
+	  console.log(error);
+	});
+	$scope.register = function(data){
+        console.log(data);
     	console.log(data.checked);
         if (data.checked == true){
-        var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&day="+data.dayfield+"&month="+data.monthfield+"&gender="+data.genderfield+"&password="+data.passwordfield+"&officename="+data.officename+"&officeaddress="+data.officeaddress+"&officelocation="+data.officelocation;
+        var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&day="+data.dayfield+"&month="+data.monthfield+"&sex="+data.genderfield+"&password="+data.passwordfield+"&officename="+data.officename+"&officeaddress="+data.officeaddress+"&officelocation="+data.officelocation;
         }
         else{
-        var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&day="+data.dayfield+"&month="+data.monthfield+"&gender="+data.genderfield+"&password="+data.passwordfield+"&officeid="+data.companies;
+        var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&day="+data.dayfield+"&month="+data.monthfield+"&sex="+data.genderfield+"&password="+data.passwordfield+"&officeid="+data.companies;
         }
     	
     	$http({
@@ -59,9 +59,6 @@ angular.module('mealimeterApp')
     	function(error) {
     	console.log(error);
     	});
-
-    	
-
     };
 
   }]);

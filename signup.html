@@ -49,7 +49,7 @@
         </div>
         </div>
         <div class="md-form-group float-label row">
-          <div class="radio col-d-6">
+          <!-- <div class="radio col-d-6">
           <label class="ui-check ui-check-lg col-md-3">
             <input type="radio" name="a" ng-model="data.genderfield" required>
             <i class="dark-white"></i>
@@ -60,7 +60,11 @@
             <i class="dark-white"></i>
             Female
           </label>
-        </div>
+        </div> -->
+        <select ng-model="data.genderfield" id="inputNg-Model=" class="form-control" required="required">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
         </div>  
         
         <div class="md-form-group float-label">

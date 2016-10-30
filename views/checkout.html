@@ -324,7 +324,27 @@
     <div class="col-md-4"></div>
 
     <div class="col-md-4">
-      <button type="button" class="btn btn-large btn-block primary" ng-click="docheckout()">Pre-order all meals</button>
+      <a class="btn btn-large btn-block primary"  data-toggle="modal" data-target='#modal-id'>Pre-order all meals</a>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modal-id">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Checkout Via</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row" style="text-align: center">
+          <div class="col-xs-6">
+            <button class="btn btn-default" disabled>Paystack</button>
+          </div>
+          <div class="col-xs-6">
+            <button class="btn btn-primary" ng-click="docheckout()">Wallet</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

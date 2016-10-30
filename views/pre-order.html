@@ -43,15 +43,6 @@
     <div class="col-md-8">
       <div class="box" ng-show="done">
         <div class="box-header dker2">
-          <nav>
-            <ol class="cd-multi-steps text-top">
-              <li class="current"><a href="#/">Monday</a></li>
-              <li class="" ><a href="#/">Tuesday</a></li>
-              <li class=""><a href="#/">Wednesday</a></li>
-              <li class=""><a href="#/">Thursday</a></li>
-              <li class=""><a href="#/">Friday</a></li>
-            </ol>
-          </nav>
         </div>
         <div class="box-body " >
           <div id="#/main-meals">
@@ -210,8 +201,31 @@
                    </tr>
                  </tbody>
                 </table>
-                <button class="btn btn-fw primary">Pre-Order</button>
-                <button class="btn btn-fw primary" href="#/checkout">Checkout</button>
+                <div ng-if="daytext == 'Monday'">
+                  <a class="btn btn-fw primary" href="" disabled>Previous</a>
+                  <a class="btn btn-fw primary" href="#/pre-order/tuesday">Next</a>
+                  <a class="btn btn-fw primary" href="#/checkout">Checkout</a>
+                </div>
+                <div ng-if="daytext == 'Tuesday'">
+                  <a class="btn btn-fw primary" href="#/pre-order/monday">Previous</a>
+                  <a class="btn btn-fw primary" href="#/pre-order/wednesday">Next</a>
+                  <a class="btn btn-fw primary" href="#/checkout">Checkout</a>
+                </div>
+                <div ng-if="daytext == 'Wednesday'">
+                  <a class="btn btn-fw primary" href="#/pre-order/tuesday">Previous</a>
+                  <a class="btn btn-fw primary" href="#/pre-order/thursday">Next</a>
+                  <a class="btn btn-fw primary" href="#/checkout">Checkout</a>
+                </div>
+                <div ng-if="daytext == 'Thursday'">
+                  <a class="btn btn-fw primary" href="#/pre-order/wednesday">Previous</a>
+                  <a class="btn btn-fw primary" href="#/pre-order/friday">Next</a>
+                  <a class="btn btn-fw primary" href="#/checkout">Checkout</a>
+                </div>
+                <div ng-if="daytext == 'Friday'">
+                  <a class="btn btn-fw primary" href="#/pre-order/thursday">Previous</a>
+                  <a class="btn btn-fw primary" disabled>Next</a>
+                  <a class="btn btn-fw primary" href="#/checkout">Checkout</a>
+                </div>
 
               </div>
           </div>
