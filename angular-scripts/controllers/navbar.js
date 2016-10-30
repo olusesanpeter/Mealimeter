@@ -25,7 +25,7 @@ angular.module('mealimeterApp')
 		$window.location.href = "#/login";
 	}
 
-  console.log($scope.show);
+  // console.log($scope.show);
 	
 
   }]);

@@ -37,11 +37,6 @@ angular
         controller: 'Forgot-passwordCtrl',
         controllerAs: 'forgot-password'
       })
-      .when('/pre-order', {
-        templateUrl: 'views/pre-order.html',
-        controller: 'preorderCtrl',
-        controllerAs: 'pre-order'
-      })
       .when('/pre-order/monday', {
         templateUrl: 'views/pre-order-monday.html',
         controller: 'preorderCtrl',
