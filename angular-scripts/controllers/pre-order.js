@@ -58,27 +58,35 @@ angular.module('mealimeterApp')
 		if($localStorage.cart == undefined){
 			// alert("empty");
 			$localStorage.cart = [];
-			$localStorage.total = [];
-			$localStorage.due = [];
+			$localStorage.total = 0;
+			$localStorage.due = 0;
 			$scope.cart = [];
 			$scope.total = 0;
 			$scope.due = 0;
+			$scope.one = "hide";
+			$scope.two = "block";
 		}
 		else{
 			if($localStorage.cart[$scope.day] == undefined){
-				// alert("empty day");
+				console.log($scope.day);
+				console.log($localStorage.cart);
 				$localStorage.cart[$scope.day] = [];
-				$localStorage.total[$scope.day] = [];
-				$localStorage.due[$scope.day] = [];
+				$localStorage.total[$scope.day] = 0;
+				$localStorage.due[$scope.day] = 0;
 				$scope.cart = [];
 				$scope.total = 0;
 				$scope.due = 0;
+				$scope.one = "none";
+				$scope.two = "block";
 			}
 			else{
-				// alert("fine");
+				console.log($scope.day);
+				console.log($localStorage.cart);
 				$scope.cart = $localStorage.cart[$scope.day];
 				$scope.total = $localStorage.total[$scope.day];
 				$scope.due = $localStorage.due[$scope.day];
+				$scope.one = "block";
+				$scope.two = "none";
 			}
 		}
 		$scope.addtocart = function(id,len){
@@ -122,6 +130,9 @@ angular.module('mealimeterApp')
 			$localStorage.cart[$scope.day] = $scope.cart;
 			$localStorage.total[$scope.day] = $scope.total;
 			$localStorage.due[$scope.day] = $scope.due;
+			$scope.empty = false;
+			$scope.one = "block";
+			$scope.two = "none";
 		}
   	}
 
