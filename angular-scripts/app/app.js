@@ -72,6 +72,11 @@ angular
         controller: 'Account-settingsCtrl',
         controllerAs: 'account-settings'
       })
+      .when('/checkout', {
+        templateUrl: 'views/checkout.html',
+        controller: 'CheckoutCtrl',
+        controllerAs: 'checkout'
+      })
       .otherwise({
         redirectTo: '/login'
       });

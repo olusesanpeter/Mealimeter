@@ -435,3 +435,367 @@ Add a counter to the multi-steps indicator
     padding-top: 34px;
   }
 }
+
+/*! -- Pillar Cards -- */
+.card {
+  transition: 0.2s linear;
+  -webkit-transition: 0.2s linear;
+  -moz-transition: 0.2s linear;
+}
+.card .card__image img {
+  margin: 0;
+}
+.card .card__title h1,
+.card .card__title h2,
+.card .card__title h3,
+.card .card__title h4,
+.card .card__title h5,
+.card .card__title h6 {
+  margin: 0;
+}
+.card .card__body {
+  margin-bottom: 0;
+}
+.card .card__lower span {
+  margin-bottom: 0;
+}
+.card .card__lower span:not(.h6) {
+  font-size: 0.625em;
+  font-style: italic;
+  display: inline-block;
+  color: #767676;
+}
+.slider[data-items] .card {
+  margin: 0 15px;
+  margin-bottom: 3.25em;
+}
+@media all and (max-width: 990px) {
+  .card .card__body {
+    margin-bottom: 30px;
+  }
+}
+@media all and (max-width: 767px) {
+  .card .card__body {
+    margin-bottom: 15px;
+  }
+}
+.card--horizontal {
+  overflow: hidden;
+  position: relative;
+}
+.card--horizontal .card__image {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding: 0;
+}
+.card--horizontal .card__body {
+  float: right;
+}
+@media all and (max-width: 767px) {
+  .card--horizontal .card__image {
+    position: relative;
+  }
+  .card--horizontal .card__image .background-image-holder {
+    position: relative;
+    background: none;
+  }
+  .card--horizontal .card__image .background-image-holder img {
+    display: block;
+  }
+}
+a .card {
+  transition: 0.2s ease;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+}
+a .card p,
+a .card span {
+  color: #767676;
+}
+a .card:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.05);
+}
+a .card.card-6:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.05);
+}
+a:active .card {
+  transform: scale(0.99);
+  -webkit-transform: scale(0.99);
+}
+.card-1 .card__icon {
+  background: #f4f4f4;
+  padding: 4.875em 0;
+  text-align: center;
+}
+.card-1 .card__title + p {
+  margin-top: 1.625em;
+}
+@media all and (max-width: 767px) {
+  .card-1 .card__icon {
+    padding: 3.25em 0;
+  }
+}
+.card-1,
+.card-2 {
+  margin-bottom: 30px;
+}
+.card-1 .card__title,
+.card-2 .card__title {
+  margin-bottom: 0.8125em;
+}
+.card-1 span:not(:last-child),
+.card-2 span:not(:last-child) {
+  margin-bottom: 1.625em;
+  display: inline-block;
+}
+.card-1 .card__body p,
+.card-2 .card__body p {
+  min-height: 8.125em;
+}
+@media all and (max-width: 767px) {
+  .card-1 .card__body p,
+  .card-2 .card__body p {
+    min-height: 0;
+  }
+}
+.card-3 {
+  margin-bottom: 30px;
+}
+.card-3 .card__body .card__title {
+  margin-bottom: 0;
+}
+.card-4 {
+  margin-bottom: 30px;
+}
+.card-4 .card__body h6:first-child {
+  margin-bottom: 1.3em;
+  color: #767676;
+}
+.card-4 .card__body h5 {
+  font-weight: 400;
+}
+.card-4 .card__body .card__title {
+  height: 4.875em;
+  margin-bottom: 1.625em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.card-4 hr {
+  margin-top: 0;
+  margin-bottom: 1.625em;
+}
+.card-5 {
+  margin-bottom: 1.625em;
+}
+.card-5 .card__body {
+  padding-bottom: 16.25em;
+}
+.card-5 .card__body .card__title {
+  margin-bottom: 0.40625em;
+}
+.card-5 .card__body .card__title + span {
+  margin-bottom: 1.625em;
+  display: inline-block;
+}
+.card-5 .card__body .card__title + p {
+  margin-top: 1.625em;
+}
+.masonry .card-5 {
+  margin-bottom: 0;
+}
+@media all and (max-width: 990px) {
+  .card-5 .card__body {
+    padding-bottom: 13em;
+  }
+}
+@media all and (max-width: 767px) {
+  .card-5 .card__body {
+    padding-bottom: 0.8125em;
+  }
+}
+.card-6 {
+  margin-bottom: 1.625em;
+}
+.card-6 .card__body .card__title {
+  margin-bottom: 1.625em;
+}
+.card-6 .card__body p:last-of-type {
+  margin-bottom: 6.5em;
+}
+@media all and (max-width: 767px) {
+  .card-6 .card__body p:last-of-type {
+    margin-bottom: 3.25em;
+  }
+}
+.card-7 {
+  margin-bottom: 30px;
+}
+.card-7 .card__body {
+  position: relative;
+}
+.card-7 .card__body .card__title h6,
+.card-7 .card__body .card__title h5 {
+  margin-bottom: 0;
+  max-height: 1.625em;
+}
+.card-7 .card__body .card__title h6 {
+  opacity: .3;
+  margin-bottom: 0.65em;
+}
+.card-7 .card__body .card__price {
+  position: absolute;
+  top: 2.4375em;
+  right: 2.4375em;
+}
+.card-7 .card__body .card__price span {
+  display: block;
+}
+.card-7 .card__body .card__price span.type--strikethrough {
+  opacity: .5;
+}
+@media all and (max-width: 1200px) {
+  .card-7 .card__price {
+    margin-bottom: 0.8125em;
+  }
+}
+.card-8 {
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+}
+.card-8 .boxed {
+  padding: 3.25em 4.875em;
+}
+.card-8 .card__title h6 {
+  opacity: .5;
+}
+.card-8 .card__title h3 {
+  max-width: 75%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-8 .card__body {
+  position: absolute;
+  height: 100%;
+  right: 0;
+  top: 0;
+}
+.card-8 .card__image {
+  padding: 0;
+  overflow: hidden;
+  background: #eee;
+}
+.card-8 .card__image img {
+  transition: 0.2s linear;
+  -webkit-transition: 0.2s linear;
+  -moz-transition: 0.2s linear;
+}
+.card-8 .card__image:hover img {
+  transform: scale(0.98);
+  -webkit-transform: scale(0.98);
+}
+.card-8 hr {
+  margin-bottom: 3.25em;
+}
+.card-8 p[class*='col-'] {
+  padding: 0;
+  float: none;
+  margin-bottom: 4.875em;
+}
+.card-8 .card__price {
+  position: absolute;
+  top: 3.25em;
+  right: 4.875em;
+}
+.card-8 .card__price span {
+  font-size: 1.4375em;
+}
+.card-8 .card__price span.type--strikethrough {
+  margin-right: 1.1304347826087em;
+}
+@media all and (max-width: 1200px) {
+  .card-8 .card__body {
+    position: relative;
+    height: auto;
+  }
+  .card-8 hr {
+    margin-bottom: 1.625em;
+  }
+  .card-8 p[class*='col-'] {
+    margin-bottom: 3.25em;
+  }
+}
+@media all and (max-width: 1024px) {
+  .card-8 .boxed {
+    padding: 3.25em 3.25em;
+  }
+  .card-8 .card__price {
+    position: relative;
+    right: 0;
+    top: 0;
+    margin-top: 0.8125em;
+  }
+}
+@media all and (max-width: 767px) {
+  .card-8 {
+    margin-bottom: 0;
+  }
+  .card-8 .card__title {
+    margin-top: 0;
+  }
+  .card-8 .card__body {
+    position: relative;
+    height: auto;
+  }
+  .card-8 .card__price {
+    margin-bottom: 1.625em;
+  }
+}
+
+/***! Pillar Boxes **/
+.boxed {
+  position: relative;
+  overflow: hidden;
+  padding: 2.4375em;
+  margin-bottom: 30px;
+}
+.boxed.boxed--lg {
+  padding: 3.65625em;
+}
+.boxed.boxed--sm {
+  padding: 1.625em;
+}
+.boxed.boxed--border {
+  border: 1px solid #c9c9c9;
+}
+.boxed div[class*='col-']:first-child:not(.boxed) {
+  padding-left: 0;
+}
+.boxed div[class*='col-']:last-child:not(.boxed) {
+  padding-right: 0;
+}
+img + .boxed {
+  margin-top: -1.625em;
+}
+@media all and (max-width: 767px) {
+  .boxed {
+    padding: 1.625em;
+    margin-bottom: 15px;
+  }
+  .boxed.boxed--lg {
+    padding: 1.625em;
+  }
+  .boxed div[class*='col-']:not(.boxed) {
+    padding: 0;
+  }
+  .boxed:last-child {
+    margin-bottom: 15px;
+  }
+  .row:last-child div[class*='col-']:last-child .boxed:last-child {
+    margin-bottom: 0;
+  }
+}

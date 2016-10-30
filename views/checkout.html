@@ -1,0 +1,329 @@
+<div class="app-header primary box-shadow">
+<div ng-controller="navbarCtrl"> 
+      <div ng-include="'views/partials/navbar.html'" ng-show="show"></div>
+    </div>   
+</div>
+<div class="item">
+  <div class="item-bg" >
+  </div>
+  <div class="hero">
+    <div class="row">
+      <div class="col-sm-12" text-center>
+          <span>
+            <h1 style="font-size: 70px; text-align: center; color: white">Checkout</h1>
+          </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="padding">
+  <div class="row" style="text-align: center" >
+
+    <!-- <div class="col-md-2"></div> -->
+   
+    <div class="col-md-4" style="display:{{one}}">
+          <div class="box"  style="position: relative;">
+              <div class="box-header dker2">
+                    Monday
+              </div>
+              <div class="p-a-md text-center">
+                <table class="table table-hover text-left">
+                  <thead class="">
+                    <tr>
+                     <th>
+                       Qty.
+                     </th>
+                     <th>
+                       Food Item
+                     </th>
+                     <th>
+                       Price
+                     </th>
+                   </tr>
+                  </thead>
+                  <tbody>
+                   <tr ng-repeat="item in cart">
+                     <td>
+                       {{item.quantity}}x
+                      </td>
+                      <td>
+                        {{item.mainmeal}}
+                        <br>
+                        Topping(s):
+                        <br>
+                        {{item.additive}}
+                      </td>
+                      <td>
+                        {{item.price}}
+                      </td>
+                   </tr>
+                 </tbody>
+                </table>
+                <table class="table">
+                 <tbody>
+                   <tr>
+                     <td class="total">Total</td>
+                     <td class="price">₦{{total}}</td>
+                   </tr>
+                   <tr>
+                     <td class="total">Company subsidy</td>
+                     <td class="price">- ₦{{companysubsidy}}</td>
+                   </tr>
+                   <tr>
+                     <td class="total">Total Amount Due</td>
+                     <td class="amount-due">₦{{due}}</td>
+                   </tr>
+                 </tbody>
+                </table>
+              </div>
+          </div>
+    </div>
+
+    <div class="col-md-4" style="display:{{one}}">
+          <div class="box"  style="position: relative;">
+              <div class="box-header dker2">
+                    Tuesday
+              </div>
+              <div class="p-a-md text-center">
+                <table class="table table-hover text-left">
+                  <thead class="">
+                    <tr>
+                     <th>
+                       Qty.
+                     </th>
+                     <th>
+                       Food Item
+                     </th>
+                     <th>
+                       Price
+                     </th>
+                   </tr>
+                  </thead>
+                  <tbody>
+                   <tr ng-repeat="item in cart">
+                     <td>
+                       {{item.quantity}}x
+                      </td>
+                      <td>
+                        {{item.mainmeal}}
+                        <br>
+                        Topping(s):
+                        <br>
+                        {{item.additive}}
+                      </td>
+                      <td>
+                        {{item.price}}
+                      </td>
+                   </tr>
+                 </tbody>
+                </table>
+                <table class="table">
+                 <tbody>
+                   <tr>
+                     <td class="total">Total</td>
+                     <td class="price">₦{{total}}</td>
+                   </tr>
+                   <tr>
+                     <td class="total">Company subsidy</td>
+                     <td class="price">- ₦{{companysubsidy}}</td>
+                   </tr>
+                   <tr>
+                     <td class="total">Total Amount Due</td>
+                     <td class="amount-due">₦{{due}}</td>
+                   </tr>
+                 </tbody>
+                </table>
+
+              </div>
+          </div>
+    </div>
+
+    <div class="col-md-4" style="display:{{one}}">
+          <div class="box"  style="position: relative;">
+              <div class="box-header dker2">
+                    Wednesday
+              </div>
+              <div class="p-a-md text-center">
+                <table class="table table-hover text-left">
+                  <thead class="">
+                    <tr>
+                     <th>
+                       Qty.
+                     </th>
+                     <th>
+                       Food Item
+                     </th>
+                     <th>
+                       Price
+                     </th>
+                   </tr>
+                  </thead>
+                  <tbody>
+                   <tr ng-repeat="item in cart">
+                     <td>
+                       {{item.quantity}}x
+                      </td>
+                      <td>
+                        {{item.mainmeal}}
+                        <br>
+                        Topping(s):
+                        <br>
+                        {{item.additive}}
+                      </td>
+                      <td>
+                        {{item.price}}
+                      </td>
+                   </tr>
+                 </tbody>
+                </table>
+                <table class="table">
+                 <tbody>
+                   <tr>
+                     <td class="total">Total</td>
+                     <td class="price">₦{{total}}</td>
+                   </tr>
+                   <tr>
+                     <td class="total">Company subsidy</td>
+                     <td class="price">- ₦{{companysubsidy}}</td>
+                   </tr>
+                   <tr>
+                     <td class="total">Total Amount Due</td>
+                     <td class="amount-due">₦{{due}}</td>
+                   </tr>
+                 </tbody>
+                </table>
+
+              </div>
+          </div>
+    </div>
+
+    <div class="col-md-2"></div>
+
+    <div class="col-md-4" style="display:{{one}}">
+          <div class="box"  style="position: relative;">
+              <div class="box-header dker2">
+                    Wednesday
+              </div>
+              <div class="p-a-md text-center">
+                <table class="table table-hover text-left">
+                  <thead class="">
+                    <tr>
+                     <th>
+                       Qty.
+                     </th>
+                     <th>
+                       Food Item
+                     </th>
+                     <th>
+                       Price
+                     </th>
+                   </tr>
+                  </thead>
+                  <tbody>
+                   <tr ng-repeat="item in cart">
+                     <td>
+                       {{item.quantity}}x
+                      </td>
+                      <td>
+                        {{item.mainmeal}}
+                        <br>
+                        Topping(s):
+                        <br>
+                        {{item.additive}}
+                      </td>
+                      <td>
+                        {{item.price}}
+                      </td>
+                   </tr>
+                 </tbody>
+                </table>
+                <table class="table">
+                 <tbody>
+                   <tr>
+                     <td class="total">Total</td>
+                     <td class="price">₦{{total}}</td>
+                   </tr>
+                   <tr>
+                     <td class="total">Company subsidy</td>
+                     <td class="price">- ₦{{companysubsidy}}</td>
+                   </tr>
+                   <tr>
+                     <td class="total">Total Amount Due</td>
+                     <td class="amount-due">₦{{due}}</td>
+                   </tr>
+                 </tbody>
+                </table>
+
+              </div>
+          </div>
+    </div>
+
+    <div class="col-md-4" style="display:{{one}}">
+          <div class="box"  style="position: relative;">
+              <div class="box-header dker2">
+                    Wednesday
+              </div>
+              <div class="p-a-md text-center">
+                <table class="table table-hover text-left">
+                  <thead class="">
+                    <tr>
+                     <th>
+                       Qty.
+                     </th>
+                     <th>
+                       Food Item
+                     </th>
+                     <th>
+                       Price
+                     </th>
+                   </tr>
+                  </thead>
+                  <tbody>
+                   <tr ng-repeat="item in cart">
+                     <td>
+                       {{item.quantity}}x
+                      </td>
+                      <td>
+                        {{item.mainmeal}}
+                        <br>
+                        Topping(s):
+                        <br>
+                        {{item.additive}}
+                      </td>
+                      <td>
+                        {{item.price}}
+                      </td>
+                   </tr>
+                 </tbody>
+                </table>
+                <table class="table">
+                 <tbody>
+                   <tr>
+                     <td class="total">Total</td>
+                     <td class="price">₦{{total}}</td>
+                   </tr>
+                   <tr>
+                     <td class="total">Company subsidy</td>
+                     <td class="price">- ₦{{companysubsidy}}</td>
+                   </tr>
+                   <tr>
+                     <td class="total">Total Amount Due</td>
+                     <td class="amount-due">₦{{due}}</td>
+                   </tr>
+                 </tbody>
+                </table>
+
+              </div>
+          </div>
+    </div>
+
+  </div>
+
+  <div class="row" style="padding-bottom: 200px; padding-top: 20px;">
+    <div class="col-md-4"></div>
+
+    <div class="col-md-4">
+      <button type="button" class="btn btn-large btn-block primary">Pre-order all meals</button>
+    </div>
+  </div>
+</div>
