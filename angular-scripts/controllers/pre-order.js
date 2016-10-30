@@ -63,7 +63,7 @@ angular.module('mealimeterApp')
 			$scope.cart = [];
 			$scope.total = 0;
 			$scope.due = 0;
-			$scope.one = "hide";
+			$scope.one = "none";
 			$scope.two = "block";
 		}
 		else{
