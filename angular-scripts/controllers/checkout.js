@@ -20,7 +20,7 @@ angular.module('mealimeterApp')
 	if($localStorage.cart[0] != undefined){
 		$scope.monday = $localStorage.cart[0];
 		$scope.mondaytotal = $localStorage.total[0];
-		$scope.mondaydue = $localStorage.total[0];
+		$scope.mondaydue = $localStorage.due[0];
 	}
 	else{
 		$scope.monday = [];
@@ -31,7 +31,7 @@ angular.module('mealimeterApp')
 	if($localStorage.cart[1] != undefined){
 		$scope.tuesday = $localStorage.cart[1];
 		$scope.tuesdaytotal = $localStorage.total[1];
-		$scope.tuesdaydue = $localStorage.total[1];
+		$scope.tuesdaydue = $localStorage.due[1];
 	}
 	else{
 		$scope.tuesday = [];
@@ -42,7 +42,7 @@ angular.module('mealimeterApp')
 	if($localStorage.cart[2] != undefined){
 		$scope.wednesday = $localStorage.cart[2];
 		$scope.wednesdaytotal = $localStorage.total[2];
-		$scope.wednesdaydue = $localStorage.total[2];
+		$scope.wednesdaydue = $localStorage.due[2];
 	}
 	else{
 		$scope.wednesday = [];
@@ -53,7 +53,7 @@ angular.module('mealimeterApp')
 	if($localStorage.cart[3] != undefined){
 		$scope.thursday = $localStorage.cart[3];
 		$scope.thrusdaytotal = $localStorage.total[3];
-		$scope.thursdaydue = $localStorage.total[3];
+		$scope.thursdaydue = $localStorage.due[3];
 	}
 	else{
 		$scope.thursday = [];
@@ -64,11 +64,27 @@ angular.module('mealimeterApp')
 	if($localStorage.cart[4] != undefined){
 		$scope.friday = $localStorage.cart[4];
 		$scope.fridaytotal = $localStorage.total[4];
-		$scope.fridaydue = $localStorage.total[4];
+		$scope.fridaydue = $localStorage.due[4];
 	}
 	else{
 		$scope.friday = [];
 		$scope.fridaytotal = 0;
 		$scope.fridaydue = 0;
+	}
+
+	$scope.docheckout = function(){
+		// console.log($localStorage.cart[0]);
+		// alert($localStorage.cart);
+		var food="";
+		var price="";
+		var quantity="";
+		for(var i = 0;i<5;i++){
+			if($localStorage.cart[i] == undefined){
+				
+			}
+			else{
+				console.log($localStorage.cart[i]);
+			}
+		}
 	}
   }]);
