@@ -11,7 +11,7 @@ angular.module('mealimeterApp')
   .controller('LoginCtrl',['$scope','$http','$rootScope','$window','$localStorage','$location',function ($scope,$http,$rootScope, $window, $localStorage,$location) {
   	//////data from login
     if($localStorage.data != undefined){
-        $window.location.href = "#/pre-order";
+        $window.location.href = "#/pre-order/monday";
     }
     else{
         $scope.logins = function(data){

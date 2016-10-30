@@ -11,10 +11,10 @@
 angular
   .module('mealimeterApp', ['ngAnimate','ngCookies','ngResource','ngRoute','ngSanitize','ngTouch','ngStorage','ui.router'])
   .run(['$localStorage','$rootScope','$location',function($localStorage,$rootScope,$location){
-    // $rootScope.mealimeter = "http://mealimeter.herokuapp.com/";
-    // $rootScope.mealimeterassets = "http://mealimeter.herokuapp.com/";
-    $rootScope.mealimeter = "http://localhost/mealimeter/index.php/";
-    $rootScope.mealimeterassets = "http://localhost/mealimeter/";
+    $rootScope.mealimeter = "http://mealimeter.herokuapp.com/";
+    $rootScope.mealimeterassets = "http://mealimeter.herokuapp.com/";
+    // $rootScope.mealimeter = "http://localhost/mealimeter/index.php/";
+    // $rootScope.mealimeterassets = "http://localhost/mealimeter/";
     var path = function() { return $location.path();};
        $rootScope.$watch(path, function(newVal, oldVal){
          $rootScope.activetab = newVal;
@@ -38,27 +38,27 @@ angular
         controllerAs: 'forgot-password'
       })
       .when('/pre-order/monday', {
-        templateUrl: 'views/pre-order-monday.html',
+        templateUrl: 'views/pre-order.html',
         controller: 'preorderCtrl',
         controllerAs: 'pre-order'
       })
       .when('/pre-order/tuesday', {
-        templateUrl: 'views/pre-order-tuesday.html',
+        templateUrl: 'views/pre-order.html',
         controller: 'preorderCtrl',
         controllerAs: 'pre-order'
       })
       .when('/pre-order/wednesday', {
-        templateUrl: 'views/pre-order-wednesday.html',
+        templateUrl: 'views/pre-order.html',
         controller: 'preorderCtrl',
         controllerAs: 'pre-order'
       })
       .when('/pre-order/thursday', {
-        templateUrl: 'views/pre-order-thursday.html',
+        templateUrl: 'views/pre-order.html',
         controller: 'preorderCtrl',
         controllerAs: 'pre-order'
       })
       .when('/pre-order/friday', {
-        templateUrl: 'views/pre-order-friday.html',
+        templateUrl: 'views/pre-order.html',
         controller: 'preorderCtrl',
         controllerAs: 'pre-order'
       })
@@ -67,7 +67,7 @@ angular
         controller: 'Top-upCtrl',
         controllerAs: 'top-up'
       })
-      .when('/account', {
+      .when('/account-settings', {
         templateUrl: 'views/account-settings.html',
         controller: 'Account-settingsCtrl',
         controllerAs: 'account-settings'
