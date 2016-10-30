@@ -74,8 +74,8 @@ angular.module('mealimeterApp')
 		else{
 			if($localStorage.cart[$scope.day] == undefined){
 				$localStorage.cart[$scope.day] = [];
-				$localStorage.total = [];
-				$localStorage.due = [];
+				// $localStorage.total = [];
+				// $localStorage.due = [];
 				$scope.cart = [];
 				$scope.total = 0;
 				$scope.due = 0;
