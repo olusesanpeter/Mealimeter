@@ -60,6 +60,22 @@ angular.module('mealimeterApp')
 		}, function(error) {
 		  console.log(error);
 		});
+
+		$http({
+		    method : "POST",
+		    url: link+"getBalance",
+		    data: data,
+		    headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'} 
+		}).then(function(result) {
+		  console.log($scope.result);
+		  // console.log($scope.drinks);
+		  // console.log($scope.snacks);
+
+		}, function(error) {
+		  console.log(error);
+		});
+
+
 		if($localStorage.cart == undefined){
 			// alert("empty");
 			$localStorage.cart = [];
@@ -74,8 +90,8 @@ angular.module('mealimeterApp')
 		else{
 			if($localStorage.cart[$scope.day] == undefined){
 				$localStorage.cart[$scope.day] = [];
-				// $localStorage.total = [];
-				// $localStorage.due = [];
+				$localStorage.total[$scope.day] = 0;
+				$localStorage.due[$scope.day] = 0;
 				$scope.cart = [];
 				$scope.total = 0;
 				$scope.due = 0;
@@ -83,9 +99,9 @@ angular.module('mealimeterApp')
 				$scope.two = "block";
 			}
 			else{
-				console.log($scope.day);
-				console.log($localStorage.cart);
-				console.log($localStorage.total);
+			// 	console.log($scope.day);
+			// 	console.log($localStorage.cart);
+			// 	console.log($localStorage.total);
 				$scope.cart = $localStorage.cart[$scope.day];
 				$scope.total = $localStorage.total[$scope.day];
 				$scope.due = $localStorage.due[$scope.day];

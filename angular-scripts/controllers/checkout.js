@@ -17,7 +17,7 @@ angular.module('mealimeterApp')
 	  		$window.location.href = "#/pre-order/"+day;
 		};
 		$scope.companysubsidy = $localStorage.data.officedata.office_payment_amount;
-		if($localStorage.cart[0] != undefined){
+		if($localStorage.cart[0] != undefined || $localStorage.cart[0] != null){
 			$scope.monday = $localStorage.cart[0];
 			$scope.mondaytotal = $localStorage.total[0];
 			$scope.mondaydue = $localStorage.due[0];
@@ -27,8 +27,7 @@ angular.module('mealimeterApp')
 			$scope.mondaytotal = 0;
 			$scope.mondaydue = 0;
 		}
-
-		if($localStorage.cart[1] != undefined){
+		if($localStorage.cart[1] != undefined || $localStorage.cart[1] != null){
 			$scope.tuesday = $localStorage.cart[1];
 			$scope.tuesdaytotal = $localStorage.total[1];
 			$scope.tuesdaydue = $localStorage.due[1];
@@ -39,7 +38,7 @@ angular.module('mealimeterApp')
 			$scope.tuesdaydue= 0;
 		}
 
-		if($localStorage.cart[2] != undefined){
+		if($localStorage.cart[2] != undefined || $localStorage.cart[2] != null){
 			$scope.wednesday = $localStorage.cart[2];
 			$scope.wednesdaytotal = $localStorage.total[2];
 			$scope.wednesdaydue = $localStorage.due[2];
@@ -50,7 +49,7 @@ angular.module('mealimeterApp')
 			$scope.wednesdaydue = 0;
 		}
 
-		if($localStorage.cart[3] != undefined){
+		if($localStorage.cart[3] != undefined || $localStorage.cart[3] != null){
 			$scope.thursday = $localStorage.cart[3];
 			$scope.thrusdaytotal = $localStorage.total[3];
 			$scope.thursdaydue = $localStorage.due[3];
@@ -61,7 +60,7 @@ angular.module('mealimeterApp')
 			$scope.thursdaydue= 0;
 		}
 
-		if($localStorage.cart[4] != undefined){
+		if($localStorage.cart[4] != undefined || $localStorage.cart[4] != null){
 			$scope.friday = $localStorage.cart[4];
 			$scope.fridaytotal = $localStorage.total[4];
 			$scope.fridaydue = $localStorage.due[4];
@@ -94,12 +93,16 @@ angular.module('mealimeterApp')
 					food += ";";
 					price += ";";
 					quantity += ";";
+					console.log($localStorage.due[i]);
 					total += Number.parseInt($localStorage.total[i]);
 					due += Number.parseInt($localStorage.due[i]);
 					companysubsidy +=  Number.parseInt($scope.companysubsidy);
 				}
 				
 			}
+			console.log(due);
+			console.log(total);
+			console.log(price);
 			var data = "token="+$localStorage.data.data.token+"&total="+total+"&subsidy="+companysubsidy+"&paid="+due+"&food="+food+"&price="+price+"&quantity="+quantity;
 			var link = $rootScope.mealimeter;
 			$http({
