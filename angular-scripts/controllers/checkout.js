@@ -99,7 +99,7 @@ angular.module('mealimeterApp')
 					companysubsidy +=  Number.parseInt($scope.companysubsidy);
 				}
 				
-			// }
+			}
 			// console.log(due);
 			// console.log(total);
 			// console.log(price);
