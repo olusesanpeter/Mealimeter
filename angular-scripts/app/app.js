@@ -77,6 +77,11 @@ angular
         controller: 'CheckoutCtrl',
         controllerAs: 'checkout'
       })
+      .when('/rating', {
+        templateUrl: 'views/rating.html',
+        controller: 'RatingCtrl',
+        controllerAs: 'rating'
+      })
       .otherwise({
         redirectTo: '/login'
       });
