@@ -26,10 +26,10 @@ angular.module('mealimeterApp')
         console.log(data);
     	console.log(data.checked);
         if (data.checked == true){
-        var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&day="+data.dayfield+"&month="+data.monthfield+"&sex="+data.genderfield+"&password="+data.passwordfield+"&officename="+data.officename+"&officeaddress="+data.officeaddress+"&officelocation="+data.officelocation;
+        var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&day="+data.dayfield+"&month="+data.monthfield+"&sex="+data.genderfield+"&password="+data.passwordfield+"&refcode="+data.refcodefield+"&officename="+data.officename+"&officeaddress="+data.officeaddress+"&officelocation="+data.officelocation;
         }
         else{
-        var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&day="+data.dayfield+"&month="+data.monthfield+"&sex="+data.genderfield+"&password="+data.passwordfield+"&officeid="+data.companies;
+        var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&day="+data.dayfield+"&month="+data.monthfield+"&sex="+data.genderfield+"&password="+data.passwordfield+"&refcode="+data.refcodefield+"&officeid="+data.companies;
         }
     	
     	$http({
