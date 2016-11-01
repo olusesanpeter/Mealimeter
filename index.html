@@ -19,7 +19,7 @@
   <!-- style -->
   <link rel="stylesheet" href="assets/animate.css/animate.min.css" type="text/css" />
   <link rel="stylesheet" href="assets/glyphicons/glyphicons.css" type="text/css" />
-  <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css'>
   <link rel="stylesheet" href="assets/material-design-icons/material-design-icons.css" type="text/css" />
 
   <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
@@ -72,6 +72,19 @@
    <!-- ajax -->
     <script src="libs/jquery/jquery-pjax/jquery.pjax.js"></script>
     <script src="scripts/ajax.js"></script>
+
+    <script type="text/javascript">
+
+      jQuery(document).ready(function(){
+        $('.btn').on('click', function() {
+          var $this = $(this);
+        $this.button('loading');
+          setTimeout(function() {
+             $this.button('reset');
+         }, 8000);
+        });
+      });
+    </script>
 
    
 </head>
