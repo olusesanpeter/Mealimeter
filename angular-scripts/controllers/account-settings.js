@@ -8,7 +8,7 @@
  * Controller of the mealimeterApp
  */
 angular.module('mealimeterApp')
-  .controller('Account-settingsCtrl', function () {
+  .controller('Account-detailsCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
