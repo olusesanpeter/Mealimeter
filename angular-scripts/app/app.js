@@ -11,10 +11,10 @@
 angular
   .module('mealimeterApp', ['ngAnimate','ngCookies','ngResource','ngRoute','ngSanitize','ngTouch','ngStorage','ui.router'])
   .run(['$localStorage','$rootScope','$location',function($localStorage,$rootScope,$location){
-    $rootScope.mealimeter = "http://mealimeter.herokuapp.com/";
-    $rootScope.mealimeterassets = "http://mealimeter.herokuapp.com/";
-    // $rootScope.mealimeter = "http://localhost/mealimeter-backend/index.php/";
-    // $rootScope.mealimeterassets = "http://localhost/mealimeter-backend/";
+    // $rootScope.mealimeter = "http://mealimeter.herokuapp.com/";
+    // $rootScope.mealimeterassets = "http://mealimeter.herokuapp.com/";
+    $rootScope.mealimeter = "http://localhost/mealimeter-backend/index.php/";
+    $rootScope.mealimeterassets = "http://localhost/mealimeter-backend/";
     var path = function() { return $location.path();};
        $rootScope.$watch(path, function(newVal, oldVal){
          $rootScope.activetab = newVal;
