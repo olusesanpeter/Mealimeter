@@ -154,7 +154,8 @@ angular.module('mealimeterApp')
 			$scope.two = "none";
 		}
 
-		$scope.remove = function(id,len){
+		$scope.removefromcart = function(id,len){
+			alert("Afasda");
 			var main = $scope.meals[$scope.day].options[len].option.name;
 			var additive = $scope.meals[$scope.day].options[len].option.additives[id];
 			var price = $scope.meals[$scope.day].options[len].option.prices[id];
