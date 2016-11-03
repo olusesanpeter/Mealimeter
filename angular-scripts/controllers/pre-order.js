@@ -155,7 +155,7 @@ angular.module('mealimeterApp')
 		}
 
 		$scope.removefromcart = function(id,len){
-			alert("Afasda");
+			// alert("Afasda");
 			var main = $scope.meals[$scope.day].options[len].option.name;
 			var additive = $scope.meals[$scope.day].options[len].option.additives[id];
 			var price = $scope.meals[$scope.day].options[len].option.prices[id];
