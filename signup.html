@@ -27,10 +27,11 @@
 
         <img src="assets/images/logo-m-g.png" height="50px" alt="Mealimeter Logo" >
 
-        <div class="alert alert-success" role="alert" ng-show="show">
-          <button class="close" data-dismiss="alert"></button>
+        <div class="alert alert-danger" role="alert" ng-show="show">
+          <button type="button" class="close" ng-click="show=false">&times;</button>
           <strong>{{error}}</strong>
         </div>
+
 
         <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
           <div class="m-b text-sm">
@@ -69,12 +70,12 @@
               <input type="password" class="md-input" ng-model="data.passwordfield" >
               <label>Password</label>
             </div>  
-            <div class="md-form-group float-label">
+            <!-- <div class="md-form-group float-label">
               <input type="password" class="md-input" ng-model="data.passwordfield2" >
               <label>Confirm Password</label>
-            </div>  
+            </div> -->  
             <div class="md-form-group float-label">
-              <input type="password" class="md-input" ng-model="data.refcodefield" >
+              <input type="text" class="md-input" ng-model="data.refcodefield" >
               <label>Referral Code</label>
             </div>  
             <div class="md-form-group float-label">
@@ -98,7 +99,6 @@
               <label>Company Location</label>
             </div>
             <button type="submit" class="btn primary btn-block p-x-md">Sign up</button>
-            <p style="color:red">{{error}}</p>
           </form>
         </div>
 

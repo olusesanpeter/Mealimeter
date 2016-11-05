@@ -82,6 +82,11 @@ angular
         controller: 'RatingCtrl',
         controllerAs: 'rating'
       })
+      .when('/registration-successful', {
+        templateUrl: 'views/rs.html',
+        controller: 'rsCtrl',
+        controllerAs: 'rs'
+      })
       .otherwise({
         redirectTo: '/login'
       });

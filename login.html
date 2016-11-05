@@ -16,14 +16,14 @@
   }
 </style>
 <div class="loginBody">
-  <div class="center-block w-xxl w-auto-xs p-y-md">
+  <div class="center-block w-xxl w-auto-xs p-y-md" style="text-align: center;">
     <div class="navbar" >
       
     </div>
     <img src="assets/images/logo-m-g.png" class="img-responsive" alt="Mealimeter Logo">
 
-    <div class="alert alert-success" role="alert" ng-show="show">
-      <button class="close" data-dismiss="alert"></button>
+    <div class="alert alert-danger" role="alert" ng-show="show">
+      <button type="button" class="close" ng-click="show=false">&times;</button>
       <strong>{{error}}</strong>
     </div>
 
