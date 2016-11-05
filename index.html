@@ -28,9 +28,20 @@
   <link rel="stylesheet" href="assets/styles/custom.css" type="text/css" />
   <!-- endbuild -->
   <link rel="stylesheet" href="assets/styles/font.css" type="text/css" />
+    <script type="text/javascript">
+      window.paceOptions = {
+          document: true, // disabled
+          eventLag: true,
+          restartOnPushState: true,
+          restartOnRequestAfter: true,
+          ajax: {
+              trackMethods: [ 'POST','GET']
+          }
 
+      };
+    </script>
 
-
+    <script src="libs/jquery/PACE/pace.min.js"></script>
     <!-- Angular -->
     <script src="libs/angular/angular.js"></script>
     <script src="libs/ngstorage.min.js"></script>
@@ -65,7 +76,6 @@
   <!-- core -->
     <script src="libs/jquery/underscore/underscore-min.js"></script>
     <script src="libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
-    <script src="libs/jquery/PACE/pace.min.js"></script>
 
     <script src="scripts/config.lazyload.js"></script>
 
