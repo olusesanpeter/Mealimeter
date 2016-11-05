@@ -24,8 +24,7 @@ angular.module('mealimeterApp')
 	});
 	$scope.register = function(data){
         console.log(data);
-    	console.log(data.checked);
-        if (data.checked == true){
+        if (data.companies == 'other'){
         var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&day="+data.dayfield+"&month="+data.monthfield+"&sex="+data.genderfield+"&password="+data.passwordfield+"&refcode="+data.refcodefield+"&officename="+data.officename+"&officeaddress="+data.officeaddress+"&officelocation="+data.officelocation;
         }
         else{
