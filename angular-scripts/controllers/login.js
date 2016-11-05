@@ -41,7 +41,7 @@ angular.module('mealimeterApp')
                     }
                     else{
                         $scope.error = 'Incorrect Credentials. Please try again';
-                         $scope.show = true;
+                        $scope.show = true;
                     }
                 }
             }, function(error) {
