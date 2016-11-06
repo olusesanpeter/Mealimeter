@@ -28,13 +28,18 @@ angular.module('mealimeterApp')
         data.datefield = date.getDate()+"/"+date.getMonth();
         console.log(data.datefield);
         if (data.companies == 'other'){
-            var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&dob="+data.datefield+"&sex="+data.genderfield+"&password="+data.passwordfield+"&refcode="+data.refcodefield+"&officename="+data.officename+"&officeaddress="+data.officeaddress+"&officelocation="+data.officelocation;
+            var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&dob="+data.datefield+"&sex="+data.genderfield+"&password="+data.passwordfield+"&password="+data.passwordfield2+"&refcode="+data.refcodefield+"&officename="+data.officename+"&officeaddress="+data.officeaddress+"&officelocation="+data.officelocation;
             }
             else{
-            var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&dob="+data.datefield+"&sex="+data.genderfield+"&password="+data.passwordfield+"&refcode="+data.refcodefield+"&officeid="+data.companies;
+            var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&dob="+data.datefield+"&sex="+data.genderfield+"&password="+data.passwordfield+"&password="+data.passwordfield2+"&refcode="+data.refcodefield+"&officeid="+data.companies;
             }
         
-        $http({
+        if (data.passwordfield != data.passwordfield2) {
+                console.log("Registration Failed");
+            $scope.error = "Passwords do not match, please try again"
+            $scope.show = true;
+        } else {
+            $http({
             method : "POST",
             url: link+"register",
             data: registerdata,
@@ -45,22 +50,23 @@ angular.module('mealimeterApp')
                 if(response.data.result.error == false){
                     console.log("Registration Successful");
                     setTimeout(function(){
-                    $window.location.href="#/";
-                    }, 10000);
-                    $scope.show = true;
+                    $window.location.href="#/registration-successful";
+                    }, 100);
+                    $scope.show = false;
                 }
                 else{
                     console.log("Registration Failed");
                     $scope.error = response.data.result.errors[0];
-                    $scope.show = false;
+                    $scope.show = true;
                 }
         },
 
-        
-
-        function(error) {
+         function(error) {
         console.log(error);
         });
+        }
+
+        
     };
 
   }]);

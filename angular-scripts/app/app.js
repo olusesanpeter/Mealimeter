@@ -23,17 +23,17 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/login', {
-        templateUrl: 'login.html',
+        templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
         controllerAs: 'login'
       })
       .when('/signup', {
-        templateUrl: 'signup.html',
+        templateUrl: 'views/signup.html',
         controller: 'SignupCtrl',
         controllerAs: 'signup'
       })
       .when('/forgot-password', {
-        templateUrl: 'forgot-password.html',
+        templateUrl: 'views/forgot-password.html',
         controller: 'Forgot-passwordCtrl',
         controllerAs: 'forgot-password'
       })
@@ -42,26 +42,6 @@ angular
         controller: 'preorderCtrl',
         controllerAs: 'pre-order'
       })
-      // .when('/pre-order/tuesday', {
-      //   templateUrl: 'views/pre-order.html',
-      //   controller: 'preorderCtrl',
-      //   controllerAs: 'pre-order'
-      // })
-      // .when('/pre-order/wednesday', {
-      //   templateUrl: 'views/pre-order.html',
-      //   controller: 'preorderCtrl',
-      //   controllerAs: 'pre-order'
-      // })
-      // .when('/pre-order/thursday', {
-      //   templateUrl: 'views/pre-order.html',
-      //   controller: 'preorderCtrl',
-      //   controllerAs: 'pre-order'
-      // })
-      // .when('/pre-order/friday', {
-      //   templateUrl: 'views/pre-order.html',
-      //   controller: 'preorderCtrl',
-      //   controllerAs: 'pre-order'
-      // })
       .when('/top-up', {
         templateUrl: 'views/top-up.html',
         controller: 'Top-upCtrl',
@@ -83,9 +63,14 @@ angular
         controllerAs: 'rating'
       })
       .when('/registration-successful', {
-        templateUrl: 'views/rs.html',
+        templateUrl: 'views/registration-successful.html',
         controller: 'rsCtrl',
         controllerAs: 'rs'
+      })
+      .when('/set-password', {
+        templateUrl: 'views/set-password.html',
+        controller: 'Set-passwordCtrl',
+        controllerAs: 'set-password'
       })
       .otherwise({
         redirectTo: '/login'
