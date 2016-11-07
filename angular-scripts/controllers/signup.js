@@ -8,7 +8,11 @@
  * Controller of the mealimeterApp
  */
 angular.module('mealimeterApp')
-  .controller('SignupCtrl',['$scope','$http','$rootScope','$window','$localStorage','$location',function ($scope,$http,$rootScope, $window, $localStorage,$location) {
+  .controller('SignupCtrl',['$scope','$routeParams','$http','$rootScope','$window','$localStorage','$location',function ($scope,$routeParams,$http,$rootScope, $window, $localStorage,$location) {
+    console.log("Ref: ");
+    console.log($routeParams.ref);
+    $scope.refcodefield = $routeParams.ref;
+    
     //////data from login
     var link = $rootScope.mealimeter;
     $http({
@@ -28,10 +32,10 @@ angular.module('mealimeterApp')
         data.datefield = date.getDate()+"/"+date.getMonth();
         console.log(data.datefield);
         if (data.companies == 'other'){
-            var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&dob="+data.datefield+"&sex="+data.genderfield+"&password="+data.passwordfield+"&password="+data.passwordfield2+"&refcode="+data.refcodefield+"&officename="+data.officename+"&officeaddress="+data.officeaddress+"&officelocation="+data.officelocation;
+            var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&dob="+data.datefield+"&sex="+data.genderfield+"&password="+data.passwordfield+"&password="+data.passwordfield2+"&refcode="+$scope.refcodefield+"&officename="+data.officename+"&officeaddress="+data.officeaddress+"&officelocation="+data.officelocation;
             }
             else{
-            var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&dob="+data.datefield+"&sex="+data.genderfield+"&password="+data.passwordfield+"&password="+data.passwordfield2+"&refcode="+data.refcodefield+"&officeid="+data.companies;
+            var registerdata = "firstname="+data.firstnamefield+"&lastname="+data.lastnamefield+"&email="+data.emailfield+"&phoneNo="+data.phoneNofield+"&dob="+data.datefield+"&sex="+data.genderfield+"&password="+data.passwordfield+"&password="+data.passwordfield2+"&refcode="+$scope.refcodefield+"&officeid="+data.companies;
             }
         
         if (data.passwordfield != data.passwordfield2) {
