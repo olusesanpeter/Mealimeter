@@ -8,8 +8,91 @@
  * Controller of the mealimeterApp
  */
 angular.module('mealimeterApp')
+.controller("paymentCtrl", ['$rootScope','$scope', '$sce', '$localStorage', '$window', '$http', function($rootScope,$scope, $sce, $localStorage, $window, $http){
+	
+	var pb = document.getElementById("payBtn");	
+	pb.innerHTML = "Pay Now";
+	
+	var food="";
+	var price="";
+	var quantity="";
+	var total = 0;
+	var due = 0;
+	var companysubsidy = 0;
+	for(var i = 0;i<5;i++){
+		if($localStorage.cart[i] == undefined){
+			food += ";";
+			price += ";";
+			quantity += ";";
+		}
+		else{
+			angular.forEach($localStorage.cart[i], function(foods){
+				food += foods.mainmeal +" + "+foods.additive+ ",.,";
+				price+= foods.price + ",.,";
+				quantity+= foods.quantity + ",.,";
+			});
+			food += ";";
+			price += ";";
+			quantity += ";";
+			// console.log($localStorage.due[i]);
+			total += Number.parseInt($localStorage.total[i]);
+			due += Number.parseInt($localStorage.due[i]);
+			companysubsidy +=  Number.parseInt($scope.companysubsidy);
+		}				
+	}
+	$scope.total = total;
+	
+	// console.log(due);
+	// console.log(total);
+	// console.log($scope.total);
+
+	$scope.ngFn = function () {
+	pb.innerHTML = "<i class='fa fa-spinner fa-spin'></i> Loading...";
+	console.log($localStorage.data);
+		
+		var handler = PaystackPop.setup({
+            key: 'pk_test_1a3915a63f35d2e74b91f0f61f0b9679a12c7520',
+            email: $localStorage.data.data.email,
+            amount: due*100,
+            ref: "MM_"+Math.floor(Math.random()*100000)+"_"+Math.floor(Math.random()*100000),
+            metadata: {
+                custom_fields: [{
+                    username: $localStorage.data.data.username
+                }]
+            },
+            callback: function(response) {
+				console.log(response);
+				pb.innerHTML = "Pay Now";				
+                // alert('success. transaction ref is ' + response.reference);
+				var data = "token="+$localStorage.data.data.token+"&total="+total+"&subsidy="+companysubsidy+"&paid="+due+"&food="+food+"&price="+price+"&quantity="+quantity;
+				console.log(data);
+				  var link = $rootScope.mealimeter;
+			  	$http({
+			  	    method : "POST",
+			  	    url: link+"buycash",
+			  	    data: data,
+			  	    headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'} 
+			  	}).then(function(result) {
+			  		delete $localStorage.due;
+			  		delete $localStorage.total;
+			  		delete $localStorage.cart;
+			  		alert("Your order has been taken");
+			  		$window.location.href = "#/pre-order/rating";
+			  	}, function(error) {
+			  	  console.log(error);
+			  	});
+            },
+            onClose: function() {
+				pb.innerHTML = "Pay Now";
+				$scope.$broadcast('changetitle-back');
+                alert('No transaction was carried out');
+            }
+        });
+        handler.openIframe();
+    };
+}])
   .controller('CheckoutCtrl',['$scope','$http','$rootScope','$window','$localStorage','$location',function ($scope,$http,$rootScope, $window, $localStorage,$location) {
-  	if($localStorage.data == undefined){
+	  if($localStorage.data == undefined){
   		$window.location.href = "#/login";
   	}
   	else{
