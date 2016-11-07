@@ -11,10 +11,13 @@
 angular
   .module('mealimeterApp', ['ngAnimate','ngCookies','ngResource','ngRoute','ngSanitize','ngTouch','ngStorage','ui.router'])
   .run(['$localStorage','$rootScope','$location',function($localStorage,$rootScope,$location){
-    $rootScope.mealimeter = "https://mealimeter.herokuapp.com/";
-    $rootScope.mealimeterassets = "https://mealimeter.herokuapp.com/";
+    // $rootScope.mealimeter = "https://mealimeter.herokuapp.com/";
+    // $rootScope.mealimeterassets = "https://mealimeter.herokuapp.com/";
     // $rootScope.mealimeter = "http://localhost/mealimeter-backend/mealimeter/index.php/";
     // $rootScope.mealimeterassets = "http://localhost/mealimeter-backend/mealimeter/";
+
+    $rootScope.mealimeter = "http://localhost/mealimeter/index.php/";
+    $rootScope.mealimeterassets = "http://localhost/mealimeter/";
     var path = function() { return $location.path();};
        $rootScope.$watch(path, function(newVal, oldVal){
          $rootScope.activetab = newVal;
@@ -65,6 +68,11 @@ angular
       .when('/registration-successful', {
         templateUrl: 'views/registration-successful.html',
         controller: 'rsCtrl',
+        controllerAs: 'rs'
+      })
+      .when('/account-activation', {
+        templateUrl: 'views/account-activation.html',
+        controller: 'actCtrl',
         controllerAs: 'rs'
       })
       .when('/set-password', {
