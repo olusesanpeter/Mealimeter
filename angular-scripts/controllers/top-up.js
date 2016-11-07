@@ -11,6 +11,7 @@ angular.module('mealimeterApp')
     .controller("payCtrl", ['$rootScope', '$scope', '$sce', '$localStorage', '$window', '$http', '$route', function($rootScope, $scope, $sce, $localStorage, $window, $http, $route) {
 
         var pb = document.getElementById("payBtn");
+        console.log(pb);
         pb.innerHTML = "Top Up";
 
         $scope.ngFn = function() {
