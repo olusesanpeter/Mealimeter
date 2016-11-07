@@ -40,6 +40,11 @@ angular
         controller: 'Forgot-passwordCtrl',
         controllerAs: 'forgot-password'
       })
+      .when('/account-activation/:hash', {
+        templateUrl: 'views/account-activation.html',
+        controller: 'actCtrl',
+        controllerAs: 'act'
+      })
       .when('/pre-order/:day', {
         templateUrl: 'views/pre-order.html',
         controller: 'preorderCtrl',
@@ -68,11 +73,6 @@ angular
       .when('/registration-successful', {
         templateUrl: 'views/registration-successful.html',
         controller: 'rsCtrl',
-        controllerAs: 'rs'
-      })
-      .when('/account-activation', {
-        templateUrl: 'views/account-activation.html',
-        controller: 'actCtrl',
         controllerAs: 'rs'
       })
       .when('/set-password', {

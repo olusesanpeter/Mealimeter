@@ -12,6 +12,7 @@ angular.module('mealimeterApp')
   		if($location.path().split('/')[2].length == 32){
   			var link = $rootScope.mealimeter;
   			var hash = $location.path().split('/')[2];
+  			console.log(hash);
   			$http({
 			    method : "POST",
 			    url: link+"activateaccount",
