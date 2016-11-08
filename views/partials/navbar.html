@@ -1,15 +1,6 @@
-<style>
-.navbar .navbar-link{
-    color: black;
-}
-.navbar .pull-right .navbar-link{
-    color: black;
-    font-weight: bold;
-}
-</style>
 <div class="navbar">
     <!-- Open side - Naviation on mobile -->
-    <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up">
+    <a class="navbar-toggle navbar-item pull-left hidden-lg-up" data-toggle="collapse" data-target="#myNavbar">
       <i class="material-icons">&#xe5d2;</i>
     </a>
     <!-- / -->
@@ -17,19 +8,21 @@
     <!-- Page title - Bind to $state's title -->
     <div class="navbar-item pull-left h5" ng-bind="$state.current.data.title" id="pageTitle"></div>
 
+
+    <!-- navbar collapse -->
+    <div class="collapse navbar-toggleable-sm" id="myNavbar">
+
     <!-- navbar right -->
     <ul class="nav navbar-nav pull-right">
         <li class="nav-item dropdown">
           <a class="nav-link" href data-toggle="dropdown">
             Wallet Balance : ₦{{balance}}
           </a>
-
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link" href data-toggle="dropdown">
             {{username}}
           </a>
-
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link" href="javascript:void(0);" data-toggle="dropdown" ng-click="signout()">
@@ -38,9 +31,6 @@
         </li>
       </ul>
     <!-- / navbar right -->
-
-    <!-- navbar collapse -->
-    <div class="collapse navbar-toggleable-sm" id="collapse">
       <div ui-include="'../views/blocks/navbar.form.right.html'"></div>
       <!-- link and dropdown -->
       <ul class="nav navbar-nav">
