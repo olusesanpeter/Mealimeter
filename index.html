@@ -19,18 +19,30 @@
   <!-- style -->
   <link rel="stylesheet" href="assets/animate.css/animate.min.css" type="text/css" />
   <link rel="stylesheet" href="assets/glyphicons/glyphicons.css" type="text/css" />
-  <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css'>
   <link rel="stylesheet" href="assets/material-design-icons/material-design-icons.css" type="text/css" />
 
   <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="assets/sweetalert.css" type="text/css" />
   <!-- build:css assets/styles/app.min.css -->
   <link rel="stylesheet" href="assets/styles/app.css" type="text/css" />
   <link rel="stylesheet" href="assets/styles/custom.css" type="text/css" />
   <!-- endbuild -->
   <link rel="stylesheet" href="assets/styles/font.css" type="text/css" />
+    <script type="text/javascript">
+      window.paceOptions = {
+          document: true, // disabled
+          eventLag: true,
+          restartOnPushState: true,
+          restartOnRequestAfter: true,
+          ajax: {
+              trackMethods: [ 'POST','GET']
+          }
 
+      };
+    </script>
 
-
+    <script src="libs/jquery/PACE/pace.min.js"></script>
     <!-- Angular -->
     <script src="libs/angular/angular.js"></script>
     <script src="libs/ngstorage.min.js"></script>
@@ -49,13 +61,15 @@
     <script src="angular-scripts/controllers/pre-order.js"></script>
     <script src="angular-scripts/controllers/top-up.js"></script>
     <script src="angular-scripts/controllers/navbar.js"></script>
-    <script src="angular-scripts/controllers/account-settings.js"></script>
+    <script src="angular-scripts/controllers/account-details.js"></script>
+    <script src="angular-scripts/controllers/activate-account.js"></script>
     <script src="angular-scripts/controllers/login.js"></script>
     <script src="angular-scripts/controllers/signup.js"></script>
     <script src="angular-scripts/controllers/forgot-password.js"></script>
     <script src="angular-scripts/controllers/checkout.js"></script>
-
-
+    <script src="angular-scripts/controllers/rating.js"></script>
+    <script src="angular-scripts/controllers/rs.js"></script>
+    <script src="angular-scripts/controllers/set-password.js"></script>
 
   <!-- jQuery -->
     <script src="libs/jquery/jquery/dist/jquery.js"></script>
@@ -65,13 +79,29 @@
   <!-- core -->
     <script src="libs/jquery/underscore/underscore-min.js"></script>
     <script src="libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
-    <script src="libs/jquery/PACE/pace.min.js"></script>
 
     <script src="scripts/config.lazyload.js"></script>
 
    <!-- ajax -->
     <script src="libs/jquery/jquery-pjax/jquery.pjax.js"></script>
+    <script src="assets/sweetalert.min.js"></script>
     <script src="scripts/ajax.js"></script>
+
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
+
+    <script type="text/javascript">
+
+      jQuery(document).ready(function(){
+        $('.btn').on('click', function() {
+          var $this = $(this);
+        $this.button('loading');
+          setTimeout(function() {
+             $this.button('reset');
+         }, 8000);
+        });
+      });
+    </script>
 
    
 </head>
@@ -81,34 +111,11 @@
  
 
 <!-- ############ LAYOUT START-->
-
- 
-  
-  <!-- content -->
   <div id="content" class="app-content box-shadow-z0" role="main">
-    
-    <div class="app-footer">
-      <div class="p-a text-xs">
-        <div class="pull-right text-muted">
-          &copy; Copyright <strong>Mealimeter</strong> <span class="hidden-xs-down">- Built with Love v1.1.3</span>
-          <a ui-scroll-to="content"><i class="fa fa-long-arrow-up p-x-sm"></i></a>
-        </div>
-        <div class="nav">
-          <a class="nav-link" href="http://mealimeter.com">About</a>
-          <span class="text-muted">-</span>
-          <a class="nav-link label accent" href="http://mealimeter.com" target="_blank">Mealimeter</a>
-        </div>
-      </div>
-    </div>
-   
-
-<!-- ############ PAGE START-->
-
+      
    <div ng-view=""></div>
 
-<!-- ############ PAGE END-->
-
-</div>
+  </div>
 <!-- ############ LAYOUT END-->
 
 

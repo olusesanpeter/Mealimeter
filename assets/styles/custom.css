@@ -699,7 +699,7 @@ a:active .card {
   -webkit-transform: scale(0.98);
 }
 .card-8 hr {
-  margin-bottom: 3.25em;
+  margin-bottom: 1.25em;
 }
 .card-8 p[class*='col-'] {
   padding: 0;

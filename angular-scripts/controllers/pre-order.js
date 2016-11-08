@@ -153,6 +153,58 @@ angular.module('mealimeterApp')
 			$scope.one = "block";
 			$scope.two = "none";
 		}
+
+		$scope.removefromcart = function(id,len){
+			// alert("Afasda");
+			var main = $scope.meals[$scope.day].options[len].option.name;
+			var additive = $scope.meals[$scope.day].options[len].option.additives[id];
+			var price = $scope.meals[$scope.day].options[len].option.prices[id];
+			if(len == 0){
+				var newid = (len + 1)*(id + 1);
+			}
+			else{
+				var prevsize = 0;
+				for(var i = 0;i<len;i++){
+					prevsize += $scope.meals[$scope.day].options[i].option.additives.length;
+				}
+				var newid = prevsize + (id+1);
+			}
+			var t = false;
+			var currentposition = 0;
+			var total = 0;
+			for (var i = 0; i < $scope.cart.length; i++) {
+				if(newid == $scope.cart[i].id){
+					t = true;
+					currentposition = i;
+				}
+				total += Number.parseInt($scope.cart[i].price);
+			}
+			if(t == true){
+				var oldquantity = $scope.cart[currentposition].quantity;
+				if(oldquantity > 1){
+					var newquantity = oldquantity-1;
+					var oldprice = $scope.cart[currentposition].price;
+					var newprice = ((oldprice)/oldquantity) * newquantity;
+					total = total - oldprice + newprice;
+					$scope.cart[currentposition] = {'id':newid,'mainmeal':main,'additive':additive,'price':newprice,'quantity':newquantity};
+				}
+				else{
+					var newquantity = oldquantity-1;
+					var oldprice = $scope.cart[currentposition].price;
+					total = total - oldprice;
+					$scope.cart.splice(currentposition,1);
+				}
+			}
+			
+			$scope.total = total;
+			$scope.due = $scope.total - $scope.companysubsidy;
+			$localStorage.cart[$scope.day] = $scope.cart;
+			$localStorage.total[$scope.day] = $scope.total;
+			$localStorage.due[$scope.day] = $scope.due;
+			$scope.empty = false;
+			$scope.one = "block";
+			$scope.two = "none";
+		}
   	}
 
   }]);
