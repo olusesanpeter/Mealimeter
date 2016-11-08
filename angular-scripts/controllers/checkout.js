@@ -50,7 +50,7 @@ angular.module('mealimeterApp')
             console.log($localStorage.data);
 
             var handler = PaystackPop.setup({
-                key: 'pk_test_1a3915a63f35d2e74b91f0f61f0b9679a12c7520',
+                key: 'pk_live_71b0b2b62aea6d0914aade795f262a100cc72e3c',
                 email: $localStorage.data.data.email,
                 amount: due * 100,
                 ref: "MM_" + Math.floor(Math.random() * 100000) + "_" + Math.floor(Math.random() * 100000),
