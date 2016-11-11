@@ -41,6 +41,8 @@ angular.module('mealimeterApp')
         }
 
         $scope.sendInvite = function(item) {
+            $('#row' + item).removeClass('animated shake');
+
 
             var sendBtn = $("#sendBtn" + item);
 
@@ -87,6 +89,8 @@ angular.module('mealimeterApp')
                         nameIn.prop('disabled', false);
                         emailIn.prop('disabled', false);
                         phoneIn.prop('disabled', false);
+                        console.log(item);
+                        $('#row' + item).addClass('animated shake');
                     }
                 },
 
