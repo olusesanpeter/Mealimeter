@@ -23,13 +23,12 @@ angular
             $rootScope.activetab = newVal;
         });
     }])
-    .config(function($routeProvider, $localStorage) {
+    .config(function($routeProvider) {
         $routeProvider
             .when('/guestlogin', {
-                controller: function() {
-                    $localStorage.guest = true;
-                    $window.location.href = "#/pre-order/monday";
-                },
+                templateUrl: 'views/login.html',
+                controller: 'GuestLoginCtrl',
+                controllerAs: 'GL'
             })
             .when('/login', {
                 templateUrl: 'views/login.html',
