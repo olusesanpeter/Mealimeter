@@ -1,55 +1,54 @@
 <!-- ############ LAYOUT START-->
 <style type="text/css">
-  .loginBody{
-    overflow-x: hidden;
-    background-color:#454444!important;
-    background-image: url(./assets/images/pattern.png);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    overflow: hidden;
-    background-repeat: inherit;
-    width: 100%;
-    min-height: 100vh;
-    height: 100%!important;
-  }
+    .loginBody {
+        overflow-x: hidden;
+        background-color: #454444!important;
+        background-image: url(./assets/images/pattern.png);
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        overflow: hidden;
+        background-repeat: inherit;
+        width: 100%;
+        min-height: 100vh;
+        height: 100%!important;
+    }
 </style>
 <div class="loginBody">
-  <div class="center-block w-xxl w-auto-xs p-y-md" style="text-align: center;">
-    <div class="navbar" >
-      
-    </div>
-    <img src="assets/images/logo-m-g.png" class="img-responsive" height="100px;" alt="Mealimeter Logo">
+    <div class="center-block w-xxl w-auto-xs p-y-md" style="text-align: center;">
+        <div class="navbar">
 
-    <div class="alert alert-danger" role="alert" ng-show="show">
-      <button type="button" class="close" ng-click="show=false">&times;</button>
-      <strong>{{error}}</strong>
-    </div>
-
-    <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
-      <div class="m-b text-sm">
-        Sign in to your Mealimeter Account
-      </div>
-      <form name="form" ng-submit="logins(data)" method="POST">
-        <div class="md-form-group float-label">
-          <input type="email" class="md-input" ng-model="data.usernamefield" required>
-          <label>Email</label>
         </div>
-        <div class="md-form-group float-label">
-          <input type="password" class="md-input" ng-model="data.passwordfield" required>
-          <label>Password</label>
-        </div>     
-        <button type="submit" class="btn primary btn-block " id="load" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing">Sign in</button>
-      </form>
-    </div>
+        <img src="assets/images/logo-m-g.png" class="img-responsive" height="100px;" alt="Mealimeter Logo">
 
-    <div class="text-center" style="padding-bottom: 50px;">
-      <!-- <div class="m-b"><a " href="#/forgot-password" class="text-primary _600">Forgot password?</a></div> -->
-      <div style="color: #fff">Don't have an account? <a  href="#/signup" class="text-primary _600">Sign up</a></div>
+        <div class="alert alert-danger" role="alert" ng-show="show">
+            <button type="button" class="close" ng-click="show=false">&times;</button>
+            <strong>{{error}}</strong>
+        </div>
+
+        <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
+            <div class="m-b text-sm">
+                Sign in to your Mealimeter Account
+            </div>
+            <form name="form" ng-submit="logins(data)" method="POST">
+                <div class="md-form-group float-label">
+                    <input type="email" class="md-input" ng-model="data.usernamefield" required>
+                    <label>Email</label>
+                </div>
+                <div class="md-form-group float-label">
+                    <input type="password" class="md-input" ng-model="data.passwordfield" required>
+                    <label>Password</label>
+                </div>
+                <button type="submit" class="btn primary btn-block " id="load" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing">Sign in</button>
+                <button type="button" class="btn btn-default btn-block" ng-click="loginAsGuest()">Guest login</button>       
+            </form>
+        </div>
+
+        <div class="text-center" style="padding-bottom: 50px;">
+            <!-- <div class="m-b"><a " href="#/forgot-password" class="text-primary _600">Forgot password?</a></div> -->
+            <div style="color: #fff">Don't have an account? <a href="#/signup" class="text-primary _600">Sign up</a></div>
+        </div>
     </div>
-  </div>
 </div>
 <!-- ############ LAYOUT END-->
-
- 

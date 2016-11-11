@@ -314,7 +314,8 @@
         <div class="col-md-4"></div>
 
         <div class="col-md-4">
-            <a class="btn btn-large btn-block primary" data-toggle="modal" data-target='#modal-id'>Pre-order all meals</a>
+            <a class="btn btn-large btn-block primary" data-toggle="modal" ng-if="username != 'guest'" data-target='#modal-id'>Pre-order all meals</a>
+            <a class="btn btn-large btn-block primary" ng-if="username == 'guest'" ng-click="guestBuy()">Pre-order all meals</a>
         </div>
     </div>
 </div>

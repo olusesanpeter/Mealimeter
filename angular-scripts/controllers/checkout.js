@@ -47,7 +47,6 @@ angular.module('mealimeterApp')
 
         $scope.ngFn = function() {
             pb.innerHTML = "<i class='fa fa-spinner fa-spin'></i> Loading...";
-            console.log($localStorage.data);
 
             var handler = PaystackPop.setup({
                 key: 'pk_live_71b0b2b62aea6d0914aade795f262a100cc72e3c',
@@ -95,13 +94,29 @@ angular.module('mealimeterApp')
         };
     }])
     .controller('CheckoutCtrl', ['$scope', '$http', '$rootScope', '$window', '$localStorage', '$location', function($scope, $http, $rootScope, $window, $localStorage, $location) {
-        if ($localStorage.data == undefined) {
+        if ($localStorage.data == undefined && $localStorage.guest == undefined) {
             $window.location.href = "#/login";
         } else {
+            if ($localStorage.guest == true) {
+                console.log("guest");
+                $scope.username = 'guest';
+            } else {
+                console.log("logged user");
+                $scope.username = $localStorage.data.data.username;
+            }
+            if ($localStorage.flashmessage != undefined) {
+                swal("Successfully Registered", $localStorage.flashmessage, "success");
+                delete $localStorage.flashmessage;
+            }
+
             $scope.redirect = function(day) {
                 $window.location.href = "#/pre-order/" + day;
             };
-            $scope.companysubsidy = $localStorage.data.officedata.office_payment_amount;
+            if ($localStorage.guest == true) {
+                $scope.companysubsidy = 0;
+            } else {
+                $scope.companysubsidy = $localStorage.data.officedata.office_payment_amount;
+            }
             if ($localStorage.cart[0] != undefined || $localStorage.cart[0] != null) {
                 $scope.monday = $localStorage.cart[0];
                 $scope.mondaytotal = $localStorage.total[0];
@@ -223,14 +238,28 @@ angular.module('mealimeterApp')
                     console.log(error);
                 });
 
-
-
-                // console.log(food);
-                // console.log(price);
-                // console.log(quantity);
-                // console.log(total);
-                // console.log(due);
-                // console.log(companysubsidy);
             }
+
+            $scope.guestBuy = function() {
+                console.log("guest but");
+                swal({
+                        title: "<small>You must sign up to preorder.</small>",
+                        text: "Don't worry your cart is saved.",
+                        html: true,
+                        showCancelButton: true,
+                        confirmButtonColor: "#8ac03e",
+                        confirmButtonText: "Yes, Sign up!",
+                        cancelButtonText: "No, don't order",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    },
+                    function(isConfirm) {
+                        if (isConfirm) {
+                            $window.location = "#/signup";
+                        }
+                        swal.close();
+                    });
+            }
+
         }
     }]);
