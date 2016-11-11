@@ -15,24 +15,24 @@
         <!-- navbar right -->
         <ul class="nav navbar-nav pull-right">
             <li class="nav-item dropdown" ng-if="username != 'guest'">
-                <a class="nav-link">
-            Wallet Balance : ₦{{balance}}
-          </a>
+                <a class="nav-link" ng-href="#/top-up">
+						Wallet Balance : ₦{{balance}}
+					</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link" style="text-transform: capitalize;">
-            {{username}}
-          </a>
+						{{username}}
+					</a>
             </li>
             <li class="nav-item dropdown" ng-if="username == 'guest'">
                 <a class="nav-link" style="text-transform: capitalize;" href="javascript:void(0);" ng-click="gotoSignUp()">
-            Sign Up
-          </a>
+						Sign Up
+					</a>
             </li>
             <li class="nav-item dropdown" ng-if="username != 'guest'">
                 <a class="nav-link" href="javascript:void(0);" data-toggle="dropdown" ng-click="signout()">
-          Sign Out
-          </a>
+						Sign Out
+					</a>
             </li>
         </ul>
         <!-- / navbar right -->
@@ -47,22 +47,141 @@
 
             <li class="nav-item dropdown" ng-if="username != 'guest'">
                 <a class="nav-link" ng-href="#/pre-order">
-            Pre-Order Meals
-          </a>
+						Pre-Order Meals
+					</a>
             </li>
             <li class="nav-item dropdown" ng-if="username != 'guest'">
                 <a class="nav-link" ng-href="#/top-up">
-            Top-Up Account
-          </a>
+						Top-Up Account
+					</a>
             </li>
             <li class="nav-item dropdown" ng-if="username != 'guest'">
                 <a class="nav-link" ng-href="#/account-details">
-            Account Details
-          </a>
+						Account Details
+					</a>
+            </li>
+
+            <li class="nav-item" ng-if="username != 'guest'" data-target='#invitemodal' data-toggle="modal">
+                <a class="nav-link">
+						Invite
+					</a>
             </li>
 
         </ul>
         <!-- / -->
     </div>
     <!-- / navbar collapse -->
+    <style>
+        .msgerror {
+            color: red;
+        }
+    </style>
+    <div class="modal fade" id="invitemodal" ng-controller="inviteCtrl">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Invite People</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>
+                                Refrence code: <b>{{refcode}}</b>
+                            </h3>
+                            <p>
+                                Share this link
+                                <a target="_blank" href="http://mealimeter.com/dashboard1/#/signup?ref={{refcode}}">
+                                    http://mealimeter.com/dashboard1/#/signup?ref={{refcode}}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button class="btn btn-default" ng-click="addMore()">
+                                <i class="fa fa-plus"></i>
+                                Add more
+                            </button>
+                        </div>
+
+                        <div class="col-sm-6" style="text-align: right">
+                            <button class="btn btn-success" ng-click="sendToAll()" id="sendallBtn">
+                                Send to all
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row" style="text-align: center">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in list" id="row{{item}}">
+                                    <td>
+                                        <button class="btn btn-link" ng-click="remove(item)">
+                                            <i class="fa fa-times" style="color: red"></i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" id="invite-name{{item}}" />
+                                        <small class="msgerror itemerror{{item}}" id="errorName{{item}}"></small>
+                                    </td>
+                                    <td>
+                                        <input type="email" class="form-control" id="invite-email{{item}}" />
+                                        <small class="msgerror itemerror{{item}}" id="errorEmail{{item}}"></small>
+                                    </td>
+                                    <td>
+                                        <input type="tel" class="form-control" id="invite-phone{{item}}" />
+                                        <small class="msgerror itemerror{{item}}" id="errorPhone{{item}}"></small>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-success" id="sendBtn{{item}}" ng-click="sendInvite(item)">Send</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <hr />
+
+                    <div class="row" style="text-align: center">
+                        <table class="table table-condensed">
+                            <!--<thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th></th>
+                                </tr>-->
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="user in done">
+                                    <td>
+                                        {{user.name}}
+                                    </td>
+                                    <td>
+                                        {{user.email}}
+                                    </td>
+                                    <td>
+                                        {{user.phone}}
+                                    </td>
+                                    <td style="color: green">
+                                        <i class="fa fa-check"></i> Sent
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
