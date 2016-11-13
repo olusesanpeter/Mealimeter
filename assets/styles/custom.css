@@ -24,7 +24,9 @@
   font-weight: 300;
 }
 .modal-dialog {
-    width: 80%;
+    width: 95%;
+    /*position: absolute;*/
+    margin-top: 10%;
 }
 /*Basic Elements*/
 .icon-add {

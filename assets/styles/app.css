@@ -3204,10 +3204,16 @@ background-color: rgba(0, 0, 0, 0.035); }
   .no-bg-xs {
     background-color: transparent; }
 
-     .margin-top {
+ .margin-top {
     margin-top: 20px;
   }
-   }
+  .hero {
+    padding: 150px 10px;
+}
+.cart-sidebar{
+  margin-bottom: 40px;
+ }
+}
  
 .dark .white,
 .dark .box {

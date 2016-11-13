@@ -176,7 +176,7 @@ angular.module('mealimeterApp')
             }
             $scope.weeks[3].name = 'Thursday';
             $scope.weeks[3].cart = $scope.thursday;
-            $scope.weeks[3].total = $scope.thursdaytotal;
+            $scope.weeks[3].total = 0;//$scope.thursdaytotal;
             $scope.weeks[3].due = $scope.thursdaydue;
             
             if ($localStorage.cart[4] != undefined || $localStorage.cart[4] != null) {

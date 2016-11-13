@@ -123,8 +123,8 @@
                 <div class="box-header dker2">
                     Your Order
                 </div>
-                <div class="p-a-md text-center">
-                    <table class="table text-left">
+                <div class="p-a-md text-center" ng-hide="total < 1">
+                    <table class="table text-left" >
                         <thead class="">
                             <tr>
                                 <th width="10%">
@@ -170,40 +170,36 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="p-a-md text-center" ng-hide="total > 1">
+                    <img src="assets/images/food-basket.png" alt="" width="75px">
+                    
+                    <div class="top-dotted"></div>
+                    <p>Add menu items into your basket</p>
+                </div>
+               <div class="p-a-md text-center">
                 <div ng-if="daytext == 'Monday'">
                     <!-- <a class="btn btn-fw primary" href="" disabled>Previous</a> -->
-                    <a class="btn btn-fw primary btn-full" href="#/pre-order/tuesday">Next</a>
+                    <a class="btn btn-fw primary btn-full" href="#/pre-order/tuesday">Next <i class="fa fa-arrow-circle-right "></i> </a>
                 </div>
                 <div ng-if="daytext == 'Tuesday'">
                     <a class="btn btn-fw primary btn-half" href="#/pre-order/monday"> <i class="fa fa-arrow-circle-left "></i> Previous</a>
                     <a class="btn btn-fw primary btn-half" href="#/pre-order/wednesday">Next <i class="fa fa-arrow-circle-right "></i> </a>
                 </div>
                 <div ng-if="daytext == 'Wednesday'">
-                    <a class="btn btn-fw primary btn-full" href="#/pre-order/tuesday">Previous</a>
-                    <a class="btn btn-fw primary btn-full" href="#/pre-order/thursday">Next</a>
+                    <a class="btn btn-fw primary btn-half" href="#/pre-order/tuesday"><i class="fa fa-arrow-circle-left "></i> Previous</a>
+                    <a class="btn btn-fw primary btn-half" href="#/pre-order/thursday">Next  <i class="fa fa-arrow-circle-right "></i> </a>
                 </div>
                 <div ng-if="daytext == 'Thursday'">
-                    <a class="btn btn-fw primary btn-full" href="#/pre-order/wednesday">Previous</a>
-                    <a class="btn btn-fw primary btn-full" href="#/pre-order/friday">Next</a>
+                    <a class="btn btn-fw primary btn-half" href="#/pre-order/wednesday"><i class="fa fa-arrow-circle-left "></i> Previous</a>
+                    <a class="btn btn-fw primary btn-half" href="#/pre-order/friday">Next  <i class="fa fa-arrow-circle-right "></i> </a>
                 </div>
                 <div ng-if="daytext == 'Friday'">
-                    <a class="btn btn-fw primary btn-full" href="#/pre-order/thursday">Previous</a>
+                    <a class="btn btn-fw primary btn-full" href="#/pre-order/thursday"><i class="fa fa-arrow-circle-left "></i>  Previous</a>
                     <!-- <a class="btn btn-fw primary" disabled>Next</a> -->
                 </div>
                     <a class="btn btn-fw primary btn-full btn-dark-green" href="#/checkout">Checkout</a>
                 
-                </div>
-            </div>
-            <!-- <div class="box" style="display:{{two}}"> -->
-            <div class="box">
-                <div class="box-header dker2 text-center">
-                    Your Order
-                </div>
-                <div class="p-a-md text-center">
-                    <img src="assets/images/food-basket.png" alt="" width="75px">
-                    
-                    <div class="top-dotted"></div>
-                    <p>Add menu items into your basket</p>
                 </div>
             </div>
         </div>
