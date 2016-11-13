@@ -49,7 +49,9 @@ angular.module('mealimeterApp')
             pb.innerHTML = "<i class='fa fa-spinner fa-spin'></i> Loading...";
 
             var handler = PaystackPop.setup({
-                key: 'pk_live_71b0b2b62aea6d0914aade795f262a100cc72e3c',
+                // // key: 'pk_live_71b0b2b62aea6d0914aade795f262a100cc72e3c',
+                // key: 'pk_test_bac3b11eb4e39fe3acadd07a0a111d32067aa751',
+
                 email: $localStorage.data.data.email,
                 amount: due * 100,
                 ref: "MM_" + Math.floor(Math.random() * 100000) + "_" + Math.floor(Math.random() * 100000),
@@ -120,9 +122,10 @@ angular.module('mealimeterApp')
              $scope.weeks = [];
             $scope.weeks[0] = [];
             $scope.weeks[1] = [];
-            $scope.weeks[2] = [];
-            $scope.weeks[3] = [];
-            $scope.weeks[4] = [];
+            // $scope.weeks[1] = [];
+            // $scope.weeks[2] = [];
+            // $scope.weeks[3] = [];
+            // $scope.weeks[4] = [];
             if ($localStorage.cart[0] != undefined || $localStorage.cart[0] != null) {
                 $scope.monday = $localStorage.cart[0];
                 $scope.mondaytotal = $localStorage.total[0];
@@ -145,10 +148,10 @@ angular.module('mealimeterApp')
                 $scope.tuesdaytotal = 0;
                 $scope.tuesdaydue = 0;
             }
-            $scope.weeks[1].name = 'Tuesday';
-            $scope.weeks[1].cart = $scope.tuesday;
-            $scope.weeks[1].total = $scope.tuesdaytotal;
-            $scope.weeks[1].due = $scope.tuesdaydue;
+            // $scope.weeks[1].name = 'Tuesday';
+            // $scope.weeks[1].cart = $scope.tuesday;
+            // $scope.weeks[1].total = $scope.tuesdaytotal;
+            // $scope.weeks[1].due = $scope.tuesdaydue;
             
 
             if ($localStorage.cart[2] != undefined || $localStorage.cart[2] != null) {
@@ -160,10 +163,10 @@ angular.module('mealimeterApp')
                 $scope.wednesdaytotal = 0;
                 $scope.wednesdaydue = 0;
             }
-            $scope.weeks[2].name = 'Wednesday';
-            $scope.weeks[2].cart = $scope.wednesday;
-            $scope.weeks[2].total = $scope.wednesdaytotal;
-            $scope.weeks[2].due = $scope.wednesdaydue;
+            // $scope.weeks[2].name = 'Wednesday';
+            // $scope.weeks[2].cart = $scope.wednesday;
+            // $scope.weeks[2].total = $scope.wednesdaytotal;
+            // $scope.weeks[2].due = $scope.wednesdaydue;
             
             if ($localStorage.cart[3] != undefined || $localStorage.cart[3] != null) {
                 $scope.thursday = $localStorage.cart[3];
@@ -174,10 +177,10 @@ angular.module('mealimeterApp')
                 $scope.thursdaytotal = 0;
                 $scope.thursdaydue = 0;
             }
-            $scope.weeks[3].name = 'Thursday';
-            $scope.weeks[3].cart = $scope.thursday;
-            $scope.weeks[3].total = 0;//$scope.thursdaytotal;
-            $scope.weeks[3].due = $scope.thursdaydue;
+            $scope.weeks[1].name = 'Thursday';
+            $scope.weeks[1].cart = $scope.thursday;
+            $scope.weeks[1].total = 0;//$scope.thursdaytotal;
+            $scope.weeks[1].due = $scope.thursdaydue;
             
             if ($localStorage.cart[4] != undefined || $localStorage.cart[4] != null) {
                 $scope.friday = $localStorage.cart[4];
@@ -188,10 +191,10 @@ angular.module('mealimeterApp')
                 $scope.fridaytotal = 0;
                 $scope.fridaydue = 0;
             }
-            $scope.weeks[4].name = 'Friday';
-            $scope.weeks[4].cart = $scope.friday;
-            $scope.weeks[4].total = $scope.fridaytotal;
-            $scope.weeks[4].due = $scope.fridaydue;
+            // $scope.weeks[4].name = 'Friday';
+            // $scope.weeks[4].cart = $scope.friday;
+            // $scope.weeks[4].total = $scope.fridaytotal;
+            // $scope.weeks[4].due = $scope.fridaydue;
             
             $scope.docheckout = function() {
                 var food = "";

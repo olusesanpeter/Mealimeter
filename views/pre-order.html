@@ -160,7 +160,7 @@
                                 <td class="total">Total</td>
                                 <td class="price">  {{ total | currency:"₦":0 }}</td>
                             </tr>
-                            <tr>
+                            <tr ng-hide="companysubsidy < 1">
                                 <td class="total">Company subsidy</td>
                                 <td class="price">- {{ companysubsidy | currency:"₦":0 }}</td>
                             </tr>

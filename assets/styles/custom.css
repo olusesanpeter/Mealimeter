@@ -48,6 +48,9 @@
   border-radius: 0;
   display: inline-block;
 }
+.btn-white {
+  color: #fff;
+}
 .btn-full {
   width: 100%;
   margin-bottom: 5px;
