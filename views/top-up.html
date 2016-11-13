@@ -22,10 +22,10 @@
     <div class="row">
         <div class="col-md-4 offset-md-4">
             <div class="text-center">
-                <img alt="wallet" src="assets/images/wallet.png" width="300px" class="">
+                <img alt="wallet" src="assets/images/wallet.png" width="150px" class="">
             </div>
             <div class="box" ng-controller="payCtrl as PC">
-                <div class="box-header primary">
+                <div class="box-header dker2">
                     <h2>Top-up account</h2>
                     <!--<small>Uniquely engineer multimedia based experiences after distributed opportunities. Intrinsicly enhance B2B paradigms whereas progressive applications. Monotonectally.</small>-->
                 </div>
@@ -33,10 +33,10 @@
                 <div class="box-body">
                     <!--<form role="form" ng-submit="topup(data)" method="POST">-->
                     <div class="form-group">
-                        <label>Top-up amount</label>
-                        <input type="number" class="form-control" placeholder="Enter amount" ng-model="amt">
+                        <label>Amount</label>
+                        <input type="number" class="form-control" only-digits placeholder="Enter amount" ng-model="amt">
                     </div>
-                    <button type="button" id="payBtn" class="btn white m-b" ng-click="ngFn()">Top-up</button>
+                    <button type="button" id="payBtn" class="btn white m-b btn-full" ng-click="ngFn()">Pay Online</button>
                     <!--</form>-->
                 </div>
             </div>

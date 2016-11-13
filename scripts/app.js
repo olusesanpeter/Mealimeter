@@ -103,5 +103,6 @@
     
     init();
     setTheme();
+    $('[data-toggle="popover"]').popover();
 
 })(jQuery);

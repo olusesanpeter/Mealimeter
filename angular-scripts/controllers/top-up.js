@@ -7,11 +7,10 @@
  * # MainCtrl
  * Controller of the mealimeterApp
  */
-angular.module('mealimeterApp')
-    .controller("payCtrl", ['$rootScope', '$scope', '$sce', '$localStorage', '$window', '$http', '$route', function($rootScope, $scope, $sce, $localStorage, $window, $http, $route) {
+angular.module('mealimeterApp').controller("payCtrl", ['$rootScope', '$scope', '$sce', '$localStorage', '$window', '$http', '$route', function($rootScope, $scope, $sce, $localStorage, $window, $http, $route) {
 
         var pb = document.getElementById("payBtn");
-        pb.innerHTML = "Top Up";
+        pb.innerHTML = "Pay Online";
 
         $scope.ngFn = function() {
 
@@ -40,19 +39,19 @@ angular.module('mealimeterApp')
                         data: Data,
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
                     }).then(function(result) {
-                        pb.innerHTML = "Top Up";
+                        pb.innerHTML = "Pay Online";
 
                         // alert($scope.amt + " has been added to your wallet");
                         swal("Success!", $scope.amt + " has been added to your wallet", "success");
 
                         $route.reload();
                     }, function(error) {
-                        pb.innerHTML = "Top Up";
+                        pb.innerHTML = "Pay Online";
                         console.log(error);
                     });
                 },
                 onClose: function() {
-                    pb.innerHTML = "Top Up";
+                    pb.innerHTML = "Pay Online";
                     // alert('No transaction was carried out');
                     swal("Cancelled", "No transaction was carried out", "error");
                 }
@@ -170,4 +169,7 @@ angular.module('mealimeterApp')
                 // });
             }
         }
-    }]);
+    }])
+    ;
+
+ 

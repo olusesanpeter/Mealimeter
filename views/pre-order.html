@@ -25,63 +25,115 @@
     <div class="row">
 
         <div class="col-md-8">
-            <div class="col-sm-12" ng-show="done">
-                <div class="card card-8" ng-repeat="meal in meals[day].options">
-                    <div class="card__image col-md-6">
-                        <a href="#">
-                            <img alt="Pic" src="assets/images/rice.jpg">
-                        </a>
+            <!-- <div class="col-sm-12"> -->
+            <div class="col-sm-12"  ng-show="done">
+                <div class="card card-8 no-radius" ng-repeat="meal in meals[day].options">
+                    <div class="col-md-4">
+                        <img alt="Menu Image" class="img-responsive menu-item-img" src="assets/images/rice.jpg" style=" ">
+                        <h3 class="text-center">{{meal.option.name}}</h3>
+                            
                     </div>
-                    <div class="card__body col-md-6 boxed bg--white">
-                        <div class="card__title">
-                            <h1>{{meal.option.name}}</h1>
-                            <h3 ng-hide="true">{{x = $index}}</h3>
-                        </div>
-                        <hr>
-                        <div ng-repeat="additive in meal.option.additives">
-                            <div class="row">
-                                <div class="col-sm-8 ">
-                                    <p>+ {{additive}} ({{meal.option.prices[$index]}})</p>
-                                    <hr>
-                                </div>
-                                <div class="col-xs-2">
-                                    <a href="">
-                                        <i class="material-icons icon-add" ng-click="addtocart($index,x)">&#xe148;</i>
-                                    </a>
-                                </div>
-                                <div class="col-xs-2">
-                                    <a href="">
-                                        <i class="material-icons icon-add" ng-click="removefromcart($index,x)">&#xe15d;</i>
-                                    </a>
-                                </div>
+                    <div class="col-md-8 boxed bg--white">
+                        <div class="row">
+                            <div class="card__title">
+                                <h5> <b>Options</b></h5>
+                                <h3 ng-hide="true" >{{x = $index}}</h3>
                             </div>
+                            <hr>
+                            <div ng-repeat="additive in meal.option.additives">
+                            <!-- <div class="row"> -->
+                                <div class="col-md-10 col-xs-9">
+                                     <p>   
+                                     <i class="fa fa-plus icon-xs"></i>
+
+                                     {{additive}} <a href="javascript:;" data-toggle="popover" title="Calories" data-placement="top" data-content="Don't worry, you won't be fat.">
+                                        <i class="fa fa-info-circle icon-info" ng-click="addtocart($index,x)"></i>
+                                        </a>
+                                     <span>
+                                      - <b> {{  meal.option.prices[$index] | currency:"₦":0 }} </b> 
+                                    <!--  <a href="">
+                                        <i class="fa fa-info-circle icon-info" ng-click="addtocart($index,x)"></i>
+                                        </a> -->
+                                     </span>
+                                         
+                                     </p>
+                                </div>
+                                <div class="col-md-2 col-xs-3">
+                                    <a href="">
+                                        <i class="fa fa-plus-square-o  icon-add" ng-click="addtocart($index,x)"></i>
+                                     </a>
+                                    <a href="">
+                                        <i class="fa fa-minus-square-o  icon-add" ng-click="removefromcart($index,x)"></i>
+                                    </a>
+                                </div>
+                            <!-- </div> -->
+                            </div>
+                            <br>
                         </div>
+                        
+                        <div class="row">
+                            <div class="card__title">
+                                <h5><b> Extras - Drinks & Snacks </b></h5>
+                                <h3 ng-hide="true">{{x = $index}}</h3>
+                            </div>
+                            <hr>
+                            <div ng-repeat="additive in meal.option.additives">
+                            <!-- <div class="row"> -->
+                                <div class="col-md-10 col-xs-9">
+                                     <p>   
+                                    {{additive}} <a href="">
+                                        <i class="fa fa-info-circle icon-info" ng-click="addtocart($index,x)"></i>
+                                        </a>
+                                     <span>
+                                      - <b> {{  meal.option.prices[$index] | currency:"₦":0 }} </b> 
+                                    <!--  <a href="">
+                                        <i class="fa fa-info-circle icon-info" ng-click="addtocart($index,x)"></i>
+                                        </a> -->
+                                     </span>
+                                         
+                                     </p>
+                                </div>
+                                <div class="col-md-2 col-xs-3">
+                                    <a href="">
+                                        <i class="fa fa-plus-square-o  icon-add" ng-click="addtocart($index,x)"></i>
+                                     </a>
+                                    <a href="">
+                                        <i class="fa fa-minus-square-o  icon-add" ng-click="removefromcart($index,x)"></i>
+                                    </a>
+                                </div>
+                            <!-- </div> -->
+                            </div>
+                            <br>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
 
-            <div class="box" ng-show="notdone" style="padding:30px">
-                <h1 style="text-align:center">Your Order has been taken </h1>
+            <div class="box"  ng-show="notdone"  style="padding:10px">
+               <div class="total-section" style="padding:30px">
+                     <h1 style="text-align:center">Your order has been taken </h1>
+                </div>
             </div>
 
         </div>
 
-        <div class="col-md-4" style="display:{{one}}">
+        <div class="col-md-4 cart-sidebar" style="display:{{one}}">
             <div class="box" style="position: relative;">
                 <div class="box-header dker2">
                     Your Order
                 </div>
                 <div class="p-a-md text-center">
-                    <table class="table table-hover text-left">
+                    <table class="table text-left">
                         <thead class="">
                             <tr>
-                                <th>
-                                    Qty.
+                                <th width="10%">
+                                    Qty
                                 </th>
-                                <th>
-                                    Food Item
+                                <th width="70%">
+                                    Meal
                                 </th>
-                                <th>
+                                <th width="20%">
                                     Price
                                 </th>
                             </tr>
@@ -92,75 +144,71 @@
                                     {{item.quantity}}x
                                 </td>
                                 <td>
-                                    {{item.mainmeal}}
-                                    <br> Topping(s):
-                                    <br> {{item.additive}}
+                                    <b>{{item.mainmeal}}</b>
+                                    <br><span class="toppings">+ {{item.additive}}</span>
+                                    
                                 </td>
                                 <td>
-                                    {{item.price}}
+                                   {{ item.price | currency:"₦":0 }} 
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <table class="table">
-                        <tbody>
+                        <tbody class="total-section">
                             <tr>
                                 <td class="total">Total</td>
-                                <td class="price">₦{{total}}</td>
+                                <td class="price">  {{ total | currency:"₦":0 }}</td>
                             </tr>
                             <tr>
                                 <td class="total">Company subsidy</td>
-                                <td class="price">- ₦{{companysubsidy}}</td>
+                                <td class="price">- {{ companysubsidy | currency:"₦":0 }}</td>
                             </tr>
-                            <tr>
-                                <td class="total">Total Amount Due</td>
-                                <td class="amount-due">₦{{due}}</td>
+                            <tr >
+                                <td class="total"><b>Amount Due </b></td>
+                                <td class="amount-due dark-green-color"><b>  {{ due | currency:"₦":0 }} </b></td>
                             </tr>
                         </tbody>
                     </table>
-
+                <div ng-if="daytext == 'Monday'">
+                    <!-- <a class="btn btn-fw primary" href="" disabled>Previous</a> -->
+                    <a class="btn btn-fw primary btn-full" href="#/pre-order/tuesday">Next</a>
+                </div>
+                <div ng-if="daytext == 'Tuesday'">
+                    <a class="btn btn-fw primary btn-half" href="#/pre-order/monday"> <i class="fa fa-arrow-circle-left "></i> Previous</a>
+                    <a class="btn btn-fw primary btn-half" href="#/pre-order/wednesday">Next <i class="fa fa-arrow-circle-right "></i> </a>
+                </div>
+                <div ng-if="daytext == 'Wednesday'">
+                    <a class="btn btn-fw primary btn-full" href="#/pre-order/tuesday">Previous</a>
+                    <a class="btn btn-fw primary btn-full" href="#/pre-order/thursday">Next</a>
+                </div>
+                <div ng-if="daytext == 'Thursday'">
+                    <a class="btn btn-fw primary btn-full" href="#/pre-order/wednesday">Previous</a>
+                    <a class="btn btn-fw primary btn-full" href="#/pre-order/friday">Next</a>
+                </div>
+                <div ng-if="daytext == 'Friday'">
+                    <a class="btn btn-fw primary btn-full" href="#/pre-order/thursday">Previous</a>
+                    <!-- <a class="btn btn-fw primary" disabled>Next</a> -->
+                </div>
+                    <a class="btn btn-fw primary btn-full btn-dark-green" href="#/checkout">Checkout</a>
+                
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="box" style="display:{{two}}">
-                <div class="box-header dker2">
+            <!-- <div class="box" style="display:{{two}}"> -->
+            <div class="box">
+                <div class="box-header dker2 text-center">
                     Your Order
                 </div>
                 <div class="p-a-md text-center">
                     <img src="assets/images/food-basket.png" alt="" width="75px">
-                    <hr>
+                    
+                    <div class="top-dotted"></div>
                     <p>Add menu items into your basket</p>
-                </div>
-            </div>
-            <div class="box" style="text-align: center; padding: 10px;">
-                <div ng-if="daytext == 'Monday'">
-                    <!-- <a class="btn btn-fw primary" href="" disabled>Previous</a> -->
-                    <a class="btn btn-fw primary" href="#/pre-order/tuesday">Next</a>
-                    <a class="btn btn-fw primary" href="#/checkout">Checkout</a>
-                </div>
-                <div ng-if="daytext == 'Tuesday'">
-                    <a class="btn btn-fw primary" href="#/pre-order/monday">Previous</a>
-                    <a class="btn btn-fw primary" href="#/pre-order/wednesday">Next</a>
-                    <a class="btn btn-fw primary" href="#/checkout">Checkout</a>
-                </div>
-                <div ng-if="daytext == 'Wednesday'">
-                    <a class="btn btn-fw primary" href="#/pre-order/tuesday">Previous</a>
-                    <a class="btn btn-fw primary" href="#/pre-order/thursday">Next</a>
-                    <a class="btn btn-fw primary" href="#/checkout">Checkout</a>
-                </div>
-                <div ng-if="daytext == 'Thursday'">
-                    <a class="btn btn-fw primary" href="#/pre-order/wednesday">Previous</a>
-                    <a class="btn btn-fw primary" href="#/pre-order/friday">Next</a>
-                    <a class="btn btn-fw primary" href="#/checkout">Checkout</a>
-                </div>
-                <div ng-if="daytext == 'Friday'">
-                    <a class="btn btn-fw primary" href="#/pre-order/thursday">Previous</a>
-                    <!-- <a class="btn btn-fw primary" disabled>Next</a> -->
-                    <a class="btn btn-fw primary" href="#/checkout">Checkout</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+       $('[data-toggle="popover"]').popover();
+</script>

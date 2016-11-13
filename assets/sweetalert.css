@@ -170,7 +170,7 @@ body.stop-scrolling {
     opacity: 0;
     visibility: hidden; }
   .sweet-alert button {
-    background-color: #8CD4F5;
+    background-color: #8ac03e;
     color: white;
     border: none;
     box-shadow: none;
@@ -223,7 +223,7 @@ body.stop-scrolling {
     position: relative;
     box-sizing: content-box; }
     .sweet-alert .sa-icon.sa-error {
-      border-color: #F27474; }
+      border-color: #ff2626; }
       .sweet-alert .sa-icon.sa-error .sa-x-mark {
         position: relative;
         display: block; }
@@ -231,7 +231,7 @@ body.stop-scrolling {
         position: absolute;
         height: 5px;
         width: 47px;
-        background-color: #F27474;
+        background-color: #ff2626;
         display: block;
         top: 37px;
         border-radius: 2px; }

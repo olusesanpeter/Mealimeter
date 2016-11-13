@@ -28,8 +28,8 @@
         </div>
 
         <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
-            <div class="m-b text-sm">
-                Sign in to your Mealimeter Account
+            <div class="m-b text-sm ">
+                <b> Sign in to your Mealimeter Account </b>
             </div>
             <form name="form" ng-submit="logins(data)" method="POST">
                 <div class="md-form-group float-label">
@@ -40,8 +40,8 @@
                     <input type="password" class="md-input" ng-model="data.passwordfield" required>
                     <label>Password</label>
                 </div>
-                <button type="submit" class="btn primary btn-block " id="load" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing">Sign in</button>
-                <button type="button" class="btn btn-default btn-block" ng-click="loginAsGuest()">Guest login</button>       
+                <button type="submit" class="btn primary btn-full " id="load" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing">Sign in</button>
+                <button type="button" class="btn btn-default btn-full" ng-click="loginAsGuest()">Guest login</button>       
             </form>
         </div>
 

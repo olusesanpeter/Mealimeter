@@ -17,32 +17,32 @@
     </div>
 </div>
 <div class="padding">
-    <div class="row" style="text-align: center">
+    <div class="container" style="text-align: center">
 
         <!-- <div class="col-md-2"></div> -->
         <div class="row">
-            <div class="col-md-4" style="display:{{one}}">
-                <div ng-click="redirect('monday')" class="box" style="position: relative; cursor: pointer;">
+            <div class="col-md-6" style="display:{{one}}" ng-repeat="weekday in weeks">
+                <div  class="box" style="position: relative; cursor: pointer;">
                     <div class="box-header dker2">
-                        <h3>Monday - <button type="button" class="btn btn-default primary">Edit Order</button></h3>
+                        <h3><span class="big-font">{{ weekday.name }}</h3>
                     </div>
                     <div class="p-a-md text-center">
-                        <table class="table table-hover text-left">
+                        <table class="table text-left">
                             <thead class="">
                                 <tr>
-                                    <th>
-                                        Qty.
+                                    <th width="10%">
+                                        Qty
                                     </th>
-                                    <th>
-                                        Food Item
+                                    <th width="70%">
+                                        Meal
                                     </th>
-                                    <th>
+                                    <th width="20%">
                                         Price
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="item in monday">
+                                <tr ng-repeat="item in weekday.cart">
                                     <td>
                                         {{item.quantity}}x
                                     </td>
@@ -52,7 +52,7 @@
                                         <br> {{item.additive}}
                                     </td>
                                     <td>
-                                        {{item.price}}
+                                       {{ item.price | currency:"₦":0 }}
                                     </td>
                                 </tr>
                             </tbody>
@@ -61,250 +61,22 @@
                             <tbody>
                                 <tr>
                                     <td class="total">Total</td>
-                                    <td class="price">₦{{mondaytotal}}</td>
+                                    <td class="price"> {{  weekday.total | currency:"₦":0 }}</td>
                                 </tr>
                                 <tr>
                                     <td class="total">Company subsidy</td>
-                                    <td class="price">- ₦{{companysubsidy}}</td>
+                                    <td class="price">- {{  companysubsidy | currency:"₦":0 }}</td>
                                 </tr>
                                 <tr>
                                     <td class="total">Total Amount Due</td>
-                                    <td class="amount-due">₦{{mondaydue}}</td>
+                                    <td class="amount-due">{{  weekday.due | currency:"₦":0 }}</td>
                                 </tr>
                             </tbody>
                         </table>
+                        <a ng-click="redirect(weekday.name)" class="btn btn-default btn-trans btn-full" ><i class="fa fa-edit"></i> Change Order</a>
+                    
                     </div>
-                </div>
-            </div>
 
-            <div class="col-md-4" style="display:{{one}}">
-                <div ng-click="redirect('tuesday')" class="box" style="position: relative; cursor: pointer;">
-                    <div class="box-header dker2">
-                        <h3>Tuesday - <button type="button" class="btn btn-default primary">Edit Order</button></h3>
-                    </div>
-                    <div class="p-a-md text-center">
-                        <table class="table table-hover text-left">
-                            <thead class="">
-                                <tr>
-                                    <th>
-                                        Qty.
-                                    </th>
-                                    <th>
-                                        Food Item
-                                    </th>
-                                    <th>
-                                        Price
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="item in tuesday">
-                                    <td>
-                                        {{item.quantity}}x
-                                    </td>
-                                    <td>
-                                        {{item.mainmeal}}
-                                        <br> Topping(s):
-                                        <br> {{item.additive}}
-                                    </td>
-                                    <td>
-                                        {{item.price}}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td class="total">Total</td>
-                                    <td class="price">₦{{tuesdaytotal}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="total">Company subsidy</td>
-                                    <td class="price">- ₦{{companysubsidy}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="total">Total Amount Due</td>
-                                    <td class="amount-due">₦{{tuesdaydue}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4" style="display:{{one}}">
-                <div ng-click="redirect('wednesday')" class="box" style="position: relative; cursor: pointer;">
-                    <div class="box-header dker2">
-                        <h3>Wednesday - <button type="button" class="btn btn-default primary">Edit Order</button></h3>
-                    </div>
-                    <div class="p-a-md text-center">
-                        <table class="table table-hover text-left">
-                            <thead class="">
-                                <tr>
-                                    <th>
-                                        Qty.
-                                    </th>
-                                    <th>
-                                        Food Item
-                                    </th>
-                                    <th>
-                                        Price
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="item in wednesday">
-                                    <td>
-                                        {{item.quantity}}x
-                                    </td>
-                                    <td>
-                                        {{item.mainmeal}}
-                                        <br> Topping(s):
-                                        <br> {{item.additive}}
-                                    </td>
-                                    <td>
-                                        {{item.price}}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td class="total">Total</td>
-                                    <td class="price">₦{{wednesdaytotal}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="total">Company subsidy</td>
-                                    <td class="price">- ₦{{companysubsidy}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="total">Total Amount Due</td>
-                                    <td class="amount-due">₦{{wednesdaydue}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2"></div>
-
-            <div class="col-md-4" style="display:{{one}}">
-                <div ng-click="redirect('thursday')" class="box" style="position: relative; cursor: pointer;">
-                    <div class="box-header dker2">
-                        <h3>Thursday - <button type="button" class="btn btn-default primary">Edit Order</button></h3>
-                    </div>
-                    <div class="p-a-md text-center">
-                        <table class="table table-hover text-left">
-                            <thead class="">
-                                <tr>
-                                    <th>
-                                        Qty.
-                                    </th>
-                                    <th>
-                                        Food Item
-                                    </th>
-                                    <th>
-                                        Price
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="item in thursday">
-                                    <td>
-                                        {{item.quantity}}x
-                                    </td>
-                                    <td>
-                                        {{item.mainmeal}}
-                                        <br> Topping(s):
-                                        <br> {{item.additive}}
-                                    </td>
-                                    <td>
-                                        {{item.price}}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td class="total">Total</td>
-                                    <td class="price">₦{{thursdaytotal}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="total">Company subsidy</td>
-                                    <td class="price">- ₦{{companysubsidy}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="total">Total Amount Due</td>
-                                    <td class="amount-due">₦{{thursdaydue}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4" style="display:{{one}}">
-                <div ng-click="redirect('friday')" class="box" style="position: relative; cursor: pointer;">
-                    <div class="box-header dker2">
-                        <h3>Friday - <button type="button" class="btn btn-default primary">Edit Order</button></h3>
-                    </div>
-                    <div class="p-a-md text-center">
-                        <table class="table table-hover text-left">
-                            <thead class="">
-                                <tr>
-                                    <th>
-                                        Qty.
-                                    </th>
-                                    <th>
-                                        Food Item
-                                    </th>
-                                    <th>
-                                        Price
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="item in friday">
-                                    <td>
-                                        {{item.quantity}}x
-                                    </td>
-                                    <td>
-                                        {{item.mainmeal}}
-                                        <br> Topping(s):
-                                        <br> {{item.additive}}
-                                    </td>
-                                    <td>
-                                        {{item.price}}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td class="total">Total</td>
-                                    <td class="price">₦{{total}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="total">Company subsidy</td>
-                                    <td class="price">- ₦{{companysubsidy}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="total">Total Amount Due</td>
-                                    <td class="amount-due">₦{{fridaydue}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
                 </div>
             </div>
         </div>
@@ -324,18 +96,23 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Total: N{{total}} - Checkout Via</h4>
+                <h4 class="modal-title text-center">Total:  <span class="green-color">{{  total | currency:"₦":0 }}</span></h4>
             </div>
             <div class="modal-body">
-                <div class="row" style="text-align: center">
-                    <div class="col-xs-6">
-                        <form>
-                            <!--<script src="https://js.paystack.co/v1/inline.js"></script>-->
-                            <button id="payBtn" class="btn btn-default" type="button" ng-click="ngFn()"></button>
-                        </form>
+                <div class="row" >
+                    
+                    
+                    <div class="col-md-6">
+                        <div class="pull-left">
+                            <button id="payBtn" class="btn btn-default " type="button" ng-click="ngFn()"><i class="fa fa-credit-card"></i></button>
+                            <div class="pull-left ">
+                                <img alt="wallet" src="assets/images/paystack.png" height="25px" class="">
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-xs-6">
-                        <button class="btn btn-primary" ng-click="docheckout()">Wallet</button>
+                    <div class="col-md-6">
+                        <button class="btn btn-default margin-top" ng-click="docheckout()"><i class="fa fa-money"></i> Pay with Wallet</button>
+
                     </div>
                 </div>
             </div>
