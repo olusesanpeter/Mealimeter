@@ -812,8 +812,9 @@ a.list-group-item {
     .nav-tabs .nav-link.active:focus,
     .nav-tabs .nav-link:hover,
     .nav-tabs .nav-link:focus {
-      border-color: rgba(120, 130, 140, 0.13);
-      border-bottom-color: transparent; }
+      border-color: #fff;
+      /*border-bottom-color: transparent;*/
+       }
 
 .tab-content.tab-alt .tab-pane {
   display: block;

@@ -19,6 +19,14 @@
   background-color: transparent;
   color:#fff;
 }
+.toggleitem{
+  font-weight: 200;
+}
+.nav-tabs .nav-item.open .nav-link, .nav-tabs .nav-item.open .nav-link:focus, .nav-tabs .nav-item.open .nav-link:hover, .nav-tabs .nav-link.active, .nav-tabs .nav-link.active:focus, .nav-tabs .nav-link.active:hover {
+    background-color: #fff;
+    border-bottom-color: #333;
+    color: #55595c;
+}
 .big-font{
   font-size: 25px;
   font-weight: 300;

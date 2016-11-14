@@ -49,8 +49,8 @@ angular.module('mealimeterApp')
             pb.innerHTML = "<i class='fa fa-spinner fa-spin'></i> Loading...";
 
             var handler = PaystackPop.setup({
-                // // key: 'pk_live_71b0b2b62aea6d0914aade795f262a100cc72e3c',
-                key: 'pk_test_bac3b11eb4e39fe3acadd07a0a111d32067aa751',
+                 key: 'pk_live_71b0b2b62aea6d0914aade795f262a100cc72e3c',
+                // key: 'pk_test_bac3b11eb4e39fe3acadd07a0a111d32067aa751',
 
                 email: $localStorage.data.data.email,
                 amount: due * 100,
