@@ -30,7 +30,7 @@
 
 /*Countdown*/
 .container_count {
-    width:50px;
+    width:100px;
     display:inline-block;
     margin-right:5px;
     color:#000 !important;
@@ -50,12 +50,12 @@
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    border:2px solid #000;
+    /*border:2px solid #000;*/
     text-align:center;
-    width:50px;
-    height:50px;
-    font-size:24px;
-    line-height:45px;
+    width:100px;
+    height:70px;
+    font-size:54px;
+    line-height:60px;
     font-family:"Helvetica Neue", Arial, sans-serif;
     font-weight:300;
 }
@@ -73,6 +73,11 @@
 }
 .navline {
   border-bottom: 1px solid #8ac03e;
+}
+.sideborder {
+    border-right-color: #8ac03e;
+    border-right-width: 1px;
+    border-right-style:solid;
 }
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus, .nav-tabs .nav-item.open .nav-link:focus,  .nav-tabs .nav-item.open .nav-link:hover, .nav-tabs .nav-link.active:focus, .nav-tabs .nav-link.active:hover {
     color: #8ac03e !important;

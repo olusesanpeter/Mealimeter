@@ -8,7 +8,7 @@
         <div  class="hero" style="background:rgba(0, 0, 0, 0) url('/assets/images/rice.jpg') no-repeat scroll center center / cover; padding: 220px; ">
            <div class="col-sm-12" text-center>
                 <span>
-                    <h1 style="font-size: 70px; text-align: center; color: white"> Jollof Thursday </h1>
+                    <h1 style="font-size: 70px; text-align: center; color: white; font-weight: 200;"> Jollof Thursdays </h1>
                 </span>
             </div>
         </div>
@@ -18,20 +18,37 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-sm-6">
-                <div id="countdown_wp">
+            <div class="col-sm-6 offset-md-3">
+                <div class="text-center" id="countdown_wp">
                     <br>
-                    <h4 class="inner">Count down to  Event</h4>
-                    <div class="container_count"><div id="days">00</div>Days</div>
-                    <div class="container_count"><div id="hours">00</div>Hours</div>
-                    <div class="container_count"><div id="minutes">00</div>Minutes</div>
-                    <div class="container_count last"><div id="seconds">00</div>Seconds</div>
-                    <p><small>Hurry now, book your tickets.</small></p>
-                </div>
+                    <br><br>
+                    <div class="container_count sideborder"><div id="days">00</div>Days</div>
+                    <div class="container_count sideborder"><div id="hours">00</div>Hours</div>
+                    <div class="container_count "><div id="minutes">00</div>Minutes</div>
+                    <!-- <div class="container_count last"><div id="seconds">00</div>Seconds</div> -->
+                    <br>
+                    <br>
+                    <br>
+                    <a type="button" class="text-center btn btn-default" ng-click="loginAsGuest()">Get Started</a> 
+				</div>
             </div>
-
-
-        </div>
+		</div>
+		<div class="row">
+            <div class="col-sm-6 offset-md-3">
+                <div class="text-center" id="countdown_wp">
+                    <br>
+                    <br><br>
+                    <div class="container_count sideborder"><div id="days">00</div>Days</div>
+                    <div class="container_count sideborder"><div id="hours">00</div>Hours</div>
+                    <div class="container_count"><div id="minutes">00</div>Minutes</div>
+                    <!-- <div class="container_count last"><div id="seconds">00</div>Seconds</div> -->
+                    <br>
+                    <br>
+                    <br>
+                    <a type="button" class="text-center btn btn-default" ng-click="loginAsGuest()">Get Started</a> 
+				</div>
+            </div>
+		</div>
     </div>              
 </div>
 <script>
