@@ -146,6 +146,10 @@ angular.module('mealimeterApp')
             console.log("sign up");
             $window.location.href = "#/signup";
         }
+        $scope.gotoLogin = function() {
+            console.log("log in");
+            $window.location.href = "#/login";
+        }
 
         // console.log($scope.show);
 

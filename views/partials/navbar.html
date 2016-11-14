@@ -15,13 +15,18 @@
         <!-- navbar right -->
         <ul class="nav navbar-nav pull-right">
             <li class="nav-item dropdown" ng-if="username != 'guest'">
-                <a class="nav-link nav-link2" >
+                <a class="nav-link nav-link2">
 						Wallet Balance : <span class="white-color">{{ balance | currency:"₦":0 }}</span>
 					</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link nav-link2" style="text-transform: capitalize;">
 						{{username}}
+					</a>
+            </li>
+            <li class="nav-item dropdown" ng-if="username == 'guest'">
+                <a class="nav-link   nav-link2 nav-link3" style="text-transform: capitalize;" href="javascript:void(0);" ng-click="gotoLogin()">
+						Login
 					</a>
             </li>
             <li class="nav-item dropdown" ng-if="username == 'guest'">
@@ -62,7 +67,7 @@
             </li>
 
             <li class="nav-item" ng-if="username != 'guest'" data-target='#invitemodal' data-toggle="modal">
-                <a class="nav-link" >
+                <a class="nav-link">
 						Invite
 					</a>
             </li>
