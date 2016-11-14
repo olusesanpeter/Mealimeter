@@ -60,7 +60,10 @@
     font-weight:300;
 }
 
-
+.hometable > tbody > tr > td, .hometable > tbody > tr > th, .hometable > tfoot > tr > td, .hometable > tfoot > tr > th {
+    border-bottom: 1px solid #8ac03e;
+    padding: 5px 10px;
+}
 
 .toggleitem{
   font-weight: 200;
