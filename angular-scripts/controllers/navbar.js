@@ -12,7 +12,9 @@ angular.module('mealimeterApp')
         var num = 1;
         $scope.list = [num];
         $scope.done = [];
-        $scope.refcode = $localStorage.data.data.refcode;
+        if ($localStorage.guest != true) {
+            $scope.refcode = $localStorage.data.data.refcode;
+        }
 
         $scope.addMore = function() {
             num++;
