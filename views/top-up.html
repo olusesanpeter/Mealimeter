@@ -3,48 +3,65 @@
         <div ng-include="'views/partials/navbar.html'" ng-show="show"></div>
     </div>
 </div>
-
-<div class="frame" style="position:absolute;height: 100%;width: 100%;background-color: white;z-index:1000;margin-top:60px" ng-show="showframe">
-    <div style="position: relative;">
-        <div style="z-index:1000">
-            <a style="float:right;padding-right: 20px" ng-click="closeframe" style="cursor: pointer"><b>x</b></a>
-        </div>
-        <iframe ng-src="{{imgsrc}}" frameborder="0" style="overflow:hidden;height:100vh;width:100%;margin-top:-20px;z-index:1" height="100%" width="100%">
-    </iframe>
-    </div>
-</div>
-<div class="m-b">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item active">Top-up Account</li>
-    </ol>
-</div>
-<div class="padding">
-    <div class="row">
-        <div class="col-md-4 offset-md-4">
-            <div class="text-center">
-                <img alt="wallet" src="assets/images/wallet.png" width="150px" class="">
+<style type="text/css">
+    .loginBody {
+        overflow-x: hidden;
+        background-color: #454444!important;
+        background-image: url(./assets/images/pattern.png);
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        overflow: hidden;
+        background-repeat: inherit;
+        width: 100%;
+        min-height: 100vh;
+        height: 100%!important;
+    }
+</style>
+<div class="loginBody">
+    <div class="frame" style="position:absolute;height: 100%;width: 100%;background-color: white;z-index:1000;margin-top:60px" ng-show="showframe">
+        <div style="position: relative;">
+            <div style="z-index:1000">
+                <a style="float:right;padding-right: 20px" ng-click="closeframe" style="cursor: pointer"><b>x</b></a>
             </div>
-            <div class="box" ng-controller="payCtrl as PC">
-                <div class="box-header dker2">
-                    <h2>Top-up account</h2>
-                    <!--<small>Uniquely engineer multimedia based experiences after distributed opportunities. Intrinsicly enhance B2B paradigms whereas progressive applications. Monotonectally.</small>-->
+            <iframe ng-src="{{imgsrc}}" frameborder="0" style="overflow:hidden;height:100vh;width:100%;margin-top:-20px;z-index:1" height="100%" width="100%">
+        </iframe>
+        </div>
+    </div>
+    <div class="m-b">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active">Top-up Account</li>
+        </ol>
+    </div>
+    <div class="padding">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="text-center">
+                    <img alt="wallet" src="assets/images/wallet.png" width="150px" class="">
                 </div>
-                <div class="box-divider m-a-0"></div>
-                <div class="box-body">
-                    <!--<form role="form" ng-submit="topup(data)" method="POST">-->
-                    <div class="form-group">
-                        <label>Amount</label>
-                        <input type="number" class="form-control" only-digits placeholder="Enter amount" ng-model="amt">
+                <br>
+                <div class="box" ng-controller="payCtrl as PC">
+                    <div class="box-header dker2">
+                        <h2>Top-up account</h2>
+                        <!--<small>Uniquely engineer multimedia based experiences after distributed opportunities. Intrinsicly enhance B2B paradigms whereas progressive applications. Monotonectally.</small>-->
                     </div>
-                    <button type="button" id="payBtn" class="btn white m-b btn-full" ng-click="ngFn()">Pay Online</button>
-                    <!--</form>-->
+                    <div class="box-divider m-a-0"></div>
+                    <div class="box-body">
+                        <!--<form role="form" ng-submit="topup(data)" method="POST">-->
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input type="number" class="form-control" only-digits placeholder="Enter amount" ng-model="amt">
+                        </div>
+                        <button type="button" id="payBtn" class="btn white m-b btn-full" ng-click="ngFn()">Pay Online</button>
+                        <!--</form>-->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 <!-- ############ PAGE END-->
-
+</div>
 </div>
 </div>
 <!-- / -->
