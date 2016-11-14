@@ -29,7 +29,8 @@
         <div class="row">
             <div class="col-sm-12"  ng-show="done">
                 <div class="card card-8 no-radius" ng-repeat="meal in meals[day].options">
-                    <div class="col-md-12 boxed bg--white">{{x = $index}}
+                    <div class="col-md-12 boxed bg--white">
+                        <div style="display:none;">{{x = $index}} </div>
                          <div class="row">
                             <div class=" navline">
                                 <ul class="nav nav-tabs" role="tablist">
