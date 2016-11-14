@@ -28,13 +28,17 @@
     /*position: absolute;*/
     margin-top: 10%;
 }
+.table td, .table th {
+    border-top: 0px solid #eceeef;
+}
 .menurow{
-  border-bottom: 1px solid #5d5d5d !important;
+  border-bottom: 1px solid rgba(120, 130, 140, 0.87) !important;
 }
 .mealtable > tbody > tr > td.price, .mealtable > tbody > tr > th.price, .mealtable > tfoot > tr > td.price, .mealtable > thead > tr > th.price {
     background-color: rgba(138, 192, 62, 0.2);
   color: #767676;
   text-align: center;
+   font-size: 16px;
 }
 .tooltip-arrow,
 .red-tooltip + .tooltip > .tooltip-inner {

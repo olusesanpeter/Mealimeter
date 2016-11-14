@@ -39,6 +39,11 @@ angular
                 controller: 'LoginCtrl',
                 controllerAs: 'login'
             })
+            .when('/home', {
+                templateUrl: 'views/home.html',
+                controller: 'HomeCtrl',
+                controllerAs: 'home'
+            })
             .when('/signup', {
                 templateUrl: 'views/signup.html',
                 controller: 'SignupCtrl',
@@ -99,4 +104,14 @@ angular
                 element.tooltip();
             }
         }
+    }).directive('showtab',
+    function () {
+        return {
+            link: function (scope, element, attrs) {
+                element.click(function(e) {
+                    e.preventDefault();
+                    $(element).tab('show');
+                });
+            }
+        };
     });

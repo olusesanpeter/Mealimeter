@@ -1217,12 +1217,13 @@ a.list-group-item {
 .mealtable > tbody > tr > th,
 .mealtable > tfoot > tr > td,
 .mealtable > tfoot > tr > th {
-  padding: 10px 10px;
-  border-color: rgba(120, 130, 140, 0.045); }
+  padding: 30px 10px;
+  border-color: rgba(120, 130, 140, 0.55); }
 
 .table > thead > tr > th {
   padding: 10px;
   border-top-width: 0;
+  border-bottom-width: 0;
   border-color: rgba(120, 130, 140, 0.045); }
 
 .table-condensed thead > tr > th,
@@ -3223,6 +3224,9 @@ background-color: rgba(0, 0, 0, 0.035); }
 }
 .cart-sidebar{
   margin-bottom: 40px;
+ }
+ .cart-sidebar2{
+  margin-bottom: 0px;
  }
 }
  
