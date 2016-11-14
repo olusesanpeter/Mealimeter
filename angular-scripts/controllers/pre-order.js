@@ -145,8 +145,7 @@ angular.module('mealimeterApp')
                 $scope.empty = false;
                 $scope.one = "block";
                 $scope.two = "none";
-                $('html,body').animate({ scrollTop: $('.cart-sidebar2').offset().top - 180 }, 500);
-
+               
             }
 
             $scope.removefromcart = function(id, len) {
@@ -197,7 +196,6 @@ angular.module('mealimeterApp')
                 $scope.empty = false;
                 $scope.one = "block";
                 $scope.two = "none";
-                $('html,body').animate({ scrollTop: $('.cart-sidebar2').offset().top - 180 }, 500);
                 
             }
         }
