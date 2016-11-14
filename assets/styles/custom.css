@@ -47,10 +47,10 @@
     text-transform:uppercase;
 }
 #days, #hours, #minutes, #seconds{
-    -webkit-border-radius: 5px;
+    /*-webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    /*border:2px solid #000;*/
+    *//*border:2px solid #000;*/
     text-align:center;
     width:100px;
     height:70px;
@@ -184,6 +184,10 @@
 }
 .green-color{
   color: #8ac03e;
+}
+.btn-green-color{
+  color: #8ac03e !important;
+  font-size:20px;
 }
 .btn-dark-green{
   background-color:#6c9631;
