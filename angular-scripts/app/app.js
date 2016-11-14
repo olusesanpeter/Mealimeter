@@ -97,21 +97,21 @@ angular
             .otherwise({
                 redirectTo: '/login'
             });
-    }).directive('myTooltip', function(){
+    }).directive('myTooltip', function() {
         return {
             restrict: 'A',
-            link: function(scope, element){
+            link: function(scope, element) {
                 element.tooltip();
             }
         }
     }).directive('showtab',
-    function () {
-        return {
-            link: function (scope, element, attrs) {
-                element.click(function(e) {
-                    e.preventDefault();
-                    $(element).tab('show');
-                });
-            }
-        };
-    });
+        function() {
+            return {
+                link: function(scope, element, attrs) {
+                    element.click(function(e) {
+                        e.preventDefault();
+                        $(element).tab('show');
+                    });
+                }
+            };
+        });
