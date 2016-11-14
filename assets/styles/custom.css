@@ -26,6 +26,42 @@
    padding-bottom: 20px;
     border-bottom: 1px solid #8ac03e;
 }
+
+
+/*Countdown*/
+.container_count {
+    width:50px;
+    display:inline-block;
+    margin-right:5px;
+    color:#000 !important;
+    text-align:center;
+}
+.container_count.last {
+    margin-right:0;
+}
+#countdown_wp{
+    text-align:center;
+    margin:-23px 0 20px 0;
+}
+#countdown_wp h3{
+    text-transform:uppercase;
+}
+#days, #hours, #minutes, #seconds{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border:2px solid #000;
+    text-align:center;
+    width:50px;
+    height:50px;
+    font-size:24px;
+    line-height:45px;
+    font-family:"Helvetica Neue", Arial, sans-serif;
+    font-weight:300;
+}
+
+
+
 .toggleitem{
   font-weight: 200;
 }
