@@ -1,10 +1,13 @@
 /*
 
 */
+@import url(http://fonts.googleapis.com/css?family=Work+Sans:300italic,400italic,700italic,300,400,700);
+
 html {
   background-color: #e0e0e0; }
 
 body {
+  font-family: 'Work Sans', work-sans !important;
   color: rgba(0, 0, 0, 0.87);
   font-size: 0.875rem;
   background-color: #f0f0f0;
@@ -1219,7 +1222,10 @@ a.list-group-item {
 .mealtable > tfoot > tr > td,
 .mealtable > tfoot > tr > th {
   padding: 30px 10px;
-  border-color: rgba(120, 130, 140, 0.55); }
+  border-color: rgba(120, 130, 140, 0.55);
+   font-size: 17px;
+    font-weight: 200;
+ }
 
 .table > thead > tr > th {
   padding: 10px;

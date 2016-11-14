@@ -53,7 +53,7 @@
                                             <th width="70%">
                                                 
                                             </th>
-                                            <th width="10%" class="price">
+                                            <th width="10%" class="price topprice">
                                              
                                             </th>
                                             <th width="20%">
@@ -64,7 +64,8 @@
                                     <tbody>
                                         <tr ng-repeat="additive in meal.option.additives"  class="menurow"> 
                                             <td>
-                                                <i class="fa fa-plus icon-xs"></i> {{additive}} 
+                                                <!-- <i class="fa fa-plus icon-xs"></i> -->
+                                                <i class="fa fa-square icon-xs"></i> {{additive}} 
                                             </td>
                                             <td class="price">
                                                 {{  meal.option.prices[$index] | currency:"₦ ":0 }} 
@@ -72,10 +73,10 @@
                                             </td>
                                             <td>
                                                 <a href="">
-                                                    <i class="fa fa-plus-square-o  icon-add" ng-click="addtocart($index,x)"></i>
+                                                    <i class="fa fa-plus-circle  icon-add" ng-click="addtocart($index,x)"></i>
                                                  </a>
                                                 <a href="">
-                                                    <i class="fa fa-minus-square-o  icon-add" ng-click="removefromcart($index,x)"></i>
+                                                    <i class="fa fa-minus-circle  icon-add" ng-click="removefromcart($index,x)"></i>
                                                 </a>
                                                 <a  my-tooltip class="info-icon" data-toggle="tooltip" data-placement="top" data-html="true"
                                                   title="<b>50</b> <br>  <i>Calories</i>">
@@ -113,7 +114,7 @@
         </div>
         <div class="row"  style="background-color: #fff;margin: 0;"> 
             <div class="col-md-7  cart-sidebar cart-sidebar2" style="display:{{one}};padding-left: 0px;padding-right: 0px; height: 100%;background-color: #fff;">
-                <div class="box" style="position: relative;padding: 30px;">
+                <div class="box box-color2" style="position: relative;padding: 30px;">
                     <div class="box-header dker2" style="background-color: #fff;color:#000;">
                        <h2 class="myorderheader" > My Order </h2>
                     </div>
@@ -143,7 +144,7 @@
                                         
                                     </td>
                                     <td>
-                                       {{ item.price | currency:"₦":0 }} 
+                                       {{ item.price | currency:"₦ ":0 }} 
                                     </td>
                                 </tr>
                             </tbody>
