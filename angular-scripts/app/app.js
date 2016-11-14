@@ -104,7 +104,7 @@ angular
                 element.tooltip();
             }
         }
-    // }).directive('showtab',
+    }).directive('showtab',
     function () {
         return {
             link: function (scope, element, attrs) {
