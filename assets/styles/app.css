@@ -74,7 +74,11 @@ sup {
 
 @media (max-width: 767px) {
   .pull-none-sm {
-    float: none !important; } }
+    float: none !important; } 
+ .margin-top.pull-right{
+    float: left !important; 
+  }
+}
 
 @media (max-width: 543px) {
   .pull-none-xs {
@@ -1207,6 +1211,13 @@ a.list-group-item {
 .table > tfoot > tr > td,
 .table > tfoot > tr > th {
   padding: 5px 10px;
+  border-color: rgba(120, 130, 140, 0.045); }
+
+.mealtable > tbody > tr > td,
+.mealtable > tbody > tr > th,
+.mealtable > tfoot > tr > td,
+.mealtable > tfoot > tr > th {
+  padding: 10px 10px;
   border-color: rgba(120, 130, 140, 0.045); }
 
 .table > thead > tr > th {

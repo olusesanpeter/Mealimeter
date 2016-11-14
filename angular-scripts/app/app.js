@@ -92,4 +92,11 @@ angular
             .otherwise({
                 redirectTo: '/login'
             });
+    }).directive('myTooltip', function(){
+        return {
+            restrict: 'A',
+            link: function(scope, element){
+                element.tooltip();
+            }
+        }
     });

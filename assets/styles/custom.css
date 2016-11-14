@@ -28,6 +28,18 @@
     /*position: absolute;*/
     margin-top: 10%;
 }
+.menurow{
+  border-bottom: 1px solid #5d5d5d !important;
+}
+.mealtable > tbody > tr > td.price, .mealtable > tbody > tr > th.price, .mealtable > tfoot > tr > td.price, .mealtable > thead > tr > th.price {
+    background-color: rgba(138, 192, 62, 0.2);
+  color: #767676;
+  text-align: center;
+}
+.tooltip-arrow,
+.red-tooltip + .tooltip > .tooltip-inner {
+  background-color: rgba(138, 192, 62, 0.2);
+}
 /*Basic Elements*/
 .icon-add {
   color: #8AC03E;
@@ -60,8 +72,9 @@
   border-radius: 0;
 }
 .icon-info{
-  color: #737373;
-  font-size: 15px;
+  color: #959595;
+  font-weight: 100px;
+  font-size: 20px;
 }
 .icon-add:hover,.icon-add:focus{
   color: #6c9631;

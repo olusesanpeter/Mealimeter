@@ -197,5 +197,5 @@ angular.module('mealimeterApp')
                 $scope.two = "none";
             }
         }
-
+        
     }]);
