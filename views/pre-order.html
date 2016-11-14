@@ -87,10 +87,10 @@
 
         </div>
 
-        <div class="col-md-6  cart-sidebar" style="display:{{one}}">
+        <div class="col-md-6  cart-sidebar" style="display:{{one}};padding-left: 0px;padding-right: 0px;">
             <div class="box" style="position: relative;">
                 <div class="box-header dker2" style="background-color: #fff;color:#000;">
-                    Your Order
+                   <h2 style="font-weight: 200;"> Your Order </h2>
                 </div>
                 <div class="p-a-md text-center" ng-hide="total < 1">
                     <table class="table text-left" >
@@ -197,12 +197,7 @@
                     </tbody>
                 </table>
                
-                <div class="p-a-md text-center" ng-hide="total > 1" style="padding: 0rem !important;">
-                    <img src="assets/images/food-basket.png" alt="" width="75px">
-                    
-                    <div class="top-dotted"></div>
-                    <p>Add menu items into your basket</p>
-                </div>
+                
                 <div class="p-a-md text-center" style="padding: 0rem !important;">
                     <div ng-if="daytext == 'Monday'">
                         <a class="btn btn-fw primary btn-full" href="#/pre-order/tuesday">Next <i class="fa fa-arrow-circle-right "></i> </a>
