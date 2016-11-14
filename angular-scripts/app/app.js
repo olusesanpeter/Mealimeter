@@ -14,8 +14,8 @@ angular
         $rootScope.mealimeter = "https://mealimeter.herokuapp.com/";
         $rootScope.mealimeterassets = "https://mealimeter.herokuapp.com/";
 
-        // $rootScope.mealimeter = "http://localhost/mealimeter-backend/mealimeter/index.php/";
-        // $rootScope.mealimeterassets = "http://localhost/mealimeter-backend/mealimeter/";
+        $rootScope.mealimeter = "http://localhost/mealimeter-backend/mealimeter/index.php/";
+        $rootScope.mealimeterassets = "http://localhost/mealimeter-backend/mealimeter/";
 
         // $rootScope.mealimeter = "http://localhost/mealimeter/index.php/";
         // $rootScope.mealimeter = "http://mealimeter.ng/api/index.php/";
