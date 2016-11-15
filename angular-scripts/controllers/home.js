@@ -6,6 +6,13 @@ angular.module('mealimeterApp')
                 [2, 3],
                 [3, 1]
             ];
+            $localStorage.preDiscount = 3000;
+
+            $window.location.href = "#/pre-order/monday";
+        }
+
+        $scope.gotoCombo = function() {
+            $localStorage.preload = [];
 
             $window.location.href = "#/pre-order/monday";
         }

@@ -14,104 +14,103 @@
         </div>
     </div>
 </div>
-<div class="padding" style="background-color: #fff;">
-    <div class="container">
 
+<br>
+<!--<h1 class="green-color text-center hometext">Irresitible Deals</h1>-->
+<br>
+
+<style>
+    .boxx {
+        cursor: pointer;
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-md-10 offset-md-1">
 
         <div class="row">
-            <div class="col-md-6" ng-click="goto2Rice()">
-                <img src="assets/images/dealfor5.jpg" class="img-responsive" />
-            </div>
-
-            <div class="col-md-6" ng-click="goto2Rice()">
-                <img src="assets/images/dealfor5.jpg" class="img-responsive" />
+            <div class="col-md-12 boxx" ng-click="gotoCombo()">
+                <img src="assets/images/createcombo.jpg" class="img-responsive" />
             </div>
         </div>
         <br />
         <div class="row">
-            <div class="col-md-6" ng-click="goto2Rice()">
-                <img src="assets/images/dealfor5.jpg" class="img-responsive" />
+            <div class="col-md-4 boxx" ng-click="goto2Rice()">
+                <img src="assets/images/3for2_.jpg" class="img-responsive" />
             </div>
 
-            <div class="col-md-6" ng-click="goto2Rice()">
-                <img src="assets/images/dealfor5.jpg" class="img-responsive" />
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-6 offset-md-3">
-                <div class="text-center" id="countdown_wp">
-                    <!-- <br> -->
-                    <br><br>
-                    <div class="container_count ">
-                        <div id="days" class="sideborder">00</div>Days</div>
-                    <div class="container_count ">
-                        <div id="hours" class="sideborder">00</div>Hours</div>
-                    <div class="container_count ">
-                        <div id="minutes">00</div>Minutes</div>
-                    <br>
-                    <br>
-                    <!-- <a type="button" class="text-center btn btn-default btn-green-color" ng-click="loginAsGuest()">Get Started</a>  -->
+            <div class="col-md-8 boxx">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="assets/images/1200combo.jpg" class="img-responsive" />
+                    </div>
                 </div>
-            </div>
-        </div>
-        <br>
-        <h1 class="green-color text-center hometext">Irresitible Deals</h1>
-        <br>
-        <div class="row">
-            <div class="col-md-10 offset-md-1">
-                <div class="card card2">
-                    <!-- <div style="height: 350px; width: 100%;background: url('assets/images/jollof-bundle.jpg') no-repeat center center; background-size: cover"> -->
-
-                    <!-- <img class="card-img-top" src="/assets/images/chicken.jpg" alt="Card image cap"> -->
-                    <img src="assets/images/dealpic.jpg" alt="Bundle" class="img-responsive" height="300" style="height: 300px; background:no-repeat scroll center center">
-                    <div class="card-block text-xs-center">
-                        <h1 class="card-title">Deal For Five</h1>
-                        <hr class="btn-green-color" style="width: 15%; background-color:#8ac03e;">
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-default  btn-green-color">Go somewhere</a>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="assets/images/1200combo.jpg" class="img-responsive" />
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-10 offset-md-1">
+        <br />
+        <!--<div class="row">
+            <div class="col-md-6 boxx" ng-click="goto2Rice()">
                 <img src="assets/images/dealfor5.jpg" class="img-responsive" />
             </div>
-        </div>
-        <br>
-        <br>
+
+            <div class="col-md-6 boxx" ng-click="goto2Rice()">
+                <img src="assets/images/dealfor5.jpg" class="img-responsive" />
+            </div>
+        </div>-->
     </div>
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-md-3">
+            <!--<p style="text-align: center">Hello world<br />this is an image</p>-->
+            <div class="text-center" id="countdown_wp">
+                <br><br>
+                <div class="container_count ">
+                    <div id="days" class="sideborder">00</div>Days</div>
+                <div class="container_count ">
+                    <div id="hours" class="sideborder">00</div>Hours</div>
+                <div class="container_count ">
+                    <div id="minutes">00</div>Minutes</div>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+    <script>
+        function fixIntegers(integer) {
+            if (integer < 0)
+                integer = 0;
+            if (integer < 10)
+                return "0" + integer;
+            return "" + integer;
+        }
+        setInterval(function() {
+            var target = new Date("December 01 2016 8:00 GMT+0100"); //replace with YOUR DATE
+            var now = new Date();
+            var difference = Math.floor((target.getTime() - now.getTime()) / 1000);
 
-<script>
-    function fixIntegers(integer) {
-        if (integer < 0)
-            integer = 0;
-        if (integer < 10)
-            return "0" + integer;
-        return "" + integer;
-    }
-    setInterval(function() {
-        var target = new Date("December 01 2016 8:00 GMT+0100"); //replace with YOUR DATE
-        var now = new Date();
-        var difference = Math.floor((target.getTime() - now.getTime()) / 1000);
+            var seconds = fixIntegers(difference % 60);
+            difference = Math.floor(difference / 60);
 
-        var seconds = fixIntegers(difference % 60);
-        difference = Math.floor(difference / 60);
+            var minutes = fixIntegers(difference % 60);
+            difference = Math.floor(difference / 60);
 
-        var minutes = fixIntegers(difference % 60);
-        difference = Math.floor(difference / 60);
+            var hours = fixIntegers(difference % 24);
+            difference = Math.floor(difference / 24);
 
-        var hours = fixIntegers(difference % 24);
-        difference = Math.floor(difference / 24);
+            var days = difference;
 
-        var days = difference;
+            $(".container_count #seconds").html(seconds);
+            $(".container_count #minutes").html(minutes);
+            $(".container_count #hours").html(hours);
+            $(".container_count #days").html(days);
 
-        $(".container_count #seconds").html(seconds);
-        $(".container_count #minutes").html(minutes);
-        $(".container_count #hours").html(hours);
-        $(".container_count #days").html(days);
-
-    }, 1000);
-</script>
+        }, 1000);
+    </script>
