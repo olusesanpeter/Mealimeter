@@ -22,6 +22,20 @@ a:not([href]):not([tabindex]) {
     font-weight: bold;
 }
 
+
+/*
+.navbar.stickyLine {
+    border-bottom: 1px solid #a58561;
+}
+
+.navbar.stickyLine .navbar.navbar-default {
+    border-bottom: 0px solid transparent;
+}*/
+
+.navbar.sticky {
+    background-color: rgba(172, 230, 47, 0.68);
+}
+
 .btn-trans {
     background-color: transparent;
     color: #fff;

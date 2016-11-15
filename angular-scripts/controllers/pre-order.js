@@ -30,6 +30,8 @@ angular.module('mealimeterApp')
             } else {
                 $window.location.href = "#/pre-order/monday";
             }
+            toastr.options.timeOut = 1000;
+            toastr.positionClass = "toast-bottom-left";
 
 
 
@@ -324,7 +326,7 @@ angular.module('mealimeterApp')
 
                         for (var i = 0; i < qty; i++) {
                             console.log(foodid);
-                            $scope.addtocart(foodid, 0);
+                            $scope.addToCart(foodid, 0);
                         }
 
                     }, this);
