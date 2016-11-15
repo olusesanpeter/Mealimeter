@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <title>Mealimeter | Dashboard</title>
-  <meta name="description" content="" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <title>Mealimeter | Dashboard</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
-  <link rel="apple-touch-icon" href="assets/images/logo.png">
-  <meta name="apple-mobile-web-app-title" content="Mealimeter">
-  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <link rel="shortcut icon" sizes="196x196" href="assets/images/logo.png">
-  
-  <!-- style -->
-  <link rel="stylesheet" href="assets/animate.css/animate.min.css" type="text/css" />
-  <link rel="stylesheet" href="assets/glyphicons/glyphicons.css" type="text/css" />
-  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css'>
-  <link rel="stylesheet" href="assets/material-design-icons/material-design-icons.css" type="text/css" />
+    <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+    <link rel="apple-touch-icon" href="assets/images/logo.png">
+    <meta name="apple-mobile-web-app-title" content="Mealimeter">
+    <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" sizes="196x196" href="assets/images/logo.png">
 
-  <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
-  <link rel="stylesheet" href="assets/sweetalert.css" type="text/css" />
-  <!-- build:css assets/styles/app.min.css -->
-  <link rel="stylesheet" href="assets/styles/app.css" type="text/css" />
-  <link rel="stylesheet" href="assets/styles/custom.css" type="text/css" />
-  <!-- endbuild -->
-  <link rel="stylesheet" href="assets/styles/font.css" type="text/css" />
+    <!-- style -->
+    <link rel="stylesheet" href="assets/animate.css/animate.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/glyphicons/glyphicons.css" type="text/css" />
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="assets/material-design-icons/material-design-icons.css" type="text/css" />
+
+    <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/sweetalert.css" type="text/css" />
+    <!-- build:css assets/styles/app.min.css -->
+    <link rel="stylesheet" href="assets/styles/app.css" type="text/css" />
+    <link rel="stylesheet" href="assets/styles/custom.css" type="text/css" />
+    <!-- endbuild -->
+    <link rel="stylesheet" href="assets/styles/font.css" type="text/css" />
     <script type="text/javascript">
-      window.paceOptions = {
-          document: true, // disabled
-          eventLag: true,
-          restartOnPushState: true,
-          restartOnRequestAfter: true,
-          ajax: {
-              trackMethods: [ 'POST','GET']
-          }
+        window.paceOptions = {
+            document: true, // disabled
+            eventLag: true,
+            restartOnPushState: true,
+            restartOnRequestAfter: true,
+            ajax: {
+                trackMethods: ['POST', 'GET']
+            }
 
-      };
+        };
     </script>
 
     <script src="libs/jquery/PACE/pace.min.js"></script>
+    <script src="libs/jquery/jquery/dist/jquery.js"></script>
+    <script src="libs/jquery/tether/dist/js/tether.min.js"></script>
+    <script src="libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
     <!-- Angular -->
     <script src="libs/angular/angular.js"></script>
     <script src="libs/ngstorage.min.js"></script>
@@ -55,8 +59,8 @@
     <script src="libs/angular-sanitize/angular-sanitize.js"></script>
     <script src="libs/angular-touch/angular-touch.js"></script>
 
-   
-  <!--Mealimeter Angular Scripts -->
+
+    <!--Mealimeter Angular Scripts -->
     <script src="angular-scripts/app/app.js"></script>
     <script src="angular-scripts/controllers/pre-order.js"></script>
     <script src="angular-scripts/controllers/top-up.js"></script>
@@ -68,21 +72,20 @@
     <script src="angular-scripts/controllers/forgot-password.js"></script>
     <script src="angular-scripts/controllers/checkout.js"></script>
     <script src="angular-scripts/controllers/rating.js"></script>
+    <script src="angular-scripts/controllers/home.js"></script>
     <script src="angular-scripts/controllers/rs.js"></script>
     <script src="angular-scripts/controllers/set-password.js"></script>
+    <script src="angular-scripts/controllers/guestlogin.js"></script>
 
-  <!-- jQuery -->
-    <script src="libs/jquery/jquery/dist/jquery.js"></script>
-  <!-- Bootstrap -->
-    <script src="libs/jquery/tether/dist/js/tether.min.js"></script>
-    <script src="libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-  <!-- core -->
+    <!-- jQuery -->
+    <!-- Bootstrap -->
+    <!-- core -->
     <script src="libs/jquery/underscore/underscore-min.js"></script>
     <script src="libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
 
     <script src="scripts/config.lazyload.js"></script>
 
-   <!-- ajax -->
+    <!-- ajax -->
     <script src="libs/jquery/jquery-pjax/jquery.pjax.js"></script>
     <script src="assets/sweetalert.min.js"></script>
     <script src="scripts/ajax.js"></script>
@@ -91,33 +94,38 @@
 
 
     <script type="text/javascript">
-
-      jQuery(document).ready(function(){
-        $('.btn').on('click', function() {
-          var $this = $(this);
-        $this.button('loading');
-          setTimeout(function() {
-             $this.button('reset');
-         }, 8000);
+        jQuery(document).ready(function() {
+            $('.btn').on('click', function() {
+                var $this = $(this);
+                $this.button('loading');
+                setTimeout(function() {
+                    $this.button('reset');
+                }, 8000);
+            });
+            $("#invitemodal").appendTo("body");
         });
-      });
     </script>
+    <style>
+        .modal-backdrop {
+            z-index: 100;
+        }
+    </style>
 
-   
 </head>
 
 <body ng-app="mealimeterApp">
 
- 
 
-<!-- ############ LAYOUT START-->
-  <div id="content" class="app-content box-shadow-z0" role="main">
-      
-   <div ng-view=""></div>
 
-  </div>
-<!-- ############ LAYOUT END-->
+    <!-- ############ LAYOUT START-->
+    <div id="content" class="app-content box-shadow-z0" role="main">
+
+        <div ng-view=""></div>
+
+    </div>
+    <!-- ############ LAYOUT END-->
 
 
 </body>
+
 </html>
