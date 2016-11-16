@@ -33,7 +33,7 @@ a:not([href]):not([tabindex]) {
 }*/
 
 .navbar.sticky {
-    background-color: rgba(172, 230, 47, 0.68);
+    background-color: /*rgba(172, 230, 47, 0.68);*/rgb(172, 230, 47);
 }
 
 .btn-trans {
@@ -72,7 +72,8 @@ a:not([href]):not([tabindex]) {
 }
 
 #countdown_wp {
-    text-align: center;
+     text-align: left;
+      position: absolute;
     margin: -23px 0 20px 0;
 }
 
@@ -80,22 +81,14 @@ a:not([href]):not([tabindex]) {
     text-transform: uppercase;
 }
 
-#days,
-#hours,
-#minutes,
-#seconds {
-    /*-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    */
-    /*border:2px solid #000;*/
+#days, #hours, #minutes, #seconds {
+    font-family: "Helvetica Neue",Arial,sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    height: 30px;
+    line-height: 30px;
     text-align: center;
     width: 100px;
-    height: 70px;
-    font-size: 54px;
-    line-height: 60px;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    font-weight: 300;
 }
 
 .box-color2 {

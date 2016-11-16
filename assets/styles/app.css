@@ -300,6 +300,7 @@ sup {
     border-radius: inherit;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
+    font-size:20px;
 }
 
 .btn-icon.btn-xs {
