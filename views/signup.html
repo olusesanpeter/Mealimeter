@@ -82,7 +82,7 @@
                             <select name="" ng-model="data.companies" class="form-control">
                 <option value="">Select your Company </option>
                 <h1>{{companies}}</h1>
-                <option ng-repeat="company in companies" value="{{company.id}}">{{company.name}} - {{company.location}}</option>
+                <option ng-repeat="company in companies" value="{{company.id}}">{{company.name}} - {{company.address}}</option>
                 <option value="other" aria-label="Toggle ngShow">Other</option>
               </select>
                         </div>
@@ -92,7 +92,7 @@
                         </div>
                         <div class="md-form-group float-label" ng-show="data.companies == 'other'">
                             <input type="text" class="md-input" ng-model="data.officeaddress">
-                            <label>Company Street Name</label>
+                            <label>Company Street Name only</label>
                         </div>
                         <div class="md-form-group float-label" ng-show="data.companies == 'other'">
                             <input type="text" class="md-input" ng-model="data.officelocation">
