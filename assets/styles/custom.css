@@ -21,7 +21,9 @@ a:not([href]):not([tabindex]) {
     color: #324518;
     font-weight: bold;
 }
-
+ .boxx {
+        cursor: pointer;
+    }
 
 /*
 .navbar.stickyLine {
@@ -31,9 +33,15 @@ a:not([href]):not([tabindex]) {
 .navbar.stickyLine .navbar.navbar-default {
     border-bottom: 0px solid transparent;
 }*/
-
-.navbar.sticky {
-    background-color: /*rgba(172, 230, 47, 0.68);*/rgb(172, 230, 47);
+.navbar .hidehome{
+  display: none;
+}
+.navbar.sticky, .sticky .navbar {
+    background-color: /*rgba(172, 230, 47, 0.68);*/#8ac03e;
+    border-radius: 0rem;
+}
+.navbar.sticky .hidehome, .sticky .navbar .hidehome {
+  display: block;
 }
 
 .btn-trans {

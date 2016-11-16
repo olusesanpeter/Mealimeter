@@ -14,7 +14,7 @@
 
         <!-- navbar right -->
         <ul class="nav navbar-nav pull-right">
-            <li class="nav-item dropdown" ng-if="username != 'guest'">
+            <li class="nav-item dropdown " ng-if="username != 'guest'">
                 <a class="nav-link nav-link2">
 						Wallet Balance : <span class="white-color">{{ balance | currency:"₦":0 }}</span>
 					</a>
@@ -49,19 +49,19 @@
                     <img src="assets/images/logo-m.png" alt="" width="150px" style=" margin-top: -5px;">
                 </a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown hidehome">
                 <a class="nav-link" ng-href="#/home">
 						Deals
 					</a>
             </li>
 
-            <li class="nav-item dropdown" ng-if="username != 'guest'">
+            <li class="nav-item dropdown hidehome" ng-if="username != 'guest'">
                 <a class="nav-link" ng-href="#/pre-order">
 						Pre-Order Meals
 					</a>
             </li>
 
-            <li class="nav-item dropdown" ng-if="username != 'guest'">
+            <li class="nav-item dropdown hidehome" ng-if="username != 'guest'">
                 <a class="nav-link" ng-href="#/top-up">
 						Top-Up Account
 					</a>
@@ -72,7 +72,7 @@
 					</a>
             </li>-->
 
-            <li class="nav-item" ng-if="username != 'guest'" data-target='#invitemodal' data-toggle="modal">
+            <li class="nav-item hidehome" ng-if="username != 'guest'" data-target='#invitemodal' data-toggle="modal">
                 <a class="nav-link">
 						Invite
 					</a>

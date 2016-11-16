@@ -6,59 +6,41 @@
 <div class="item">
     <div class="">
         <div class="hero" style="background:rgba(0, 0, 0, 0) url('assets/images/jollofthursday-banner_.jpg') no-repeat scroll center center / cover; height: 640px;width: 100% ">
-            <div class="col-sm-12" text-center>
-                <span>
-                    <!-- <h1 style="font-size: 70px; text-align: center; color: white; font-weight: 200;"> Jollof Thursdays </h1> -->
-                </span>
-            </div>
         </div>
     </div>
 </div>
 
 <br>
-<!--<h1 class="green-color text-center hometext">Irresitible Deals</h1>-->
 <br>
-
-<style>
-    .boxx {
-        cursor: pointer;
-    }
-</style>
-
-
-<div class="row">
+<div class="container-fluid">
     <div class="col-md-10 offset-md-1">
-        <br />
+        <br>
         <div class="row">
             <div class="col-md-4 boxx" ng-click="gotoCombo('3for2_.jpg', 13)">
-                <img src="assets/images/3for2_.jpg" class="img-responsive" />
+                <img src="assets/images/3for2_.jpg" class="img-responsive">
             </div>
 
             <div class="col-md-8 boxx">
                 <div class="row">
                     <div class="col-md-12" ng-click="gotoCombo('1200combo.jpg', 12, 2, 'Smoothie/Juice')">
-                        <img src="assets/images/1200combo.jpg" class="img-responsive" />
+                        <img src="assets/images/1200combo.jpg" class="img-responsive">
                     </div>
                 </div>
                 <br />
                 <div class="row">
                     <div class="col-md-12 boxx" ng-click="gotoCombo('700combo.jpg', 11, 2, 'Smoothie/Juice')">
-                        <img src="assets/images/700combo.jpg" class="img-responsive" />
+                        <img src="assets/images/700combo.jpg" class="img-responsive">
                     </div>
                 </div>
+                <br>
+                <br>
+
             </div>
         </div>
-        <br />
-        <!--<div class="row">
-            <div class="col-md-6 boxx" ng-click="gotoCombo('700combo.jpg', 11, 2, 'Smoothie/Juice')">
-                <img src="assets/images/700combo.jpg" class="img-responsive" />
-            </div>
-        </div>-->
-        <br />
 
         <div class="row">
             <div class="col-md-12 boxx" ng-click="createCombo('createcombo.jpg')">
-                <img src="assets/images/createcombo.jpg" class="img-responsive" />
+                <img src="assets/images/createcombo.jpg" class="img-responsive">
             </div>
         </div>
     </div>
@@ -66,6 +48,17 @@
 <br />
 <br />
 <br />
-<br />
-
 <div ng-include="'views/partials/footer.html'"></div>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 1) {
+                $('.navbar').switchClass("", "sticky", 700, "easeInOutQuad");
+                $('.navbar').addClass("stickyLine");
+            } else {
+                $('.navbar').switchClass("sticky", "", 700, "easeInOutQuad");
+                $('.navbar').removeClass("stickyLine");
+            }
+        });
+    });
+</script>
