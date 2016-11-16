@@ -57,51 +57,5 @@
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6 offset-md-3">
-            <!--<p style="text-align: center">Hello world<br />this is an image</p>-->
-            <div class="text-center" id="countdown_wp">
-                <br><br>
-                <div class="container_count ">
-                    <div id="days" class="sideborder">00</div>Days</div>
-                <div class="container_count ">
-                    <div id="hours" class="sideborder">00</div>Hours</div>
-                <div class="container_count ">
-                    <div id="minutes">00</div>Minutes</div>
-                <br>
-                <br>
-            </div>
-        </div>
-    </div>
-    <script>
-        function fixIntegers(integer) {
-            if (integer < 0)
-                integer = 0;
-            if (integer < 10)
-                return "0" + integer;
-            return "" + integer;
-        }
-        setInterval(function() {
-            var target = new Date("December 01 2016 8:00 GMT+0100"); //replace with YOUR DATE
-            var now = new Date();
-            var difference = Math.floor((target.getTime() - now.getTime()) / 1000);
 
-            var seconds = fixIntegers(difference % 60);
-            difference = Math.floor(difference / 60);
-
-            var minutes = fixIntegers(difference % 60);
-            difference = Math.floor(difference / 60);
-
-            var hours = fixIntegers(difference % 24);
-            difference = Math.floor(difference / 24);
-
-            var days = difference;
-
-            $(".container_count #seconds").html(seconds);
-            $(".container_count #minutes").html(minutes);
-            $(".container_count #hours").html(hours);
-            $(".container_count #days").html(days);
-
-        }, 1000);
-    </script>
+<div ng-include="'views/partials/footer.html'"></div>
