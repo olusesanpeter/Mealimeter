@@ -41,8 +41,8 @@ a:not([href]):not([tabindex]) {
     color: #fff;
 }
 
-.btn{
-    background-color: green;
+.btn.primary {
+    background-color: #8ac03e;
 }
 
 .myorderheader {
