@@ -19,86 +19,14 @@
 
 <div class="padding">
     <div class="container">
-        <div class="row" ng-if="preRefer > 0">
-            <div class="col-md-10 offset-md-1 box" style="padding: 10px">
-                <h3>Invite {{preRefer}} to get a free {{preReferItem}}</h3>
-                <div class="row">
-                    <div class="col-md-4">
-                        <input type="text" placeholder="Your name" id="personname" class="form-control" />
-                    </div>
-                </div>
-                <div class="row" style="text-align: center">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="item in referList" id="prow{{item}}">
-                                <td>
-                                    <button class="btn btn-link" ng-click="remove(item)">
-                                            <i class="fa fa-times" style="color: red"></i>
-                                        </button>
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control" id="pinvite-name{{item}}" />
-                                    <small class="msgerror itemerror{{item}}" id="errorName{{item}}"></small>
-                                </td>
-                                <td>
-                                    <input type="email" class="form-control" id="pinvite-email{{item}}" />
-                                    <small class="msgerror itemerror{{item}}" id="errorEmail{{item}}"></small>
-                                </td>
-                                <td>
-                                    <input type="tel" class="form-control" id="pinvite-phone{{item}}" />
-                                    <small class="msgerror itemerror{{item}}" id="errorPhone{{item}}"></small>
-                                </td>
-                                <td>
-                                    <button class="btn btn-fw primary btn-dark-green" id="psendBtn{{item}}" ng-click="sendInvite(item)">Send</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <hr />
-
-                    <div class="row" style="text-align: center">
-                        <table class="table table-condensed">
-                            <!--<thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th></th>
-                                </tr>-->
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="user in done">
-                                    <td>
-                                        {{user.name}}
-                                    </td>
-                                    <td>
-                                        {{user.email}}
-                                    </td>
-                                    <td>
-                                        {{user.phone}}
-                                    </td>
-                                    <td style="color: green">
-                                        <i class="fa fa-check"></i> Sent
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <small>*applies only if the refered persons buy</small>
-                </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3" style="text-align: center">
+                <button class="btn btn-link" style="margin: auto" data-target='#refermodal' data-toggle="modal">
+                Click here to Refer
+                </button>
             </div>
         </div>
+
         <div class=" row " style="background-color: #fff;margin: 0; ">
             <div class="col-md-7 cart-sidebar cart-sidebar2 " style="padding-left: 0px;padding-right: 0px; height: 100%;background-color: #fff; ">
                 <div class="box box-color2 " style="position: relative;padding: 30px; ">
@@ -389,6 +317,99 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="refermodal" ng-controller="inviteCtrl">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Refer {{preRefer}} to get a free {{preReferItem}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row" ng-if="preRefer > 0">
+                    <div class="col-md-12" style="padding: 10px">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="text" placeholder="Your name" id="personname" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row" style="text-align: center">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in referList" id="prow{{item}}">
+                                        <td>
+                                            <button class="btn btn-link" ng-click="remove(item)">
+                                            <i class="fa fa-times" style="color: red"></i>
+                                        </button>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" id="pinvite-name{{item}}" />
+                                            <small class="msgerror itemerror{{item}}" id="errorName{{item}}"></small>
+                                        </td>
+                                        <td>
+                                            <input type="email" class="form-control" id="pinvite-email{{item}}" />
+                                            <small class="msgerror itemerror{{item}}" id="errorEmail{{item}}"></small>
+                                        </td>
+                                        <td>
+                                            <input type="tel" class="form-control" id="pinvite-phone{{item}}" />
+                                            <small class="msgerror itemerror{{item}}" id="errorPhone{{item}}"></small>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-fw primary btn-dark-green" id="psendBtn{{item}}" ng-click="sendInvite(item)">Send</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <hr />
+
+                            <div class="row" style="text-align: center">
+                                <table class="table table-condensed">
+                                    <!--<thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th></th>
+                                </tr>-->
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="user in done">
+                                            <td>
+                                                {{user.name}}
+                                            </td>
+                                            <td>
+                                                {{user.email}}
+                                            </td>
+                                            <td>
+                                                {{user.phone}}
+                                            </td>
+                                            <td style="color: green">
+                                                <i class="fa fa-check"></i> Sent
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <small>*applies only if the refered persons buy</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
