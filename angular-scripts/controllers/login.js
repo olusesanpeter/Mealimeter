@@ -11,7 +11,7 @@ angular.module('mealimeterApp')
     .controller('LoginCtrl', ['$scope', '$http', '$rootScope', '$window', '$localStorage', '$location', function($scope, $http, $rootScope, $window, $localStorage, $location) {
         //////data from login
         if ($localStorage.data != undefined) {
-            $window.location.href = "#/pre-order/monday";
+            $window.location.href = "#/home";
         } else {
             $scope.logins = function(data) {
                 var link = $rootScope.mealimeter;
@@ -31,7 +31,7 @@ angular.module('mealimeterApp')
                             console.log("Login Successful");
                             $localStorage.data = response.data;
 
-                            $window.location.href = "#/pre-order/monday";
+                            $window.location.href = "#/home";
                         }
                     } else {
                         if (response.data.description == "Not Activated") {
@@ -51,7 +51,7 @@ angular.module('mealimeterApp')
 
         $scope.loginAsGuest = function() {
             $localStorage.guest = true;
-            $window.location.href = "#/pre-order/monday";
+            $window.location.href = "#/home";
         }
 
     }]);

@@ -22,7 +22,7 @@
         <!-- <div class="col-md-2"></div> -->
         <div class="row">
             <div class="col-md-6" style="display:{{one}}" ng-repeat="weekday in weeks">
-                <div  class="box" style="position: relative; cursor: pointer;">
+                <div class="box" style="position: relative; cursor: pointer;">
                     <div class="box-header dker2">
                         <h3><span class="big-font">{{ weekday.name }}</h3>
                     </div>
@@ -49,38 +49,38 @@
                                     <td>
                                         <b>{{item.mainmeal}}</b>
                                         <br><span class="toppings">+ {{item.additive}}</span>
-                                    </td>
-                                    <td>
-                                       {{ item.price | currency:"₦":0 }}
-                                    </td>
-                                </tr>
+                            </td>
+                            <td>
+                                {{ item.price | currency:"₦":0 }}
+                            </td>
+                            </tr>
                             </tbody>
-                        </table>
-                        <table class="table" >
-                            <tbody class="total-section">
-                                <tr>
-                                    <td class="total">Total</td>
-                                    <td class="price"> {{  weekday.total | currency:"₦":0 }}</td>
-                                </tr>
-                                <tr  ng-hide="companysubsidy < 1">
-                                    <td class="total">Company subsidy</td>
-                                    <td class="price">- {{  companysubsidy | currency:"₦":0 }}</td>
-                                </tr>
-                                <tr>
-                                    <td class="total">Total Amount Due</td>
-                                    <td class="amount-due  dark-green-color">{{  weekday.due | currency:"₦":0 }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <a ng-click="redirect(weekday.name.toLowerCase())" class="btn btn-default btn-trans btn-full" ><i class="fa fa-edit"></i> Change Order</a>
-                    
+                            </table>
+                            <table class="table">
+                                <tbody class="total-section">
+                                    <tr>
+                                        <td class="total">Total</td>
+                                        <td class="price"> {{ weekday.total | currency:"₦":0 }}</td>
+                                    </tr>
+                                    <tr ng-hide="companysubsidy < 1">
+                                        <td class="total">Company subsidy</td>
+                                        <td class="price">- {{ companysubsidy | currency:"₦":0 }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="total">Total Amount Due</td>
+                                        <td class="amount-due  dark-green-color">{{ weekday.due | currency:"₦":0 }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a ng-click="redirect(weekday.name.toLowerCase())" class="btn btn-default btn-trans btn-full"><i class="fa fa-edit"></i> Change Order</a>
+
                     </div>
                     <div class="p-a-md text-center" ng-hide="weekday.total > 1">
                         <img src="assets/images/food-basket.png" alt="" width="75px">
-                        
+
                         <!-- <div class="top-dotted"></div> -->
                         <p>No meal has been selected</p>
-                        <a ng-click="redirect(weekday.name.toLowerCase())" class="btn btn-default btn-trans btn-full" >Choose from menu</a>
+                        <a ng-click="redirect(weekday.name.toLowerCase())" class="btn btn-default btn-trans btn-full">Choose from menu</a>
 
                     </div>
 
@@ -103,12 +103,12 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title text-center">Total:  <span class="green-color">{{  total | currency:"₦":0 }}</span></h4>
+                <h4 class="modal-title text-center">Total: <span class="green-color">{{  total | currency:"₦":0 }}</span></h4>
             </div>
             <div class="modal-body">
-                <div class="row" >
-                    
-                    
+                <div class="row">
+
+
                     <div class="col-md-6">
                         <div class="pull-left">
                             <button id="payBtn" class="btn btn-default " type="button" ng-click="ngFn()"><i class="fa fa-credit-card"></i></button>

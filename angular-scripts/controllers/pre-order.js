@@ -28,12 +28,12 @@ angular.module('mealimeterApp')
                 $scope.day = 4;
                 $scope.daytext = "Friday";
             } else {
-                $window.location.href = "#/pre-order/monday";
+                $window.location.href = "#/pre-order/thursday";
             }
             toastr.options.timeOut = 1000;
             toastr.positionClass = "toast-bottom-left";
 
-
+            $scope.preImage = 'createcombo.jpg';
 
             $scope.drinks = [];
             $scope.snacks = [];
@@ -82,6 +82,11 @@ angular.module('mealimeterApp')
 
             if ($localStorage.preload != undefined) {
                 delete $localStorage.cart;
+            } else {
+                if ($localStorage.preClean == true) {
+                    delete $localStorage.cart;
+                    delete $localStorage.preClean;
+                }
             }
 
 
@@ -108,9 +113,7 @@ angular.module('mealimeterApp')
                     $scope.cart = $localStorage.cart[$scope.day];
                     $scope.total = $localStorage.total[$scope.day];
                     $scope.due = $localStorage.due[$scope.day];
-                    console.log($scope.due);
                     $scope.due = $scope.due - $scope.discount;
-                    console.log($scope.due);
                     $scope.one = "block";
                     $scope.two = "none";
                 }
@@ -310,6 +313,9 @@ angular.module('mealimeterApp')
 
             $scope.loadPreloads = function() {
                 // delete $localStorage.preDiscount;
+                if ($localStorage.preImage) {
+                    $scope.preImage = $localStorage.preImage;
+                }
                 if ($localStorage.preDiscount != undefined) {
                     $scope.discount = $localStorage.preDiscount;
                     console.log($scope.discount);
@@ -325,12 +331,27 @@ angular.module('mealimeterApp')
                         var qty = load[1];
 
                         for (var i = 0; i < qty; i++) {
-                            console.log(foodid);
-                            $scope.addToCart(foodid, 0);
+                            var fooditem = $scope.getFoodById(foodid);
+                            $scope.addToCart(fooditem);
                         }
 
                     }, this);
                 }
+
+                delete $localStorage.preDiscount;
+                // delete $localStorage.preImage;
+                delete $localStorage.preload;
+            }
+
+            $scope.getFoodById = function(fid) {
+                var food;
+                $scope.food.forEach(function(item) {
+                    if (fid == item.id) {
+                        food = item;
+                    }
+                }, this);
+                console.log(food);
+                return food;
             }
         }
 

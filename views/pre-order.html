@@ -9,14 +9,12 @@
     <br>
     <div class="container">
         <br>
-        <div class="hero" style="background:rgba(0, 0, 0, 0) url('assets/images/banner1.jpg') no-repeat scroll center center / cover ">
-            <div class="col-sm-12" text-center>
-
-                <!-- <span>
-                    <h1 style="font-size: 70px; text-align: center; color: white"> Jollof Thursday </h1>
-                </span> -->
+        <div class="row">
+            <div class="col-md-12" style="height: 400px; text-align: center; background: url(assets/images/{{preImage}}) no-repeat center center; background-size: contain">
+                <!--<img src="" style="height: inherit; margin: auto" />-->
             </div>
         </div>
+
     </div>
 </div>
 <!-- <div class="m-b">
@@ -26,6 +24,121 @@
 </div> -->
 <div class="padding">
     <div class="container">
+
+        <div class="row" style="background-color: #fff;margin: 0;">
+            <div class="col-md-7  cart-sidebar cart-sidebar2" style="padding-left: 0px;padding-right: 0px; height: 100%;background-color: #fff;">
+                <div class="box box-color2" style="position: relative;padding: 30px;">
+                    <div class="box-header dker2" style="background-color: #fff;color:#000;">
+                        <h2 class="myorderheader"> My Order </h2>
+                    </div>
+                    <div class="p-a-md text-center" ng-hide="total < 1">
+                        <table class="table text-left hometable">
+                            <thead class="">
+                                <tr>
+                                    <th width="15%">
+                                        Qty
+                                    </th>
+                                    <th width="65%">
+                                        Meal
+                                    </th>
+                                    <th width="20%">
+                                        Price
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in cart track by $index">
+                                    <td>
+                                        <div style="min-width: 50px">
+                                            {{item.quantity}}x
+
+                                            <span style="color: green; cursor: pointer" ng-click="addToCart(item.food)">
+                                                <i class="fa fa-caret-up"></i>
+                                            </span>
+                                            <span style="color: green; cursor: pointer" ng-click="removeFromCart(item.food)">
+                                                <i class="fa fa-caret-down"></i>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <b>{{item.mainmeal}}</b>
+                                        <br><span class="toppings">+ {{item.additive}}</span>
+
+                                    </td>
+                                    <td>
+                                        {{ item.price | currency:"₦ ":0 }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="p-a-md text-center" ng-hide="total > 1">
+                        <img src="assets/images/food-basket.png" alt="" width="75px">
+
+                        <div class="top-dotted"></div>
+                        <p>Add menu items into your basket</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-5 boxed bg--white" style=" background-color: #e9e9e9;padding: 0;margin-bottom: 0;">
+                <div style="padding:2em">
+                    <div class="" style="background-color:#8ac03e; padding:20px;color:#fff;">
+                        <p style="font-size:20px;">Nutritution Info </p>
+                        <hr style="background-color: #fff;margin-top:-5px;">
+                        <br> Your Order - 40 Calories
+
+                    </div>
+                    <br>
+                    <table class="table">
+                        <tbody class="total-section">
+                            <tr>
+                                <td class="total">Total</td>
+                                <td class="price"> {{ total | currency:"₦":0 }}</td>
+                            </tr>
+                            <tr ng-hide="companysubsidy < 1">
+                                <td class="total">Company subsidy</td>
+                                <td class="price">- {{ companysubsidy | currency:"₦":0 }}</td>
+                            </tr>
+                            <tr ng-hide="discount < 1">
+                                <td class="total">Discount</td>
+                                <td class="price">- {{ discount | currency:"₦":0 }}</td>
+                            </tr>
+                            <tr>
+                                <td class="total"><b>Amount Due </b></td>
+                                <td class="amount-due dark-green-color"><b>  {{ due | currency:"₦":0 }} </b></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="p-a-md text-center" style="padding: 0rem !important;">
+                    <!--<div ng-if="daytext == 'Monday'">
+                        <a class="btn btn-fw primary btn-full" href="#/pre-order/tuesday">Next <i class="fa fa-arrow-circle-right "></i> </a>
+                    </div> -->
+                    <div ng-if="daytext == 'Tuesday'">
+                        <a class="btn btn-fw primary btn-half" href="#/pre-order/thursday"> <i class="fa fa-arrow-circle-left "></i> Order for Tuesday</a>
+                        <!--<a class="btn btn-fw primary btn-half" href="#/pre-order/wednesday">Next <i class="fa fa-arrow-circle-right "></i> </a>-->
+                    </div>
+                    <!--<div ng-if="daytext == 'Wednesday'">
+                        <a class="btn btn-fw primary btn-half" href="#/pre-order/tuesday"><i class="fa fa-arrow-circle-left "></i> Previous</a>
+                        <a class="btn btn-fw primary btn-half" href="#/pre-order/thursday">Next  <i class="fa fa-arrow-circle-right "></i> </a>
+                    </div>-->
+                    <div ng-if="daytext == 'Thursday'">
+                        <!--<a class="btn btn-fw primary btn-half" href="#/pre-order/wednesday"><i class="fa fa-arrow-circle-left "></i> Previous</a>-->
+                        <a class="btn btn-fw primary btn-half" href="#/pre-order/tuesday">Order for Tuesday  <i class="fa fa-arrow-circle-right "></i> </a>
+                    </div>
+                    <!--<div ng-if="daytext == 'Friday'">
+                        <a class="btn btn-fw primary btn-full" href="#/pre-order/thursday"><i class="fa fa-arrow-circle-left "></i>  Previous</a>
+                    </div>-->
+                    <a class="btn btn-fw primary btn-full btn-dark-green" href="#/checkout">Checkout</a>
+
+                </div>
+            </div>
+        </div>
+        <br />
 
         <div class="row">
             <div class="col-sm-12" ng-show="done">
@@ -71,7 +184,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat="foods in food" class="menurow">
+                                            <tr ng-repeat="foods in food" class="menurow" ng-show="foods.main != 'Combo'">
                                                 <td>
                                                     <!-- <i class="fa fa-plus icon-xs"></i> -->
                                                     <i class="fa fa-square icon-xs"></i> {{foods.name}}
@@ -202,119 +315,6 @@
                 </div>
             </div>
 
-        </div>
-        <div class="row" style="background-color: #fff;margin: 0;">
-            <div class="col-md-7  cart-sidebar cart-sidebar2" style="padding-left: 0px;padding-right: 0px; height: 100%;background-color: #fff;">
-                <div class="box box-color2" style="position: relative;padding: 30px;">
-                    <div class="box-header dker2" style="background-color: #fff;color:#000;">
-                        <h2 class="myorderheader"> My Order </h2>
-                    </div>
-                    <div class="p-a-md text-center" ng-hide="total < 1">
-                        <table class="table text-left hometable">
-                            <thead class="">
-                                <tr>
-                                    <th width="15%">
-                                        Qty
-                                    </th>
-                                    <th width="65%">
-                                        Meal
-                                    </th>
-                                    <th width="20%">
-                                        Price
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="item in cart track by $index">
-                                    <td>
-                                        <div style="min-width: 50px">
-                                            {{item.quantity}}x
-
-                                            <span style="color: green; cursor: pointer" ng-click="addToCart(item.food)">
-                                                <i class="fa fa-caret-up"></i>
-                                            </span>
-                                            <span style="color: green; cursor: pointer" ng-click="removeFromCart(item.food)">
-                                                <i class="fa fa-caret-down"></i>
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <b>{{item.mainmeal}}</b>
-                                        <br><span class="toppings">+ {{item.additive}}</span>
-
-                                    </td>
-                                    <td>
-                                        {{ item.price | currency:"₦ ":0 }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="p-a-md text-center" ng-hide="total > 1">
-                        <img src="assets/images/food-basket.png" alt="" width="75px">
-
-                        <div class="top-dotted"></div>
-                        <p>Add menu items into your basket</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-md-5 boxed bg--white" style=" background-color: #e9e9e9;padding: 0;margin-bottom: 0;">
-                <div style="padding:2em">
-                    <div class="" style="background-color:#8ac03e; padding:20px;color:#fff;">
-                        <p style="font-size:20px;">Nutritution Info </p>
-                        <hr style="background-color: #fff;margin-top:-5px;">
-                        <br> Your Order - 40 Calories
-
-                    </div>
-                    <br>
-                    <table class="table">
-                        <tbody class="total-section">
-                            <tr>
-                                <td class="total">Total</td>
-                                <td class="price"> {{ total | currency:"₦":0 }}</td>
-                            </tr>
-                            <tr ng-hide="companysubsidy < 1">
-                                <td class="total">Company subsidy</td>
-                                <td class="price">- {{ companysubsidy | currency:"₦":0 }}</td>
-                            </tr>
-                            <tr ng-hide="discount < 1">
-                                <td class="total">Discount</td>
-                                <td class="price">- {{ discount | currency:"₦":0 }}</td>
-                            </tr>
-                            <tr>
-                                <td class="total"><b>Amount Due </b></td>
-                                <td class="amount-due dark-green-color"><b>  {{ due | currency:"₦":0 }} </b></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-
-                <div class="p-a-md text-center" style="padding: 0rem !important;">
-                    <!--<div ng-if="daytext == 'Monday'">
-                        <a class="btn btn-fw primary btn-full" href="#/pre-order/tuesday">Next <i class="fa fa-arrow-circle-right "></i> </a>
-                    </div>
-                    <div ng-if="daytext == 'Tuesday'">
-                        <a class="btn btn-fw primary btn-half" href="#/pre-order/monday"> <i class="fa fa-arrow-circle-left "></i> Previous</a>
-                        <a class="btn btn-fw primary btn-half" href="#/pre-order/wednesday">Next <i class="fa fa-arrow-circle-right "></i> </a>
-                    </div>
-                    <div ng-if="daytext == 'Wednesday'">
-                        <a class="btn btn-fw primary btn-half" href="#/pre-order/tuesday"><i class="fa fa-arrow-circle-left "></i> Previous</a>
-                        <a class="btn btn-fw primary btn-half" href="#/pre-order/thursday">Next  <i class="fa fa-arrow-circle-right "></i> </a>
-                    </div>
-                    <div ng-if="daytext == 'Thursday'">
-                        <a class="btn btn-fw primary btn-half" href="#/pre-order/wednesday"><i class="fa fa-arrow-circle-left "></i> Previous</a>
-                        <a class="btn btn-fw primary btn-half" href="#/pre-order/friday">Next  <i class="fa fa-arrow-circle-right "></i> </a>
-                    </div>
-                    <div ng-if="daytext == 'Friday'">
-                        <a class="btn btn-fw primary btn-full" href="#/pre-order/thursday"><i class="fa fa-arrow-circle-left "></i>  Previous</a>
-                    </div>-->
-                    <a class="btn btn-fw primary btn-full btn-dark-green" href="#/checkout">Checkout</a>
-
-                </div>
-            </div>
         </div>
     </div>
 </div>
