@@ -39,30 +39,62 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="item in referList" id="row{{item}}">
+                            <tr ng-repeat="item in referList" id="prow{{item}}">
                                 <td>
                                     <button class="btn btn-link" ng-click="remove(item)">
                                             <i class="fa fa-times" style="color: red"></i>
                                         </button>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" id="invite-name{{item}}" />
+                                    <input type="text" class="form-control" id="pinvite-name{{item}}" />
                                     <small class="msgerror itemerror{{item}}" id="errorName{{item}}"></small>
                                 </td>
                                 <td>
-                                    <input type="email" class="form-control" id="invite-email{{item}}" />
+                                    <input type="email" class="form-control" id="pinvite-email{{item}}" />
                                     <small class="msgerror itemerror{{item}}" id="errorEmail{{item}}"></small>
                                 </td>
                                 <td>
-                                    <input type="tel" class="form-control" id="invite-phone{{item}}" />
+                                    <input type="tel" class="form-control" id="pinvite-phone{{item}}" />
                                     <small class="msgerror itemerror{{item}}" id="errorPhone{{item}}"></small>
                                 </td>
                                 <td>
-                                    <button class="btn btn-fw primary btn-dark-green" id="sendBtn{{item}}" ng-click="sendInvite(item)">Send</button>
+                                    <button class="btn btn-fw primary btn-dark-green" id="psendBtn{{item}}" ng-click="sendInvite(item)">Send</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+
+                    <hr />
+
+                    <div class="row" style="text-align: center">
+                        <table class="table table-condensed">
+                            <!--<thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th></th>
+                                </tr>-->
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="user in done">
+                                    <td>
+                                        {{user.name}}
+                                    </td>
+                                    <td>
+                                        {{user.email}}
+                                    </td>
+                                    <td>
+                                        {{user.phone}}
+                                    </td>
+                                    <td style="color: green">
+                                        <i class="fa fa-check"></i> Sent
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <small>*applies only if the refered persons buy</small>
                 </div>
             </div>

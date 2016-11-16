@@ -12,7 +12,11 @@ angular.module('mealimeterApp')
         console.log("Ref: ");
         console.log($routeParams.ref);
         $scope.refcodefield = $routeParams.ref;
-        $localStorage.refcode = $routeParams.ref;
+        if ($routeParams.ref != undefined) {
+            $localStorage.refrefcode = $routeParams.ref;
+        } else {
+            $localStorage.refrefcode = '';
+        }
 
         //////data from login
         var link = $rootScope.mealimeter;

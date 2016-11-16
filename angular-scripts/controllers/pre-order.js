@@ -34,6 +34,7 @@ angular.module('mealimeterApp')
             toastr.positionClass = "toast-bottom-left";
 
             $scope.preImage = 'createcombo.jpg';
+            $scope.done = [];
 
             $scope.drinks = [];
             $scope.snacks = [];
@@ -361,22 +362,25 @@ angular.module('mealimeterApp')
                 console.log(food);
                 return food;
             }
-
+            var done = [];
             $scope.sendInvite = function(item) {
-                $('#row' + item).removeClass('animated shake');
+                console.log(item);
+                $('#prow' + item).removeClass('animated shake');
 
-                if ($localStorage.guest == undefined) {
+                if ($localStorage.guest == true) {
                     var personname = $("#personname").val();
+                    var refcode = $localStorage.refcode;
                 } else {
                     var personname = $localStorage.data.data.username;
+                    var refcode = $localStorage.data.data.refcode;
                 }
 
 
-                var sendBtn = $("#sendBtn" + item);
+                var sendBtn = $("#psendBtn" + item);
 
-                var nameIn = $("#invite-name" + item);
-                var emailIn = $("#invite-email" + item);
-                var phoneIn = $("#invite-phone" + item);
+                var nameIn = $("#pinvite-name" + item);
+                var emailIn = $("#pinvite-email" + item);
+                var phoneIn = $("#pinvite-phone" + item);
 
                 var name = nameIn.val();
                 var email = emailIn.val();
@@ -394,7 +398,7 @@ angular.module('mealimeterApp')
                 phoneIn.prop('disabled', true);
 
                 var invitedata = "personname=" + personname +
-                    "&name=" + name + "&refcode=" + $scope.refcode + "&email=" + email;
+                    "&name=" + name + "&refcode=" + refcode + "&email=" + email;
 
                 var link = $rootScope.mealimeter;
                 $http({
@@ -409,7 +413,8 @@ angular.module('mealimeterApp')
                                 email: email,
                                 phone: phone
                             };
-                            $scope.done.push(user);
+                            done.push(user);
+                            $scope.done = done;
                             $scope.remove(item);
                         } else {
                             sendBtn.html("Send");
@@ -418,7 +423,7 @@ angular.module('mealimeterApp')
                             emailIn.prop('disabled', false);
                             phoneIn.prop('disabled', false);
                             console.log(item);
-                            $('#row' + item).addClass('animated shake');
+                            $('#prow' + item).addClass('animated shake');
                         }
                     },
 
@@ -426,6 +431,13 @@ angular.module('mealimeterApp')
                         console.log(error);
                     });
 
+            }
+
+            $scope.remove = function(item) {
+                var index = $scope.referList.indexOf(item);
+                if (index > -1) {
+                    $scope.referList.splice(index, 1);
+                }
             }
         }
 

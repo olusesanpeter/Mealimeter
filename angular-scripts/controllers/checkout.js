@@ -64,7 +64,7 @@ angular.module('mealimeterApp')
                     console.log(response);
                     pb.innerHTML = '<i class="fa fa-credit-card"></i> Pay with card';
                     // alert('success. transaction ref is ' + response.reference);
-                    var data = "token=" + $localStorage.data.data.token + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&food=" + food + "&price=" + price + "&quantity=" + quantity;
+                    var data = "token=" + $localStorage.data.data.token + "&refcode=" + $localStorage.refcode + "&refrefcode=" + $localStorage.refrefcode + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&food=" + food + "&price=" + price + "&quantity=" + quantity;
                     console.log(data);
                     var link = $rootScope.mealimeter;
                     $http({
@@ -240,7 +240,7 @@ angular.module('mealimeterApp')
                 }).then(function(result) {
                     $scope.balance = result.data.balance;
                     if (Number.parseInt($scope.balance) > due) {
-                        var data = "token=" + $localStorage.data.data.token + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&food=" + food + "&price=" + price + "&quantity=" + quantity;
+                        var data = "token=" + $localStorage.data.data.token + "&refcode=" + $localStorage.refcode + "&refrefcode=" + $localStorage.refrefcode + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&food=" + food + "&price=" + price + "&quantity=" + quantity;
                         var link = $rootScope.mealimeter;
                         $http({
                             method: "POST",
@@ -254,7 +254,7 @@ angular.module('mealimeterApp')
 
                             swal("Great!", "Your order has been taken!", "success")
                             $('#modal-id').modal('hide');
-                            $window.location.href = "#/pre-order/thursday";
+                            $window.location.href = "#/home";
                         }, function(error) {
                             console.log(error);
                         });

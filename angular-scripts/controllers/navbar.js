@@ -14,6 +14,16 @@ angular.module('mealimeterApp')
         $scope.done = [];
         if ($localStorage.guest != true) {
             $scope.refcode = $localStorage.data.data.refcode;
+        } else {
+            if ($localStorage.refcode == undefined) {
+                var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                var result = '';
+                for (var i = 7; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+                $localStorage.refcode = result;
+            }
+            if ($localStorage.refrefcode == undefined) {
+                $localStorage.refrefcode = "";
+            }
         }
 
         $scope.addMore = function() {
