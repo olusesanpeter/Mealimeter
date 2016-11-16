@@ -74,7 +74,7 @@ a:not([href]):not([tabindex]) {
 #countdown_wp {
      text-align: left;
       position: absolute;
-    margin: -23px 0 20px 0;
+    margin: -15px 0 20px 0;
 }
 
 #countdown_wp h3 {
