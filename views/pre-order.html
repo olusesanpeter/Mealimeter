@@ -232,11 +232,11 @@
                                             <h5 class="toggleitem"> Drinks </h5>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
+                                    <!--<li class="nav-item">
                                         <a class="nav-link" showtab href="#snacksection" role="tab" data-toggle="tab">
                                             <h5 class="toggleitem"> Snacks </h5>
                                         </a>
-                                    </li>
+                                    </li>-->
                                 </ul>
                             </div>
                             <br>
@@ -301,7 +301,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat="drink in drinks" class="menurow">
+                                            <tr ng-repeat="drink in drinks" class="menurow" ng-show="drink.main != 'Combo'">
                                                 <td>
                                                     <!-- <i class="fa fa-plus icon-xs"></i> -->
                                                     <i class="fa fa-square icon-xs"></i> {{drink.name}}
@@ -319,7 +319,7 @@
                                                         <img src="assets/images/minusicon.png" style="height: inherit" />
                                                     </div>
 
-                                                    <div style="display: inline-block; cursor: pointer; height: 40px" my-tooltip class="info-icon" data-toggle="tooltip" data-placement="top" data-html="true" title="<b>50</b> <br>  <i>Calories</i>">
+                                                    <div style="display: inline-block; cursor: pointer; height: 40px" my-tooltip class="info-icon" data-toggle="tooltip" data-placement="top" data-html="true" title="{{drink.main}}">
                                                         <img src="assets/images/infoicon.png" style="height: inherit" />
                                                     </div>
                                                 </td>

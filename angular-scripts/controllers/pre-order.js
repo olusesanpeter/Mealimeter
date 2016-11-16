@@ -375,7 +375,6 @@ angular.module('mealimeterApp')
                     var refcode = $localStorage.data.data.refcode;
                 }
 
-
                 var sendBtn = $("#psendBtn" + item);
 
                 var nameIn = $("#pinvite-name" + item);

@@ -13,6 +13,12 @@ angular.module('mealimeterApp')
         var pb = document.getElementById("payBtn");
         pb.innerHTML = '<i class="fa fa-credit-card"></i> Pay with card';
 
+        if ($localStorage.guest == true) {
+            var refcode = $localStorage.refcode;
+        } else {
+            $localStorage.refcode = $localStorage.data.data.refcode;
+        }
+
         var food = "";
         var price = "";
         var quantity = "";
@@ -96,6 +102,13 @@ angular.module('mealimeterApp')
         };
     }])
     .controller('CheckoutCtrl', ['$scope', '$http', '$rootScope', '$window', '$localStorage', '$location', function($scope, $http, $rootScope, $window, $localStorage, $location) {
+
+        if ($localStorage.guest == true) {
+            var refcode = $localStorage.refcode;
+        } else {
+            $localStorage.refcode = $localStorage.data.data.refcode;
+        }
+
         if ($localStorage.data == undefined && $localStorage.guest == undefined) {
             $window.location.href = "#/login";
         } else {
@@ -230,6 +243,7 @@ angular.module('mealimeterApp')
                 // console.log(due);
                 // console.log(total);
                 // console.log(price);
+
                 var data = "token=" + $localStorage.data.data.token;
                 var link = $rootScope.mealimeter;
                 $http({
