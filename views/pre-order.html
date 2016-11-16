@@ -11,58 +11,100 @@
         <br>
         <div class="row">
             <div class="col-md-12" style="height: 400px; text-align: center; background: url(assets/images/{{preImage}}) no-repeat center center; background-size: contain">
-                <!--<img src="" style="height: inherit; margin: auto" />-->
             </div>
         </div>
 
     </div>
 </div>
-<!-- <div class="m-b">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item active">Pre-order Meals</li>
-    </ol>
-</div> -->
+
 <div class="padding">
     <div class="container">
-
-        <div class="row" style="background-color: #fff;margin: 0;">
-            <div class="col-md-7  cart-sidebar cart-sidebar2" style="padding-left: 0px;padding-right: 0px; height: 100%;background-color: #fff;">
-                <div class="box box-color2" style="position: relative;padding: 30px;">
-                    <div class="box-header dker2" style="background-color: #fff;color:#000;">
-                        <h2 class="myorderheader"> My Order </h2>
+        <div class="row" ng-if="preRefer > 0">
+            <div class="col-md-10 offset-md-1 box" style="padding: 10px">
+                <h3>Invite {{preRefer}} to get a free {{preReferItem}}</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" placeholder="Your name" id="personname" class="form-control" />
                     </div>
-                    <div class="p-a-md text-center" ng-hide="total < 1">
-                        <table class="table text-left hometable">
-                            <thead class="">
+                </div>
+                <div class="row" style="text-align: center">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in referList" id="row{{item}}">
+                                <td>
+                                    <button class="btn btn-link" ng-click="remove(item)">
+                                            <i class="fa fa-times" style="color: red"></i>
+                                        </button>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" id="invite-name{{item}}" />
+                                    <small class="msgerror itemerror{{item}}" id="errorName{{item}}"></small>
+                                </td>
+                                <td>
+                                    <input type="email" class="form-control" id="invite-email{{item}}" />
+                                    <small class="msgerror itemerror{{item}}" id="errorEmail{{item}}"></small>
+                                </td>
+                                <td>
+                                    <input type="tel" class="form-control" id="invite-phone{{item}}" />
+                                    <small class="msgerror itemerror{{item}}" id="errorPhone{{item}}"></small>
+                                </td>
+                                <td>
+                                    <button class="btn btn-fw primary btn-dark-green" id="sendBtn{{item}}" ng-click="sendInvite(item)">Send</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <small>*applies only if the refered persons buy</small>
+                </div>
+            </div>
+        </div>
+        <div class=" row " style="background-color: #fff;margin: 0; ">
+            <div class="col-md-7 cart-sidebar cart-sidebar2 " style="padding-left: 0px;padding-right: 0px; height: 100%;background-color: #fff; ">
+                <div class="box box-color2 " style="position: relative;padding: 30px; ">
+                    <div class="box-header dker2 " style="background-color: #fff;color:#000; ">
+                        <h2 class="myorderheader "> My Order </h2>
+                    </div>
+                    <div class="p-a-md text-center " ng-hide="total < 1 ">
+                        <table class="table text-left hometable ">
+                            <thead class=" ">
                                 <tr>
-                                    <th width="15%">
+                                    <th width="15% ">
                                         Qty
                                     </th>
-                                    <th width="65%">
+                                    <th width="65% ">
                                         Meal
                                     </th>
-                                    <th width="20%">
+                                    <th width="20% ">
                                         Price
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="item in cart track by $index">
+                                <tr ng-repeat="item in cart track by $index ">
                                     <td>
-                                        <div style="min-width: 50px">
+                                        <div style="min-width: 50px ">
                                             {{item.quantity}}x
 
-                                            <span style="color: green; cursor: pointer" ng-click="addToCart(item.food)">
-                                                <i class="fa fa-caret-up"></i>
+                                            <span style="color: green; cursor: pointer " ng-click="addToCart(item.food) ">
+                                                <i class="fa fa-caret-up "></i>
                                             </span>
-                                            <span style="color: green; cursor: pointer" ng-click="removeFromCart(item.food)">
-                                                <i class="fa fa-caret-down"></i>
+                                            <span style="color: green; cursor: pointer " ng-click="removeFromCart(item.food) ">
+                                                <i class="fa fa-caret-down "></i>
                                             </span>
                                         </div>
                                     </td>
                                     <td>
                                         <b>{{item.mainmeal}}</b>
-                                        <br><span class="toppings">+ {{item.additive}}</span>
+                                        <br><span class="toppings ">+ {{item.additive}}</span>
 
                                     </td>
                                     <td>
@@ -72,7 +114,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="p-a-md text-center" ng-hide="total > 1">
+                    <div class="p-a-md text-center " ng-hide="total> 1">
                         <img src="assets/images/food-basket.png" alt="" width="75px">
 
                         <div class="top-dotted"></div>
@@ -142,9 +184,9 @@
 
         <div class="row">
             <div class="col-sm-12" ng-show="done">
-                <div class="card card-8 no-radius" ng-repeat="meal in meals[day].options">
+                <div class="card card-8 no-radius">
                     <div class="col-md-10 offset-md-1 boxed bg--white">
-                        <div style="display:none;">{{x = $index}} </div>
+                        <!--<div style="display:none;">{{x = $index}} </div>?-->
                         <div class="row">
                             <div class=" navline">
                                 <ul class="nav nav-tabs" role="tablist">

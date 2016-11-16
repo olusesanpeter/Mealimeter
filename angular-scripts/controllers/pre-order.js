@@ -312,7 +312,15 @@ angular.module('mealimeterApp')
             // }
 
             $scope.loadPreloads = function() {
-                // delete $localStorage.preDiscount;
+                if ($localStorage.preRefer) {
+                    $scope.preRefer = $localStorage.preRefer;
+                    $scope.preReferItem = $localStorage.preReferItem;
+
+                    $scope.referList = [];
+                    for (var i = 0; i < $scope.preRefer; i++) {
+                        $scope.referList.push(i);
+                    }
+                }
                 if ($localStorage.preImage) {
                     $scope.preImage = $localStorage.preImage;
                 }
@@ -352,6 +360,72 @@ angular.module('mealimeterApp')
                 }, this);
                 console.log(food);
                 return food;
+            }
+
+            $scope.sendInvite = function(item) {
+                $('#row' + item).removeClass('animated shake');
+
+                if ($localStorage.guest == undefined) {
+                    var personname = $("#personname").val();
+                } else {
+                    var personname = $localStorage.data.data.username;
+                }
+
+
+                var sendBtn = $("#sendBtn" + item);
+
+                var nameIn = $("#invite-name" + item);
+                var emailIn = $("#invite-email" + item);
+                var phoneIn = $("#invite-phone" + item);
+
+                var name = nameIn.val();
+                var email = emailIn.val();
+                var phone = phoneIn.val();
+
+                // if (checkRegex(email) {
+                //     $('#row' + item).addClass('animated shake');
+                //     return false;
+                // }
+
+                sendBtn.html("<i class='fa fa-spin fa-spinner'></i>");
+                sendBtn.prop('disabled', true);
+                nameIn.prop('disabled', true);
+                emailIn.prop('disabled', true);
+                phoneIn.prop('disabled', true);
+
+                var invitedata = "personname=" + personname +
+                    "&name=" + name + "&refcode=" + $scope.refcode + "&email=" + email;
+
+                var link = $rootScope.mealimeter;
+                $http({
+                    method: "POST",
+                    url: link + "sendinvite",
+                    data: invitedata,
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                }).then(function(response) {
+                        if (response.data.error == false) {
+                            var user = {
+                                name: name,
+                                email: email,
+                                phone: phone
+                            };
+                            $scope.done.push(user);
+                            $scope.remove(item);
+                        } else {
+                            sendBtn.html("Send");
+                            sendBtn.prop('disabled', false);
+                            nameIn.prop('disabled', false);
+                            emailIn.prop('disabled', false);
+                            phoneIn.prop('disabled', false);
+                            console.log(item);
+                            $('#row' + item).addClass('animated shake');
+                        }
+                    },
+
+                    function(error) {
+                        console.log(error);
+                    });
+
             }
         }
 

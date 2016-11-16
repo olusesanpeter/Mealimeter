@@ -100,7 +100,6 @@ angular.module('mealimeterApp')
                     console.log(error);
                 });
 
-            $timeout(function() {}, 2000);
         }
     }])
     .controller('navbarCtrl', ['$scope', '$http', '$rootScope', '$window', '$localStorage', '$location', function($scope, $http, $rootScope, $window, $localStorage, $location) {
