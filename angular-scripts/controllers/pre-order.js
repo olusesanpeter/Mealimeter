@@ -312,6 +312,46 @@ angular.module('mealimeterApp')
 
             // }
 
+            $scope.checkDrinkSize = function(string, size) {
+                if (size == 'big') {
+                    return !!string.match("50");
+                } else if (size == 'small') {
+                    var twen = !!string.match("20");
+                    var twen5 = !!string.match("25");
+
+                    return (twen || twen5);
+                }
+            }
+
+            $scope.freeDrinks = [];
+            $scope.insertFreeDrink = function(drink) {
+                $scope.freeDrinks.push(drink);
+
+                if ($scope.freeDrinks.length > $scope.preDrinknum) {
+                    $scope.freeDrinks.shift();
+                }
+
+                console.log($scope.freeDrinks);
+            }
+
+            $scope.isSelectedDrink = function(drink) {
+                if ($scope.freeDrinks.indexOf(drink) !== -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            $scope.getSelectedNum = function(drink) {
+                var num = 0;
+                $scope.freeDrinks.forEach(function(item) {
+                    if (item === drink) {
+                        num++;
+                    }
+                }, this);
+
+                return num;
+            }
+
             $scope.loadPreloads = function() {
                 if ($localStorage.preRefer) {
                     $scope.preRefer = $localStorage.preRefer;
@@ -322,9 +362,16 @@ angular.module('mealimeterApp')
                         $scope.referList.push(i);
                     }
                 }
+
+                if ($localStorage.preDrinknum) {
+                    $scope.preDrinknum = $localStorage.preDrinknum;
+                    $scope.preDrinksize = $localStorage.preDrinksize;
+                }
+
                 if ($localStorage.preImage) {
                     $scope.preImage = $localStorage.preImage;
                 }
+
                 if ($localStorage.preDiscount != undefined) {
                     $scope.discount = $localStorage.preDiscount;
                     console.log($scope.discount);
@@ -362,6 +409,7 @@ angular.module('mealimeterApp')
                 console.log(food);
                 return food;
             }
+
             var done = [];
             $scope.sendInvite = function(item) {
                 console.log(item);

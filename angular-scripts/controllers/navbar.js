@@ -137,6 +137,7 @@ angular.module('mealimeterApp')
         if ($localStorage.guest == true) {
             $scope.balance = 0;
         } else {
+            console.log($localStorage.data);
             var data = "token=" + $localStorage.data.data.token;
             var link = $rootScope.mealimeter;
             $http({

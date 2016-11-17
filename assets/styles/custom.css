@@ -21,9 +21,11 @@ a:not([href]):not([tabindex]) {
     color: #324518;
     font-weight: bold;
 }
- .boxx {
-        cursor: pointer;
-    }
+
+.boxx {
+    cursor: pointer;
+}
+
 
 /*
 .navbar.stickyLine {
@@ -33,15 +35,25 @@ a:not([href]):not([tabindex]) {
 .navbar.stickyLine .navbar.navbar-default {
     border-bottom: 0px solid transparent;
 }*/
-.navbar .hidehome{
-  display: none;
+
+.navbar .hidehome {
+    display: none;
 }
-.navbar.sticky, .sticky .navbar {
-    background-color: /*rgba(172, 230, 47, 0.68);*/#8ac03e;
+
+.navbar.sticky,
+.sticky .navbar {
+    background-color: /*rgba(172, 230, 47, 0.68);*/
+    #8ac03e;
     border-radius: 0rem;
 }
-.navbar.sticky .hidehome, .sticky .navbar .hidehome {
-  display: block;
+
+.navbar.sticky .hidehome,
+.sticky .navbar .hidehome {
+    display: block;
+}
+
+.table .success:hover {
+    background-color: #6cc788 !important;
 }
 
 .btn-trans {
@@ -80,8 +92,8 @@ a:not([href]):not([tabindex]) {
 }
 
 #countdown_wp {
-     text-align: left;
-      position: absolute;
+    text-align: left;
+    position: absolute;
     margin: -15px 0 20px 0;
 }
 
@@ -89,8 +101,11 @@ a:not([href]):not([tabindex]) {
     text-transform: uppercase;
 }
 
-#days, #hours, #minutes, #seconds {
-    font-family: "Helvetica Neue",Arial,sans-serif;
+#days,
+#hours,
+#minutes,
+#seconds {
+    font-family: "Helvetica Neue", Arial, sans-serif;
     font-size: 20px;
     font-weight: 300;
     height: 30px;

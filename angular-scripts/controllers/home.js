@@ -6,12 +6,15 @@ angular.module('mealimeterApp')
             $scope.gotoCombo(image);
         }
 
-        $scope.gotoCombo = function(image, comboid, refer, referitem) {
+        $scope.gotoCombo = function(image, comboid, refer, referitem, drinknum, drinksize) {
             if (comboid) {
                 $localStorage.preload = [
                     [comboid, 1]
                 ];
+            } else {
+                delete $localStorage.preload;
             }
+
             if (refer > 0) {
                 $localStorage.preRefer = refer;
                 $localStorage.preReferItem = referitem;
@@ -19,6 +22,15 @@ angular.module('mealimeterApp')
                 delete $localStorage.preRefer;
                 delete $localStorage.preReferItem;
             }
+
+            if (drinknum > 0) {
+                $localStorage.preDrinknum = drinknum;
+                $localStorage.preDrinksize = drinksize;
+            } else {
+                delete $localStorage.preDrinknum;
+                delete $localStorage.preDrinksize;
+            }
+
             $localStorage.preImage = image;
 
             $window.location.href = "#/pre-order/thursday";
