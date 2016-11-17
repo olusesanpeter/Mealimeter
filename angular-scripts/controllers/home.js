@@ -1,5 +1,8 @@
 angular.module('mealimeterApp')
     .controller('homeCtrl', ['$scope', '$http', '$rootScope', '$window', '$localStorage', '$location', '$timeout', function($scope, $http, $rootScope, $window, $localStorage, $location, $timeout) {
+        if ($localStorage.data == undefined) {
+            $localStorage.guest = true;
+        }
 
         $scope.createCombo = function(image) {
             $localStorage.preClean = true;
