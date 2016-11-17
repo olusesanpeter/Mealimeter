@@ -62,7 +62,6 @@ angular.module('mealimeterApp')
                 data: data,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
             }).then(function(result) {
-                // console.log(result.data);
                 if (result.data.description == "Already Preordered") {
                     $scope.done = false;
                     $scope.notdone = true;
@@ -71,7 +70,6 @@ angular.module('mealimeterApp')
                     $scope.snacks = result.data.snacks;
                     $scope.drinks = result.data.drinks;
                     $scope.food = result.data.food;
-                    console.log(result.data);
                     $scope.done = true;
                     $scope.notdone = false;
 
@@ -157,7 +155,6 @@ angular.module('mealimeterApp')
                 if (first_time) {
                     quantity = 1;
                     $scope.cart.push(option);
-                    console.log(option);
                 }
                 //else just increase the quantity and price of the old one 
                 else {
@@ -330,8 +327,6 @@ angular.module('mealimeterApp')
                 if ($scope.freeDrinks.length > $scope.preDrinknum) {
                     $scope.freeDrinks.shift();
                 }
-
-                console.log($scope.freeDrinks);
             }
 
             $scope.isSelectedDrink = function(drink) {
@@ -386,6 +381,8 @@ angular.module('mealimeterApp')
                         var foodid = load[0];
                         var qty = load[1];
 
+                        console.log(foodid);
+
                         for (var i = 0; i < qty; i++) {
                             var fooditem = $scope.getFoodById(foodid);
                             $scope.addToCart(fooditem);
@@ -406,13 +403,19 @@ angular.module('mealimeterApp')
                         food = item;
                     }
                 }, this);
-                console.log(food);
+
+                if (food == undefined) {
+                    $scope.drinks.forEach(function(item) {
+                        if (fid == item.id) {
+                            food = item;
+                        }
+                    }, this);
+                }
                 return food;
             }
 
             var done = [];
             $scope.sendInvite = function(item) {
-                console.log(item);
                 $('#prow' + item).removeClass('animated shake');
 
                 if ($localStorage.guest == true) {
@@ -469,7 +472,6 @@ angular.module('mealimeterApp')
                             nameIn.prop('disabled', false);
                             emailIn.prop('disabled', false);
                             phoneIn.prop('disabled', false);
-                            console.log(item);
                             $('#prow' + item).addClass('animated shake');
                         }
                     },

@@ -41,7 +41,6 @@
             </li>
         </ul>
         <!-- / navbar right -->
-
         <!-- link and dropdown -->
         <ul class="nav navbar-nav">
             <li class="nav-item">
@@ -55,11 +54,11 @@
 					</a>
             </li>
 
-            <li class="nav-item dropdown hidehome" ng-if="username != 'guest'">
+            <!--<li class="nav-item dropdown hidehome" ng-if="username != 'guest'">
                 <a class="nav-link" ng-href="#/pre-order/thursday">
 						Pre-Order Meals
 					</a>
-            </li>
+            </li>-->
 
             <li class="nav-item dropdown hidehome" ng-if="username != 'guest'">
                 <a class="nav-link" ng-href="#/top-up">
@@ -74,17 +73,18 @@
 
             <li class="nav-item hidehome" ng-if="username != 'guest'" data-target='#invitemodal' data-toggle="modal">
                 <a class="nav-link">
-						Invite
+						Refer & win
 					</a>
-            </li>
-
-            <li class="nav-item hidehome">
-                <a class="nav-link">
-                    <span style="margin-left: 50px" id="days">00</span> Days left to preorder
-                </a>
             </li>
         </ul>
         <!-- / -->
+        <div style="padding-top: 5px; text-align: center" class="nav navbar-nav col-sm-2 offset-sm-3">
+            <span style="margin: auto" id="days">00</span> days
+            <span style="margin: auto" id="hours">00</span> hours
+            <span style="margin: auto" id="minutes">00</span> minutes
+            <div>left to preorder</div>
+        </div>
+
     </div>
     <!-- / navbar collapse -->
     <style>
@@ -231,6 +231,8 @@
         $(".container_count #hours").html(hours);
         $(".container_count #days").html(days);
         $(".navbar #days").html(days);
+        $(".navbar #hours").html(hours);
+        $(".navbar #minutes").html(minutes);
 
     }, 1000);
 </script>
