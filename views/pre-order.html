@@ -10,7 +10,8 @@
     <div class="container">
         <br>
         <div class="row">
-            <div class="col-md-12" style="height: 400px; text-align: center; background: url(assets/images/{{preImage}}) no-repeat center center; background-size: contain">
+            <div class="col-md-12" style="width: 100%; text-align: center; background: url() no-repeat center center; background-size: contain">
+                <img src="assets/images/{{preImage}}_.jpg" style="width: 100%" />
             </div>
         </div>
 
@@ -41,6 +42,8 @@
                             <thead class=" ">
                                 <tr>
                                     <th width="15% ">
+                                    </th>
+                                    <th width="10% ">
                                         Qty
                                     </th>
                                     <th width="65% ">
@@ -54,15 +57,16 @@
                             <tbody>
                                 <tr ng-repeat="item in cart track by $index ">
                                     <td>
+                                        <span style="color: green; cursor: pointer; height: 25px" ng-click="addToCart(item.food) ">
+                                            <img src="assets/images/plusicon.png" style="height: inherit" />
+                                            </span>
+                                        <span style="color: green; cursor: pointer; height: 25px " ng-click="removeFromCart(item.food) ">
+                                             <img src="assets/images/minusicon.png" style="height: inherit" />
+                                            </span>
+                                    </td>
+                                    <td>
                                         <div style="min-width: 50px ">
                                             {{item.quantity}}x
-
-                                            <span style="color: green; cursor: pointer " ng-click="addToCart(item.food) ">
-                                                <i class="fa fa-caret-up "></i>
-                                            </span>
-                                            <span style="color: green; cursor: pointer " ng-click="removeFromCart(item.food) ">
-                                                <i class="fa fa-caret-down "></i>
-                                            </span>
                                         </div>
                                     </td>
                                     <td>
@@ -124,17 +128,17 @@
                         <a class="btn btn-fw primary btn-full" href="#/pre-order/tuesday">Next <i class="fa fa-arrow-circle-right "></i> </a>
                     </div> -->
                     <div ng-if="daytext == 'Tuesday'">
-                        <a class="btn btn-fw primary btn-half" href="#/pre-order/thursday"> <i class="fa fa-arrow-circle-left "></i> Order for Tuesday</a>
+                        <a class="btn btn-fw primary btn-half" href="#/pre-order/thursday"> <i class="fa fa-arrow-circle-left "></i> Order for Thursday</a>
                         <!--<a class="btn btn-fw primary btn-half" href="#/pre-order/wednesday">Next <i class="fa fa-arrow-circle-right "></i> </a>-->
                     </div>
                     <!--<div ng-if="daytext == 'Wednesday'">
                         <a class="btn btn-fw primary btn-half" href="#/pre-order/tuesday"><i class="fa fa-arrow-circle-left "></i> Previous</a>
                         <a class="btn btn-fw primary btn-half" href="#/pre-order/thursday">Next  <i class="fa fa-arrow-circle-right "></i> </a>
                     </div>-->
-                    <div ng-if="daytext == 'Thursday'">
-                        <!--<a class="btn btn-fw primary btn-half" href="#/pre-order/wednesday"><i class="fa fa-arrow-circle-left "></i> Previous</a>-->
-                        <a class="btn btn-fw primary btn-half" href="#/pre-order/tuesday">Order for Tuesday  <i class="fa fa-arrow-circle-right "></i> </a>
-                    </div>
+                    <!--<div ng-if="daytext == 'Thursday'">-->
+                    <!--<a class="btn btn-fw primary btn-half" href="#/pre-order/wednesday"><i class="fa fa-arrow-circle-left "></i> Previous</a>-->
+                    <!--<a class="btn btn-fw primary btn-half" href="#/pre-order/tuesday">Order for Tuesday  <i class="fa fa-arrow-circle-right "></i> </a>-->
+                    <!--</div>-->
                     <!--<div ng-if="daytext == 'Friday'">
                         <a class="btn btn-fw primary btn-full" href="#/pre-order/thursday"><i class="fa fa-arrow-circle-left "></i>  Previous</a>
                     </div>-->
@@ -199,15 +203,15 @@
 
                                                 </td>
                                                 <td>
-                                                    <div style="display: inline-block; cursor: pointer; height: 40px" ng-click="addToCart(foods)" title="add to cart">
+                                                    <div style="display: inline-block; cursor: pointer; height: 30px" ng-click="addToCart(foods)" title="add to cart">
                                                         <img src="assets/images/plusicon.png" style="height: inherit" />
                                                     </div>
 
-                                                    <div style="display: inline-block; cursor: pointer; height: 40px" ng-click="removeFromCart(foods)" title="remove from cart">
+                                                    <div style="display: inline-block; cursor: pointer; height: 30px" ng-click="removeFromCart(foods)" title="remove from cart">
                                                         <img src="assets/images/minusicon.png" style="height: inherit" />
                                                     </div>
 
-                                                    <div style="display: inline-block; cursor: pointer; height: 40px" my-tooltip class="info-icon" data-toggle="tooltip" data-placement="top" data-html="true" title="{{foods.calories}} Calories">
+                                                    <div style="display: inline-block; cursor: pointer; height: 30px" my-tooltip class="info-icon" data-toggle="tooltip" data-placement="top" data-html="true" title="{{foods.calories}} Calories">
                                                         <img src="assets/images/infoicon.png" style="height: inherit" />
                                                     </div>
                                                 </td>
@@ -242,15 +246,15 @@
 
                                                 </td>
                                                 <td>
-                                                    <div style="display: inline-block; cursor: pointer; height: 40px" ng-click="addToCart(drink)" title="add to cart">
+                                                    <div style="display: inline-block; cursor: pointer; height: 30px" ng-click="addToCart(drink)" title="add to cart">
                                                         <img src="assets/images/plusicon.png" style="height: inherit" />
                                                     </div>
 
-                                                    <div style="display: inline-block; cursor: pointer; height: 40px" ng-click="removeFromCart(drink)" title="remove from cart">
+                                                    <div style="display: inline-block; cursor: pointer; height: 30px" ng-click="removeFromCart(drink)" title="remove from cart">
                                                         <img src="assets/images/minusicon.png" style="height: inherit" />
                                                     </div>
 
-                                                    <div style="display: inline-block; cursor: pointer; height: 40px" my-tooltip class="info-icon" data-toggle="tooltip" data-placement="top" data-html="true" title="{{drink.main}}">
+                                                    <div style="display: inline-block; cursor: pointer; height: 30px" my-tooltip class="info-icon" data-toggle="tooltip" data-placement="top" data-html="true" title="{{drink.main}}">
                                                         <img src="assets/images/infoicon.png" style="height: inherit" />
                                                     </div>
                                                 </td>
@@ -285,15 +289,15 @@
 
                                                 </td>
                                                 <td>
-                                                    <div style="display: inline-block; cursor: pointer; height: 40px" ng-click="addToCart(snack)" title="add to cart">
+                                                    <div style="display: inline-block; cursor: pointer; height: 30px" ng-click="addToCart(snack)" title="add to cart">
                                                         <img src="assets/images/plusicon.png" style="height: inherit" />
                                                     </div>
 
-                                                    <div style="display: inline-block; cursor: pointer; height: 40px" ng-click="removeFromCart(snack)" title="remove from cart">
+                                                    <div style="display: inline-block; cursor: pointer; height: 30px" ng-click="removeFromCart(snack)" title="remove from cart">
                                                         <img src="assets/images/minusicon.png" style="height: inherit" />
                                                     </div>
 
-                                                    <div style="display: inline-block; cursor: pointer; height: 40px" my-tooltip class="info-icon" data-toggle="tooltip" data-placement="top" data-html="true" title="<b>50</b> <br>  <i>Calories</i>">
+                                                    <div style="display: inline-block; cursor: pointer; height: 30px" my-tooltip class="info-icon" data-toggle="tooltip" data-placement="top" data-html="true" title="<b>50</b> <br>  <i>Calories</i>">
                                                         <img src="assets/images/infoicon.png" style="height: inherit" />
                                                     </div>
                                                 </td>

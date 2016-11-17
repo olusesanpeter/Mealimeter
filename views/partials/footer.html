@@ -1,76 +1,72 @@
- <div class="white r box-shadow-z0 p-md">
+<div class="white r box-shadow-z0 p-md">
     <div class="footer p-a-md ng-scope container">
         <div class="" style="margin-bottom: -30px">
-                <div class="row">
-                    <div class="col-sm-6 ">
-                        <div class="" id="countdown_wp">
-                            <br><br>
-                            <div class="container_count ">
-                                <div id="days" class="sideborder">00</div>Days</div>
-                            <div class="container_count ">
-                                <div id="hours" class="sideborder">00</div>Hours</div>
-                            <div class="container_count ">
-                                <div id="minutes">00</div>Minutes</div>
-                            <div class="" style=" position: relative;font-size:16px; padding-left:50px;">
-                                <strong class="ng-binding">To your first sumptious meal</strong></div>
-                        </div>
-                        
-           
+            <div class="row">
+                <!--<div class="col-sm-6 ">
+                    <div class="" id="countdown_wp">
+                        <br><br>
+                        <div class="container_count ">
+                            <div id="days" class="sideborder">00</div>Days</div>
+                        <div class="container_count ">
+                            <div id="hours" class="sideborder">00</div>Hours</div>
+                        <div class="container_count ">
+                            <div id="minutes">00</div>Minutes</div>
+                        <div class="" style=" position: relative;font-size:16px; padding-left:50px;">
+                            <strong class="ng-binding">To your first sumptious meal</strong></div>
                     </div>
-                    <div class="col-sm-6 ">
-                        <div class="pull-right">
-                             <br> <br><div class="block clearfix pull-right" style="padding-right:10px;">
-                                <a href="" class="btn btn-icon btn-social rounded btn-sm"><i class="fa fa-facebook"></i> <i class="fa fa-facebook indigo"></i></a>
-                                 <a href="" class="btn btn-icon btn-social rounded btn-sm"><i class="fa fa-twitter"></i> <i class="fa fa-twitter light-blue"></i></a> 
-                            </div>
-                            <br>
-                            <div class="nav m-y ">
-                                <a class="nav-link m-r" href=""><span>How it works</span></a> 
-                                <a class="nav-link m-r" href=""><span>Delivery locations</span></a> 
-                            </div>
-                            
-                        </div>
+                </div>-->
+                <div class="col-sm-6 offset-sm-3" style="text-align: center">
+                    <div class="nav m-y ">
+                        <!--<a class="nav-link m-r" href=""><span>How it works</span></a>
+                        <a class="nav-link m-r" href=""><span>Delivery locations</span></a>-->
+                        We deliver to <br /> Yaba, Victoria Island, Lekki and Ikoyi
                     </div>
+                    <div>
+                        <a href="" class="btn btn-icon btn-social rounded btn-sm"><i class="fa fa-facebook"></i> <i class="fa fa-facebook indigo"></i></a>
+                        <a href="" class="btn btn-icon btn-social rounded btn-sm"><i class="fa fa-twitter"></i> <i class="fa fa-twitter light-blue"></i></a>
+                    </div>
+                    <br />
                 </div>
-                <script>
-                    function fixIntegers(integer) {
-                        if (integer < 0)
-                            integer = 0;
-                        if (integer < 10)
-                            return "0" + integer;
-                        return "" + integer;
-                    }
-                    setInterval(function() {
-                        var target = new Date("December 01 2016 8:00 GMT+0100"); //replace with YOUR DATE
-                        var now = new Date();
-                        var difference = Math.floor((target.getTime() - now.getTime()) / 1000);
+            </div>
+            <script>
+                function fixIntegers(integer) {
+                    if (integer < 0)
+                        integer = 0;
+                    if (integer < 10)
+                        return "0" + integer;
+                    return "" + integer;
+                }
+                setInterval(function() {
+                    var target = new Date("December 01 2016 8:00 GMT+0100"); //replace with YOUR DATE
+                    var now = new Date();
+                    var difference = Math.floor((target.getTime() - now.getTime()) / 1000);
 
-                        var seconds = fixIntegers(difference % 60);
-                        difference = Math.floor(difference / 60);
+                    var seconds = fixIntegers(difference % 60);
+                    difference = Math.floor(difference / 60);
 
-                        var minutes = fixIntegers(difference % 60);
-                        difference = Math.floor(difference / 60);
+                    var minutes = fixIntegers(difference % 60);
+                    difference = Math.floor(difference / 60);
 
-                        var hours = fixIntegers(difference % 24);
-                        difference = Math.floor(difference / 24);
+                    var hours = fixIntegers(difference % 24);
+                    difference = Math.floor(difference / 24);
 
-                        var days = difference;
+                    var days = difference;
 
-                        $(".container_count #seconds").html(seconds);
-                        $(".container_count #minutes").html(minutes);
-                        $(".container_count #hours").html(hours);
-                        $(".container_count #days").html(days);
+                    $(".container_count #seconds").html(seconds);
+                    $(".container_count #minutes").html(minutes);
+                    $(".container_count #hours").html(hours);
+                    $(".container_count #days").html(days);
 
-                    }, 1000);
-                </script>
-            
+                }, 1000);
+            </script>
+
         </div>
         <div class="b b-b m-y-md"></div>
         <div class="row footer-bottom">
-            <div class="col-sm-8 " style="padding-left:30px;"><small class="text-muted">&copy; Copyright 2016. All rights reserved.</small></div>
+            <div class="col-sm-8 " style="padding-left:30px;"><small class="text-muted">Mealimeter &copy; Copyright 2016. All rights reserved.</small></div>
             <div class="col-sm-4">
                 <div class="text-sm-right text-xs-left"><img alt="wallet" src="assets/images/paystack.png" height="25px" class=""></div>
-                </div>
             </div>
+        </div>
     </div>
 </div>

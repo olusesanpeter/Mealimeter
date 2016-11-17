@@ -290,13 +290,14 @@ angular.module('mealimeterApp')
             $scope.guestBuy = function() {
                 console.log("guest but");
                 swal({
-                        title: "<small>You must sign up to preorder.</small>",
-                        text: "Don't worry your cart is saved.",
+                        title: "<small>Give us some quick info</small>",
+                        text: "To help us get your meal to you fast<br />Don't worry your cart is saved.",
                         html: true,
-                        showCancelButton: true,
+                        // showCancelButton: true,
+                        allowOutsideClick: true,
                         confirmButtonColor: "#8ac03e",
-                        confirmButtonText: "Yes, Sign up!",
-                        cancelButtonText: "No, don't order",
+                        confirmButtonText: "Ok, Continue",
+                        // cancelButtonText: "No",
                         closeOnConfirm: false,
                         closeOnCancel: false
                     },
