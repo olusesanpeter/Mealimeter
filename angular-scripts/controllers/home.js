@@ -6,10 +6,10 @@ angular.module('mealimeterApp')
             $scope.gotoCombo(image);
         }
 
-        $scope.gotoCombo = function(image, comboid, refer, referitem, drinknum, drinksize) {
+        $scope.gotoCombo = function(image, comboid, foodnum, refer, referitem, drinknum, drinksize) {
             if (comboid) {
                 $localStorage.preload = [
-                    [comboid, 1]
+                    [comboid, foodnum]
                 ];
             } else {
                 delete $localStorage.preload;
