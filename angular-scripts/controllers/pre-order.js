@@ -72,7 +72,7 @@ angular.module('mealimeterApp')
                     $scope.food = result.data.food;
                     $scope.done = true;
                     $scope.notdone = false;
-
+                    console.log($scope.drinks);
                     $scope.loadPreloads();
                 }
             }, function(error) {

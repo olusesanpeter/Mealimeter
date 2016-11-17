@@ -1,52 +1,52 @@
 <!-- ############ LAYOUT START-->
 <style type="text/css">
-  .loginBody{
-    overflow-x: hidden;
-    background-color:#454444!important;
-    background-image: url(./assets/images/pattern.png);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    overflow: hidden;
-    background-repeat: inherit;
-    width: 100%;
-    min-height: 100vh;
-    height: 100%!important;
-  }
+    .loginBody {
+        overflow-x: hidden;
+        background-color: #454444!important;
+        background-image: url(./assets/images/pattern.png);
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        overflow: hidden;
+        background-repeat: inherit;
+        width: 100%;
+        /*min-height: 80vh;*/
+        height: 80%!important;
+    }
 </style>
 <div class="loginBody">
 
-<!-- ############ LAYOUT START-->
-  <div class="center-block w-xxl w-auto-xs p-y-md" ng-if="successful == true">
-    <div class="navbar">
-    </div>
-    <img src="assets/images/logo-m-g.png" class="img-responsive" alt="Mealimeter Logo">
-    <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
-      <div class="m-b">
-        <div class="alert alert-success">
-          <strong>Your account has been activated</strong>
+    <!-- ############ LAYOUT START-->
+    <div class="center-block w-xxl w-auto-xs p-y-md" ng-if="successful == true">
+        <div class="navbar">
         </div>
-    <div class="p-v-lg text-center">Please click on the link below to log into your account.</div>    
+        <img src="assets/images/logo-m-g.png" class="img-responsive" alt="Mealimeter Logo">
+        <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
+            <div class="m-b">
+                <div class="alert alert-success">
+                    <strong>Your account has been activated</strong>
+                </div>
+                <div class="p-v-lg text-center">Please click on the link below to log into your account.</div>
 
-      </div>
-    </div>
-    <div class="p-v-lg text-center" style="color: #fff">Return to <a href="#/login" class="text-primary _600">Login</a></div>    
-  </div>
-  <div class="center-block w-xxl w-auto-xs p-y-md" ng-if="successful == false">
-    <div class="navbar">
-    </div>
-    <img src="assets/images/logo-m-g.png" class="img-responsive" alt="Mealimeter Logo">
-    <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
-      <div class="m-b">
-        <div class="alert alert-danger">
-          <strong>Account activation failed</strong>
+            </div>
         </div>
-      </div>
+        <div class="p-v-lg text-center" style="color: #fff">Return to <a href="#/login" class="text-primary _600">Login</a></div>
     </div>
-    <div class="p-v-lg text-center" style="color: #fff">Return to <a href="#/login" class="text-primary _600">Login</a> | <a href="#/signup" class="text-primary _600">Signup</a></div>    
-  </div>
+    <div class="center-block w-xxl w-auto-xs p-y-md" ng-if="successful == false">
+        <div class="navbar">
+        </div>
+        <img src="assets/images/logo-m-g.png" class="img-responsive" alt="Mealimeter Logo">
+        <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
+            <div class="m-b">
+                <div class="alert alert-danger">
+                    <strong>Account activation failed</strong>
+                </div>
+            </div>
+        </div>
+        <div class="p-v-lg text-center" style="color: #fff">Return to <a href="#/login" class="text-primary _600">Login</a> | <a href="#/signup" class="text-primary _600">Signup</a></div>
+    </div>
 
-<!-- ############ LAYOUT END-->
+    <!-- ############ LAYOUT END-->
 
 </div>

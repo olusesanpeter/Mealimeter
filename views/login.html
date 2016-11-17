@@ -11,8 +11,8 @@
         overflow: hidden;
         background-repeat: inherit;
         width: 100%;
-        min-height: 100vh;
-        height: 100%!important;
+        /*min-height: 80vh;*/
+        height: 80%!important;
     }
 </style>
 <div class="loginBody">
@@ -41,7 +41,7 @@
                     <label>Password</label>
                 </div>
                 <button type="submit" class="btn primary btn-full " id="load" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing">Sign in</button>
-                <button type="button" class="btn btn-default btn-full" ng-click="loginAsGuest()">Guest login</button>       
+                <button type="button" class="btn btn-default btn-full" ng-click="loginAsGuest()">Guest login</button>
             </form>
         </div>
 
@@ -52,3 +52,4 @@
     </div>
 </div>
 <!-- ############ LAYOUT END-->
+<div ng-include="'views/partials/footer.html'"></div>

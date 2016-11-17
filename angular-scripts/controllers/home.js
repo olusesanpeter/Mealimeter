@@ -6,6 +6,14 @@ angular.module('mealimeterApp')
             $scope.gotoCombo(image);
         }
 
+        $scope.slideDown = function() {
+            console.log(6567);
+
+            $('html, body').animate({
+                scrollTop: '+=650px'
+            }, 800);
+        }
+
         $scope.gotoCombo = function(image, comboid, foodnum, refer, referitem, drinknum, drinksize) {
             if (comboid) {
                 $localStorage.preload = [

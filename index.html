@@ -108,6 +108,14 @@
                 $("#invitemodal").appendTo("body");
 
             });
+            $(document).ready(function() {
+                $(".scrolldown").click(function(event) {
+                    console.log("help");
+                    $('html, body').animate({
+                        scrollTop: '+=150px'
+                    }, 800);
+                });
+            });
         </script>
         <style>
             .modal-backdrop {
@@ -125,10 +133,10 @@
         <div id="content" class="app-content box-shadow-z0" role="main">
 
             <div ng-view=""></div>
-           <!--  -->
+            <!--  -->
         </div>
 
-            
+
     </body>
 
 </html>

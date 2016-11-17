@@ -200,7 +200,6 @@
                                                 </td>
                                                 <td class="price">
                                                     {{ foods.price | currency:"₦ ":0 }}
-
                                                 </td>
                                                 <td>
                                                     <div style="display: inline-block; cursor: pointer; height: 30px" ng-click="addToCart(foods)" title="add to cart">
@@ -242,8 +241,8 @@
                                                     <i class="fa fa-square icon-xs"></i> {{drink.name}}
                                                 </td>
                                                 <td class="price">
-                                                    {{ drink.price | currency:"₦ ":0 }}
-
+                                                    <span style="text-decoration: line-through" ng-if="drink.oldprice > 0">{{ drink.oldprice | currency:"₦ ":0 }}</span>
+                                                    <br /> {{ drink.price | currency:"₦ ":0 }}
                                                 </td>
                                                 <td>
                                                     <div style="display: inline-block; cursor: pointer; height: 30px" ng-click="addToCart(drink)" title="add to cart">
