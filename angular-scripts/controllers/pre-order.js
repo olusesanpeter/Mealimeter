@@ -43,6 +43,7 @@ angular.module('mealimeterApp')
             $scope.notdone = false;
             $scope.total = 0;
 
+            $scope.delivery = 0;
 
             if ($localStorage.guest == true) {
                 $scope.username = "guest";
@@ -80,7 +81,7 @@ angular.module('mealimeterApp')
             });
 
             if ($localStorage.preload != undefined) {
-                delete $localStorage.cart;
+                // delete $localStorage.cart;
             } else {
                 if ($localStorage.preClean == true) {
                     delete $localStorage.cart;
@@ -122,9 +123,19 @@ angular.module('mealimeterApp')
                 $scope.total += Number.parseInt(newPrice);
                 $scope.due = $scope.total - $scope.companysubsidy;
                 $scope.due = $scope.due - $scope.discount;
+
+                if (Number.parseInt($scope.due) > 2500) {
+                    console.log("200");
+                    $scope.delivery = 200;
+                } else {
+                    console.log("50");
+                    $scope.delivery = 50;
+                }
+                $scope.due = $scope.due + $scope.delivery;
                 $localStorage.cart[$scope.day] = $scope.cart;
                 $localStorage.total[$scope.day] = $scope.total;
                 $localStorage.due[$scope.day] = $scope.due;
+
                 $scope.empty = false;
                 $scope.one = "block";
                 $scope.two = "none";

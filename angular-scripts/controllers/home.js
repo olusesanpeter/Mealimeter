@@ -5,7 +5,7 @@ angular.module('mealimeterApp')
         }
 
         $scope.createCombo = function(image) {
-            $localStorage.preClean = true;
+            // $localStorage.preClean = true;
             $scope.gotoCombo(image);
         }
 

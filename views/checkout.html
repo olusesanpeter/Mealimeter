@@ -109,7 +109,7 @@
                 <div class="row">
 
 
-                    <div class="col-md-6">
+                    <div class="col-md-5 offset-md-1">
                         <div class="pull-left">
                             <button id="payBtn" class="btn btn-default " type="button" ng-click="ngFn()"><i class="fa fa-credit-card"></i></button>
                             <div class="pull-left ">
@@ -117,9 +117,33 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <button class="btn btn-default margin-top pull-right" ng-click="docheckout()"><i class="fa fa-money"></i> Pay from Wallet</button>
+                    </div>
+                </div>
+                <hr />
+                <div class="row" ng-show="total >= 5000">
+                    <div class="col-md-8">
+                        <button type="button" class="btn btn-default margin-top" ng-click="togglePayComp()">
+                            <i class="fa fa-building-o"></i> Pay by Company
+                        </button>
+                        <br />
+                        <small>Pay with company cheque or online transfer</small>
+                    </div>
+                </div>
 
+                <div class="row" ng-show="payComp">
+                    <div class="col-md-8">
+                        <br />
+                        <input type="text" name="company_name" placeholder="Company Name" class="form-control" />
+                        <br />
+                        <input type="text" name="company_phone" placeholder="Company Contact Phone" class="form-control" />
+                        <br />
+                        <input type="email" name="company_email" placeholder="Company Contact Email" class="form-control" />
+                        <br />
+                        <input type="address" name="company_address" placeholder="Company Address" class="form-control" />
+                        <br />
+                        <button class="btn success" id="submitComp" ng-click="compSubmit()">Submit</button>
                     </div>
                 </div>
             </div>

@@ -300,7 +300,7 @@ sup {
     border-radius: inherit;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
-    font-size:20px;
+    font-size: 20px;
 }
 
 .btn-icon.btn-xs {
@@ -3467,7 +3467,7 @@ body {
 }
 
 .item-bg {
-    background: url(../../assets/images/hero-days/monday.jpg) no-repeat center center;
+    background: url(../../assets/images/orderpage.jpg) no-repeat center center;
     background-size: cover;
     position: absolute;
     width: 100%;

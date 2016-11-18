@@ -114,6 +114,10 @@
                                 <td class="total">Discount</td>
                                 <td class="price">- {{ discount | currency:"₦":0 }}</td>
                             </tr>
+                            <tr ng-hide="delivery < 1">
+                                <td class="total">Packaging & Delivery</td>
+                                <td class="price">- {{ delivery | currency:"₦":0 }}</td>
+                            </tr>
                             <tr>
                                 <td class="total"><b>Amount Due </b></td>
                                 <td class="amount-due dark-green-color"><b>  {{ due | currency:"₦":0 }} </b></td>
@@ -407,6 +411,10 @@
                             <tr ng-hide="discount < 1">
                                 <td class="total">Discount</td>
                                 <td class="price">- {{ discount | currency:"₦":0 }}</td>
+                            </tr>
+                            <tr ng-hide="delivery < 1">
+                                <td class="total">Packaging & Delivery</td>
+                                <td class="price">- {{ delivery | currency:"₦":0 }}</td>
                             </tr>
                             <tr>
                                 <td class="total"><b>Amount Due </b></td>

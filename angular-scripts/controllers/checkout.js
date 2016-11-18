@@ -19,6 +19,9 @@ angular.module('mealimeterApp')
             $localStorage.refcode = $localStorage.data.data.refcode;
         }
 
+
+        $scope.payComp = false;
+
         var food = "";
         var price = "";
         var quantity = "";
@@ -100,8 +103,13 @@ angular.module('mealimeterApp')
             });
             handler.openIframe();
         };
+
+
+        $scope.togglePayComp = function() {
+            $scope.payComp = !$scope.payComp;
+        }
     }])
-    .controller('CheckoutCtrl', ['$scope', '$http', '$rootScope', '$window', '$localStorage', '$location', function($scope, $http, $rootScope, $window, $localStorage, $location) {
+    .controller('CheckoutCtrl', ['$scope', '$http', '$rootScope', '$window', '$localStorage', '$location', '$route', function($scope, $http, $rootScope, $window, $localStorage, $location, $route) {
 
         if ($localStorage.guest == true) {
             var refcode = $localStorage.refcode;
@@ -212,6 +220,10 @@ angular.module('mealimeterApp')
             // $scope.weeks[4].total = $scope.fridaytotal;
             // $scope.weeks[4].due = $scope.fridaydue;
 
+            $scope.prepareCheckoutInfo = function() {
+
+            }
+
             $scope.docheckout = function() {
                 var food = "";
                 var price = "";
@@ -308,6 +320,100 @@ angular.module('mealimeterApp')
                         swal.close();
                     });
             }
+
+            $scope.compSubmit = function() {
+                var cName = $("input[name=company_name]").val();
+                var cPhone = $("input[name=company_phone]").val();
+                var cAddress = $("input[name=company_address]").val();
+                var cEmail = $("input[name=company_email]").val();
+
+                if (cName != "" && cPhone != "" && cAddress != "" && cEmail != "") {
+
+                    var cN = $("input[name=company_name]");
+                    var cP = $("input[name=company_phone]");
+                    var cA = $("input[name=company_address]");
+                    var cE = $("input[name=company_email]");
+
+                    cN.prop("disabled", true);
+                    cP.prop("disabled", true);
+                    cA.prop("disabled", true);
+                    cE.prop("disabled", true);
+                    $("#submitComp").html("<i class='fa fa-spin fa-spinner'></i>");
+                    $("#submitComp").prop("disabled", true);
+
+                    var food = "";
+                    var price = "";
+                    var quantity = "";
+                    var total = 0;
+                    var due = 0;
+                    var companysubsidy = 0;
+                    for (var i = 0; i < 5; i++) {
+                        if ($localStorage.cart[i] == undefined) {
+                            food += ";";
+                            price += ";";
+                            quantity += ";";
+                        } else {
+                            angular.forEach($localStorage.cart[i], function(foods) {
+                                food += foods.mainmeal + " + " + foods.additive + ",.,";
+                                price += foods.price + ",.,";
+                                quantity += foods.quantity + ",.,";
+                            });
+                            food += ";";
+                            price += ";";
+                            quantity += ";";
+                            // console.log($localStorage.due[i]);
+                            total += Number.parseInt($localStorage.total[i]);
+                            due += Number.parseInt($localStorage.due[i]);
+                            companysubsidy += Number.parseInt($scope.companysubsidy);
+                        }
+
+                    }
+
+                    var compstring = cName + " - " + cPhone + " - " + cAddress + " - " + cEmail;
+
+                    var data = "token=" + $localStorage.data.data.token + "&companystring=" + compstring + "&refcode=" + $localStorage.refcode + "&refrefcode=" + $localStorage.refrefcode + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&food=" + food + "&price=" + price + "&quantity=" + quantity;
+                    var link = $rootScope.mealimeter;
+                    $http({
+                        method: "POST",
+                        url: link + "buycompany",
+                        data: data,
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                    }).then(function(result) {
+
+                        delete $localStorage.due;
+                        delete $localStorage.total;
+                        delete $localStorage.cart;
+
+                        swal("Great!", "Your order has been taken! And your company would be contacted", "success");
+
+                        $('#modal-id').modal('hide');
+
+                        cN.prop("disabled", false);
+                        cP.prop("disabled", false);
+                        cA.prop("disabled", false);
+                        cE.prop("disabled", false);
+                        $("#submitComp").html("Submit");
+                        $("#submitComp").prop("disabled", false);
+
+                        $window.location.href = "#/home";
+
+                    }, function(error) {
+                        console.log(error);
+                        swal("Oops!", "Something went wrong while placing your order. Try Again", "danger");
+
+                        cN.prop("disabled", false);
+                        cP.prop("disabled", false);
+                        cA.prop("disabled", false);
+                        cE.prop("disabled", false);
+                        $("#submitComp").html("Submit");
+                        $("#submitComp").prop("disabled", false);
+                    });
+
+                } else {
+                    toastr.warning("All fields must be completed");
+                }
+            }
+
 
         }
     }]);
