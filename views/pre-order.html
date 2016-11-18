@@ -241,8 +241,8 @@
                                         <tbody>
                                             <tr ng-repeat="drink in drinks" class="menurow" ng-show="drink.main != 'Combo'">
                                                 <td>
-                                                    <!-- <i class="fa fa-plus icon-xs"></i> -->
-                                                    <i class="fa fa-square icon-xs"></i> {{drink.name}}
+                                                    <i class="fa fa-square icon-xs"></i> {{drink.name}}<br />
+                                                    <small>{{drink.ingredients}}</small>
                                                 </td>
                                                 <td class="price">
                                                     <span style="text-decoration: line-through" ng-if="drink.oldprice > 0">{{ drink.oldprice | currency:"₦ ":0 }}</span>
@@ -257,7 +257,7 @@
                                                         <img src="assets/images/minusicon.png" style="height: inherit" />
                                                     </div>
 
-                                                    <div style="display: inline-block; cursor: pointer; height: 30px" my-tooltip class="info-icon" data-toggle="tooltip" data-placement="top" data-html="true" title="{{drink.main}}">
+                                                    <div style="display: inline-block; cursor: pointer; height: 30px" my-tooltip class="info-icon" data-toggle="tooltip" data-placement="top" data-html="true" title="{{drink.calories}} Calories">
                                                         <img src="assets/images/infoicon.png" style="height: inherit" />
                                                     </div>
                                                 </td>
