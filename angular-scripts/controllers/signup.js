@@ -34,11 +34,12 @@ angular.module('mealimeterApp')
 
         $scope.register = function(data) {
             console.log(data);
-            var date = new Date(data.dobfield);
-            data.datefield = date.getDate() + "/" + date.getMonth();
+            // var date = new Date(data.dobfield);
+            // data.datefield = date.getDate() + "/" + date.getMonth();
+            data.datefield = "";
             console.log(data.datefield);
             if (data.companies == 'other') {
-                var registerdata = "firstname=" + data.firstnamefield + "&lastname=" + data.lastnamefield + "&email=" + data.emailfield + "&phoneNo=" + data.phoneNofield + "&dob=" + data.datefield + "&sex=" + data.genderfield + "&password=" + data.passwordfield + "&password=" + data.passwordfield2 + "&refcode=" + $scope.refcodefield + "&officename=" + data.officename + "&officeaddress=" + data.officeaddress + "&officelocation=" + data.officelocation;
+                var registerdata = "firstname=" + data.firstnamefield + "&lastname=" + data.lastnamefield + "&email=" + data.emailfield + "&phoneNo=" + data.phoneNofield + "&dob=" + data.datefield + "&sex=" + data.genderfield + "&password=" + data.passwordfield + "&password=" + data.passwordfield2 + "&refcode=" + $scope.refcodefield + "&officename=" + data.officename + "&officeaddress=" + data.officeaddress + "&officelocation=" + data.officelocation + " - " + data.officeplace;
             } else {
                 var registerdata = "firstname=" + data.firstnamefield + "&lastname=" + data.lastnamefield + "&email=" + data.emailfield + "&phoneNo=" + data.phoneNofield + "&dob=" + data.datefield + "&sex=" + data.genderfield + "&password=" + data.passwordfield + "&password=" + data.passwordfield2 + "&refcode=" + $scope.refcodefield + "&officeid=" + data.companies;
             }

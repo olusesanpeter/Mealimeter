@@ -80,23 +80,33 @@
                         </div>
                         <div class="md-form-group float-label">
                             <select name="" ng-model="data.companies" class="form-control">
-                <option value="">Select your Company </option>
-                <h1>{{companies}}</h1>
-                <option ng-repeat="company in companies" value="{{company.id}}">{{company.name}} - {{company.address}}</option>
-                <option value="other" aria-label="Toggle ngShow">Other</option>
-              </select>
+                                <option value="">Select your Company </option>
+                                <option ng-repeat="company in companies" value="{{company.id}}">{{company.name}} - {{company.address}}</option>
+                                <option value="other" aria-label="Toggle ngShow">Other</option>
+                            </select>
                         </div>
-                        <div class="md-form-group float-label" ng-show="data.companies == 'other'">
-                            <input type="text" class="md-input" ng-model="data.officename">
+                        <div class="md-form-group float-label" ng-if="data.companies == 'other'">
+                            <input type="text" required class="md-input" ng-model="data.officename">
                             <label>Company Name</label>
                         </div>
-                        <div class="md-form-group float-label" ng-show="data.companies == 'other'">
-                            <input type="text" class="md-input" ng-model="data.officeaddress">
+                        <div class="md-form-group float-label" ng-if="data.companies == 'other'">
+                            <input type="text" required class="md-input" ng-model="data.officeaddress">
                             <label>Company Street Name only</label>
                         </div>
-                        <div class="md-form-group float-label" ng-show="data.companies == 'other'">
-                            <input type="text" class="md-input" ng-model="data.officelocation">
+                        <div class="md-form-group float-label" ng-if="data.companies == 'other'">
+                            <input type="text" required class="md-input" ng-model="data.officelocation">
                             <label>Company Full Address</label>
+                        </div>
+                        <div class="md-form-group float-label" ng-if="data.companies == 'other'">
+                            <select name="" required ng-model="data.officeplace" class="form-control">
+                                <option value="">-Company Location-</option>
+                                <option value="Yaba">Yaba</option>
+                                <option value="Ikeja">Ikeja</option>
+                                <option value="Surulere">Surulere</option>
+                                <option value="Lekki">Lekki</option>
+                                <option value="Ikoyi">Ikoyi</option>
+                                <option value="Victoria Island">Victoria Island</option>
+                            </select>
                         </div>
                         <!--<div class="md-form-group float-label" ng-show="data.companies == 'other'">
                             <input type="text" class="md-input" ng-model="data.officelocation">
