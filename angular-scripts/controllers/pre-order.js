@@ -124,7 +124,7 @@ angular.module('mealimeterApp')
                 $scope.due = $scope.total - $scope.companysubsidy;
                 $scope.due = $scope.due - $scope.discount;
 
-                if (Number.parseInt($scope.due) > 2500) {
+                if (Number.parseInt($scope.due) >= 2499) {
                     console.log("200");
                     $scope.delivery = 200;
                 } else {
