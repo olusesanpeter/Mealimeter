@@ -119,16 +119,33 @@ angular.module('mealimeterApp')
                 }
             }
 
+            $scope.checkRice = function() {
+                var riceid = 1;
+                var ricequantity = 0;
+                for (var i = 0; i < $scope.cart.length; i++) {
+                    if (riceid == $scope.cart[i].id) {
+                        ricequantity = $scope.cart[i].quantity;
+                    }
+                }
+
+                return ricequantity;
+            }
+
             $scope.recalculateTotal = function(newPrice) {
                 $scope.total += Number.parseInt(newPrice);
                 $scope.due = $scope.total - $scope.companysubsidy;
                 $scope.due = $scope.due - $scope.discount;
 
-                if (Number.parseInt($scope.due) >= 2499) {
-                    console.log("200");
+                // if (Number.parseInt($scope.due) >= 2499) {
+                //     console.log("200");
+                //     $scope.delivery = 200;
+                // } else {
+                //     console.log("50");
+                //     $scope.delivery = 50;
+                // }
+                if ($scope.checkRice() >= 10) {
                     $scope.delivery = 200;
                 } else {
-                    console.log("50");
                     $scope.delivery = 50;
                 }
                 $scope.due = $scope.due + $scope.delivery;
