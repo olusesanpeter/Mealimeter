@@ -54,6 +54,18 @@ angular.module('mealimeterApp')
         // console.log(total);
         // console.log($scope.total);
 
+        var drinksstring = "";
+        if ($localStorage.freeDrinks != undefined) {
+            var s = $localStorage.freeDrinks;
+            drinksstring = " Refer Selection: " + drinksstring + JSON.stringify(s);
+            console.log(drinksstring);
+        }
+        if ($localStorage.cFreeDrinks != undefined) {
+            var s = $localStorage.cFreeDrinks;
+            drinksstring = " Combo Selection: " + drinksstring + JSON.stringify(s);
+            console.log(drinksstring);
+        }
+
         $scope.ngFn = function() {
             pb.innerHTML = "<i class='fa fa-spinner fa-spin'></i> Loading...";
 
@@ -73,7 +85,7 @@ angular.module('mealimeterApp')
                     console.log(response);
                     pb.innerHTML = '<i class="fa fa-credit-card"></i> Pay with card';
                     // alert('success. transaction ref is ' + response.reference);
-                    var data = "token=" + $localStorage.data.data.token + "&refcode=" + $localStorage.refcode + "&refrefcode=" + $localStorage.refrefcode + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&food=" + food + "&price=" + price + "&quantity=" + quantity;
+                    var data = "token=" + $localStorage.data.data.token + "&drinksstring=" + drinksstring + "&refcode=" + $localStorage.refcode + "&refrefcode=" + $localStorage.refrefcode + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&food=" + food + "&price=" + price + "&quantity=" + quantity;
                     console.log(data);
                     var link = $rootScope.mealimeter;
                     $http({
@@ -115,6 +127,18 @@ angular.module('mealimeterApp')
             var refcode = $localStorage.refcode;
         } else {
             $localStorage.refcode = $localStorage.data.data.refcode;
+        }
+
+        var drinksstring = "";
+        if ($localStorage.freeDrinks != undefined) {
+            var s = $localStorage.freeDrinks;
+            drinksstring = " Refer Selection: " + drinksstring + JSON.stringify(s);
+            console.log(drinksstring);
+        }
+        if ($localStorage.cFreeDrinks != undefined) {
+            var s = $localStorage.cFreeDrinks;
+            drinksstring = " Combo Selection: " + drinksstring + JSON.stringify(s);
+            console.log(drinksstring);
         }
 
         if ($localStorage.data == undefined && $localStorage.guest == undefined) {
@@ -266,7 +290,8 @@ angular.module('mealimeterApp')
                 }).then(function(result) {
                     $scope.balance = result.data.balance;
                     if (Number.parseInt($scope.balance) > due) {
-                        var data = "token=" + $localStorage.data.data.token + "&refcode=" + $localStorage.refcode + "&refrefcode=" + $localStorage.refrefcode + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&food=" + food + "&price=" + price + "&quantity=" + quantity;
+                        var data = "token=" + $localStorage.data.data.token + "&drinksstring=" + drinksstring + "&refcode=" + $localStorage.refcode + "&refrefcode=" + $localStorage.refrefcode + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&food=" + food + "&price=" + price + "&quantity=" + quantity;
+                        console.log(data);
                         var link = $rootScope.mealimeter;
                         $http({
                             method: "POST",
@@ -278,7 +303,7 @@ angular.module('mealimeterApp')
                             delete $localStorage.total;
                             delete $localStorage.cart;
 
-                            swal("Great!", "Your order has been taken!", "success")
+                            swal("Great!", "Your order has been taken!", "success");
                             $('#modal-id').modal('hide');
                             $window.location.href = "#/home";
                         }, function(error) {
@@ -371,7 +396,7 @@ angular.module('mealimeterApp')
 
                     var compstring = cName + " - " + cPhone + " - " + cAddress + " - " + cEmail;
 
-                    var data = "token=" + $localStorage.data.data.token + "&companystring=" + compstring + "&refcode=" + $localStorage.refcode + "&refrefcode=" + $localStorage.refrefcode + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&food=" + food + "&price=" + price + "&quantity=" + quantity;
+                    var data = "token=" + $localStorage.data.data.token + "&drinksstring=" + drinksstring + "&companystring=" + compstring + "&refcode=" + $localStorage.refcode + "&refrefcode=" + $localStorage.refrefcode + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&food=" + food + "&price=" + price + "&quantity=" + quantity;
                     var link = $rootScope.mealimeter;
                     $http({
                         method: "POST",

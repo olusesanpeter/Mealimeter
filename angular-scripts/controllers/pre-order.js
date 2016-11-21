@@ -154,28 +154,37 @@ angular.module('mealimeterApp')
                 if ($scope.cFreeDrinks[drinkid] == undefined) {
                     $scope.cFreeDrinks[drinkid] = [];
                 }
-
                 $("#combosmoothiemodal").modal();
             }
             $scope.cInsertFreeDrink = function(drink) {
-                $scope.cFreeDrinks[$scope.cDrinkId].push(drink);
+                var dd = {
+                    id: drink.id,
+                    name: drink.name
+                }
+                $scope.cFreeDrinks[$scope.cDrinkId].push(dd);
 
                 if ($scope.cFreeDrinks[$scope.cDrinkId].length > $scope.cPreDrinknum) {
                     $scope.cFreeDrinks[$scope.cDrinkId].shift();
                 }
+                console.log($scope.cFreeDrinks[$scope.cDrinkId]);
+                $localStorage.cFreeDrinks = $scope.cFreeDrinks;
             }
 
             $scope.cIsSelectedDrink = function(drink) {
-                if ($scope.cFreeDrinks[$scope.cDrinkId].indexOf(drink) !== -1) {
-                    return true;
-                } else {
-                    return false;
-                }
+                var r = false;
+                $scope.cFreeDrinks[$scope.cDrinkId].forEach(function(item) {
+                    if (r == false) {
+                        if (item.id == drink.id) {
+                            r = true;
+                        }
+                    }
+                }, this);
+                return r;
             }
             $scope.cGetSelectedNum = function(drink) {
                 var num = 0;
                 $scope.cFreeDrinks[$scope.cDrinkId].forEach(function(item) {
-                    if (item === drink) {
+                    if (item.id == drink.id) {
                         num++;
                     }
                 }, this);
@@ -188,18 +197,12 @@ angular.module('mealimeterApp')
                 $scope.due = $scope.total - $scope.companysubsidy;
                 $scope.due = $scope.due - $scope.discount;
 
-                // if (Number.parseInt($scope.due) >= 2499) {
-                //     console.log("200");
-                //     $scope.delivery = 200;
-                // } else {
-                //     console.log("50");
-                //     $scope.delivery = 50;
-                // }
                 if ($scope.checkRice() >= 10) {
                     $scope.delivery = 200;
                 } else {
                     $scope.delivery = $scope.checkRice() * 50;
                 }
+
                 $scope.due = $scope.due + $scope.delivery;
                 $localStorage.cart[$scope.day] = $scope.cart;
                 $localStorage.total[$scope.day] = $scope.total;
@@ -299,24 +302,33 @@ angular.module('mealimeterApp')
 
             $scope.freeDrinks = [];
             $scope.insertFreeDrink = function(drink) {
-                $scope.freeDrinks.push(drink);
-
+                var dd = {
+                    id: drink.id,
+                    name: drink.name
+                }
+                $scope.freeDrinks.push(dd);
                 if ($scope.freeDrinks.length > $scope.preDrinknum) {
                     $scope.freeDrinks.shift();
                 }
+
+                $localStorage.freeDrinks = $scope.freeDrinks;
             }
 
             $scope.isSelectedDrink = function(drink) {
-                if ($scope.freeDrinks.indexOf(drink) !== -1) {
-                    return true;
-                } else {
-                    return false;
-                }
+                var r = false;
+                $scope.freeDrinks.forEach(function(item) {
+                    if (r == false) {
+                        if (item.id == drink.id) {
+                            r = true;
+                        }
+                    }
+                }, this);
+                return r;
             }
             $scope.getSelectedNum = function(drink) {
                 var num = 0;
                 $scope.freeDrinks.forEach(function(item) {
-                    if (item === drink) {
+                    if (item.id === drink.id) {
                         num++;
                     }
                 }, this);
