@@ -121,14 +121,66 @@ angular.module('mealimeterApp')
 
             $scope.checkRice = function() {
                 var riceid = 1;
+                var threeForTwoId = 13;
+                var oneTwoId = 12;
+                var sevenFiftyId = 11;
                 var ricequantity = 0;
                 for (var i = 0; i < $scope.cart.length; i++) {
                     if (riceid == $scope.cart[i].id) {
                         ricequantity = $scope.cart[i].quantity;
                     }
                 }
+                for (var i = 0; i < $scope.cart.length; i++) {
+                    if (threeForTwoId == $scope.cart[i].id) {
+                        ricequantity = ricequantity + 3;
+                    }
+                    if (oneTwoId == $scope.cart[i].id) {
+                        ricequantity = ricequantity + 1;
+                    }
+                    if (sevenFiftyId == $scope.cart[i].id) {
+                        ricequantity = ricequantity + 1;
+                    }
+                }
 
                 return ricequantity;
+            }
+
+            $scope.cFreeDrinks = [];
+            $scope.openComboDrinks = function(drinksNum, drinkssize, drinkid) {
+                $scope.cPreDrinknum = drinksNum;
+                $scope.cPreDrinksize = drinkssize;
+
+                $scope.cDrinkId = drinkid;
+                if ($scope.cFreeDrinks[drinkid] == undefined) {
+                    $scope.cFreeDrinks[drinkid] = [];
+                }
+
+                $("#combosmoothiemodal").modal();
+            }
+            $scope.cInsertFreeDrink = function(drink) {
+                $scope.cFreeDrinks[$scope.cDrinkId].push(drink);
+
+                if ($scope.cFreeDrinks[$scope.cDrinkId].length > $scope.cPreDrinknum) {
+                    $scope.cFreeDrinks[$scope.cDrinkId].shift();
+                }
+            }
+
+            $scope.cIsSelectedDrink = function(drink) {
+                if ($scope.cFreeDrinks[$scope.cDrinkId].indexOf(drink) !== -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            $scope.cGetSelectedNum = function(drink) {
+                var num = 0;
+                $scope.cFreeDrinks[$scope.cDrinkId].forEach(function(item) {
+                    if (item === drink) {
+                        num++;
+                    }
+                }, this);
+
+                return num;
             }
 
             $scope.recalculateTotal = function(newPrice) {
@@ -146,7 +198,7 @@ angular.module('mealimeterApp')
                 if ($scope.checkRice() >= 10) {
                     $scope.delivery = 200;
                 } else {
-                    $scope.delivery = 50;
+                    $scope.delivery = $scope.checkRice() * 50;
                 }
                 $scope.due = $scope.due + $scope.delivery;
                 $localStorage.cart[$scope.day] = $scope.cart;
@@ -233,109 +285,6 @@ angular.module('mealimeterApp')
 
 
             }
-
-            // $scope.addtocart = function(id, len) {
-            //     var main = $scope.meals[$scope.day].options[len].option.name;
-            //     var additive = $scope.meals[$scope.day].options[len].option.additives[id];
-            //     var price = $scope.meals[$scope.day].options[len].option.prices[id];
-            //     if (len == 0) {
-            //         var newid = (len + 1) * (id + 1);
-            //     } else {
-            //         var prevsize = 0;
-            //         for (var i = 0; i < len; i++) {
-            //             prevsize += $scope.meals[$scope.day].options[i].option.additives.length;
-            //         }
-            //         var newid = prevsize + (id + 1);
-            //     }
-            //     var t = false;
-            //     var currentposition = 0;
-            //     var total = 0;
-
-            //     for (var i = 0; i < $scope.cart.length; i++) {
-            //         if (newid == $scope.cart[i].id) {
-            //             t = true;
-            //             currentposition = i;
-            //         }
-            //         total += Number.parseInt($scope.cart[i].price);
-            //     }
-            //     if (t == false) {
-            //         $scope.cart.push({ 'id': newid, 'mainmeal': main, 'additive': additive, 'price': price, 'quantity': 1 });
-            //         total += Number.parseInt(price);
-            //     } else {
-            //         var oldquantity = $scope.cart[currentposition].quantity;
-            //         var newquantity = oldquantity + 1;
-            //         var oldprice = $scope.cart[currentposition].price;
-            //         var newprice = ((oldprice) / oldquantity) * newquantity;
-            //         total = total - oldprice + newprice;
-            //         $scope.cart[currentposition] = { 'id': newid, 'mainmeal': main, 'additive': additive, 'price': newprice, 'quantity': newquantity };
-            //     }
-            //     $scope.total = total;
-            //     $scope.due = $scope.total - $scope.companysubsidy;
-            //     $scope.due = $scope.due - $scope.discount;
-            //     $localStorage.cart[$scope.day] = $scope.cart;
-            //     $localStorage.total[$scope.day] = $scope.total;
-            //     $localStorage.due[$scope.day] = $scope.due;
-            //     $scope.empty = false;
-            //     $scope.one = "block";
-            //     $scope.two = "none";
-
-            //     console.log($scope.cart);
-            // }
-
-            // $scope.removefromcart = function(id, len) {
-
-            //     // if ($localStorage.discount != undefined) {
-            //     //     swal
-            //     // }
-
-            //     var main = $scope.meals[$scope.day].options[len].option.name;
-            //     var additive = $scope.meals[$scope.day].options[len].option.additives[id];
-            //     var price = $scope.meals[$scope.day].options[len].option.prices[id];
-            //     if (len == 0) {
-            //         var newid = (len + 1) * (id + 1);
-            //     } else {
-            //         var prevsize = 0;
-            //         for (var i = 0; i < len; i++) {
-            //             prevsize += $scope.meals[$scope.day].options[i].option.additives.length;
-            //         }
-            //         var newid = prevsize + (id + 1);
-            //     }
-            //     var t = false;
-            //     var currentposition = 0;
-            //     var total = 0;
-            //     for (var i = 0; i < $scope.cart.length; i++) {
-            //         if (newid == $scope.cart[i].id) {
-            //             t = true;
-            //             currentposition = i;
-            //         }
-            //         total += Number.parseInt($scope.cart[i].price);
-            //     }
-            //     if (t == true) {
-            //         var oldquantity = $scope.cart[currentposition].quantity;
-            //         if (oldquantity > 1) {
-            //             var newquantity = oldquantity - 1;
-            //             var oldprice = $scope.cart[currentposition].price;
-            //             var newprice = ((oldprice) / oldquantity) * newquantity;
-            //             total = total - oldprice + newprice;
-            //             $scope.cart[currentposition] = { 'id': newid, 'mainmeal': main, 'additive': additive, 'price': newprice, 'quantity': newquantity };
-            //         } else {
-            //             var oldprice = $scope.cart[currentposition].price;
-            //             total = total - oldprice;
-            //             $scope.cart.splice(currentposition, 1);
-            //         }
-            //     }
-
-            //     $scope.total = total;
-            //     $scope.due = $scope.total - $scope.companysubsidy;
-            //     $scope.due = $scope.due - $scope.discount;
-            //     $localStorage.cart[$scope.day] = $scope.cart;
-            //     $localStorage.total[$scope.day] = $scope.total;
-            //     $localStorage.due[$scope.day] = $scope.due;
-            //     $scope.empty = false;
-            //     $scope.one = "block";
-            //     $scope.two = "none";
-
-            // }
 
             $scope.checkDrinkSize = function(string, size) {
                 if (size == 'big') {

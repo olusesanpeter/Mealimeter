@@ -22,11 +22,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3" style="text-align: center">
-                <button class="btn btn-link" style="margin: auto" data-target='#refermodal' data-toggle="modal" ng-if="preRefer > 0">
+                <!--<button class="btn btn-link" style="margin: auto" data-target='#refermodal' data-toggle="modal" ng-if="preRefer > 0">
                 Click here to Refer
-                </button>
+                </button>-->
                 <button class="btn btn-link" style="margin: auto" data-target='#smoothiemodal' data-toggle="modal" ng-if="preDrinknum > 0">
-                Click here to select your free smoothie
+                Refer and get your free smoothie
                 </button>
             </div>
         </div>
@@ -72,7 +72,31 @@
                                     <td>
                                         <b>{{item.mainmeal}}</b>
                                         <br><span class="toppings ">+ {{item.additive}}</span>
-
+                                        <div ng-if="item.id == '11'">
+                                            <button class="btn btn-link" ng-click="openComboDrinks(1, 'small', 11)">
+                                                <small>Click here to select smoothie</small>
+                                            </button>
+                                        </div>
+                                        <div ng-if="item.id == '12'">
+                                            <button class="btn btn-link" ng-click="openComboDrinks(1, 'big', 12)">
+                                                <small>Click here to select Smoothie</small>
+                                            </button>
+                                        </div>
+                                        <div ng-if="item.id == '13'">
+                                            <button class="btn btn-link" ng-click="openComboDrinks(3, 'big', 13)">
+                                                <small>Click here to select Smoothie</small>
+                                            </button>
+                                        </div>
+                                        <div ng-if="item.id == '14'">
+                                            <button class="btn btn-link" ng-click="openComboDrinks(5, 'small', 14)">
+                                                <small>Click here to select Smoothie</small>
+                                            </button>
+                                        </div>
+                                        <div ng-if="item.id == '15'">
+                                            <button class="btn btn-link" ng-click="openComboDrinks(5, 'big', 15)">
+                                                <small>Click here to select Smoothie</small>
+                                            </button>
+                                        </div>
                                     </td>
                                     <td>
                                         {{ item.price | currency:"₦ ":0 }}
@@ -116,7 +140,7 @@
                             </tr>
                             <tr ng-hide="delivery < 1">
                                 <td class="total">Packaging & Delivery</td>
-                                <td class="price">- {{ delivery | currency:"₦":0 }}</td>
+                                <td class="price"> {{ delivery | currency:"₦":0 }}</td>
                             </tr>
                             <tr>
                                 <td class="total"><b>Amount Due </b></td>
@@ -460,7 +484,23 @@
                 <h4 class="modal-title">Refer {{preRefer}} to get a free {{preReferItem}}</h4>
             </div>
             <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="smoothiemodal" ng-controller="inviteCtrl">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <!--<h4 class="modal-title">Select {{preDrinknum}} free smoothies with your combo</h4>-->
+            </div>
+            <div class="modal-body">
                 <div class="row" ng-if="preRefer > 0">
+                    <h4 class="modal-title">Refer {{preRefer}} to get a free {{preReferItem}}</h4>
+
                     <div class="col-md-12" style="padding: 10px">
 
                         <div class="row">
@@ -540,19 +580,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="smoothiemodal" ng-controller="inviteCtrl">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Select {{preDrinknum}} free smoothies with your combo</h4>
-            </div>
-            <div class="modal-body">
+
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -567,8 +596,47 @@
                             <td style="padding: 15px 10px;">
                                 <i ng-show="isSelectedDrink(smoothie)" style="color: white" class="fa fa-check fa-2x"></i>
                             </td>
-                            <td style="padding: 15px 10px;">{{smoothie.name}}</td>
+                            <td style="padding: 15px 10px;">
+                                {{smoothie.name}}<br />
+                                <small>{{smoothie.ingredients}}</small>
+                            </td>
                             <td ng-if="isSelectedDrink(smoothie)">{{getSelectedNum(smoothie)}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="combosmoothiemodal" ng-controller="inviteCtrl">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Select {{cPreDrinknum}} free smoothies with your combo</h4>
+            </div>
+            <div class="modal-body">
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Selected</th>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <!--<th></th>-->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="cursor: pointer;" ng-class="{success: cIsSelectedDrink(smoothie)}" ng-repeat="smoothie in drinks" ng-if="checkDrinkSize(smoothie.name, cPreDrinksize) && smoothie.main != 'Combo'" ng-click="cInsertFreeDrink(smoothie)">
+                            <td style="padding: 15px 10px;">
+                                <i ng-show="cIsSelectedDrink(smoothie)" style="color: white" class="fa fa-check fa-2x"></i>
+                            </td>
+                            <td style="padding: 15px 10px;">
+                                {{smoothie.name}}<br />
+                                <small>{{smoothie.ingredients}}</small>
+                            </td>
+                            <td ng-if="cIsSelectedDrink(smoothie)">{{cGetSelectedNum(smoothie)}}</td>
                         </tr>
                     </tbody>
                 </table>
