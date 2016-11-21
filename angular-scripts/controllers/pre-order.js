@@ -130,17 +130,22 @@ angular.module('mealimeterApp')
                         ricequantity = $scope.cart[i].quantity;
                     }
                 }
+                var real = 0;
                 for (var i = 0; i < $scope.cart.length; i++) {
                     if (threeForTwoId == $scope.cart[i].id) {
-                        ricequantity = ricequantity + 3;
+                        real = $scope.cart[i].quantity * 3;
+                        ricequantity = ricequantity + real;
                     }
                     if (oneTwoId == $scope.cart[i].id) {
-                        ricequantity = ricequantity + 1;
+                        real = $scope.cart[i].quantity;
+                        ricequantity = ricequantity + real;
                     }
                     if (sevenFiftyId == $scope.cart[i].id) {
-                        ricequantity = ricequantity + 1;
+                        real = $scope.cart[i].quantity;
+                        ricequantity = ricequantity + real;
                     }
                 }
+                console.log(ricequantity);
 
                 return ricequantity;
             }
@@ -335,34 +340,96 @@ angular.module('mealimeterApp')
 
                 return num;
             }
+            if ($localStorage.comboid != undefined) {
+                $scope.comboId = $localStorage.comboid;
+                console.log($scope.comboId);
+            } else {
+                $scope.comboId = 0;
+            }
+            $scope.gotoTeam10 = function() {
+                var turkey = $("#teamturkey10").val();
+                var chicken = $("#teamchicken10").val();
+                var beef = $("#teambeef10").val();
+                var plan = $("#teamplan10").val();
 
-            $scope.loadPreloads = function() {
-                if ($localStorage.preRefer) {
-                    $scope.preRefer = $localStorage.preRefer;
-                    $scope.preReferItem = $localStorage.preReferItem;
 
-                    $scope.referList = [];
-                    for (var i = 0; i < $scope.preRefer; i++) {
-                        $scope.referList.push(i);
-                    }
-                }
+                $scope.gotoCombo('teamof10', 1, 10);
 
-                if ($localStorage.preDrinknum) {
-                    $scope.preDrinknum = $localStorage.preDrinknum;
-                    $scope.preDrinksize = $localStorage.preDrinksize;
-                }
+                $localStorage.preload = [];
 
-                if ($localStorage.preImage) {
-                    $scope.preImage = $localStorage.preImage;
-                }
+                var addturkey = [4, turkey];
+                $localStorage.preload.push(addturkey);
+                var addchicken = [5, chicken];
+                $localStorage.preload.push(addchicken);
+                var addbeef = [3, beef];
+                $localStorage.preload.push(addbeef);
+                var addplan = [2, plan];
+                $localStorage.preload.push(addplan);
 
-                if ($localStorage.preDiscount != undefined) {
-                    $scope.discount = $localStorage.preDiscount;
-                    console.log($scope.discount);
+                console.log($localStorage.preload);
+
+                $scope.loadNewPreloads();
+                $scope.loadPreloads();
+            }
+            $scope.gotoTeam20 = function() {
+                var turkey = $("#teamturkey20").val();
+                var chicken = $("#teamchicken20").val();
+                var beef = $("#teambeef20").val();
+                var plan = $("#teamplan20").val();
+
+
+                $scope.gotoCombo('teamof20', 1, 20);
+
+                $localStorage.preload = [];
+
+                var addturkey = [4, turkey];
+                $localStorage.preload.push(addturkey);
+                var addchicken = [5, chicken];
+                $localStorage.preload.push(addchicken);
+                var addbeef = [3, beef];
+                $localStorage.preload.push(addbeef);
+                var addplan = [2, plan];
+                $localStorage.preload.push(addplan);
+
+                console.log($localStorage.preload);
+
+                $scope.loadNewPreloads();
+                $scope.loadPreloads();
+            }
+            $scope.gotoCombo = function(image, comboid, foodnum, refer, referitem, drinknum, drinksize) {
+                $("#sdmodal").modal('hide');
+                $("#teammodal").modal('hide');
+
+                if (comboid) {
+                    $localStorage.preload = [
+                        [comboid, foodnum]
+                    ];
                 } else {
-                    $scope.discount = 0;
+                    delete $localStorage.preload;
                 }
 
+                if (refer > 0) {
+                    $localStorage.preRefer = refer;
+                    $localStorage.preReferItem = referitem;
+                } else {
+                    delete $localStorage.preRefer;
+                    delete $localStorage.preReferItem;
+                }
+
+                if (drinknum > 0) {
+                    $localStorage.preDrinknum = drinknum;
+                    $localStorage.preDrinksize = drinksize;
+                } else {
+                    delete $localStorage.preDrinknum;
+                    delete $localStorage.preDrinksize;
+                }
+
+                $localStorage.preImage = image;
+
+                $scope.loadNewPreloads();
+                $scope.loadPreloads();
+            }
+            $scope.loadNewPreloads = function() {
                 if ($localStorage.preload != undefined) {
                     var preloads = $localStorage.preload;
 
@@ -380,9 +447,41 @@ angular.module('mealimeterApp')
                     }, this);
                 }
 
+                if ($localStorage.preRefer) {
+                    $scope.preRefer = $localStorage.preRefer;
+                    $scope.preReferItem = $localStorage.preReferItem;
+
+                    $scope.referList = [];
+                    for (var i = 0; i < $scope.preRefer; i++) {
+                        $scope.referList.push(i);
+                    }
+                }
+
+                if ($localStorage.preDrinknum) {
+                    $scope.preDrinknum = $localStorage.preDrinknum;
+                    $scope.preDrinksize = $localStorage.preDrinksize;
+                }
+
+                delete $localStorage.preload;
+
+                $scope.comboId = 0;
+            }
+            $scope.loadPreloads = function() {
+
+
+                if ($localStorage.preImage) {
+                    $scope.preImage = $localStorage.preImage;
+                }
+
+                if ($localStorage.preDiscount != undefined) {
+                    $scope.discount = $localStorage.preDiscount;
+                    console.log($scope.discount);
+                } else {
+                    $scope.discount = 0;
+                }
+
                 delete $localStorage.preDiscount;
                 // delete $localStorage.preImage;
-                delete $localStorage.preload;
             }
 
             $scope.getFoodById = function(fid) {

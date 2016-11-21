@@ -20,14 +20,172 @@
 
 <div class="padding">
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3" style="text-align: center">
-                <!--<button class="btn btn-link" style="margin: auto" data-target='#refermodal' data-toggle="modal" ng-if="preRefer > 0">
-                Click here to Refer
-                </button>-->
-                <button class="btn btn-link" style="margin: auto" data-target='#smoothiemodal' data-toggle="modal" ng-if="preDrinknum > 0">
-                Refer and get your free smoothie
-                </button>
+        <div class="row" ng-if="comboId == 13 || comboId == 12 || comboId == 11">
+            <div class="col-md-12 box" style="padding: 15px;">
+                <div class=" row ">
+                    <div class="col-md-9 ">
+                        <h3 style="margin-top: 10px">Add the above combo to cart</h3>
+                    </div>
+                    <div class="col-md-3 pull-right ">
+                        <button style="color: #5cb85c " class="btn btn-success btn-lg btn-outline" ng-click="loadNewPreloads()">Add to cart</button>
+                    </div>
+                </div>
+                <!--<hr />
+                <div class="row" ng-if="preDrinknum > 0">
+                    <div class="col-md-9 ">
+                        <h5 style="margin-top: 10px">Refer a colleague and get your free smoothie</h5>
+                    </div>
+                    <div class="col-md-3 pull-right ">
+                        <button style="color: #5bc0de " class="btn btn-info btn-outline" style="margin: auto" data-target='#smoothiemodal' data-toggle="modal">
+                            Refer                
+                        </button>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+        <div class="row" ng-if="comboId == 0 && preDrinknum > 0">
+            <div class="col-md-12 box" style="padding: 15px;">
+                <div class="row" ng-if="preDrinknum > 0">
+                    <div class="col-md-9 ">
+                        <h5 style="margin-top: 10px">Refer a colleague and get your free smoothie</h5>
+                    </div>
+                    <div class="col-md-3 pull-right ">
+                        <button style="color: #5bc0de " class="btn btn-info btn-outline" style="margin: auto" data-target='#smoothiemodal' data-toggle="modal">
+                            Refer                
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" ng-if="comboId == 14">
+            <div class="col-md-12 box" style="padding: 15px;">
+                <div class=" row ">
+                    <div class="col-md-9 ">
+                        <h3 style="margin-top: 10px">Add the Smoothie deal combo to cart</h3>
+                    </div>
+                    <div class="col-md-3 pull-right ">
+                        <button style="color: #5cb85c " class="btn btn-success btn-lg btn-outline" data-target='#sdmodal' data-toggle="modal">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" ng-if="comboId == 'team10'">
+            <div class="col-md-12 box" style="padding: 15px;">
+                <div class=" row ">
+                    <div class="col-md-9 ">
+                        <h3 style="margin-top: 10px">Choose Team of 10 Combo and add to cart</h3>
+                    </div>
+                    <!--<div class="col-md-3 pull-right ">
+                        <button style="color: #5cb85c " class="btn btn-success btn-lg btn-outline" data-target='#sdmodal' data-toggle="modal">Add to cart</button>
+                    </div>-->
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>+ Turkey</label>
+                                <select class="form-control" id="teamturkey10">
+                                    <option value="5">5</option>
+                                    <option ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" value="{{i}}">{{i}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label>+ BBQ Chicken</label/>
+                                <select class="form-control" id="teamchicken10">
+                                    <option value="5">5</option>
+                                    <option ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" value="{{i}}">{{i}}</option>
+                                </select>
+                            </div>
+                        </div>                        
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>+ Beef</label>
+                                <select class="form-control" id="teambeef10">
+                                    <option value="0">0</option>
+                                    <option ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" value="{{i}}">{{i}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label>+ Plantain</label>
+                                <select class="form-control" id="teamplan10">
+                                    <option value="0">0</option>
+                                    <option ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" value="{{i}}">{{i}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button style="color: #5cb85c" class="btn btn-success btn-outline btn-lg" ng-click="gotoTeam10()">
+                                    Add to cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" ng-if="comboId == 'team20'">
+            <div class="col-md-12 box" style="padding: 15px;">
+                <div class=" row ">
+                    <div class="col-md-9 ">
+                        <h3 style="margin-top: 10px">Choose Team of 20 Combo and add to cart</h3>
+                    </div>
+                    <!--<div class="col-md-3 pull-right ">
+                        <button style="color: #5cb85c " class="btn btn-success btn-lg btn-outline" data-target='#sdmodal' data-toggle="modal">Add to cart</button>
+                    </div>-->
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>+ Turkey</label>
+                                <select class="form-control" id="teamturkey20">
+                                    <option value="10">10</option>
+                                    <option ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" value="{{i}}">{{i}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label>+ BBQ Chicken</label/>
+                                <select class="form-control" id="teamchicken20">
+                                    <option value="10">10</option>
+                                    <option ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" value="{{i}}">{{i}}</option>
+                                </select>
+                            </div>
+                        </div>                        
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>+ Beef</label>
+                                <select class="form-control" id="teambeef20">
+                                    <option value="0">0</option>
+                                    <option ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" value="{{i}}">{{i}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label>+ Plantain</label>
+                                <select class="form-control" id="teamplan20">
+                                    <option value="0">0</option>
+                                    <option ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" value="{{i}}">{{i}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button style="color: #5cb85c" class="btn btn-success btn-outline btn-lg" ng-click="gotoTeam20()">
+                                    Add to cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -74,27 +232,27 @@
                                         <br><span class="toppings ">+ {{item.additive}}</span>
                                         <div ng-if="item.id == '11'">
                                             <button class="btn btn-link" ng-click="openComboDrinks(1, 'small', 11)">
-                                                <small>Click here to select smoothie</small>
+                                                <small>Click here to select smoothie/juice</small>
                                             </button>
                                         </div>
                                         <div ng-if="item.id == '12'">
                                             <button class="btn btn-link" ng-click="openComboDrinks(1, 'big', 12)">
-                                                <small>Click here to select Smoothie</small>
+                                                <small>Click here to select smoothie/juice</small>
                                             </button>
                                         </div>
                                         <div ng-if="item.id == '13'">
                                             <button class="btn btn-link" ng-click="openComboDrinks(3, 'big', 13)">
-                                                <small>Click here to select Smoothie</small>
+                                                <small>Click here to select smoothie/juice</small>
                                             </button>
                                         </div>
                                         <div ng-if="item.id == '14'">
                                             <button class="btn btn-link" ng-click="openComboDrinks(5, 'small', 14)">
-                                                <small>Click here to select Smoothie</small>
+                                                <small>Click here to select smoothie/juice</small>
                                             </button>
                                         </div>
                                         <div ng-if="item.id == '15'">
                                             <button class="btn btn-link" ng-click="openComboDrinks(5, 'big', 15)">
-                                                <small>Click here to select Smoothie</small>
+                                                <small>Click here to select smoothie/juice</small>
                                             </button>
                                         </div>
                                     </td>
@@ -187,7 +345,7 @@
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" showtab href="#mealsection" role="tab" data-toggle="tab">
-                                            <h5 class="toggleitem">Food </h5>
+                                            <h5 class="toggleitem">Extras </h5>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -254,7 +412,7 @@
                                                 <th width="70%">
 
                                                 </th>
-                                                <th width="10%" class="price topprice">
+                                                <th width="10%" class="price ">
 
                                                 </th>
                                                 <th width="20%">
@@ -266,7 +424,7 @@
                                             <tr ng-repeat="drink in drinks" class="menurow" ng-show="drink.main != 'Combo'">
                                                 <td>
                                                     <i class="fa fa-square icon-xs"></i> {{drink.name}}<br />
-                                                    <small>{{drink.ingredients}}</small>
+                                                    <small><b>{{drink.main}}</b> - {{drink.ingredients}}</small>
                                                 </td>
                                                 <td class="price">
                                                     <span style="text-decoration: line-through" ng-if="drink.oldprice > 0">{{ drink.oldprice | currency:"₦ ":0 }}</span>
@@ -598,7 +756,7 @@
                             </td>
                             <td style="padding: 15px 10px;">
                                 {{smoothie.name}}<br />
-                                <small>{{smoothie.ingredients}}</small>
+                                <small><b>{{smoothie.main}}</b> - {{smoothie.ingredients}}</small>
                             </td>
                             <td ng-if="isSelectedDrink(smoothie)">{{getSelectedNum(smoothie)}}</td>
                         </tr>
@@ -634,12 +792,36 @@
                             </td>
                             <td style="padding: 15px 10px;">
                                 {{smoothie.name}}<br />
-                                <small>{{smoothie.ingredients}}</small>
+                                <small><b>{{smoothie.main}}</b> - {{smoothie.ingredients}}</small>
                             </td>
                             <td ng-if="cIsSelectedDrink(smoothie)">{{cGetSelectedNum(smoothie)}}</td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="sdmodal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Smoothie/juice size</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6" style="text-align: center">
+                        <button class="btn btn-default" ng-click="gotoCombo('smoothiedeal', 14, 1, null, null)">
+                            Small Sizes
+                        </button>
+                    </div>
+                    <div class="col-md-6" style="text-align: center">
+                        <button class="btn btn-default" ng-click="gotoCombo('smoothiedeal', 15, 1, null, null)">
+                            Big Sizes
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

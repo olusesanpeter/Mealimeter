@@ -17,7 +17,19 @@ angular.module('mealimeterApp')
             }, 800);
         }
 
+        $scope.gotoCart = function(image, comboid) {
+            $localStorage.preImage = image;
+            
+            $localStorage.comboid = comboid;
+            $scope.redirectToCart();
+        }
+
         $scope.gotoCombo = function(image, comboid, foodnum, refer, referitem, drinknum, drinksize) {
+            $("#sdmodal").modal('hide');
+            $("#teammodal").modal('hide');
+
+            $localStorage.comboid = comboid;
+
             if (comboid) {
                 $localStorage.preload = [
                     [comboid, foodnum]
@@ -44,7 +56,13 @@ angular.module('mealimeterApp')
 
             $localStorage.preImage = image;
 
-            $window.location.href = "#/pre-order/thursday";
+            $scope.redirectToCart();
+        }
+
+        $scope.redirectToCart = function() {
+            $timeout(function() {
+                $window.location.href = "#/pre-order/thursday";
+            }, 500)
         }
 
     }]);
