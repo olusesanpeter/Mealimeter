@@ -93,9 +93,9 @@
         <div class="col-md-4"></div>
 
         <div class="col-md-4">
-            <a class="btn btn-large btn-block primary btn-white" data-toggle="modal" ng-if="username != 'guest'" data-target='#modal-id'>Pre-order all meals</a>
-            <a class="btn btn-large btn-block primary btn-white" ng-if="username == 'guest'" ng-click="guestBuy()">Pre-order all meals</a>
-        </div>
+            <a class="btn btn-large btn-block primary btn-lg" data-toggle="modal" ng-if="username != 'guest'" data-target='#modal-id'>PROCEED TO PAYMENT</a>
+            <a class="btn btn-large btn-block primary btn-lg" ng-if="username == 'guest'" ng-click="guestBuy()">PROCEED TO PAYMENT</a>
+        </div> 
     </div>
 </div>
 <div class="modal fade" id="modal-id" ng-controller="paymentCtrl">
