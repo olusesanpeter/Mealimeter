@@ -95,7 +95,7 @@
         <div class="col-md-4">
             <a class="btn btn-large btn-block primary btn-lg" data-toggle="modal" ng-if="username != 'guest'" data-target='#modal-id'>PROCEED TO PAYMENT</a>
             <a class="btn btn-large btn-block primary btn-lg" ng-if="username == 'guest'" ng-click="guestBuy()">PROCEED TO PAYMENT</a>
-        </div> 
+        </div>
     </div>
 </div>
 <div class="modal fade" id="modal-id" ng-controller="paymentCtrl">
@@ -122,7 +122,15 @@
                     </div>
                 </div>
                 <hr />
-                <div class="row" ng-show="total >= 5000">
+                <div class="row" ng-if="companyfree">
+                    <div class="col-md-8">
+                        <p>{{companyname}} is willing to bear the cost of this meal</p>
+                        <button type="button" class="btn btn-default margin-top" ng-click="compSubmit()">
+                            <i class="fa fa-building-o"></i> Agree - Pay by Company
+                        </button>
+                    </div>
+                </div>
+                <!--<div class="row" ng-show="total >= 5000">
                     <div class="col-md-8">
                         <button type="button" class="btn btn-default margin-top" ng-click="togglePayComp()">
                             <i class="fa fa-building-o"></i> Pay by Company
@@ -145,7 +153,7 @@
                         <br />
                         <button class="btn success" id="submitComp" ng-click="compSubmit()">Submit</button>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>

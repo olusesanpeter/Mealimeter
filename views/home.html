@@ -12,10 +12,8 @@
 
 <br>
 <br>
-<div class="container-fluid">
-    <div class="col-md-10 offset-md-1">
-        <br>
-
+<div class="container">
+    <div class="col-md-12">
         <div class="row">
             <div class="col-md-12 boxx" ng-click="createCombo('createcombo')">
                 <img src="assets/images/createcombo.jpg" class="img-responsive">
@@ -57,136 +55,62 @@
                 <img src="assets/images/smoothiedeal.jpg" class="img-responsive">
             </div>
         </div>
+        <br />
 
-    </div>
-</div>
-<br />
-<br />
-<br />
-<div class="modal fade" id="sdmodal">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Smoothie/juice size</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-6" style="text-align: center">
-                        <button class="btn btn-default" ng-click="gotoCombo('smoothiedeal', 14, 1, null, null)">
-                            Small Sizes
-                        </button>
-                    </div>
-                    <div class="col-md-6" style="text-align: center">
-                        <button class="btn btn-default" ng-click="gotoCombo('smoothiedeal', 15, 1, null, null)">
-                            Big Sizes
-                        </button>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-md-12 boxx" data-target='#teamcmodal' data-toggle="modal">
+                <img src="assets/images/teamchallenge.jpg" class="img-responsive">
             </div>
         </div>
+        <br>
+
     </div>
 </div>
-
-<div class="modal fade" id="teammodal">
-    <div class="modal-dialog modal-sm">
+<br />
+<br />
+<div class="modal fade" id="teamcmodal">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Team of 20 Combination</h4>
+                <h4 class="modal-title">Here's how to participate:</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-12">
-                        <label>+ Turkey</label>
-                        <select class="form-control" id="teamturkey20">
-                            <option value="10">10</option>
-                            <option ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" value="{{i}}">{{i}}</option>
-                        </select>
-                        <!--<input type="number" class="form-control" value="10" id="teamturkey20" />-->
-                    </div>
-                </div>
-                <hr />
-                <div class="row">
-                    <div class="col-md-12">
-                        <label>+ BBQ Chicken</label/>
-                        <select class="form-control" id="teamchicken20">
-                            <option value="5">5</option>
-                            <option ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" value="{{i}}">{{i}}</option>
-                        </select>
-                        <!--<input type="number" class="form-control" value="5" id="teamchicken20" />-->
-                    </div>
-                </div>
-                <hr />
-                <div class="row">
-                    <div class="col-md-12">
-                        <label>+ Beef</label>
-                        <select class="form-control" id="teambeef20">
-                            <option value="5">5</option>
-                            <option ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" value="{{i}}">{{i}}</option>
-                        </select>
-                        <!--<input type="number" class="form-control" value="5" />-->
-                    </div>
-                </div>
-                <hr />
-                <div class="row">
-                    <div class="col-md-6">
-                        <button class="btn btn-default" ng-click="gotoTeam20()">
-                            Go
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="team10modal">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Team of 10 Combination</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <label>+ Turkey</label>
-                        <select class="form-control" id="teamturkey10">
-                            <option value="5">5</option>
-                            <option ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" value="{{i}}">{{i}}</option>
-                        </select>
-                        <!--<input type="number" class="form-control" value="10" id="teamturkey20" />-->
-                    </div>
-                </div>
-                <hr />
-                <div class="row">
-                    <div class="col-md-12">
-                        <label>+ BBQ Chicken</label/>
-                        <select class="form-control" id="teamchicken10">
-                            <option value="5">5</option>
-                            <option ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" value="{{i}}">{{i}}</option>
-                        </select>
-                        <!--<input type="number" class="form-control" value="5" id="teamchicken20" />-->
-                    </div>
-                </div>
-                <hr />
-                <div class="row">
-                    <div class="col-md-12">
-                        <label>+ Beef</label>
-                        <select class="form-control" id="teambeef10">
-                            <option value="0">0</option>
-                            <option ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" value="{{i}}">{{i}}</option>
-                        </select>
-                        <!--<input type="number" class="form-control" value="5" />-->
-                    </div>
-                </div>
-                <hr />
-                <div class="row">
-                    <div class="col-md-6">
-                        <button class="btn btn-default" ng-click="gotoTeam10()">
-                            Go
-                        </button>
+                    <div class="col-md-10 md-offset-1">
+                        <ol>
+                            <h4>
+                                <li>
+                                    Make orders for Mealimeter meals <small>up to 5 packs</small>.
+                                </li>
+                            </h4>
+                            <br />
+                            <h4>
+                                <li>
+                                    Take an interesting/crazy team photo or do a team <b>#MannequinChallenge</b> video with your meals.
+                                </li>
+                            </h4>
+                            <br />
+                            <h4>
+                                <li>
+                                    Post on <span style="color: lightblue">twitter</span> and <span style="color: blue">facebook</span> and tag us <span style="color: green">@mealimeter</span> and on <span style="color: red">Instagram</span> and tag us
+                                    <span style="color: green">@mealimeterhq</span> and hashtag <b>#TeamChallenge</b>.
+                                </li>
+                            </h4>
+                            <br />
+                            <h4>
+                                <li>
+                                    Get friends an colleagues to tweet
+                                </li>
+                            </h4>
+                            <hr />
+                            <h2>Prizes</h2>
+                            <ul>
+                                <li>Tickets for team to the Cinema</li>
+                                <li>Tickets for team to the Cart Racing</li>
+                                <li>Tickets for team to the Karaoke</li>
+                            </ul>
+                        </ol>
                     </div>
                 </div>
             </div>
