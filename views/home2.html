@@ -6,8 +6,8 @@
 <div class="item">
     <div class="">
         <div class="hero scrolldown" ng-click="slideDown()" style="background:rgba(0, 0, 0, 0) url('assets/images/ewatuesdays.jpg') no-repeat scroll center center / cover; height: 640px;width: 100% ">
-            <a style="cursor: pointer" ng-click="$event.stopPropagation(); showTeamModal()">
-                <img style="width: 300px; position: absolute; bottom: 0px; right: 0px" src="assets/images/challengesmall.png" />
+            <a style="cursor: pointer" ng-click="$event.stopPropagation();" href="#/home">
+                <img data-wow-duration="0.7s" data-wow-delay="0.5s" class="wow zoomIn" style="width: 350px; position: absolute; bottom: 30px; right: 0px" src="assets/images/nextJollofC.png" />
             </a>
         </div>
     </div>
@@ -117,4 +117,8 @@
             }
         });
     });
+</script>
+<script src="assets/wow.js"></script>
+<script>
+    new WOW().init();
 </script>

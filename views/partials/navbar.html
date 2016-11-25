@@ -14,6 +14,14 @@
 
         <!-- navbar right -->
         <ul class="nav navbar-nav pull-right">
+            <li class="nav-item dropdown ">
+                <a class="nav-link nav-link2" style="border-right: 1px solid white; font-weight: normal; padding-right: 20px;">
+						DAYS LEFT TO PREORDER 
+                        <span style="margin: auto" id="days">00</span> Days
+                        <span style="margin: auto" id="hours">00</span> Hrs
+                        <span style="margin: auto" id="minutes">00</span> Mins
+					</a>
+            </li>
             <li class="nav-item dropdown " ng-if="username != 'guest'">
                 <a class="nav-link nav-link2">
 						Wallet Balance : <span class="white-color">{{ balance | currency:"₦":0 }}</span>
@@ -78,7 +86,7 @@
             </li>
         </ul>
         <!-- / -->
-        <div ng-if="username != 'guest'" style="padding-top: 5px; text-align: center" class="nav navbar-nav col-sm-2 offset-sm-1">
+        <!--<div ng-if="username != 'guest'" style="padding-top: 5px; text-align: center" class="nav navbar-nav col-sm-2 offset-sm-1">
             <span style="margin: auto" id="days">00</span> d
             <span style="margin: auto" id="hours">00</span> h
             <span style="margin: auto" id="minutes">00</span> m
@@ -90,7 +98,7 @@
             <span style="margin: auto" id="hours">00</span> h
             <span style="margin: auto" id="minutes">00</span> m
             <div>left to preorder</div>
-        </div>
+        </div>-->
 
     </div>
     <!-- / navbar collapse -->

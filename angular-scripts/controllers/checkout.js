@@ -31,6 +31,7 @@ angular.module('mealimeterApp')
         $scope.payComp = false;
 
         var food = "";
+        var foodid = "";
         var price = "";
         var quantity = "";
         var total = 0;
@@ -39,15 +40,18 @@ angular.module('mealimeterApp')
         for (var i = 0; i < 5; i++) {
             if ($localStorage.cart[i] == undefined) {
                 food += ";";
+                foodid += ";";
                 price += ";";
                 quantity += ";";
             } else {
                 angular.forEach($localStorage.cart[i], function(foods) {
                     food += foods.mainmeal + " + " + foods.additive + ",.,";
+                    foodid += foods.id + ",.,";
                     price += foods.price + ",.,";
                     quantity += foods.quantity + ",.,";
                 });
                 food += ";";
+                foodid += ";";
                 price += ";";
                 quantity += ";";
                 // console.log($localStorage.due[i]);
@@ -94,7 +98,7 @@ angular.module('mealimeterApp')
                     console.log(response);
                     pb.innerHTML = '<i class="fa fa-credit-card"></i> Pay with card';
                     // alert('success. transaction ref is ' + response.reference);
-                    var data = "token=" + $localStorage.data.data.token + "&drinksstring=" + drinksstring + "&refcode=" + $localStorage.refcode + "&refrefcode=" + $localStorage.refrefcode + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&food=" + food + "&price=" + price + "&quantity=" + quantity;
+                    var data = "token=" + $localStorage.data.data.token + "&drinksstring=" + drinksstring + "&refcode=" + $localStorage.refcode + "&refrefcode=" + $localStorage.refrefcode + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&food=" + food + "&foodid=" + foodid + "&price=" + price + "&quantity=" + quantity;
                     console.log(data);
                     var link = $rootScope.mealimeter;
                     $http({
@@ -263,6 +267,7 @@ angular.module('mealimeterApp')
 
             $scope.docheckout = function() {
                 var food = "";
+                var foodid = "";
                 var price = "";
                 var quantity = "";
                 var total = 0;
@@ -271,15 +276,18 @@ angular.module('mealimeterApp')
                 for (var i = 0; i < 5; i++) {
                     if ($localStorage.cart[i] == undefined) {
                         food += ";";
+                        foodid += ";";
                         price += ";";
                         quantity += ";";
                     } else {
                         angular.forEach($localStorage.cart[i], function(foods) {
                             food += foods.mainmeal + " + " + foods.additive + ",.,";
+                            foodid += foods.id + ",.,";
                             price += foods.price + ",.,";
                             quantity += foods.quantity + ",.,";
                         });
                         food += ";";
+                        foodid += ";";
                         price += ";";
                         quantity += ";";
                         // console.log($localStorage.due[i]);
@@ -303,7 +311,7 @@ angular.module('mealimeterApp')
                 }).then(function(result) {
                     $scope.balance = result.data.balance;
                     if (Number.parseInt($scope.balance) > due) {
-                        var data = "token=" + $localStorage.data.data.token + "&drinksstring=" + drinksstring + "&refcode=" + $localStorage.refcode + "&refrefcode=" + $localStorage.refrefcode + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&food=" + food + "&price=" + price + "&quantity=" + quantity;
+                        var data = "token=" + $localStorage.data.data.token + "&drinksstring=" + drinksstring + "&refcode=" + $localStorage.refcode + "&refrefcode=" + $localStorage.refrefcode + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&foodid=" + foodid + "&food=" + food + "&price=" + price + "&quantity=" + quantity;
                         console.log(data);
                         var link = $rootScope.mealimeter;
                         $http({
@@ -380,6 +388,7 @@ angular.module('mealimeterApp')
                 // $("#submitComp").prop("disabled", true);
 
                 var food = "";
+                var foodid = "";
                 var price = "";
                 var quantity = "";
                 var total = 0;
@@ -388,15 +397,18 @@ angular.module('mealimeterApp')
                 for (var i = 0; i < 5; i++) {
                     if ($localStorage.cart[i] == undefined) {
                         food += ";";
+                        foodid += ";";
                         price += ";";
                         quantity += ";";
                     } else {
                         angular.forEach($localStorage.cart[i], function(foods) {
                             food += foods.mainmeal + " + " + foods.additive + ",.,";
+                            foodid += foods.id + ",.,";
                             price += foods.price + ",.,";
                             quantity += foods.quantity + ",.,";
                         });
                         food += ";";
+                        foodid += ";";
                         price += ";";
                         quantity += ";";
                         // console.log($localStorage.due[i]);
@@ -410,7 +422,7 @@ angular.module('mealimeterApp')
                 // var compstring = cName + " - " + cPhone + " - " + cAddress + " - " + cEmail;
                 var compstring = "Paid by " + $localStorage.data.officedata.office_name;
 
-                var data = "token=" + $localStorage.data.data.token + "&drinksstring=" + drinksstring + "&companystring=" + compstring + "&refcode=" + $localStorage.refcode + "&refrefcode=" + $localStorage.refrefcode + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&food=" + food + "&price=" + price + "&quantity=" + quantity;
+                var data = "token=" + $localStorage.data.data.token + "&drinksstring=" + drinksstring + "&companystring=" + compstring + "&refcode=" + $localStorage.refcode + "&refrefcode=" + $localStorage.refrefcode + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&food=" + food + "&price=" + price + "&foodid=" + foodid + "&quantity=" + quantity;
                 var link = $rootScope.mealimeter;
                 $http({
                     method: "POST",
