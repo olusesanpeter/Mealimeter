@@ -20,7 +20,7 @@
 
 <div class="padding">
     <div class="container">
-        <div class="row" ng-if="comboId == 13 || comboId == 12 || comboId == 11">
+        <div class="row" ng-if="comboId == 13 || comboId == 12 || comboId == 11 || comboId == 25 || comboId == 26 || comboId == 27 || comboId == 28 || comboId == 29">
             <div class="col-md-12 box" style="padding: 15px;">
                 <div class=" row ">
                     <div class="col-md-9 ">
@@ -318,21 +318,21 @@
                         <a class="btn btn-fw primary btn-full" href="#/pre-order/tuesday">Next <i class="fa fa-arrow-circle-right "></i> </a>
                     </div> -->
                     <div ng-if="daytext == 'Tuesday'">
-                        <a class="btn btn-fw primary btn-half" href="#/pre-order/thursday"> <i class="fa fa-arrow-circle-left "></i> Order for Thursday</a>
+                        <a class="btn btn-fw primary btn-half" href="#/home"> <i class="fa fa-arrow-circle-left "></i> Order for Thursday</a>
                         <!--<a class="btn btn-fw primary btn-half" href="#/pre-order/wednesday">Next <i class="fa fa-arrow-circle-right "></i> </a>-->
                     </div>
                     <!--<div ng-if="daytext == 'Wednesday'">
                         <a class="btn btn-fw primary btn-half" href="#/pre-order/tuesday"><i class="fa fa-arrow-circle-left "></i> Previous</a>
                         <a class="btn btn-fw primary btn-half" href="#/pre-order/thursday">Next  <i class="fa fa-arrow-circle-right "></i> </a>
                     </div>-->
-                    <!--<div ng-if="daytext == 'Thursday'">-->
-                    <!--<a class="btn btn-fw primary btn-half" href="#/pre-order/wednesday"><i class="fa fa-arrow-circle-left "></i> Previous</a>-->
-                    <!--<a class="btn btn-fw primary btn-half" href="#/pre-order/tuesday">Order for Tuesday  <i class="fa fa-arrow-circle-right "></i> </a>-->
-                    <!--</div>-->
+                    <div ng-if="daytext == 'Thursday'">
+                        <!--<a class="btn btn-fw primary btn-half" href="#/pre-order/wednesday"><i class="fa fa-arrow-circle-left "></i> Previous</a>-->
+                        <a class="btn btn-fw primary btn-half" href="#/home2">Order for Tuesday  <i class="fa fa-arrow-circle-right "></i> </a>
+                    </div>
                     <!--<div ng-if="daytext == 'Friday'">
                         <a class="btn btn-fw primary btn-full" href="#/pre-order/thursday"><i class="fa fa-arrow-circle-left "></i>  Previous</a>
                     </div>-->
-                    <a class="btn btn-fw primary btn-full btn-dark-green" href="#/checkout">Checkout</a>
+                    <a class="btn btn-fw primary btn-full btn-lg btn-dark-green" href="#/checkout">CHECKOUT</a>
 
                 </div>
             </div>
@@ -600,7 +600,7 @@
                             </tr>
                             <tr ng-hide="delivery < 1">
                                 <td class="total">Packaging & Delivery</td>
-                                <td class="price">- {{ delivery | currency:"₦":0 }}</td>
+                                <td class="price"> {{ delivery | currency:"₦":0 }}</td>
                             </tr>
                             <tr>
                                 <td class="total"><b>Amount Due </b></td>
@@ -616,21 +616,21 @@
                         <a class="btn btn-fw primary btn-full" href="#/pre-order/tuesday">Next <i class="fa fa-arrow-circle-right "></i> </a>
                     </div> -->
                     <div ng-if="daytext == 'Tuesday'">
-                        <a class="btn btn-fw primary btn-half" href="#/pre-order/thursday"> <i class="fa fa-arrow-circle-left "></i> Order for Thursday</a>
+                        <a class="btn btn-fw primary btn-half" href="#/home"> <i class="fa fa-arrow-circle-left "></i> Order for Thursday</a>
                         <!--<a class="btn btn-fw primary btn-half" href="#/pre-order/wednesday">Next <i class="fa fa-arrow-circle-right "></i> </a>-->
                     </div>
                     <!--<div ng-if="daytext == 'Wednesday'">
                         <a class="btn btn-fw primary btn-half" href="#/pre-order/tuesday"><i class="fa fa-arrow-circle-left "></i> Previous</a>
                         <a class="btn btn-fw primary btn-half" href="#/pre-order/thursday">Next  <i class="fa fa-arrow-circle-right "></i> </a>
                     </div>-->
-                    <!--<div ng-if="daytext == 'Thursday'">-->
-                    <!--<a class="btn btn-fw primary btn-half" href="#/pre-order/wednesday"><i class="fa fa-arrow-circle-left "></i> Previous</a>-->
-                    <!--<a class="btn btn-fw primary btn-half" href="#/pre-order/tuesday">Order for Tuesday  <i class="fa fa-arrow-circle-right "></i> </a>-->
-                    <!--</div>-->
+                    <div ng-if="daytext == 'Thursday'">
+                        <!--<a class="btn btn-fw primary btn-half" href="#/pre-order/wednesday"><i class="fa fa-arrow-circle-left "></i> Previous</a>-->
+                        <a class="btn btn-fw primary btn-half" href="#/home2">Order for Tuesday  <i class="fa fa-arrow-circle-right "></i> </a>
+                    </div>
                     <!--<div ng-if="daytext == 'Friday'">
                         <a class="btn btn-fw primary btn-full" href="#/pre-order/thursday"><i class="fa fa-arrow-circle-left "></i>  Previous</a>
                     </div>-->
-                    <a class="btn btn-fw primary btn-full btn-dark-green" href="#/checkout">Checkout</a>
+                    <a class="btn btn-fw primary btn-full btn-lg btn-dark-green" href="#/checkout">CHECKOUT</a>
 
                 </div>
             </div>

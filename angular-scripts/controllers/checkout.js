@@ -25,6 +25,8 @@ angular.module('mealimeterApp')
             }
         }
 
+        console.log("paymentctrl");
+
 
         $scope.payComp = false;
 
@@ -55,6 +57,7 @@ angular.module('mealimeterApp')
             }
         }
         $scope.total = total;
+        $scope.due = due;
 
         // console.log(due);
         // console.log(total);
@@ -176,7 +179,7 @@ angular.module('mealimeterApp')
             }
             $scope.weeks = [];
             $scope.weeks[0] = [];
-            // $scope.weeks[1] = [];
+            $scope.weeks[1] = [];
             // $scope.weeks[1] = [];
             // $scope.weeks[2] = [];
             // $scope.weeks[3] = [];
@@ -195,19 +198,19 @@ angular.module('mealimeterApp')
             // $scope.weeks[0].total = $scope.mondaytotal;
             // $scope.weeks[0].due = $scope.mondaydue;
 
-            // if ($localStorage.cart[1] != undefined || $localStorage.cart[1] != null) {
-            //     $scope.tuesday = $localStorage.cart[1];
-            //     $scope.tuesdaytotal = $localStorage.total[1];
-            //     $scope.tuesdaydue = $localStorage.due[1];
-            // } else {
-            //     $scope.tuesday = [];
-            //     $scope.tuesdaytotal = 0;
-            //     $scope.tuesdaydue = 0;
-            // }
-            // $scope.weeks[1].name = 'Tuesday';
-            // $scope.weeks[1].cart = $scope.tuesday;
-            // $scope.weeks[1].total = $scope.tuesdaytotal;
-            // $scope.weeks[1].due = $scope.tuesdaydue;
+            if ($localStorage.cart[1] != undefined || $localStorage.cart[1] != null) {
+                $scope.tuesday = $localStorage.cart[1];
+                $scope.tuesdaytotal = $localStorage.total[1];
+                $scope.tuesdaydue = $localStorage.due[1];
+            } else {
+                $scope.tuesday = [];
+                $scope.tuesdaytotal = 0;
+                $scope.tuesdaydue = 0;
+            }
+            $scope.weeks[1].name = 'Tuesday';
+            $scope.weeks[1].cart = $scope.tuesday;
+            $scope.weeks[1].total = $scope.tuesdaytotal;
+            $scope.weeks[1].due = $scope.tuesdaydue;
 
 
             // if ($localStorage.cart[2] != undefined || $localStorage.cart[2] != null) {

@@ -121,9 +121,6 @@ angular.module('mealimeterApp')
 
             $scope.checkRice = function() {
                 var riceid = 1;
-                var threeForTwoId = 13;
-                var oneTwoId = 12;
-                var sevenFiftyId = 11;
                 var ricequantity = 0;
                 for (var i = 0; i < $scope.cart.length; i++) {
                     if (riceid == $scope.cart[i].id) {
@@ -132,20 +129,33 @@ angular.module('mealimeterApp')
                 }
                 var real = 0;
                 for (var i = 0; i < $scope.cart.length; i++) {
-                    if (threeForTwoId == $scope.cart[i].id) {
+                    if (13 == $scope.cart[i].id) {
                         real = $scope.cart[i].quantity * 3;
                         ricequantity = ricequantity + real;
                     }
-                    if (oneTwoId == $scope.cart[i].id) {
+                    if (12 == $scope.cart[i].id ||
+                        11 == $scope.cart[i].id ||
+                        25 == $scope.cart[i].id ||
+                        26 == $scope.cart[i].id ||
+                        27 == $scope.cart[i].id ||
+                        28 == $scope.cart[i].id ||
+                        29 == $scope.cart[i].id) {
                         real = $scope.cart[i].quantity;
                         ricequantity = ricequantity + real;
                     }
-                    if (sevenFiftyId == $scope.cart[i].id) {
-                        real = $scope.cart[i].quantity;
-                        ricequantity = ricequantity + real;
-                    }
+                    // if (11 == $scope.cart[i].id) {
+                    //     real = $scope.cart[i].quantity;
+                    //     ricequantity = ricequantity + real;
+                    // }
+                    // if (26 == $scope.cart[i].id) {
+                    //     real = $scope.cart[i].quantity;
+                    //     ricequantity = ricequantity + real;
+                    // }
+                    // if (25 == $scope.cart[i].id) {
+                    //     real = $scope.cart[i].quantity;
+                    //     ricequantity = ricequantity + real;
+                    // }
                 }
-                console.log(ricequantity);
 
                 return ricequantity;
             }

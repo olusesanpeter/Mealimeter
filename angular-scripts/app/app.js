@@ -44,6 +44,11 @@ angular
                 controller: 'homeCtrl',
                 controllerAs: 'home'
             })
+            .when('/home2', {
+                templateUrl: 'views/home2.html',
+                controller: 'home2Ctrl',
+                controllerAs: 'home2'
+            })
             .when('/signup', {
                 templateUrl: 'views/signup.html',
                 controller: 'SignupCtrl',

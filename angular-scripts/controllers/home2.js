@@ -1,5 +1,5 @@
 angular.module('mealimeterApp')
-    .controller('homeCtrl', ['$scope', '$http', '$rootScope', '$window', '$localStorage', '$location', '$timeout', function($scope, $http, $rootScope, $window, $localStorage, $location, $timeout) {
+    .controller('home2Ctrl', ['$scope', '$http', '$rootScope', '$window', '$localStorage', '$location', '$timeout', function($scope, $http, $rootScope, $window, $localStorage, $location, $timeout) {
         if ($localStorage.data == undefined) {
             $localStorage.guest = true;
         }
@@ -65,7 +65,7 @@ angular.module('mealimeterApp')
 
         $scope.redirectToCart = function() {
             $timeout(function() {
-                $window.location.href = "#/pre-order/thursday";
+                $window.location.href = "#/pre-order/tuesday";
             }, 500)
         }
 
