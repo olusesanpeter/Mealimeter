@@ -8,10 +8,19 @@
  * Controller of the mealimeterApp
  */
 angular.module('mealimeterApp')
-    .controller('inviteCtrl', ['$scope', '$http', '$rootScope', '$window', '$localStorage', '$location', '$timeout', function($scope, $http, $rootScope, $window, $localStorage, $location, $timeout) {
+    .controller('inviteCtrl', ['$scope', '$routeParams', '$http', '$rootScope', '$window', '$localStorage', '$location', '$timeout', function($scope, $routeParams, $http, $rootScope, $window, $localStorage, $location, $timeout) {
         var num = 1;
         $scope.list = [num];
         $scope.done = [];
+
+        if ($routeParams.ref != undefined) {
+            $localStorage.refrefcode = $routeParams.ref;
+        } else {
+            if ($localStorage.refrefcode == undefined) {
+                $localStorage.refrefcode = "";
+            }
+        }
+
         if ($localStorage.guest != true) {
             $scope.refcode = $localStorage.data.data.refcode;
         } else {
