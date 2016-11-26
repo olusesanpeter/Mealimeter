@@ -193,7 +193,7 @@
             </div>
         </div>
 
-        <div class=" row " style="background-color: #fff;margin: 0; " ng-if="preImage != 'createcombo'">
+        <div class=" row " style="background-color: #fff;margin: 0; " ng-if="preImage != 'createcombo' && preImage != 'createcomboewa'">
             <div class="col-md-7 cart-sidebar cart-sidebar2 " style="padding-left: 0px;padding-right: 0px; height: 100%;background-color: #fff; ">
                 <div class="box box-color2 " style="position: relative;padding: 30px; ">
                     <div class="box-header dker2 " style="background-color: #fff;color:#000; ">
@@ -383,7 +383,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat="foods in food" class="menurow" ng-show="foods.main != 'Combo'">
+                                            <tr ng-repeat="foods in food" class="menurow" ng-show="foods.main != 'Combo' && foods.day != daytext">
                                                 <td>
                                                     <!-- <i class="fa fa-plus icon-xs"></i> -->
                                                     <i class="fa fa-square icon-xs"></i> {{foods.name}}
@@ -515,7 +515,7 @@
 
         </div>
 
-        <diiv class=" row " style="background-color: #fff;margin: 0; " ng-if="preImage == 'createcombo'">
+        <diiv class=" row " style="background-color: #fff;margin: 0; " ng-if="preImage == 'createcombo' || preImage == 'createcomboewa'">
             <div class="col-md-7 cart-sidebar cart-sidebar2 " style="padding-left: 0px;padding-right: 0px; height: 100%;background-color: #fff; ">
                 <div class="box box-color2 " style="position: relative;padding: 30px; ">
                     <div class="box-header dker2 " style="background-color: #fff;color:#000; ">
