@@ -99,6 +99,11 @@ angular
                 controller: 'Set-passwordCtrl',
                 controllerAs: 'set-password'
             })
+            .when('/reset-password', {
+                templateUrl: 'views/reset-password.html',
+                controller: 'ResetPasswordCtrl',
+                controllerAs: 'reset-password'
+            })
             .otherwise({
                 redirectTo: '/login'
             });

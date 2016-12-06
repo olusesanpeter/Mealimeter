@@ -17,7 +17,7 @@
             <li class="nav-item dropdown ">
                 <a class="nav-link nav-link2" style="border-right: 1px solid white; font-weight: normal; padding-right: 20px;">
 						DAYS LEFT TO PREORDER 
-                        <span style="margin: auto" id="days">00</span> Days
+                        <span style="margin: auto" id="days">00</span> Day
                         <span style="margin: auto" id="hours">00</span> Hrs
                         <span style="margin: auto" id="minutes">00</span> Mins
 					</a>
@@ -84,6 +84,12 @@
 						Refer & win
 					</a>
             </li>
+
+            <li class="nav-item hidehome" ng-if="username == 'guest'" data-target='#loginmodal' data-toggle="modal">
+                <a class="nav-link">
+						Refer & win
+					</a>
+            </li>
         </ul>
         <!-- / -->
         <!--<div ng-if="username != 'guest'" style="padding-top: 5px; text-align: center" class="nav navbar-nav col-sm-2 offset-sm-1">
@@ -107,6 +113,21 @@
             color: red;
         }
     </style>
+    <div class="modal fade" id="loginmodal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <h3><a style="color: #8ac03e" href="#/login">Login</a> or <a style="color: #8ac03e" href="#/signup">Signup</a> to recieve your referal code to win. </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="modal fade" id="invitemodal" ng-controller="inviteCtrl">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -226,8 +247,15 @@
         return "" + integer;
     }
     setInterval(function() {
-        var target = new Date("November 29 2016 16:00 GMT+0100"); //replace with YOUR DATE
+        var target = new Date("December 7 2016 17:00 GMT+0100"); //replace with YOUR DATE
+
         var now = new Date();
+        var next = new Date("December 12 2016 16:00 GMT+0100");
+
+        if (now.getTime() > target.getTime()) {
+            target = next;
+        }
+
         var difference = Math.floor((target.getTime() - now.getTime()) / 1000);
 
         var seconds = fixIntegers(difference % 60);

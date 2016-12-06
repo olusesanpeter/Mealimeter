@@ -33,7 +33,15 @@ angular.module('mealimeterApp')
             toastr.options.timeOut = 1000;
             toastr.positionClass = "toast-bottom-left";
 
-            $scope.preImage = 'createcombo';
+            if ($localStorage.preImage) {
+                console.log("local");
+                $scope.preImage = $localStorage.preImage;
+            } else {
+                console.log("local combo");
+                $scope.preImage = 'createcombo';
+            }
+
+
             $scope.done = [];
 
             $scope.drinks = [];

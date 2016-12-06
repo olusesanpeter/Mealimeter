@@ -79,7 +79,7 @@
                             <label>Referral Code (optional*)</label>
                         </div>
                         <div class="md-form-group float-label">
-                            <select name="" ng-model="data.companies" class="form-control">
+                            <select name="" required ng-model="data.companies" class="form-control">
                                 <option value="">Select your Company </option>
                                 <option ng-repeat="company in companies" value="{{company.id}}">{{company.name}} - {{company.address}}</option>
                                 <option value="other" aria-label="Toggle ngShow">Other</option>

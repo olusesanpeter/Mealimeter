@@ -43,7 +43,7 @@
                 </div>-->
             </div>
         </div>
-        <div class="row" ng-if="comboId == 0 && preDrinknum > 0">
+        <!--<div class="row" ng-if="comboId == 0 && preDrinknum > 0">
             <div class="col-md-12 box" style="padding: 15px;">
                 <div class="row" ng-if="preDrinknum > 0">
                     <div class="col-md-9 ">
@@ -56,7 +56,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <div class="row" ng-if="comboId == 14">
             <div class="col-md-12 box" style="padding: 15px;">
@@ -349,7 +349,8 @@
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" showtab href="#mealsection" role="tab" data-toggle="tab">
-                                            <h5 class="toggleitem">Extras </h5>
+                                            <h5 class="toggleitem" ng-if="preImage != 'createcombo' && preImage != 'createcomboewa'">Extras </h5>
+                                            <h5 class="toggleitem" ng-if="preImage == 'createcombo' || preImage == 'createcomboewa'">Food </h5>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -802,6 +803,9 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
             </div>
         </div>
     </div>

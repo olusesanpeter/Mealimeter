@@ -4,6 +4,14 @@ angular.module('mealimeterApp')
             $localStorage.guest = true;
         }
 
+        var target = new Date("December 7 2016 17:00 GMT+0100"); //replace with YOUR DATE
+
+        var now = new Date();
+
+        if (now.getTime() > target.getTime()) {
+            $window.location.href = "#/home2";
+        }
+
         $scope.createCombo = function(image) {
             // $localStorage.preClean = true;
             $scope.gotoCombo(image);

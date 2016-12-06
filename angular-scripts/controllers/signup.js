@@ -60,8 +60,9 @@ angular.module('mealimeterApp')
                         if (response.data.result.error == false) {
                             console.log("Registration Successful");
 
-                            if ($localStorage.guest == true) {
+                            if ($localStorage.guestSignUp == true) {
                                 $rootScope.flashmessage = "You can now preorder";
+                                delete $localStorage.guestSignUp;
                                 $scope.guestlogin(data.emailfield, data.passwordfield);
                             } else {
                                 setTimeout(function() {
