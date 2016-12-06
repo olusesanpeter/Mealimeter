@@ -247,14 +247,26 @@
         return "" + integer;
     }
     setInterval(function() {
-        var target = new Date("December 7 2016 17:00 GMT+0100"); //replace with YOUR DATE
+
+        var locationurl = window.location.href;
+        var check = (locationurl.indexOf('home2') !== -1) || (locationurl.indexOf('tuesday') !== -1);
+
+        console.log(check);
+
+        if (check) {
+            var target = new Date("December 12 2016 16:00 GMT+0100"); //replace with YOUR DATE
+            var next = new Date("December 19 2016 16:00 GMT+0100");
+        } else {
+            var target = new Date("December 7 2016 17:00 GMT+0100"); //replace with YOUR DATE
+            var next = new Date("December 14 2016 16:00 GMT+0100");
+        }
 
         var now = new Date();
-        var next = new Date("December 12 2016 16:00 GMT+0100");
 
         if (now.getTime() > target.getTime()) {
             target = next;
         }
+
 
         var difference = Math.floor((target.getTime() - now.getTime()) / 1000);
 
