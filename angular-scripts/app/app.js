@@ -11,8 +11,8 @@
 angular
     .module('mealimeterApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'ngStorage', 'ui.router'])
     .run(['$localStorage', '$rootScope', '$location', function($localStorage, $rootScope, $location) {
-        $rootScope.mealimeter = "https://mealimeter.herokuapp.com/";
-        $rootScope.mealimeterassets = "https://mealimeter.herokuapp.com/";
+        // $rootScope.mealimeter = "https://mealimeter.herokuapp.com/";
+        // $rootScope.mealimeterassets = "https://mealimeter.herokuapp.com/";
 
         // $rootScope.mealimeter = "http://localhost/mealimeter-backend/mealimeter/index.php/";
         // $rootScope.mealimeterassets = "http://localhost/mealimeter-backend/mealimeter/";
@@ -21,8 +21,8 @@ angular
         // $rootScope.mealimeter = "http://mealimeter.ng/api/index.php/";
         // $rootScope.mealimeterassets = "http://mealimeter.ng/api/";
 
-        // $rootScope.mealimeter = "http://localhost/mealimeter_/index.php/";
-        // $rootScope.mealimeterassets = "http://localhost/mealimeter_/";
+        $rootScope.mealimeter = "http://localhost/mealimeter_/index.php/";
+        $rootScope.mealimeterassets = "http://localhost/mealimeter_/";
         var path = function() { return $location.path(); };
         $rootScope.$watch(path, function(newVal, oldVal) {
             $rootScope.activetab = newVal;

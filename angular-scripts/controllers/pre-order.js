@@ -52,6 +52,7 @@ angular.module('mealimeterApp')
             $scope.total = 0;
 
             $scope.delivery = 0;
+            $scope.packaging = 0;
 
             if ($localStorage.guest == true) {
                 $scope.username = "guest";
@@ -225,8 +226,10 @@ angular.module('mealimeterApp')
                 } else {
                     $scope.delivery = $scope.checkRice() * 50;
                 }
+                $scope.packaging = $scope.checkRice() * 50;
 
                 $scope.due = $scope.due + $scope.delivery;
+                $scope.due = $scope.due + $scope.packaging;
                 $localStorage.cart[$scope.day] = $scope.cart;
                 $localStorage.total[$scope.day] = $scope.total;
                 $localStorage.due[$scope.day] = $scope.due;

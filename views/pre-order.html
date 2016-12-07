@@ -301,8 +301,12 @@
                                 <td class="price">- {{ discount | currency:"₦":0 }}</td>
                             </tr>
                             <tr ng-hide="delivery < 1">
-                                <td class="total">Packaging & Delivery</td>
+                                <td class="total">Delivery</td>
                                 <td class="price"> {{ delivery | currency:"₦":0 }}</td>
+                            </tr>
+                            <tr ng-hide="packaging < 1">
+                                <td class="total">Packaging ({{checkRice()}} packs)</td>
+                                <td class="price"> {{ packaging | currency:"₦":0 }}</td>
                             </tr>
                             <tr>
                                 <td class="total"><b>Amount Due </b></td>
@@ -600,8 +604,12 @@
                                 <td class="price">- {{ discount | currency:"₦":0 }}</td>
                             </tr>
                             <tr ng-hide="delivery < 1">
-                                <td class="total">Packaging & Delivery</td>
+                                <td class="total">Delivery</td>
                                 <td class="price"> {{ delivery | currency:"₦":0 }}</td>
+                            </tr>
+                            <tr ng-hide="packaging < 1">
+                                <td class="total">Packaging ({{checkRice()}} packs)</td>
+                                <td class="price"> {{ packaging | currency:"₦":0 }}</td>
                             </tr>
                             <tr>
                                 <td class="total"><b>Amount Due </b></td>

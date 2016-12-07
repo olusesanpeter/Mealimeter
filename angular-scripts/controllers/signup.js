@@ -15,7 +15,9 @@ angular.module('mealimeterApp')
         if ($routeParams.ref != undefined) {
             $localStorage.refrefcode = $routeParams.ref;
         } else {
-            $localStorage.refrefcode = '';
+            if ($localStorage.refrefcode == undefined) {
+                $localStorage.refrefcode = '';
+            }
         }
 
         //////data from login
