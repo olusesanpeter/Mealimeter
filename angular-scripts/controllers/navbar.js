@@ -12,6 +12,9 @@ angular.module('mealimeterApp')
         var num = 1;
         $scope.list = [num];
         $scope.done = [];
+        $scope.raters = [];
+        $scope.ratings = [];
+        $scope.rateWeek;
 
         if ($routeParams.ref != undefined) {
             $localStorage.refrefcode = $routeParams.ref;
@@ -21,9 +24,83 @@ angular.module('mealimeterApp')
                 $localStorage.refrefcode = "";
             }
         }
+        $scope.showrates = function() {
+            var obj = $.extend({}, $scope.ratings);
+            console.log(obj);
+
+            $scope.submitRate(obj);
+        }
+        $scope.dontRate = function() {
+            var obj = { 0: 0 };
+            $scope.submitRate(obj);
+        }
+        $scope.submitRate = function(ratobject) {
+            var ratings = JSON.stringify(ratobject);
+            var submitratedata = "token=" + $localStorage.data.data.token + "&ratings=" + ratings + "&week=" + $scope.rateWeek;
+
+            console.log(submitratedata);
+
+            var link = $rootScope.mealimeter;
+            $http({
+                method: "POST",
+                url: link + "submitrating",
+                data: submitratedata,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+            }).then(function(response) {
+                    var res = response.data;
+                    console.log(res);
+                    $('#ratingModal').modal('hide');
+                },
+
+                function(error) {
+                    console.log(error);
+                });
+        }
+        $scope.displayRating = function() {
+            var getratedata = "token=" + $localStorage.data.data.token;
+
+            var link = $rootScope.mealimeter;
+            $http({
+                method: "POST",
+                url: link + "checkrating",
+                data: getratedata,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+            }).then(function(response) {
+                    var res = response.data;
+                    console.log(res);
+                    if (response.data.error == false) {
+                        $scope.rateWeek = res.description.week;
+                        $scope.rateNames = res.description.name;
+                        $scope.rateIds = res.description.id;
+                        $scope.rateQuantity = res.description.quantity;
+
+                        for (var k = 0; k < $scope.rateNames.length; k++) {
+                            for (var l = 0; l < $scope.rateNames[k].length; l++) {
+                                var r = {
+                                    name: $scope.rateNames[k][l],
+                                    id: $scope.rateIds[k][l],
+                                    quantity: $scope.rateQuantity[k][l]
+                                }
+                                $scope.raters.push(r);
+                            }
+                        }
+                        console.log($scope.raters);
+
+                        $('#ratingModal').modal('show');
+                        console.log("Something should happen");
+                    } else {
+                        console.log("nothing should happen");
+                    }
+                },
+
+                function(error) {
+                    console.log(error);
+                });
+        }
 
         if ($localStorage.guest != true) {
             $scope.refcode = $localStorage.data.data.refcode;
+            $scope.displayRating();
         } else {
             if ($localStorage.refcode == undefined) {
                 var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';

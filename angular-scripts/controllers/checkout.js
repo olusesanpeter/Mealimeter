@@ -83,6 +83,40 @@ angular.module('mealimeterApp')
         }
 
         $scope.ngFn = function() {
+            var food = "";
+            var foodid = "";
+            var price = "";
+            var quantity = "";
+            var comment = "";
+            var total = 0;
+            var due = 0;
+            var companysubsidy = 0;
+            for (var i = 0; i < 5; i++) {
+                if ($localStorage.cart[i] == undefined) {
+                    food += ";";
+                    foodid += ";";
+                    price += ";";
+                    quantity += ";";
+                    comment += ";";
+                } else {
+                    angular.forEach($localStorage.cart[i], function(foods) {
+                        food += foods.mainmeal + " + " + foods.additive + ",.,";
+                        foodid += foods.id + ",.,";
+                        price += foods.price + ",.,";
+                        quantity += foods.quantity + ",.,";
+                    });
+                    food += ";";
+                    foodid += ";";
+                    price += ";";
+                    quantity += ";";
+                    comment += $localStorage.cart[i].comment + ";";
+                    // console.log($localStorage.due[i]);
+                    total += Number.parseInt($localStorage.total[i]);
+                    due += Number.parseInt($localStorage.due[i]);
+                    companysubsidy += Number.parseInt($scope.companysubsidy);
+                }
+            }
+
             pb.innerHTML = "<i class='fa fa-spinner fa-spin'></i> Loading...";
 
             var handler = PaystackPop.setup({

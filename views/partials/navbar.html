@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar" ng-controller="inviteCtrl">
     <!-- Open side - Naviation on mobile -->
     <a class="navbar-toggle navbar-item pull-left hidden-lg-up" data-toggle="collapse" data-target="#myNavbar">
         <i class="material-icons">&#xe5d2;</i>
@@ -113,6 +113,51 @@
             color: red;
         }
     </style>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="ratingModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Rate the meals you ordered last week</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="col-md-1">Quantity</th>
+                                <th>Name</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="r in raters">
+                                <td class="col-md-1">{{r.quantity}}x</td>
+                                <td>{{r.name}}</td>
+                                <td>
+                                    <select class="form-control" ng-model="ratings[r.id]">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="dontRate()">No, don't rate</button>
+                    <button type="button" class="btn btn-success" ng-click="showrates()">Submit Rating</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
     <div class="modal fade" id="loginmodal">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -128,7 +173,7 @@
     </div>
 
 
-    <div class="modal fade" id="invitemodal" ng-controller="inviteCtrl">
+    <div class="modal fade" id="invitemodal">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">

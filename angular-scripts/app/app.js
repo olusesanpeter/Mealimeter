@@ -23,6 +23,7 @@ angular
 
         $rootScope.mealimeter = "http://localhost/mealimeter_/index.php/";
         $rootScope.mealimeterassets = "http://localhost/mealimeter_/";
+
         var path = function() { return $location.path(); };
         $rootScope.$watch(path, function(newVal, oldVal) {
             $rootScope.activetab = newVal;
