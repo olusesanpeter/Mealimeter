@@ -4,8 +4,6 @@ angular.module('mealimeterApp')
             $localStorage.guest = true;
         }
 
-        console.log($localStorage.data.data.token);
-
         // var target = new Date("December 7 2016 17:00 GMT+0100"); //replace with YOUR DATE
 
         // var now = new Date();

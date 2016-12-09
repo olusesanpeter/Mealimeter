@@ -1,0 +1,156 @@
+<div class="app-header primary box-shadow">
+    <div ng-controller="navbarCtrl">
+        <div ng-include="'views/partials/navbar.html'"></div>
+    </div>
+</div>
+<div class="item">
+    <div class="">
+        <div class="hero scrolldown" ng-click="slideDown()" style="background:rgba(0, 0, 0, 0) url('assets/images/smoothiedeal_.jpg') no-repeat scroll center center / cover; height: 640px;width: 100% ">
+            <!--<a class="hidden-sm-down" style="cursor: pointer" ng-click="$event.stopPropagation();" href="#/home2">
+                <img data-wow-duration="0.7s" data-wow-delay="0.5s" class="wow zoomIn" style="width: 350px; position: absolute; bottom: 30px; right: 0px" src="assets/images/nextEwaC.png" />
+            </a>-->
+        </div>
+    </div>
+</div>
+
+<!--<div class="row hidden-md-up">
+    <div class="col-sm-6 offset-sm-3">
+        <a style="cursor: pointer" ng-click="$event.stopPropagation();" href="#/home">
+            <img class="img-responsive" src="assets/images/nextEwa.png" />
+        </a>
+    </div>
+</div>-->
+<br>
+
+<div class="container">
+    <div class="col-md-12">
+
+        <div class="row">
+            <a class="col-md-6 boxx" href="#/home">
+                <img src="assets/images/nextJollof.png" class="img-responsive">
+            </a>
+            <a class="col-md-6 boxx" href="#/home2">
+                <img src="assets/images/nextEwa.png" class="img-responsive">
+            </a>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-md-10 offset-md-2">
+
+                <table class="table text-left mealtable">
+                    <thead class="">
+                        <tr>
+                            <th width="70%">
+
+                            </th>
+                            <th width="10%" class="price ">
+
+                            </th>
+                            <th width="20%">
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="drink in drinks" class="menurow" ng-show="drink.main != 'Combo'">
+                            <td>
+                                <i class="fa fa-square icon-xs"></i> {{drink.name}}<br />
+                                <small><b>{{drink.main}}</b> - {{drink.ingredients}}</small>
+                            </td>
+                            <td class="price">
+                                <span style="text-decoration: line-through" ng-if="drink.oldprice > 0">{{ drink.oldprice | currency:"₦ ":0 }}</span>
+                                <br /> {{ drink.price | currency:"₦ ":0 }}
+                            </td>
+                            <!--<td>
+                        <div style="display: inline-block; cursor: pointer; height: 30px" ng-click="addToCart(drink)" title="add to cart">
+                            <img src="assets/images/plusicon.png" style="height: inherit" />
+                        </div>
+
+                        <div style="display: inline-block; cursor: pointer; height: 30px" ng-click="removeFromCart(drink)" title="remove from cart">
+                            <img src="assets/images/minusicon.png" style="height: inherit" />
+                        </div>
+
+                        <div style="display: inline-block; cursor: pointer; height: 30px" my-tooltip class="info-icon" data-toggle="tooltip" data-placement="top" data-html="true" title="{{drink.calories}} Calories">
+                            <img src="assets/images/infoicon.png" style="height: inherit" />
+                        </div>
+                    </td>-->
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<br />
+<br />
+<div class="modal fade" id="teamcmodal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Here's how to participate:</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-10 md-offset-1">
+                        <ol>
+                            <h4>
+                                <li>
+                                    Get your team to do a combined order of 5 packs or more.
+                                </li>
+                            </h4>
+                            <br />
+                            <h4>
+                                <li>
+                                    Take an interesting/crazy team photo or do a team <b>#MannequinChallenge</b> video with your meals.
+                                </li>
+                            </h4>
+                            <br />
+                            <h4>
+                                <li>
+                                    Post on <span style="color: lightblue">twitter</span> and <span style="color: blue">facebook</span> and tag us <span style="color: green">@mealimeter</span> and on <span style="color: red">Instagram</span> and tag us
+                                    <span style="color: green">@mealimeterhq</span> and hashtag <b>#TeamChallenge</b> <b>#MealimeterHQ</b>.
+                                </li>
+                            </h4>
+                            <br />
+                            <h4>
+                                <li>
+                                    Get friends and colleagues to tweet
+                                </li>
+                            </h4>
+                            <hr />
+                            <h2>Prizes</h2>
+                            <ul>
+                                <li>Tickets for team to the Cinema</li>
+                                <li>Tickets for team to the Cart Racing</li>
+                                <li>Tickets for team to the Karaoke</li>
+                            </ul>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include="'views/partials/footer.html'"></div>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 1) {
+                $('.navbar').switchClass("", "sticky", 700, "easeInOutQuad");
+                $('.navbar').addClass("stickyLine");
+            } else {
+                $('.navbar').switchClass("sticky", "", 700, "easeInOutQuad");
+                $('.navbar').removeClass("stickyLine");
+            }
+        });
+    });
+</script>
+<script src="assets/wow.js"></script>
+<script>
+    new WOW().init();
+</script>

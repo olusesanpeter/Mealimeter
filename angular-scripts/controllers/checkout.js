@@ -147,6 +147,7 @@ angular.module('mealimeterApp')
                         delete $localStorage.due;
                         delete $localStorage.total;
                         delete $localStorage.cart;
+                        delete $localStorage.cFreeDrinks;
                         // alert("Your order has been taken");
                         swal("Great!", "Your order has been taken!", "success");
 
@@ -394,6 +395,7 @@ angular.module('mealimeterApp')
                             delete $localStorage.due;
                             delete $localStorage.total;
                             delete $localStorage.cart;
+                            delete $localStorage.cFreeDrinks;
 
                             swal("Great!", "Your order has been taken!", "success");
                             $('#modal-id').modal('hide');
@@ -492,6 +494,7 @@ angular.module('mealimeterApp')
                     delete $localStorage.due;
                     delete $localStorage.total;
                     delete $localStorage.cart;
+                    delete $localStorage.cFreeDrinks;
 
                     // swal("Great!", "Your order has been taken!", "success");
                     swal({
@@ -579,6 +582,7 @@ angular.module('mealimeterApp')
                     delete $localStorage.due;
                     delete $localStorage.total;
                     delete $localStorage.cart;
+                    delete $localStorage.cFreeDrinks;
 
                     // swal("Great!", "Your order has been taken! And your company would be contacted", "success");
                     swal("Great!", "Your order has been taken!", "success");
