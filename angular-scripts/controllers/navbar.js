@@ -24,6 +24,7 @@ angular.module('mealimeterApp')
                 $localStorage.refrefcode = "";
             }
         }
+
         $scope.showrates = function() {
             var obj = $.extend({}, $scope.ratings);
             console.log(obj);
@@ -201,6 +202,22 @@ angular.module('mealimeterApp')
     }])
     .controller('navbarCtrl', ['$scope', '$http', '$rootScope', '$window', '$localStorage', '$location', function($scope, $http, $rootScope, $window, $localStorage, $location) {
         if ($localStorage.data == undefined && $localStorage.guest == undefined) {
+            $window.location.href = "#/login";
+        }
+
+        if ($localStorage.newCartNum != undefined) {
+            $rootScope.newCartNum = $localStorage.newCartNum;
+            $scope.newCartNum = $rootScope.newCartNum;
+        } else {
+            $rootScope.newCartNum = 0;
+            $scope.newCartNum = 0;
+        }
+
+        $rootScope.$watch('newCartNum', function() {
+            $scope.newCartNum = $rootScope.newCartNum;
+        });
+
+        if ($localStorage.data == undefined && $localStorage.guest == undefined) {
             $scope.show = false;
         } else {
             $scope.show = true;
@@ -214,6 +231,9 @@ angular.module('mealimeterApp')
         $scope.signout = function() {
             delete $localStorage.data;
             delete $localStorage.cart;
+            delete $localStorage.newCart;
+            delete $localStorage.newCartNum;
+            delete $localStorage.newTotalPrice;
             delete $localStorage.total;
             delete $localStorage.due;
             delete $localStorage.guest;
@@ -234,6 +254,7 @@ angular.module('mealimeterApp')
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
             }).then(function(result) {
                 $scope.balance = result.data.balance;
+                $rootScope.balance = result.data.balance;
             }, function(error) {
                 console.log(error);
             });
@@ -246,6 +267,20 @@ angular.module('mealimeterApp')
         $scope.gotoLogin = function() {
             console.log("log in");
             $window.location.href = "#/login";
+        }
+
+        if ($localStorage.foodEvent != undefined) {
+            $rootScope.foodEvent = $localStorage.foodEvent;
+        }
+        $scope.beginFoodEvent = function() {
+            $rootScope.foodEvent = 'active';
+            $localStorage.foodEvent = $rootScope.foodEvent;
+
+            $("#loginmodal").modal('hide');
+            $('#loginmodal').on('hidden.bs.modal', function(e) {
+                // $route.reload();
+            });
+            console.log($rootScope.foodEvent);
         }
 
         // console.log($scope.show);

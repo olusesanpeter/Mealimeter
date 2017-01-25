@@ -1,9 +1,11 @@
 angular.module('mealimeterApp')
     .controller('homeCtrl', ['$scope', '$http', '$rootScope', '$window', '$localStorage', '$location', '$timeout', function($scope, $http, $rootScope, $window, $localStorage, $location, $timeout) {
         if ($localStorage.data == undefined) {
-            $localStorage.guest = true;
+            $window.location.href = "#/login";
+            // $localStorage.guest = true;
         }
 
+        $window.location.href = "#/pre-order/thurday";
         // var target = new Date("December 7 2016 17:00 GMT+0100"); //replace with YOUR DATE
 
         // var now = new Date();

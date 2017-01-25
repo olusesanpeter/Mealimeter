@@ -1,158 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8" />
-        <title>Mealimeter | Dashboard</title>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!-- for ios 7 style, multi-resolution icon of 152x152 -->
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
-        <link rel="apple-touch-icon" href="assets/images/logo.png">
-        <meta name="apple-mobile-web-app-title" content="Mealimeter">
-        <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
-        <meta name="mobile-web-app-capable" content="yes">
-        <link rel="shortcut icon" sizes="196x196" href="assets/images/logo.png">
+<head>
+    <meta charset="utf-8" />
+    <!--<base href="/mealimeter/">-->
+    <title>Mealimeter | Dashboard</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+    <link rel="apple-touch-icon" href="assets/images/logo.png">
+    <meta name="apple-mobile-web-app-title" content="Mealimeter">
+    <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" sizes="196x196" href="assets/images/logo.png">
 
-        <!-- style -->
-        <link rel="stylesheet" href="assets/animate.css/animate.min.css" type="text/css" />
-        <link rel="stylesheet" href="assets/glyphicons/glyphicons.css" type="text/css" />
-        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css'>
-        <link rel="stylesheet" href="assets/material-design-icons/material-design-icons.css" type="text/css" />
+    <!-- style -->
+    <link rel="stylesheet" href="assets/animate.css/animate.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/glyphicons/glyphicons.css" type="text/css" />
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="assets/material-design-icons/material-design-icons.css" type="text/css" />
 
-        <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
-        <link rel="stylesheet" href="assets/sweetalert.css" type="text/css" />
-        <link rel="stylesheet" href="assets/toastr.min.css" type="text/css" />
-        <!-- build:css assets/styles/app.min.css -->
-        <link rel="stylesheet" href="assets/styles/app.css" type="text/css" />
-        <link rel="stylesheet" href="assets/styles/custom.css" type="text/css" />
-        <link rel="stylesheet" href="assets/styles/jquery-ui.min.css" type="text/css" />
-        <!-- endbuild -->
-        <link rel="stylesheet" href="assets/styles/font.css" type="text/css" />
-        <script type="text/javascript">
-            window.paceOptions = {
-                document: true, // disabled
-                eventLag: true,
-                restartOnPushState: true,
-                restartOnRequestAfter: true,
-                ajax: {
-                    trackMethods: ['POST', 'GET']
-                }
-
-            };
-        </script>
-
-        <script src="libs/jquery/PACE/pace.min.js"></script>
-        <script src="libs/jquery/jquery/dist/jquery.js"></script>
-        <script src="libs/jquery/tether/dist/js/tether.min.js"></script>
-        <script src="libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-        <!-- Angular -->
-        <script src="libs/angular/angular.js"></script>
-        <script src="libs/ngstorage.min.js"></script>
-        <script src="libs/angular-ui-router.js"></script>
-        <script src="libs/angular-animate/angular-animate.js"></script>
-        <script src="libs/angular-cookies/angular-cookies.js"></script>
-        <script src="libs/angular-mocks/angular-mocks.js"></script>
-        <script src="libs/angular-resource/angular-resource.js"></script>
-        <script src="libs/angular-route/angular-route.js"></script>
-        <script src="libs/angular-sanitize/angular-sanitize.js"></script>
-        <script src="libs/angular-touch/angular-touch.js"></script>
-
-
-        <!--Mealimeter Angular Scripts -->
-        <script src="angular-scripts/app/app.js"></script>
-        <script src="angular-scripts/controllers/pre-order.js"></script>
-        <script src="angular-scripts/controllers/top-up.js"></script>
-        <script src="angular-scripts/controllers/navbar.js"></script>
-        <script src="angular-scripts/controllers/account-details.js"></script>
-        <script src="angular-scripts/controllers/activate-account.js"></script>
-        <script src="angular-scripts/controllers/login.js"></script>
-        <script src="angular-scripts/controllers/signup.js"></script>
-        <script src="angular-scripts/controllers/forgot-password.js"></script>
-        <script src="angular-scripts/controllers/checkout.js"></script>
-        <script src="angular-scripts/controllers/rating.js"></script>
-        <script src="angular-scripts/controllers/ringer.js"></script>
-        <script src="angular-scripts/controllers/home.js"></script>
-        <script src="angular-scripts/controllers/home2.js"></script>
-        <script src="angular-scripts/controllers/rs.js"></script>
-        <script src="angular-scripts/controllers/set-password.js"></script>
-        <script src="angular-scripts/controllers/reset-password.js"></script>
-        <script src="angular-scripts/controllers/guestlogin.js"></script>
-
-        <!-- jQuery -->
-        <!-- Bootstrap -->
-        <!-- core -->
-        <script src="libs/jquery/underscore/underscore-min.js"></script>
-        <script src="libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
-
-        <script src="scripts/config.lazyload.js"></script>
-
-        <!-- ajax -->
-        <script src="libs/jquery/jquery-pjax/jquery.pjax.js"></script>
-        <script src="assets/sweetalert.min.js"></script>
-        <script src="assets/toastr.min.js"></script>
-        <script src="assets/jquery-ui.min.js"></script>
-        <script src="scripts/ajax.js"></script>
-
-        <script src="https://js.paystack.co/v1/inline.js"></script>
-
-
-        <script type="text/javascript">
-            jQuery(document).ready(function() {
-                $('.btn').on('click', function() {
-                    var $this = $(this);
-                    $this.button('loading');
-                    setTimeout(function() {
-                        $this.button('reset');
-                    }, 8000);
-                });
-                $("#invitemodal").appendTo("body");
-
-            });
-            $(document).ready(function() {
-                $(".scrolldown").click(function(event) {
-                    $('html, body').animate({
-                        scrollTop: '+=300px'
-                    }, 800);
-                });
-            });
-        </script>
-        <style>
-            .modal-backdrop {
-                z-index: 100;
+    <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/sweetalert.css" type="text/css" />
+    <link rel="stylesheet" href="assets/toastr.min.css" type="text/css" />
+    <!-- build:css assets/styles/app.min.css -->
+    <link rel="stylesheet" href="assets/styles/app.css" type="text/css" />
+    <link rel="stylesheet" href="assets/styles/custom.css" type="text/css" />
+    <link rel="stylesheet" href="assets/styles/jquery-ui.min.css" type="text/css" />
+    <!-- endbuild -->
+    <link rel="stylesheet" href="assets/styles/font.css" type="text/css" />
+    <script type="text/javascript">
+        window.paceOptions = {
+            document: true, // disabled
+            eventLag: true,
+            restartOnPushState: true,
+            restartOnRequestAfter: true,
+            ajax: {
+                trackMethods: ['POST', 'GET'],
+                ignoreURLs: [/.*tawk.*/]
             }
-        </style>
 
-    </head>
+        };
+    </script>
 
-    <body ng-app="mealimeterApp">
+    <script src="libs/jquery/PACE/pace.min.js"></script>
+    <script src="libs/jquery/jquery/dist/jquery.js"></script>
+    <script src="libs/jquery/tether/dist/js/tether.min.js"></script>
+    <script src="libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- Angular -->
+    <script src="libs/angular/angular.js"></script>
+    <script src="libs/ngstorage.min.js"></script>
+    <script src="libs/angular-ui-router.js"></script>
+    <script src="libs/angular-animate/angular-animate.js"></script>
+    <script src="libs/angular-cookies/angular-cookies.js"></script>
+    <script src="libs/angular-mocks/angular-mocks.js"></script>
+    <script src="libs/angular-resource/angular-resource.js"></script>
+    <script src="libs/angular-route/angular-route.js"></script>
+    <script src="libs/angular-sanitize/angular-sanitize.js"></script>
+    <script src="libs/angular-touch/angular-touch.js"></script>
+
+
+    <!--Mealimeter Angular Scripts -->
+    <script src="angular-scripts/app/app.js"></script>
+    <script src="angular-scripts/controllers/pre-order.js"></script>
+    <script src="angular-scripts/controllers/event.js"></script>
+    <script src="angular-scripts/controllers/top-up.js"></script>
+    <script src="angular-scripts/controllers/navbar.js"></script>
+    <script src="angular-scripts/controllers/account-details.js"></script>
+    <script src="angular-scripts/controllers/activate-account.js"></script>
+    <script src="angular-scripts/controllers/login.js"></script>
+    <script src="angular-scripts/controllers/signup.js"></script>
+    <script src="angular-scripts/controllers/forgot-password.js"></script>
+    <script src="angular-scripts/controllers/checkout.js"></script>
+    <script src="angular-scripts/controllers/rating.js"></script>
+    <script src="angular-scripts/controllers/ringer.js"></script>
+    <script src="angular-scripts/controllers/home.js"></script>
+    <script src="angular-scripts/controllers/home2.js"></script>
+    <script src="angular-scripts/controllers/rs.js"></script>
+    <script src="angular-scripts/controllers/set-password.js"></script>
+    <script src="angular-scripts/controllers/reset-password.js"></script>
+    <script src="angular-scripts/controllers/guestlogin.js"></script>
+
+    <!-- jQuery -->
+    <!-- Bootstrap -->
+    <!-- core -->
+    <script src="libs/jquery/underscore/underscore-min.js"></script>
+    <script src="libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+
+    <script src="scripts/config.lazyload.js"></script>
+
+    <!-- ajax -->
+    <script src="libs/jquery/jquery-pjax/jquery.pjax.js"></script>
+    <script src="assets/sweetalert.min.js"></script>
+    <script src="assets/toastr.min.js"></script>
+    <script src="assets/moment.js"></script>
+    <script src="assets/jquery-ui.min.js"></script>
+    <script src="scripts/ajax.js"></script>
+
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            $('.btn').on('click', function() {
+                var $this = $(this);
+                $this.button('loading');
+                setTimeout(function() {
+                    $this.button('reset');
+                }, 8000);
+            });
+            $("#invitemodal").appendTo("body");
+
+        });
+        $(document).ready(function() {
+            $(".scrolldown").click(function(event) {
+                $('html, body').animate({
+                    scrollTop: '+=300px'
+                }, 800);
+            });
+        });
+    </script>
+    <style>
+        .modal-backdrop {
+            z-index: 100;
+        }
+    </style>
+
+</head>
+
+<body ng-app="mealimeterApp">
 
 
 
-        <!-- ############ LAYOUT START-->
-        <div id="content" class="app-content box-shadow-z0" role="main">
+    <!-- ############ LAYOUT START-->
+    <div id="content" class="app-content box-shadow-z0" role="main">
 
-            <div ng-view=""></div>
-            <!--  -->
-        </div>
+        <div ng-view=""></div>
+        <!--  -->
+    </div>
 
-        <!--Start of Tawk.to Script-->
-        <script type="text/javascript">
-            var Tawk_API = Tawk_API || {},
-                Tawk_LoadStart = new Date();
-            (function() {
-                var s1 = document.createElement("script"),
-                    s0 = document.getElementsByTagName("script")[0];
-                s1.async = true;
-                s1.src = 'https://embed.tawk.to/58354e7b397ff569a3d8b2f4/default';
-                s1.charset = 'UTF-8';
-                s1.setAttribute('crossorigin', '*');
-                s0.parentNode.insertBefore(s1, s0);
-            })();
-        </script>
-        <!--End of Tawk.to Script-->
-    </body>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/58354e7b397ff569a3d8b2f4/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-86533644-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
 
 </html>

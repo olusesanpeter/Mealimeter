@@ -19,7 +19,6 @@ angular.module('mealimeterApp')
                 $localStorage.refrefcode = '';
             }
         }
-
         //////data from login
         var link = $rootScope.mealimeter;
         $http({
@@ -41,9 +40,9 @@ angular.module('mealimeterApp')
             data.datefield = "";
             console.log(data.datefield);
             if (data.companies == 'other') {
-                var registerdata = "firstname=" + data.firstnamefield + "&lastname=" + data.lastnamefield + "&email=" + data.emailfield + "&phoneNo=" + data.phoneNofield + "&dob=" + data.datefield + "&sex=" + data.genderfield + "&password=" + data.passwordfield + "&password=" + data.passwordfield2 + "&refcode=" + $scope.refcodefield + "&officename=" + data.officename + "&officeaddress=" + data.officeaddress + "&officelocation=" + data.officelocation + " - " + data.officeplace;
+                var registerdata = "firstname=" + data.firstnamefield + "&lastname=" + data.lastnamefield + "&email=" + data.emailfield + "&phoneNo=" + data.phoneNofield + "&dob=" + data.datefield + "&sex=" + data.genderfield + "&dob=" + data.dob + "&password=" + data.passwordfield + "&password=" + data.passwordfield2 + "&refcode=" + $scope.refcodefield + "&officename=" + data.officename + "&officeaddress=" + data.officeaddress + "&officelocation=" + data.officelocation + " - " + data.officeplace;
             } else {
-                var registerdata = "firstname=" + data.firstnamefield + "&lastname=" + data.lastnamefield + "&email=" + data.emailfield + "&phoneNo=" + data.phoneNofield + "&dob=" + data.datefield + "&sex=" + data.genderfield + "&password=" + data.passwordfield + "&password=" + data.passwordfield2 + "&refcode=" + $scope.refcodefield + "&officeid=" + data.companies;
+                var registerdata = "firstname=" + data.firstnamefield + "&lastname=" + data.lastnamefield + "&email=" + data.emailfield + "&phoneNo=" + data.phoneNofield + "&dob=" + data.datefield + "&sex=" + data.genderfield + "&dob=" + data.dob + "&password=" + data.passwordfield + "&password=" + data.passwordfield2 + "&refcode=" + $scope.refcodefield + "&officeid=" + data.companies;
             }
 
             if (data.passwordfield != data.passwordfield2) {

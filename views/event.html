@@ -1,0 +1,136 @@
+<div class="app-header primary box-shadow sticky">
+    <div ng-controller="navbarCtrl">
+        <div ng-include="'views/partials/navbar.html'" ng-show="show"></div>
+    </div>
+</div>
+
+<div style="width: 100%; height: 400px;">
+    <img src="assets/images/foodlist.jpg" style="width: 100%" />
+</div>
+
+<!--<div class="item">
+    <br>
+    <br>
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-md-12" style="width: 100%; text-align: center; background: url() no-repeat center center; background-size: contain">
+                <img src="assets/images/foodlist.jpg" style="width: 100%" />
+            </div>
+        </div>
+
+    </div>
+</div>-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box" style="margin-top: 20px; padding: 25px">
+                <h2>{{foodlist.user.firstname}} wants you to select the food you want on thier birthday</h2>
+                <!--<button class="btn btn-sm btn-danger btn-link" ng-click="cancelFoodEvent()">Canel birthday order</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="padding">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card card-8 no-radius">
+                    <div class="col-md-10 offset-md-1 boxed bg--white">
+                        <!--<div style="display:none;">{{x = $index}} </div>?-->
+                        <div class="row">
+                           
+                            <br>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active">
+                                    <table class="table text-left mealtable">
+                                        <thead class="">
+                                            <tr>
+                                                <th width="20%">
+
+                                                </th>
+                                                <th width="40%">
+
+                                                </th>
+                                                <th width="20%" class="price topprice">
+
+                                                </th>
+                                                <!--<th width="20%">
+
+                                                </th>-->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="foods in foodlist.foods" class="menurow">
+                                                <td>
+                                                    <div style="border-radius: 10%; max-width: 90%; height: 130px; text-align: center; background: url('{{foods.food.colorcode}}') no-repeat center center; background-size: cover ">
+                                                        <!--<img src="" style="max-width: 100%" />-->
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div style="font-size: larger; font-weight: bold">{{foods.food.name}}</div>
+                                                    <small>{{foods.food.ingredients}}</small>
+                                                    <div style="font-size: larger" ng-if="fSelect[foods.id] > 0">
+                                                        <b>{{fSelect[foods.id]}}x</b>
+                                                    </div>
+                                                    <!--<div>Vendor: {{foods.vendor.name}}</div>-->
+                                                    <div ng-if="foods.calories">Calories: {{foods.calories}}</div>
+                                                    <!--<div>
+                                                        <i class="fa fa-star" ng-repeat="s in [1,2,3,4,5]" style="margin-right: 2px; font-size: larger; color: {{getStarColor(foods.rating.rating, s)}}"></i>
+                                                    </div>
+                                                    <div><small>(from {{foods.rating.total}} ratings)</small></div>-->
+                                                </td>
+                                                <td class="price">
+                                                    <!--<div style="font-weight: bold; font-size: larger; ">{{ foods.price | currency:"₦ ":0 }}</div>-->
+
+                                                    <div style="margin-top: 10px">
+                                                        How many?
+                                                        <select class="form-control" ng-model="fSelect[foods.id]">
+                                                            <option value="{{num}}" ng-repeat="num in foodNum(foods.quantity)">{{num}}</option>
+                                                        </select>
+                                                        <small style="font-size: 12px">*maximum: {{foods.quantity}}</small>
+                                                        <!--<button class="btn btn-success" ng-click="addToCart(foods)">
+                                                            <span ng-hide="foodEvent == 'active'">Add to cart</span>
+                                                            <span ng-show="foodEvent == 'active'">Add to selection</span>
+                                                        </button>-->
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3" style="text-align: center">
+                                <button class="btn btn-success btn-lg" ng-click="confirmSelection()">Confirm Selection</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="box" ng-show="notdone" style="padding:10px">
+                <div class="total-section" style="padding:30px">
+                    <h1 style="text-align:center">Your order has been taken </h1>
+                </div>
+            </div>-->
+
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('a.nav-link').click(function(e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+</script>
+<div ng-include="'views/partials/footer.html'"></div>

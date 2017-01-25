@@ -150,7 +150,7 @@ angular.module('mealimeterApp')
                         delete $localStorage.cFreeDrinks;
                         // alert("Your order has been taken");
                         swal("Great!", "Your order has been taken!", "success");
-
+                        $('.modal').modal('hide');
                         $('#modal-id').modal('hide');
                         $route.reload();
                     }, function(error) {
@@ -185,10 +185,6 @@ angular.module('mealimeterApp')
         }
 
         var drinksstring = "";
-        // if ($localStorage.freeDrinks != undefined) {
-        //     var s = $localStorage.freeDrinks;
-        //     drinksstring = " Refer Selection: " + drinksstring + JSON.stringify(s);
-        //     console.log(drinksstring);
         // }
         if ($localStorage.cFreeDrinks != undefined) {
             var s = $localStorage.cFreeDrinks;
@@ -227,23 +223,6 @@ angular.module('mealimeterApp')
             $scope.weeks = [];
             $scope.weeks[0] = [];
             $scope.weeks[1] = [];
-            // $scope.weeks[1] = [];
-            // $scope.weeks[2] = [];
-            // $scope.weeks[3] = [];
-            // $scope.weeks[4] = [];
-            // if ($localStorage.cart[0] != undefined || $localStorage.cart[0] != null) {
-            //     $scope.monday = $localStorage.cart[0];
-            //     $scope.mondaytotal = $localStorage.total[0];
-            //     $scope.mondaydue = $localStorage.due[0];
-            // } else {
-            //     $scope.monday = [];
-            //     $scope.mondaytotal = 0;
-            //     $scope.mondaydue = 0;
-            // }
-            // $scope.weeks[0].name = 'Monday';
-            // $scope.weeks[0].cart = $scope.monday;
-            // $scope.weeks[0].total = $scope.mondaytotal;
-            // $scope.weeks[0].due = $scope.mondaydue;
 
             if ($localStorage.cart[1] != undefined || $localStorage.cart[1] != null) {
                 $scope.tuesday = $localStorage.cart[1];
@@ -268,26 +247,11 @@ angular.module('mealimeterApp')
             $scope.weeks[1].due = $scope.tuesdaydue;
             $scope.weeks[1].comment = $scope.tuesdayComment;
 
-            $scope.$watch('weeks[1].comment', function(newval, oldval) {
-                $localStorage.cart[1].comment = newval;
-                console.log(newval);
-                console.log(oldval);
-            }, true);
-
-
-            // if ($localStorage.cart[2] != undefined || $localStorage.cart[2] != null) {
-            //     $scope.wednesday = $localStorage.cart[2];
-            //     $scope.wednesdaytotal = $localStorage.total[2];
-            //     $scope.wednesdaydue = $localStorage.due[2];
-            // } else {
-            //     $scope.wednesday = [];
-            //     $scope.wednesdaytotal = 0;
-            //     $scope.wednesdaydue = 0;
-            // }
-            // $scope.weeks[2].name = 'Wednesday';
-            // $scope.weeks[2].cart = $scope.wednesday;
-            // $scope.weeks[2].total = $scope.wednesdaytotal;
-            // $scope.weeks[2].due = $scope.wednesdaydue;
+            // $scope.$watch('weeks[1].comment', function(newval, oldval) {
+            //     $localStorage.cart[1].comment = newval;
+            //     console.log(newval);
+            //     console.log(oldval);
+            // }, true);
 
             if ($localStorage.cart[3] != undefined || $localStorage.cart[3] != null) {
                 $scope.thursday = $localStorage.cart[3];
@@ -311,24 +275,10 @@ angular.module('mealimeterApp')
             $scope.weeks[0].due = $scope.thursdaydue;
             $scope.weeks[0].comment = $scope.thursdayComment;
 
-            $scope.$watch('weeks[0].comment', function(newval, oldval) {
-                $localStorage.cart[3].comment = newval;
-                console.log(newval);
-            }, true);
-
-            // if ($localStorage.cart[4] != undefined || $localStorage.cart[4] != null) {
-            //     $scope.friday = $localStorage.cart[4];
-            //     $scope.fridaytotal = $localStorage.total[4];
-            //     $scope.fridaydue = $localStorage.due[4];
-            // } else {
-            //     $scope.friday = [];
-            //     $scope.fridaytotal = 0;
-            //     $scope.fridaydue = 0;
-            // }
-            // $scope.weeks[4].name = 'Friday';
-            // $scope.weeks[4].cart = $scope.friday;
-            // $scope.weeks[4].total = $scope.fridaytotal;
-            // $scope.weeks[4].due = $scope.fridaydue;
+            // $scope.$watch('weeks[0].comment', function(newval, oldval) {
+            //     $localStorage.cart[3].comment = newval;
+            //     console.log(newval);
+            // }, true);
 
             $scope.prepareCheckoutInfo = function() {
 
@@ -399,6 +349,7 @@ angular.module('mealimeterApp')
 
                             swal("Great!", "Your order has been taken!", "success");
                             $('#modal-id').modal('hide');
+                            $('.modal').modal('hide');
                             $window.location.href = "#/home";
                         }, function(error) {
                             console.log(error);
@@ -406,6 +357,8 @@ angular.module('mealimeterApp')
                     } else {
                         // alert("Your wallet balance isn't sufficient.Please Top Up");
                         $('#modal-id').modal('hide');
+                        $('.modal').modal('hide');
+
                         swal({
                             title: "<small>Your wallet balance isn't sufficient</small>!",
                             text: "<a href='#/top-up' style='color:green'>Click here to top-up your wallet</a>",
@@ -499,11 +452,12 @@ angular.module('mealimeterApp')
                     // swal("Great!", "Your order has been taken!", "success");
                     swal({
                         title: "Great <small>Your order has been taken!</small>!",
-                        text: "<h3>Please send a transfer of <b>N" + due + "</b></h3> to <br /> Account Name: <b>Novedad limited</b><br />Account Number: <b>0140019459</b><br />Bank: <b>Guaranty Trust Bank</b><br /><br />With the refrence number <b>" + randString + "</b> in the description. to complete your order<br /><small>An email has also been sent to you</small>",
+                        text: "<h3>Please send a transfer of <b>N" + due + "</b></h3> to <br /> Account Name: <b>Novedad limited</b><br />Account Number: <b>0140019459</b><br />Bank: <b>Guaranty Trust Bank</b><br /><br />With the refrence number <b>" + randString.toUpperCase() + "</b> in the description. to complete your order<br /><small>An email has also been sent to you</small>",
                         html: true
                     });
 
                     $('#modal-id').modal('hide');
+                    $('.modal').modal('hide');
 
                     $window.location.href = "#/home";
 
@@ -513,26 +467,64 @@ angular.module('mealimeterApp')
                 });
             }
 
+            $scope.$on('payOnlineTransfer', function(event, args) {
+                console.log("i am the event");
+                console.log(args);
+                console.log(event);
+            });
+
+            $scope.dobanktransfer_ = function() {
+                var food = "";
+                var foodid = "";
+                var price = "";
+                var quantity = "";
+                var comment = "";
+                var total = 0;
+                var due = 0;
+                var companysubsidy = 0;
+                for (var i = 0; i < 5; i++) {
+                    if ($localStorage.cart[i] == undefined) {
+                        food += ";";
+                        foodid += ";";
+                        price += ";";
+                        quantity += ";";
+                        comment += ";";
+                    } else {
+                        angular.forEach($localStorage.cart[i], function(foods) {
+                            food += foods.mainmeal + " + " + foods.additive + ",.,";
+                            foodid += foods.id + ",.,";
+                            price += foods.price + ",.,";
+                            quantity += foods.quantity + ",.,";
+                        });
+                        food += ";";
+                        foodid += ";";
+                        price += ";";
+                        quantity += ";";
+                        comment += $localStorage.cart[i].comment + ";";
+                        // console.log($localStorage.due[i]);
+                        total += Number.parseInt($localStorage.total[i]);
+                        due += Number.parseInt($localStorage.due[i]);
+                        companysubsidy += Number.parseInt($scope.companysubsidy);
+                    }
+                }
+
+                var randString = '';
+                var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                for (var i = 6; i > 0; --i) randString += chars[Math.floor(Math.random() * chars.length)];
+
+                var compstring = "Paid by online transfer: " + randString.toUpperCase();
+
+                var data = "token=" + $localStorage.data.data.token + "&drinksstring=" + drinksstring + "&companystring=" + compstring + "&refcode=" + $localStorage.refcode + "&refrefcode=" + $localStorage.refrefcode + "&total=" + total + "&subsidy=" + companysubsidy + "&paid=" + due + "&food=" + food + "&price=" + price + "&foodid=" + foodid + "&quantity=" + quantity + "&onlinetrans=" + randString.toUpperCase() + "&email=" + $localStorage.data.data.email + "&comment=" + comment;
+                var link = $rootScope.mealimeter;
+                $http({
+                    method: "POST",
+                    url: link + "buycompany",
+                    data: data,
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                }).then(function(result) {}, function(error) {});
+            }
+
             $scope.compSubmit = function() {
-                // var cName = $("input[name=company_name]").val();
-                // var cPhone = $("input[name=company_phone]").val();
-                // var cAddress = $("input[name=company_address]").val();
-                // var cEmail = $("input[name=company_email]").val();
-
-                // if (cName != "" && cPhone != "" && cAddress != "" && cEmail != "") {
-
-                // var cN = $("input[name=company_name]");
-                // var cP = $("input[name=company_phone]");
-                // var cA = $("input[name=company_address]");
-                // var cE = $("input[name=company_email]");
-
-                // cN.prop("disabled", true);
-                // cP.prop("disabled", true);
-                // cA.prop("disabled", true);
-                // cE.prop("disabled", true);
-                // $("#submitComp").html("<i class='fa fa-spin fa-spinner'></i>");
-                // $("#submitComp").prop("disabled", true);
-
                 var food = "";
                 var foodid = "";
                 var price = "";
@@ -588,33 +580,15 @@ angular.module('mealimeterApp')
                     swal("Great!", "Your order has been taken!", "success");
 
                     $('#modal-id').modal('hide');
-
-                    // cN.prop("disabled", false);
-                    // cP.prop("disabled", false);
-                    // cA.prop("disabled", false);
-                    // cE.prop("disabled", false);
-                    // $("#submitComp").html("Submit");
-                    // $("#submitComp").prop("disabled", false);
+                    $('.modal').modal('hide');
 
                     $window.location.href = "#/home";
 
                 }, function(error) {
                     console.log(error);
                     swal("Oops!", "Something went wrong while placing your order. Try Again", "danger");
-
-                    // cN.prop("disabled", false);
-                    // cP.prop("disabled", false);
-                    // cA.prop("disabled", false);
-                    // cE.prop("disabled", false);
-                    // $("#submitComp").html("Submit");
-                    // $("#submitComp").prop("disabled", false);
                 });
-
-                // } else {
-                //     toastr.warning("All fields must be completed");
-                // }
             }
-
 
         }
     }]);

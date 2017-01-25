@@ -8,28 +8,88 @@
  * Controller of the mealimeterApp
  */
 angular.module('mealimeterApp')
-    .controller('preorderCtrl', ['$scope', '$http', '$rootScope', '$window', '$localStorage', '$location', function($scope, $http, $rootScope, $window, $localStorage, $location) {
+    .controller('preorderCtrl', ['$scope', '$http', '$rootScope', '$window', '$localStorage', '$location', '$route', function($scope, $http, $rootScope, $window, $localStorage, $location, $route) {
+
         if ($localStorage.data == undefined && $localStorage.guest == undefined) {
             $window.location.href = "#/login";
         } else {
-            if ($location.path().split('/')[2] == "monday") {
-                $scope.day = 0;
-                $scope.daytext = "Monday";
-            } else if ($location.path().split('/')[2] == "tuesday") {
-                $scope.day = 1;
-                $scope.daytext = "Tuesday";
-            } else if ($location.path().split('/')[2] == "wednesday") {
-                $scope.day = 2;
-                $scope.daytext = "Wednesday";
-            } else if ($location.path().split('/')[2] == "thursday") {
-                $scope.day = 3;
-                $scope.daytext = "Thursday";
-            } else if ($location.path().split('/')[2] == "friday") {
-                $scope.day = 4;
-                $scope.daytext = "Friday";
-            } else {
-                $window.location.href = "#/pre-order/thursday";
+            console.log("check birth");
+            if ($rootScope.birth == true) {
+                console.log("birthing");
+                $(document).ready(function() {
+                    setTimeout(function() {
+                        $("#loginmodal").modal('show');
+                        console.log("birthed");
+                        delete $rootScope.birth;
+                        console.log("deleted " + $rootScope.birth);
+                    }, 1000);
+                });
             }
+
+            if ($rootScope.openCart == true) {
+                $(document).ready(function() {
+                    setTimeout(function() {
+                        $("#myCartModal").modal('show');
+                        delete $rootScope.openCart;
+                    }, 1000);
+                });
+            }
+
+            if ($localStorage.guest == true) {
+                var refcode = $localStorage.refcode;
+                $scope.guest = true;
+                $scope.refcode = refcode;
+                $scope.office_payment_amount = 0;
+                $scope.office_id = 0;
+                $scope.token = 0;
+            } else {
+                $scope.guest = false;
+                $localStorage.refcode = $localStorage.data.data.refcode;
+                $scope.refcode = $localStorage.data.data.refcode;
+                $scope.office_payment_amount = $localStorage.data.officedata.office_payment_amount;
+                $scope.office_id = $localStorage.data.officedata.office_id;
+                $scope.token = $localStorage.data.data.token;
+                if ($localStorage.data.officedata.office_payment_type == 'company') {
+                    $scope.companyfree = true;
+                    $scope.companyname = $localStorage.data.officedata.office_name;
+                }
+            }
+            // $localStorage.data.username = 'guest';
+            // $localStorage.data.
+
+            $scope.goto = function(place) {
+
+                $("#myCartModal").modal('hide');
+                $('#myCartModal').on('hidden.bs.modal', function(e) {
+                    $window.location.href = "#/" + place;
+                });
+            }
+
+            $scope.birthdayLoginFirst = function() {
+                $rootScope.openCart = true;
+                $scope.goto("login");
+            }
+
+            $scope.day = 3;
+            $scope.daytext = "o";
+            // if ($location.path().split('/')[2] == "monday") {
+            //     $scope.day = 0;
+            //     $scope.daytext = "Monday";
+            // } else if ($location.path().split('/')[2] == "tuesday") {
+            //     $scope.day = 1;
+            //     $scope.daytext = "Tuesday";
+            // } else if ($location.path().split('/')[2] == "wednesday") {
+            //     $scope.day = 2;
+            //     $scope.daytext = "Wednesday";
+            // } else if ($location.path().split('/')[2] == "thursday") {
+            //     $scope.day = 3;
+            //     $scope.daytext = "Thursday";
+            // } else if ($location.path().split('/')[2] == "friday") {
+            //     $scope.day = 4;
+            //     $scope.daytext = "Friday";
+            // } else {
+            //     $window.location.href = "#/pre-order/thursday";
+            // }
             toastr.options.timeOut = 1000;
             toastr.positionClass = "toast-bottom-left";
 
@@ -41,6 +101,53 @@ angular.module('mealimeterApp')
                 $scope.preImage = 'createcombo';
             }
 
+
+            if ($localStorage.bigMsgBox == 'success') {
+                swal({
+                    title: "Great <small>Your order has been taken!</small>!",
+                    text: "<h3>Please send a transfer of <b>N" + $localStorage.msgDueTotal + "</b></h3> to <br /> Account Name: <b>Novedad limited</b><br />Account Number: <b>0140019459</b><br />Bank: <b>Guaranty Trust Bank</b><br /><br />With the refrence number <b>" + $localStorage.msgDesc + "</b> in the description. to complete your order<br /><small>An email has also been sent to you</small>",
+                    html: true
+                });
+
+                delete $localStorage.bigMsgBox;
+                delete $localStorage.msgDueTotal;
+                delete $localStorage.msgDesc;
+                delete $localStorage.msgBox;
+                delete $localStorage.showMsg;
+
+            } else if ($localStorage.smallMsgBox == 'success') {
+
+                var url = $localStorage.msgUrl;
+                // var extraText = "<br /><a href='mailto:colleagues@example.com?&body="+url+"'>Share with your colleagues</a>";
+                var extraText = "";
+                swal({
+                    title: "Your selection has been noted!",
+                    text: $localStorage.msg + extraText,
+                    html: true
+                });
+
+                delete $localStorage.smallMsgBox;
+                delete $localStorage.msg;
+                delete $localStorage.msgUrl;
+                delete $localStorage.bigMsgBox;
+                delete $localStorage.msgDueTotal;
+                delete $localStorage.msgDesc;
+                delete $localStorage.msgBox;
+                delete $localStorage.showMsg;
+            } else if ($localStorage.msgBox == 'success') {
+                swal("Great!", $localStorage.showMsg, "success");
+
+                delete $localStorage.msgBox;
+                delete $localStorage.showMsg;
+            }
+
+            $scope.deliveryDate = new Date();
+            $scope.deliveryDate.setDate($scope.deliveryDate.getDate() + 1);
+
+            
+
+            $scope.tomorrowDate = new Date();
+            $scope.tomorrowDate.setDate($scope.tomorrowDate.getDate() + 1);
 
             $scope.done = [];
 
@@ -54,6 +161,22 @@ angular.module('mealimeterApp')
             $scope.delivery = 0;
             $scope.packaging = 0;
 
+            $scope.newFoods = [];
+            $scope.currentTab = "breakfast";
+
+            $scope.newCart = [];
+            $scope.newTotalPrice = 0;
+            $scope.newCartNum = 0;
+
+            if ($localStorage.newCart != undefined) {
+                $scope.newCart = $localStorage.newCart;
+                $scope.newTotalPrice = $localStorage.newTotalPrice;
+                $scope.newCartNum = $localStorage.newCartNum;
+                setTimeout(function() {
+                    $scope.prepareCheckout();
+                }, 2000);
+            }
+
             if ($localStorage.guest == true) {
                 $scope.username = "guest";
                 $scope.companysubsidy = 0;
@@ -64,6 +187,124 @@ angular.module('mealimeterApp')
                 $scope.username = $localStorage.data.data.username;
             }
             $scope.discount = 0;
+
+            $scope.newDeleteFromCart = function(item) {
+                var exist = false;
+                var already_id = null;
+                var quant = 1;
+
+                //Check if the item already existed
+                for (var i = 0; i < $scope.newCart.length; i++) {
+                    if (item.id === $scope.newCart[i].id) {
+                        exist = true;
+                        already_id = i;
+                        quant = $scope.newCart[i].quantity;
+                    }
+                }
+
+                //if it exist
+                if (exist) {
+                    //remove the whole thing
+                    $scope.newCart.splice(already_id, 1);
+                    // toastr.error(item.name + " has been removed from cart", "removed from cart");
+                }
+
+                $scope.newRecalculateTotal(-Number.parseInt(item.price) * quant);
+            }
+
+            $scope.newRemoveFromCart = function(item) {
+                var exist = false;
+                var already_id = null;
+
+                //Check if the item already existed
+                for (var i = 0; i < $scope.newCart.length; i++) {
+                    if (item.id === $scope.newCart[i].id) {
+                        exist = true;
+                        already_id = i;
+                    }
+                }
+
+                //if it exist
+                if (exist) {
+                    var olditem = $scope.newCart[already_id];
+                    //if the quantity is more than one remove only one quantity and reduce price
+                    if (olditem.quantity > 1) {
+                        var newquantity = olditem.quantity - 1;
+                        olditem.price = (olditem.price / olditem.quantity) * newquantity;
+                        olditem.quantity = newquantity;
+                        $scope.newCart[already_id] = olditem;
+                        // toastr.warning("One quantity of " + item.name + " has been removed to cart. " + newquantity + "x remaining", "Removed from cart");
+                    }
+                    //else remove the whole thing
+                    else {
+                        $scope.newCart.splice(already_id, 1);
+                        // toastr.error(item.name + " has been removed from cart", "removed from cart");
+                    }
+                } else {
+                    // toastr.info("it wasn't in the cart");
+                }
+                $scope.newRecalculateTotal(-Number.parseInt(item.price));
+            }
+
+            $scope.newAddToCart = function(item, quant) {
+                if (!quant) {
+                    quant = 1;
+                }
+                var option = {
+                    id: item.id,
+                    mainmeal: item.main,
+                    name: item.name,
+                    price: Number.parseInt(item.price) * Number.parseInt(quant),
+                    quantity: Number.parseInt(quant),
+                    food: item
+                }
+
+                var first_time = true;
+                var already_id = null;
+
+                console.log($scope.newCart);
+
+                //Check if the item already existed
+                for (var i = 0; i < $scope.newCart.length; i++) {
+                    if (option.id === $scope.newCart[i].id) {
+                        first_time = false;
+                        already_id = i;
+                    }
+                }
+                var quantity = 0;
+                //if it doesnt exist add to cart for the first time
+                if (first_time) {
+                    quantity = quant;
+                    $scope.newCart.push(option);
+                }
+                //else just increase the quantity and price of the old one 
+                else {
+                    var olditem = $scope.newCart[already_id];
+                    var newquantity = olditem.quantity + quant;
+                    olditem.price = (olditem.price / olditem.quantity) * newquantity;
+                    olditem.quantity = newquantity;
+                    quantity = newquantity;
+                    $scope.newCart[already_id] = olditem;
+                }
+                console.log($scope.newCart);
+                $scope.newRecalculateTotal(item.price);
+            }
+
+
+            $scope.newRecalculateTotal = function(newprice) {
+                $scope.newTotalPrice += Number.parseInt(newprice);
+                $scope.newCartNum = $scope.newCart.length;
+
+                console.log($scope.newTotalPrice);
+                $localStorage.newCart = $scope.newCart;
+                $localStorage.newCartNum = $scope.newCartNum;
+                $rootScope.newCartNum = $scope.newCartNum;
+                $localStorage.newTotalPrice = $scope.newTotalPrice;
+
+                console.log($rootScope.newCartNum);
+                $scope.prepareCheckout();
+                // this.storeInStorage();
+            }
 
             var link = $rootScope.mealimeter;
             $http({
@@ -88,6 +329,87 @@ angular.module('mealimeterApp')
             }, function(error) {
                 console.log(error);
             });
+
+            if ($localStorage.guest != undefined) {
+                var urllink = link + "getfoodlist";
+            } else {
+                var urllink = link + "getfoodlist?office_id=" + $localStorage.data.officedata.office_id;
+            }
+
+            $http({
+                method: "POST",
+                url: urllink,
+                data: data,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+            }).then(function(result) {
+                var rdata = result.data;
+                console.log("new food");
+                console.log(result);
+                if (result.data.description == "Already Preordered") {
+                    $scope.done = false;
+                    $scope.notdone = true;
+                } else {
+                    $scope.newBreakfast = [];
+                    $scope.newLunch = [];
+                    $scope.newTakehome = [];
+                    $scope.newDrinks = [];
+
+                    rdata.food.forEach(function(fooditem) {
+                        $scope.newFoods.push(fooditem);
+                    }, this);
+                    rdata.drinks.forEach(function(fooditem) {
+                        $scope.newFoods.push(fooditem);
+                    }, this);
+                    console.log($scope.newFoods);
+                    // $scope.meals = result.data.preorderList;
+                    // $scope.snacks = result.data.snacks;
+                    // $scope.drinks = result.data.drinks;
+                    // $scope.food = result.data.food;
+                    // $scope.done = true;
+                    // $scope.notdone = false;
+                    // console.log($scope.food);
+                    // $scope.loadPreloads();
+                }
+            }, function(error) {
+                console.log(error);
+            });
+
+            $scope.filterList = function(itemMain) {
+                var checker = $scope.currentTab;
+
+                if (checker == 'drinks') {
+                    if (itemMain.toLowerCase().indexOf('drinks') >= 0) {
+                        return true;
+                    }
+                    if (itemMain.toLowerCase().indexOf('water') >= 0) {
+                        return true;
+                    }
+                    if (itemMain.toLowerCase().indexOf('juice') >= 0) {
+                        return true;
+                    }
+                    if (itemMain.toLowerCase().indexOf('smoothie') >= 0) {
+                        return true;
+                    }
+                }
+
+                if (itemMain.toLowerCase().indexOf(checker) >= 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            $scope.getStarColor = function(rating, itemnum) {
+                if (itemnum <= rating) {
+                    return 'green';
+                }
+                return 'silver';
+            }
+
+            $scope.selectTab = function(name) {
+                $scope.currentTab = name;
+            }
+
 
             if ($localStorage.preload != undefined) {
                 // delete $localStorage.cart;
@@ -230,6 +552,9 @@ angular.module('mealimeterApp')
 
                 $scope.due = $scope.due + $scope.delivery;
                 $scope.due = $scope.due + $scope.packaging;
+                if ($scope.due < 0) {
+                    $scope.due = 0;
+                }
                 $localStorage.cart[$scope.day] = $scope.cart;
                 $localStorage.total[$scope.day] = $scope.total;
                 $localStorage.due[$scope.day] = $scope.due;
@@ -240,6 +565,8 @@ angular.module('mealimeterApp')
             }
 
             $scope.addToCart = function(fooditem) {
+                $scope.newAddToCart(fooditem);
+
                 var option = {
                     id: fooditem.id,
                     mainmeal: fooditem.main,
@@ -280,6 +607,8 @@ angular.module('mealimeterApp')
             }
 
             $scope.removeFromCart = function(fooditem) {
+                $scope.newRemoveFromCart(fooditem);
+
                 var exist = false;
                 var already_id = null;
 
@@ -313,6 +642,33 @@ angular.module('mealimeterApp')
                 }
 
 
+            }
+
+            $scope.deleteFromCart = function(fooditem) {
+                $scope.newDeleteFromCart(fooditem);
+
+                var exist = false;
+                var already_id = null;
+                var quant = 1;
+
+                //Check if the item already existed
+                for (var i = 0; i < $scope.cart.length; i++) {
+                    if (fooditem.id === $scope.cart[i].id) {
+                        exist = true;
+                        already_id = i;
+                        quant = $scope.cart[i].quantity;
+                    }
+                }
+
+                //if it exist
+                if (exist) {
+
+                    $scope.cart.splice(already_id, 1);
+                    toastr.error(fooditem.name + " has been removed from cart", "removed from cart");
+                    $scope.recalculateTotal(-fooditem.price * quant);
+                } else {
+                    toastr.info("it wasn't in the cart");
+                }
             }
 
             $scope.checkDrinkSize = function(string, size) {
@@ -597,6 +953,218 @@ angular.module('mealimeterApp')
                     $scope.referList.splice(index, 1);
                 }
             }
+
+            $scope.newFoodidstring = "";
+            $scope.newQuantitystring = "";
+            $scope.newPayable = 0;
+
+            $scope.cartPrepareCheckout = function() {
+                $scope.newFoodidstring = "";
+                $scope.newQuantitystring = "";
+                $scope.newPayable = 0;
+
+                var foodid = [];
+                var quantity = [];
+                var newCart = [];
+                if ($localStorage.newCart) {
+                    newCart = $localStorage.newCart;
+                }
+
+                newCart.forEach(crt => {
+                    console.log(crt);
+                    foodid.push(crt.id);
+                    quantity.push(crt.quantity);
+                });
+
+                $scope.newFoodidstring = foodid.join(";");
+                $scope.newQuantitystring = quantity.join(";");
+            }
+
+            $scope.prepareCheckout = function() {
+                $scope.cartPrepareCheckout();
+
+                $scope.newPayable = Number.parseInt($scope.newTotalPrice) - Number.parseInt($scope.office_payment_amount);
+                if ($scope.newPayable < 0) {
+                    $scope.newPayable = 0;
+                }
+                $scope.checkoutdata = {
+                    token: $scope.token,
+                    office_id: $scope.office_id,
+                    food_id: $scope.newFoodidstring,
+                    quantity: $scope.newQuantitystring,
+                    total_price: $scope.newTotalPrice,
+                    paid: $scope.newPayable,
+                    company_paid: $scope.office_payment_amount,
+                    refcode: $scope.refcode,
+                    deliverydate: moment($scope.deliveryDate).format("YYYY-MM-DD")
+                }
+
+                console.log($scope.checkoutdata);
+            }
+
+
+            $scope.formData = function(myFormData) {
+                return Object.keys(myFormData).map(function(key) {
+                    return encodeURIComponent(key) + '=' + encodeURIComponent(myFormData[key]);
+                }).join('&');
+            }
+
+
+            $scope.emptyCarts = function() {
+                delete $localStorage.due;
+                delete $localStorage.total;
+                delete $localStorage.cart;
+                delete $localStorage.cFreeDrinks;
+
+                $rootScope.newCart = [];
+                $scope.cart = [];
+                $localStorage.newCart = [];
+                $localStorage.newCartNum = 0;
+                $rootScope.newCartNum = 0;
+                $localStorage.newTotalPrice = 0;
+                $rootScope.newTotalPrice = 0;
+                $localStorage.new = 0;
+            }
+
+            $scope.placeOrder = function(method, tag) {
+                this.loading = true;
+                $scope.prepareCheckout();
+
+                tag = tag || false;
+
+                // this.prepareCheckout();
+
+                if (method) {
+                    $scope.checkoutdata.payment_method = method;
+                }
+                if (tag) {
+                    $scope.checkoutdata.event_tag = tag;
+                }
+
+                var checkoutdata = $scope.formData($scope.checkoutdata);
+                var link = $rootScope.mealimeter;
+                $http({
+                    method: "POST",
+                    url: link + "makeorder",
+                    data: checkoutdata,
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                }).then(function(response) {
+                        if (response['error'] == true) {
+                            console.log(response['description']);
+                        } else {
+                            console.log(response);
+                            $scope.emptyCarts();
+                            console.log("Placed orders");
+                            $localStorage.showMsg = "Successfully placed your orders";
+                            $localStorage.msgBox = "success";
+
+                            $("#myCartModal").modal('hide');
+                            $('#myCartModal').on('hidden.bs.modal', function(e) {
+                                $route.reload();
+                            });
+
+                        }
+                    },
+                    function(error) {
+                        console.log(error);
+                    });
+            }
+
+            $scope.payWithWallet = function() {
+                if ($rootScope.balance < $scope.newPayable) {
+                    toastr.warning("You dont have enough in your wallet. Balance: " + $rootScope.balance);
+                } else {
+                    $scope.placeOrder("Wallet");
+                }
+            }
+
+            $scope.payWithOnlineTransfer = function() {
+                var randString = '';
+                var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                for (var i = 6; i > 0; --i) randString += chars[Math.floor(Math.random() * chars.length)];
+                var code = randString.toUpperCase();
+                var compstring = "Paid by online transfer: " + code;
+
+                $rootScope.$emit('payOnlineTransfer', { code: code });
+
+                $localStorage.bigMsgBox = "success";
+                $localStorage.msgDueTotal = $scope.newPayable;
+                console.log("payable: " + $scope.newPayable);
+                $localStorage.msgDesc = randString.toUpperCase();
+
+                $scope.placeOrder(compstring);
+            }
+
+
+            $scope.orderForEvent = function() {
+                var randString = '';
+                var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                for (var i = 6; i > 0; --i) randString += chars[Math.floor(Math.random() * chars.length)];
+                var tag = randString.toUpperCase();
+
+                var url = "http://mealimeter.com/m/#/event?tag=" + tag;
+
+                $localStorage.smallMsgBox = "success";
+                $localStorage.msgUrl = url;
+                $localStorage.msg = "Successfull!!! Please share this url with your colleagues <br /><br /><b><a href='" + url + "'>" + url + "</a></b><br /><br /> to invite them";
+                console.log("payable: " + tag);
+
+                $scope.placeOrder("Event", tag);
+                $scope.cancelFoodEvent();
+            }
+
+            $scope.cancelFoodEvent = function() {
+                console.log("canceling food order");
+                delete $localStorage.foodEvent;
+                $rootScope.foodEvent = undefined;
+                $scope.emptyCarts();
+            }
+            $rootScope.cancelFoodEvent = function() {
+                console.log("canceling food order");
+                delete $localStorage.foodEvent;
+                $rootScope.foodEvent = undefined;
+                $scope.emptyCarts();
+            }
+
+            $scope.payWithCard = function() {
+                var pb = document.getElementById("payBtn");
+                pb.innerHTML = "<i class='fa fa-spinner fa-spin'></i> Loading...";
+
+                var handler = PaystackPop.setup({
+                    key: 'pk_live_71b0b2b62aea6d0914aade795f262a100cc72e3c',
+                    // key: 'pk_test_bac3b11eb4e39fe3acadd07a0a111d32067aa751',
+
+                    email: $localStorage.data.data.email,
+                    amount: $scope.newPayable * 100,
+                    ref: "MM_" + Math.floor(Math.random() * 100000) + "_" + Math.floor(Math.random() * 100000),
+                    metadata: {
+                        custom_fields: [{
+                            username: $localStorage.data.data.username
+                        }]
+                    },
+                    callback: function(response) {
+                        console.log(response);
+                        $scope.placeOrder("Card");
+                        pb.innerHTML = '<i class="fa fa-credit-card"></i> Pay with card';
+                    },
+                    onClose: function() {
+                        pb.innerHTML = '<i class="fa fa-credit-card"></i> Pay with card';
+                        $scope.$broadcast('changetitle-back');
+                        // alert('No transaction was carried out');
+                        swal("Cancelled", "No transaction was carried out", "error");
+                    }
+                });
+                handler.openIframe();
+            }
+
+            $scope.checkPayable = function() {
+                if ($scope.newPayable > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
         }
 
 
