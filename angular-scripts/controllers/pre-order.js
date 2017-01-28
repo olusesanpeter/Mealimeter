@@ -90,7 +90,7 @@ angular.module('mealimeterApp')
             // } else {
             //     $window.location.href = "#/pre-order/thursday";
             // }
-            toastr.options.timeOut = 1000;
+            toastr.options.timeOut = 1500;
             toastr.positionClass = "toast-bottom-left";
 
             if ($localStorage.preImage) {
@@ -141,10 +141,11 @@ angular.module('mealimeterApp')
                 delete $localStorage.showMsg;
             }
 
+            $scope.discount = 0;
+            $scope.coupon = "";
+
             $scope.deliveryDate = new Date();
             $scope.deliveryDate.setDate($scope.deliveryDate.getDate() + 1);
-
-
 
             $scope.tomorrowDate = new Date();
             $scope.tomorrowDate.setDate($scope.tomorrowDate.getDate() + 1);
@@ -186,7 +187,52 @@ angular.module('mealimeterApp')
                 $scope.companysubsidy = $localStorage.data.officedata.office_payment_amount;
                 $scope.username = $localStorage.data.data.username;
             }
-            $scope.discount = 0;
+
+            $scope.couponValid = false;
+            $scope.checkCoupon = function(cc) {
+                $scope.coupon = cc;
+                var link = $rootScope.mealimeter;
+                $http({
+                    method: "GET",
+                    url: link + "buy/validateCoupon/" + cc,
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                }).then(function(res) {
+                    var result = res.data;
+                    console.log(result);
+                    if (result['status'] == false) {
+                        toastr.warning(result['reason'], "Invalid Coupon");
+                        // this.showToast(result['reason']);
+                    } else {
+                        let coup = result['coupon'];
+                        $scope.couponObj = coup;
+                        $scope.couponValid = true;
+                        if (coup['type'] == 'amount') {
+                            $scope.couponDesc = "get N" + coup['value'] + " off";
+                        } else if (coup['type'] == 'percent') {
+                            $scope.couponDesc = "get " + coup['value'] + "% off";
+                        }
+                        toastr.success($scope.couponDesc, "Valid Coupon");
+                    }
+                }, function(error) {
+                    console.log(error);
+                });
+
+            }
+
+            $scope.applyCoupon = function() {
+                $scope.couponApplied = true;
+                if ($scope.couponObj.type == 'amount') {
+                    $scope.discount = Number.parseInt($scope.couponObj.value);
+                } else if (this.couponObj.type == 'percent') {
+                    let percentage = Number.parseInt($scope.couponObj.value) / 100;
+                    $scope.discount = Math.floor($scope.due * percentage);
+                }
+                $scope.due = $scope.due - $scope.discount;
+
+                if ($scope.due < 0) {
+                    $scope.due = 0;
+                }
+            }
 
             $scope.newDeleteFromCart = function(item) {
                 var exist = false;
@@ -984,6 +1030,9 @@ angular.module('mealimeterApp')
                 $scope.cartPrepareCheckout();
 
                 $scope.newPayable = Number.parseInt($scope.newTotalPrice) - Number.parseInt($scope.office_payment_amount);
+                if ($scope.discount > 0) {
+                    $scope.newPayable = Number.parseInt($scope.newPayable) - Number.parseInt($scope.discount);
+                }
                 if ($scope.newPayable < 0) {
                     $scope.newPayable = 0;
                 } else {
@@ -1132,12 +1181,20 @@ angular.module('mealimeterApp')
                 var pb = document.getElementById("payBtn");
                 pb.innerHTML = "<i class='fa fa-spinner fa-spin'></i> Loading...";
 
+                var payable = $scope.newPayable;
+                if ($scope.discount > 0) {
+                    payable = $scope.newPayable - $scope.discount;
+                }
+                if (payable < 0) {
+                    payable = 1;
+                }
+
                 var handler = PaystackPop.setup({
                     key: 'pk_live_71b0b2b62aea6d0914aade795f262a100cc72e3c',
                     // key: 'pk_test_bac3b11eb4e39fe3acadd07a0a111d32067aa751',
 
                     email: $localStorage.data.data.email,
-                    amount: $scope.newPayable * 100,
+                    amount: payable * 100,
                     ref: "MM_" + Math.floor(Math.random() * 100000) + "_" + Math.floor(Math.random() * 100000),
                     metadata: {
                         custom_fields: [{
