@@ -144,7 +144,7 @@ angular.module('mealimeterApp')
             $scope.deliveryDate = new Date();
             $scope.deliveryDate.setDate($scope.deliveryDate.getDate() + 1);
 
-            
+
 
             $scope.tomorrowDate = new Date();
             $scope.tomorrowDate.setDate($scope.tomorrowDate.getDate() + 1);
@@ -158,7 +158,7 @@ angular.module('mealimeterApp')
             $scope.notdone = false;
             $scope.total = 0;
 
-            $scope.delivery = 0;
+            $scope.delivery = 100;
             $scope.packaging = 0;
 
             $scope.newFoods = [];
@@ -543,15 +543,15 @@ angular.module('mealimeterApp')
                 $scope.due = $scope.total - $scope.companysubsidy;
                 $scope.due = $scope.due - $scope.discount;
 
-                if ($scope.checkRice() >= 10) {
-                    $scope.delivery = 200;
-                } else {
-                    $scope.delivery = $scope.checkRice() * 50;
-                }
-                $scope.packaging = $scope.checkRice() * 50;
+                // if ($scope.checkRice() >= 10) {
+                //     $scope.delivery = 200;
+                // } else {
+                //     $scope.delivery = $scope.checkRice() * 50;
+                // }
+                // $scope.packaging = $scope.checkRice() * 50;
 
                 $scope.due = $scope.due + $scope.delivery;
-                $scope.due = $scope.due + $scope.packaging;
+                // $scope.due = $scope.due + $scope.packaging;
                 if ($scope.due < 0) {
                     $scope.due = 0;
                 }
@@ -986,6 +986,8 @@ angular.module('mealimeterApp')
                 $scope.newPayable = Number.parseInt($scope.newTotalPrice) - Number.parseInt($scope.office_payment_amount);
                 if ($scope.newPayable < 0) {
                     $scope.newPayable = 0;
+                } else {
+                    $scope.newPayable = $scope.newPayable + $scope.delivery;
                 }
                 $scope.checkoutdata = {
                     token: $scope.token,
