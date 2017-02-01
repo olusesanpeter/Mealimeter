@@ -8,7 +8,7 @@
  * Controller of the mealimeterApp
  */
 angular.module('mealimeterApp')
-    .controller('preorderCtrl', ['$scope', '$http', '$rootScope', '$window', '$localStorage', '$location', '$route', function($scope, $http, $rootScope, $window, $localStorage, $location, $route) {
+    .controller('preorderCtrl', ['$filter', '$scope', '$http', '$rootScope', '$window', '$localStorage', '$location', '$route', function($filter, $scope, $http, $rootScope, $window, $localStorage, $location, $route) {
 
         if ($localStorage.data == undefined && $localStorage.guest == undefined) {
             $window.location.href = "#/login";
@@ -420,8 +420,11 @@ angular.module('mealimeterApp')
                 console.log(error);
             });
 
-            $scope.filterList = function(itemMain) {
+            $scope.filterList = function(itemMain, category) {
                 var checker = $scope.currentTab;
+                if (category) {
+                    checker = category;
+                }
 
                 if (checker == 'drinks') {
                     if (itemMain.toLowerCase().indexOf('drinks') >= 0) {
@@ -1093,6 +1096,7 @@ angular.module('mealimeterApp')
                 }
 
                 var checkoutdata = $scope.formData($scope.checkoutdata);
+                var payablee = $scope.checkoutdata.paid;
                 var link = $rootScope.mealimeter;
                 $http({
                     method: "POST",
@@ -1111,6 +1115,8 @@ angular.module('mealimeterApp')
 
                             $("#myCartModal").modal('hide');
                             $('#myCartModal').on('hidden.bs.modal', function(e) {
+                                $localStorage.showInviteContact = true;
+                                $localStorage.inviteTotal = payablee;
                                 $route.reload();
                             });
 
@@ -1222,6 +1228,167 @@ angular.module('mealimeterApp')
                 } else {
                     return false;
                 }
+            }
+
+            ////////INVITE CONTACT/////////////////////
+
+            $scope.clickRow = function(ev, idx) {
+                if (ev.target.type !== 'checkbox') {
+                    $('#checkblock' + idx).trigger('click');
+                }
+            }
+
+            $scope.testIV = function() {
+                console.log("testing succeess");
+                $localStorage.showInviteContact = true;
+                $route.reload();
+            }
+
+            $scope.contacts = [];
+            $scope.ccs = [];
+            $scope.feedback = [];
+            $scope.maxNum = 9;
+            $scope.countIV = 0;
+            $scope.wLoading = true;
+            $scope.showClose = false;
+
+            if ($localStorage.inviteNum == undefined) {
+                $localStorage.inviteNum = 0;
+            }
+
+            if ($localStorage.showInviteContact == true) {
+                console.log("herrrrrrrrrrrrr");
+                setTimeout(function() {
+                    $("#inviteContactModal").modal();
+                    $localStorage.showInviteContact = false;
+                }, 1000);
+            }
+
+            if ($localStorage.data != undefined) {
+                var link = $rootScope.mealimeter;
+                $http({
+                    method: "GET",
+                    url: link + "order/getColleagues?token=" + $localStorage.data.data.token,
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                }).then(function(response) {
+                        var result = response.data;
+                        $scope.wLoading = false;
+                        console.log("contats--");
+                        console.log(result);
+                        if (result['error'] == false) {
+                            $scope.contacts = result['result'];
+                        }
+                    },
+                    function(error) {
+                        console.log(error);
+                    });
+            }
+
+
+            $scope.checkUser = function(user_id, ev) {
+                user_id = Number.parseInt(user_id);
+                console.log(ev);
+
+                var maxNum = $scope.maxNum - $localStorage.inviteNum;
+                if (ev.target.checked) {
+                    console.log("checked");
+                    if ($scope.ccs.length >= maxNum) {
+                        ev.target.checked = false;
+                        // this.showToast("Maximum of " + this.maxNum + " colleagues allowed");
+                        toastr.warning("Maximum of " + $scope.maxNum + " colleagues allowed")
+                        console.log(ev);
+                        return false;
+                    } else {
+                        $scope.ccs.push(user_id);
+                    }
+                } else {
+                    if ($scope.checkContains(user_id)) {
+                        var index = $scope.ccs.indexOf(user_id);
+                        if (index > -1) {
+                            $scope.ccs.splice(index, 1);
+                        }
+                    }
+                }
+
+                console.log($scope.ccs);
+            }
+
+            $scope.checkContains = function(user_id) {
+                return $scope.ccs.indexOf(user_id) > -1;
+            }
+
+            $scope.getInviteStatus = function(invite_id) {
+                if ($scope.feedback[invite_id]) {
+                    return $scope.feedback[invite_id];
+                }
+                return false;
+            }
+
+            $scope.sendInvites = function() {
+                $scope.ccs.forEach(invite => {
+                    console.log("Sending for - " + invite);
+                    $scope.feedback[invite] = 'sending';
+                    console.log($scope.feedback);
+                    $scope.sendInvite(invite);
+                    console.log("Send invite for - " + invite);
+                });
+            }
+
+            $scope.sendInvite = function(invite_id) {
+                var senddata = "token=" + $localStorage.data.data.token + "&office_id=" + $localStorage.data.officedata.office_id + "&invite_id=" + invite_id + "&total=" + $scope.payable;
+
+                var link = $rootScope.mealimeter;
+                $http({
+                    method: "POST",
+                    data: senddata,
+                    url: link + "order/sendInvite",
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                }).then(function(response) {
+                        var result = response.data;
+                        console.log(result);
+                        if (result['error'] == false) {
+                            if (result['result'] == true) {
+                                $scope.feedback[invite_id] = 'sent';
+                                $localStorage.inviteNum = $localStorage.inviteNum + 1;
+                            } else {
+                                $scope.feedback[invite_id] = 'already';
+                            }
+
+                            $scope.showClose = true;
+
+                            //remove from next send
+                            var index = $scope.ccs.indexOf(invite_id);
+                            if (index > -1) {
+                                $scope.ccs.splice(index, 1);
+                            }
+                        } else {
+                            $scope.feedback[invite_id] = 'wrong';
+                        }
+                        console.log("Sent to " + invite_id);
+                        console.log($scope.feedback);
+                    },
+                    function(error) {
+                        console.log(error);
+                    });
+            }
+
+            $scope.searchFood = function(searchQuery) {
+                console.log(searchQuery);
+                $scope.filteredFoods = $filter('filter')($scope.newFoods, searchQuery);
+                // console.log($scope.filteredFoods);
+            }
+
+            $scope.filteredFoods = $scope.newFoods;
+
+            $scope.getAmount = function(type) {
+                var num = 0;
+                $scope.filteredFoods.forEach(function(food) {
+                    if ($scope.filterList(food.main, type)) {
+                        num++;
+                    }
+                }, this);
+
+                return num;
             }
 
         }

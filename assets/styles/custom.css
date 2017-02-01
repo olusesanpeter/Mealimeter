@@ -1,3 +1,7 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .navbar .nav-link,
 a:not([href]):not([tabindex]) {
     color: #324518;

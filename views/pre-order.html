@@ -4,7 +4,7 @@
     </div>
 </div>
 
-<div style="width: 100%; height: 400px;">
+<div style="width: 100%; height: 100px;">
     <img src="assets/images/foodlist.jpg" style="width: 100%" />
 </div>
 
@@ -92,17 +92,19 @@
                 <div ng-show="foodEvent == 'active'">
                     <h4>Please be sure to specify the maximum quantity for each item</h4>
                 </div>
+
                 <div class="row" ng-controller="CheckoutCtrl">
-                    <div class="col-md-4 offset-md-4" ng-controller="paymentCtrl">
-                        <div ng-show="showPay && !guest" style="padding: 20px 0px;">
+                    <div class="col-md-6 offset-md-3" ng-controller="paymentCtrl">
+                        <div ng-show="showPay" style="padding: 20px 0px;">
 
                             <div ng-show="due > 0">
                                 <div class="row" style="margin-bottom: 10px" ng-hide="couponValid">
+                                    <div class="col-sm-12">Have a promo code, insert here to get your discount</div>
                                     <div class="col-sm-10" style="text-align: center">
                                         <input type="text" class="form-control" ng-model="coupon" placeholder="PROMO CODE" />
                                     </div>
                                     <div class="col-sm-2">
-                                        <button class="btn btn-info" ng-click="checkCoupon(coupon)">check</button>
+                                        <button class="btn btn-info" ng-click="checkCoupon(coupon)">CHECK</button>
                                     </div>
                                 </div>
                                 <div class="row" style="margin-bottom: 10px" ng-show="couponValid">
@@ -265,9 +267,14 @@
     </div>
 </div>
 
+
 <div class="padding">
     <div class="container">
-
+        <div class="row">
+            <div class="col-md-12">
+                <input ng-model="searchQuery" ng-model-options='{ debounce: 1000 }' ng-change="searchFood(searchQuery)" placeholder="What would you like to eat?" class="form-control" style="padding: 20px; font-size: 20px" type="text" />
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="card card-8 no-radius">
@@ -278,22 +285,22 @@
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" ng-click="selectTab('breakfast')" showtab role="tab" data-toggle="tab">
-                                            <h5 class="toggleitem"> Breakfast </h5>
+                                            <h5 class="toggleitem"> Breakfast <small style="color: silver; font-size: smaller" ng-show="searchQuery != '' ">{{getAmount('breakfast')}}</small></h5>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" ng-click="selectTab('lunch')" showtab role="tab" data-toggle="tab">
-                                            <h5 class="toggleitem"> Lunch </h5>
+                                            <h5 class="toggleitem"> Lunch <small style="color: silver; font-size: smaller" ng-show="searchQuery != '' ">{{getAmount('lunch')}}</small> </h5>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" ng-click="selectTab('takehome')" showtab role="tab" data-toggle="tab">
-                                            <h5 class="toggleitem"> Take Home </h5>
+                                            <h5 class="toggleitem"> Take Home <small style="color: silver; font-size: smaller" ng-show="searchQuery != '' ">{{getAmount('takehome')}}</small> </h5>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" ng-click="selectTab('drinks')" showtab role="tab" data-toggle="tab">
-                                            <h5 class="toggleitem"> Drinks </h5>
+                                            <h5 class="toggleitem"> Drinks <small style="color: silver; font-size: smaller" ng-show="searchQuery != '' ">{{getAmount('drinks')}}</small> </h5>
                                         </a>
                                     </li>
                                     <!--<li class="nav-item">
@@ -325,7 +332,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat="foods in newFoods" class="menurow" ng-show="foods.main != 'Combo' && filterList(foods.main)">
+                                            <tr ng-repeat="foods in filteredFoods" class="menurow" ng-show="foods.main != 'Combo' && filterList(foods.main)">
                                                 <td>
                                                     <div style="border-radius: 10%; max-width: 90%; height: 130px; text-align: center; background: url('{{foods.colorcode}}') no-repeat center center; background-size: cover ">
                                                         <!--<img src="" style="max-width: 100%" />-->
@@ -333,7 +340,7 @@
                                                 </td>
                                                 <td>
                                                     <div style="font-size: larger; font-weight: bold">{{foods.name}}</div>
-                                                    <small ng-if="filterList('drinks')">{{foods.ingredients}}</small>
+                                                    <small ng-if="foods.ingredients">{{foods.ingredients}}</small>
                                                     <div>Vendor: {{foods.vendor.name}}</div>
                                                     <div ng-if="foods.calories">Calories: {{foods.calories}}</div>
                                                     <div>
@@ -376,6 +383,49 @@
 
         </div>
 
+    </div>
+</div>
+<!--<button class="btn btn-lg btn-info" ng-click="testIV()">TEST INVITE</button>-->
+<!-- Invite COntact Modal -->
+<div class="modal fade" id="inviteContactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Invite up to {{maxNum}} colleagues and get a discount on your order for every order they make
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row" ng-if="wLoading">
+                    <div class="col-md-12" style="text-align: center">
+                        Loading colleagues...
+                    </div>
+                </div>
+                <table class="table table-hover inviteTable">
+                    <tr ng-repeat="contact in contacts">
+                        <td class="col-md-7">{{contact.user.firstname}}</td>
+
+                        <td class="col-md-2" ng-hide="contact.bought || getInviteStatus(contact.user.id)">
+                            <input type="checkbox" ng-click="checkUser(contact.user.id, $event)" />
+                        </td>
+                        <td class="col-md-3">
+                            <div style="color: green">
+                                <small item-right ng-if="contact.bought">already invited</small>
+                                <i class="fa fa-check" color="mealgreen" name="checkmark" ng-if="getInviteStatus(contact.user.id) == 'sent'"></i>
+                                <div ng-if="getInviteStatus(contact.user.id) == 'sending'">Loading...</div>
+                                <small color="danger" ng-if="getInviteStatus(contact.user.id) == 'already'">already invited by someone else</small>
+                                <small color="silver" ng-if="getInviteStatus(contact.user.id) == 'wrong'">try again</small>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="sendInvites()" ng-if="ccs.length > 0">Invite</button>
+            </div>
+        </div>
     </div>
 </div>
 
