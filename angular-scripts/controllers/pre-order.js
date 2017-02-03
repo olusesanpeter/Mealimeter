@@ -121,7 +121,7 @@ angular.module('mealimeterApp')
                 // var extraText = "<br /><a href='mailto:colleagues@example.com?&body="+url+"'>Share with your colleagues</a>";
                 var extraText = "";
                 swal({
-                    title: "Your selection has been noted!",
+                    title: "Your birthday menu has been created!",
                     text: $localStorage.msg + extraText,
                     html: true
                 });
@@ -407,6 +407,8 @@ angular.module('mealimeterApp')
                         $scope.newFoods.push(fooditem);
                     }, this);
                     console.log($scope.newFoods);
+                    $scope.loadingmeal = false;
+
                     // $scope.meals = result.data.preorderList;
                     // $scope.snacks = result.data.snacks;
                     // $scope.drinks = result.data.drinks;
@@ -1115,8 +1117,11 @@ angular.module('mealimeterApp')
 
                             $("#myCartModal").modal('hide');
                             $('#myCartModal').on('hidden.bs.modal', function(e) {
-                                $localStorage.showInviteContact = true;
-                                $localStorage.inviteTotal = payablee;
+                                if (!tag) {
+                                    $localStorage.showInviteContact = true;
+                                    $localStorage.inviteTotal = payablee;
+                                }
+                                $scope.cancelFoodEvent();
                                 $route.reload();
                             });
 
@@ -1153,7 +1158,9 @@ angular.module('mealimeterApp')
             }
 
 
+            $scope.eventOrderLoading = false;
             $scope.orderForEvent = function() {
+                $scope.eventOrderLoading = true;
                 var randString = '';
                 var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
                 for (var i = 6; i > 0; --i) randString += chars[Math.floor(Math.random() * chars.length)];
@@ -1163,11 +1170,13 @@ angular.module('mealimeterApp')
 
                 $localStorage.smallMsgBox = "success";
                 $localStorage.msgUrl = url;
-                $localStorage.msg = "Successfull!!! Please share this url with your colleagues <br /><br /><b><a href='" + url + "'>" + url + "</a></b><br /><br /> to invite them";
+
+                $localStorage.msg = "A link would be sent to your email to invite your colleagues to select meals from your birthday menu";
+                // $localStorage.msg = "Successfull!!! Please share this url with your colleagues <br /><br /><b><a href='" + url + "'>" + url + "</a></b><br /><br /> to invite them";
                 console.log("payable: " + tag);
 
                 $scope.placeOrder("Event", tag);
-                $scope.cancelFoodEvent();
+                // $scope.cancelFoodEvent();
             }
 
             $scope.cancelFoodEvent = function() {
@@ -1374,6 +1383,7 @@ angular.module('mealimeterApp')
 
             $scope.searchFood = function(searchQuery) {
                 console.log(searchQuery);
+                $scope.loadingmeal = false;
                 $scope.filteredFoods = $filter('filter')($scope.newFoods, searchQuery);
                 // console.log($scope.filteredFoods);
             }

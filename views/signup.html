@@ -55,7 +55,7 @@
                             <label>Phone Number</label>
                         </div>
                         <div class="md-form-group">
-                            <input type="text" class="md-input" ng-model="data.dob" placeholder="e.g 4 May">
+                            <input type="text" id="date" class="md-input" ng-model="data.dob" placeholder="e.g 4 May">
                             <label>Birthday (*optional - we'd have a suprise for you ;) )</label>
                         </div>
                         <!--<div class="md-form-group">
@@ -132,6 +132,19 @@
     </div>
 
 </div>
+<style>
+    .ui-datepicker-year {
+        display: none;
+    }
+</style>
 
 <!-- ############ LAYOUT END-->
 <div ng-include="'views/partials/footer.html'"></div>
+<script>
+    $('#date').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        dateFormat: 'dd MM'
+    });
+</script>

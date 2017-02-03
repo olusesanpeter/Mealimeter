@@ -4,23 +4,9 @@
     </div>
 </div>
 
-<div style="width: 100%; height: 400px;">
+<div style="width: 100%; height: 150px;">
     <img src="assets/images/foodlist.jpg" style="width: 100%" />
 </div>
-
-<!--<div class="item">
-    <br>
-    <br>
-    <div class="container">
-        <br>
-        <div class="row">
-            <div class="col-md-12" style="width: 100%; text-align: center; background: url() no-repeat center center; background-size: contain">
-                <img src="assets/images/foodlist.jpg" style="width: 100%" />
-            </div>
-        </div>
-
-    </div>
-</div>-->
 
 <div class="container">
     <div class="row">
@@ -42,73 +28,41 @@
                     <div class="col-md-10 offset-md-1 boxed bg--white">
                         <!--<div style="display:none;">{{x = $index}} </div>?-->
                         <div class="row">
-                           
+
                             <br>
                             <!-- Tab panes -->
-                            <div class="tab-content">
+                            <div class="tab-content donate-now">
                                 <div role="tabpanel" class="tab-pane fade in active">
-                                    <table class="table text-left mealtable">
-                                        <thead class="">
-                                            <tr>
-                                                <th width="20%">
 
-                                                </th>
-                                                <th width="40%">
+                                    <div ng-repeat="foods in foodlist.foods" class="menurow row" style="padding: 15px 10px; margin-left: 20px; border-bottom: 1px solid #dfdfdf">
 
-                                                </th>
-                                                <th width="20%" class="price topprice">
+                                        <div class="col-md-2" class="price">
+                                            <div class="b" ng-click="selectFood(foods.food.id)">
+                                                <input type="radio" id="a{{foods.food.id}}" ng-model="food_id" name="food_id" value="{{foods.food.id}}" />
+                                                <label for="a{{foods.food.id}}"><i class="fa fa-check"></i> Select Meal</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div style="border-radius: 10%; max-width: 90%; height: 130px; text-align: center; background: url('{{foods.food.colorcode}}') no-repeat center center; background-size: cover ">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div style="font-size: larger; font-weight: bold">{{foods.food.name}}</div>
+                                            <small>{{foods.food.ingredients}}</small>
+                                            <div style="font-size: larger" ng-if="fSelect[foods.id] > 0">
+                                                <b>{{fSelect[foods.id]}}x</b>
+                                            </div>
+                                            <div ng-if="foods.calories">Calories: {{foods.calories}}</div>
+                                        </div>
+                                    </div>
 
-                                                </th>
-                                                <!--<th width="20%">
-
-                                                </th>-->
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="foods in foodlist.foods" class="menurow">
-                                                <td>
-                                                    <div style="border-radius: 10%; max-width: 90%; height: 130px; text-align: center; background: url('{{foods.food.colorcode}}') no-repeat center center; background-size: cover ">
-                                                        <!--<img src="" style="max-width: 100%" />-->
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div style="font-size: larger; font-weight: bold">{{foods.food.name}}</div>
-                                                    <small>{{foods.food.ingredients}}</small>
-                                                    <div style="font-size: larger" ng-if="fSelect[foods.id] > 0">
-                                                        <b>{{fSelect[foods.id]}}x</b>
-                                                    </div>
-                                                    <!--<div>Vendor: {{foods.vendor.name}}</div>-->
-                                                    <div ng-if="foods.calories">Calories: {{foods.calories}}</div>
-                                                    <!--<div>
-                                                        <i class="fa fa-star" ng-repeat="s in [1,2,3,4,5]" style="margin-right: 2px; font-size: larger; color: {{getStarColor(foods.rating.rating, s)}}"></i>
-                                                    </div>
-                                                    <div><small>(from {{foods.rating.total}} ratings)</small></div>-->
-                                                </td>
-                                                <td class="price">
-                                                    <!--<div style="font-weight: bold; font-size: larger; ">{{ foods.price | currency:"₦ ":0 }}</div>-->
-
-                                                    <div style="margin-top: 10px">
-                                                        How many?
-                                                        <select class="form-control" ng-model="fSelect[foods.id]">
-                                                            <option value="{{num}}" ng-repeat="num in foodNum(foods.quantity)">{{num}}</option>
-                                                        </select>
-                                                        <small style="font-size: 12px">*maximum: {{foods.quantity}}</small>
-                                                        <!--<button class="btn btn-success" ng-click="addToCart(foods)">
-                                                            <span ng-hide="foodEvent == 'active'">Add to cart</span>
-                                                            <span ng-show="foodEvent == 'active'">Add to selection</span>
-                                                        </button>-->
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                 </div>
                             </div>
 
                         </div>
-                        <div class="row">
+                        <div class="row" style="margin-top: 20px">
                             <div class="col-md-6 offset-md-3" style="text-align: center">
-                                <button class="btn btn-success btn-lg" ng-click="confirmSelection()">Confirm Selection</button>
+                                <button class="btn btn-success btn-lg" id="confirmBtn" ng-click="confirmSelection()">Confirm Selection</button>
                             </div>
                         </div>
 
@@ -116,17 +70,73 @@
                 </div>
             </div>
 
-            <!--<div class="box" ng-show="notdone" style="padding:10px">
-                <div class="total-section" style="padding:30px">
-                    <h1 style="text-align:center">Your order has been taken </h1>
-                </div>
-            </div>-->
-
         </div>
 
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel" style="text-align: center">You must be logged in to make a selection</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-5" style="text-align: center">
+                        <button class="btn btn-block btn-info" ng-click="goto('login')">LOGIN</button>
+                    </div>
+                    <div class="col-md-2" style="text-align: center"></div>
+                    <div class="col-md-5" style="text-align: center">
+                        <button class="btn btn-info btn-block" ng-click="goto('signup')">SIGN UP</button>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>-->
+        </div>
+    </div>
+</div>
+<style>
+    .donate-now div.b {
+        min-width: 60px;
+        height: 40px;
+    }
+    
+    .donate-now label,
+    .donate-now input {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    
+    .donate-now input[type="radio"] {
+        opacity: 0.011;
+        z-index: 100;
+    }
+    
+    .donate-now input[type="radio"]:checked+label {
+        color: green;
+        font-weight: bold;
+        background: yellow;
+    }
+    
+    .donate-now label {
+        padding: 5px;
+        cursor: pointer;
+        z-index: 90;
+    }
+    
+    .donate-now label:hover {
+        background: #DDD;
+    }
+</style>
 <script type="text/javascript">
     $('a.nav-link').click(function(e) {
         e.preventDefault();
