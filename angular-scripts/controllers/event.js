@@ -6,6 +6,18 @@ angular.module('mealimeterApp')
 
         if ($routeParams.tag) {
             $scope.eventTag = $routeParams.tag;
+        } else {
+            swal({
+                    title: "This link is invalid!",
+                    type: "warning",
+                    showCancelButton: false,
+                    confirmButtonText: "Ok",
+                    closeOnConfirm: true,
+                    closeOnCancel: false
+                },
+                function(isConfirm) {
+                    $window.location.href = "#/pre-order";
+                });
         }
 
         $scope.foodlist = [];
@@ -18,7 +30,8 @@ angular.module('mealimeterApp')
             url: link + "order/getEventOrder?tag=" + $scope.eventTag,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
         }).then(function(result) {
-            if (result.data.error == false) {
+            console.log(result.data);
+            if (result.data.result != false) {
                 $scope.foodlist = result.data.result;
 
                 var createdate = result.data.result.created_at;
@@ -49,7 +62,17 @@ angular.module('mealimeterApp')
                     $scope.fSelect[fl.id] = 0;
                 }, this);
             } else {
-                alert("something went wrong");
+                swal({
+                        title: "This link is invalid!",
+                        type: "warning",
+                        showCancelButton: false,
+                        confirmButtonText: "Ok",
+                        closeOnConfirm: true,
+                        closeOnCancel: false
+                    },
+                    function(isConfirm) {
+                        $window.location.href = "#/pre-order";
+                    });
             }
         }, function(error) {
             console.log(error);

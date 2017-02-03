@@ -144,12 +144,6 @@ angular.module('mealimeterApp')
             $scope.discount = 0;
             $scope.coupon = "";
 
-            $scope.deliveryDate = new Date();
-            $scope.deliveryDate.setDate($scope.deliveryDate.getDate() + 1);
-
-            $scope.tomorrowDate = new Date();
-            $scope.tomorrowDate.setDate($scope.tomorrowDate.getDate() + 1);
-
             $scope.done = [];
 
             $scope.drinks = [];
@@ -1095,6 +1089,7 @@ angular.module('mealimeterApp')
                 }
                 if (tag) {
                     $scope.checkoutdata.event_tag = tag;
+                    $scope.checkoutdata.deliverydate = moment($scope.eDeliveryDate).format("YYYY-MM-DD");
                 }
 
                 var checkoutdata = $scope.formData($scope.checkoutdata);
@@ -1180,17 +1175,17 @@ angular.module('mealimeterApp')
             }
 
             $scope.cancelFoodEvent = function() {
-                console.log("canceling food order");
-                delete $localStorage.foodEvent;
-                $rootScope.foodEvent = undefined;
-                $scope.emptyCarts();
-            }
-            $rootScope.cancelFoodEvent = function() {
-                console.log("canceling food order");
-                delete $localStorage.foodEvent;
-                $rootScope.foodEvent = undefined;
-                $scope.emptyCarts();
-            }
+                    console.log("canceling food order");
+                    delete $localStorage.foodEvent;
+                    $rootScope.foodEvent = undefined;
+                    $scope.emptyCarts();
+                }
+                // $rootScope.cancelFoodEvent = function() {
+                //     console.log("canceling food order");
+                //     delete $localStorage.foodEvent;
+                //     $rootScope.foodEvent = undefined;
+                //     $scope.emptyCarts();
+                // }
 
             $scope.payWithCard = function() {
                 var pb = document.getElementById("payBtn");
@@ -1400,6 +1395,23 @@ angular.module('mealimeterApp')
 
                 return num;
             }
+
+            if ($localStorage.foodEvent != undefined) {
+                $rootScope.foodEvent = $localStorage.foodEvent;
+            }
+
+
+
+            $scope.deliveryDate = new Date();
+            $scope.tomorrowDate = new Date();
+            $scope.eDeliveryDate = new Date();
+            $scope.eTomorrowDate = new Date();
+
+            $scope.tomorrowDate.setDate($scope.tomorrowDate.getDate() + 1);
+            $scope.deliveryDate.setDate($scope.deliveryDate.getDate() + 1);
+
+            $scope.eTomorrowDate.setDate($scope.eTomorrowDate.getDate() + 4);
+            $scope.eDeliveryDate.setDate($scope.eDeliveryDate.getDate() + 4);
 
         }
 

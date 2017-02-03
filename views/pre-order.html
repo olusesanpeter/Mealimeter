@@ -234,7 +234,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-8 offset-md-2" style="text-align: center">
-                                            <input type="date" name="deliverydate" ng-model="deliveryDate" min="{{tomorrowDate | date: 'yyyy-MM-dd'}}" class="form-control" />
+                                            <input type="date" ng-if="foodEvent != 'active'" name="deliverydate" ng-model="deliveryDate" min="{{tomorrowDate | date: 'yyyy-MM-dd'}}" class="form-control" />
+                                            <input type="date" ng-if="foodEvent == 'active'" name="deliverydate" ng-model="eDeliveryDate" min="{{eTomorrowDate | date: 'yyyy-MM-dd'}}" class="form-control" />
                                             <br />
                                         </div>
                                     </div>
