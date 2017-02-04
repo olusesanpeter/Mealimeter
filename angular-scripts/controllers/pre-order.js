@@ -153,7 +153,7 @@ angular.module('mealimeterApp')
             $scope.notdone = false;
             $scope.total = 0;
 
-            $scope.delivery = 100;
+            $scope.deliveryPrice = 100;
             $scope.packaging = 0;
 
             $scope.newFoods = [];
@@ -495,6 +495,39 @@ angular.module('mealimeterApp')
                 }
             }
 
+            $scope.checkType = function() {
+                console.log($scope.newCart);
+                var breakfast = 0;
+                var lunch = 0;
+                var takehome = 0;
+                var qty = 0;
+                for (var i = 0; i < $scope.cart.length; i++) {
+                    if ("breakfast" == $scope.newCart[i].mainmeal) {
+                        breakfast++;
+                    }
+                    if ("lunch" == $scope.newCart[i].mainmeal) {
+                        lunch++;
+                    }
+                    if ("takehome" == $scope.newCart[i].mainmeal) {
+                        takehome++;
+                    }
+                }
+                if (breakfast > 0) {
+                    qty++;
+                }
+                if (lunch > 0) {
+                    qty++;
+                }
+                if (takehome > 0) {
+                    qty++;
+                }
+
+                console.log("cart up | " + qty);
+                return qty
+            }
+
+            $scope.delivery = $scope.deliveryPrice * $scope.checkType();
+
             $scope.checkRice = function() {
                 var riceid = 1;
                 var ricequantity = 0;
@@ -519,18 +552,6 @@ angular.module('mealimeterApp')
                         real = $scope.cart[i].quantity;
                         ricequantity = ricequantity + real;
                     }
-                    // if (11 == $scope.cart[i].id) {
-                    //     real = $scope.cart[i].quantity;
-                    //     ricequantity = ricequantity + real;
-                    // }
-                    // if (26 == $scope.cart[i].id) {
-                    //     real = $scope.cart[i].quantity;
-                    //     ricequantity = ricequantity + real;
-                    // }
-                    // if (25 == $scope.cart[i].id) {
-                    //     real = $scope.cart[i].quantity;
-                    //     ricequantity = ricequantity + real;
-                    // }
                 }
 
                 return ricequantity;
@@ -588,6 +609,9 @@ angular.module('mealimeterApp')
                 $scope.due = $scope.total - $scope.companysubsidy;
                 $scope.due = $scope.due - $scope.discount;
 
+                $scope.delivery = $scope.deliveryPrice * $scope.checkType();
+
+
                 // if ($scope.checkRice() >= 10) {
                 //     $scope.delivery = 200;
                 // } else {
@@ -608,6 +632,8 @@ angular.module('mealimeterApp')
                 $scope.one = "block";
                 $scope.two = "none";
             }
+
+            // $scope.recalculateTotal();
 
             $scope.addToCart = function(fooditem) {
                 $scope.newAddToCart(fooditem);
@@ -1046,7 +1072,7 @@ angular.module('mealimeterApp')
                     paid: $scope.newPayable,
                     company_paid: $scope.office_payment_amount,
                     refcode: $scope.refcode,
-                    deliverydate: moment($scope.deliveryDate).format("YYYY-MM-DD")
+                    deliverydate: moment($scope.deliveryDate, "YYYY MM DD").format("YYYY-MM-DD")
                 }
 
                 console.log($scope.checkoutdata);
@@ -1089,7 +1115,7 @@ angular.module('mealimeterApp')
                 }
                 if (tag) {
                     $scope.checkoutdata.event_tag = tag;
-                    $scope.checkoutdata.deliverydate = moment($scope.eDeliveryDate).format("YYYY-MM-DD");
+                    $scope.checkoutdata.deliverydate = moment($scope.eDeliveryDate, "YYYY MM DD").format("YYYY-MM-DD");
                 }
 
                 var checkoutdata = $scope.formData($scope.checkoutdata);
@@ -1402,16 +1428,17 @@ angular.module('mealimeterApp')
 
 
 
-            $scope.deliveryDate = new Date();
-            $scope.tomorrowDate = new Date();
-            $scope.eDeliveryDate = new Date();
-            $scope.eTomorrowDate = new Date();
+            if (moment().day() === 5) {
+                $scope.deliveryDate = moment().weekday(8).format("DD MMM YYYY");
+                $scope.eDeliveryDate = moment().add(5, 'days').format("DD MMM YYYY");
+            } else if (moment().day() === 6) {
+                $scope.deliveryDate = moment().weekday(8).format("DD MMM YYYY");
+                $scope.eDeliveryDate = moment().add(4, 'days').format("DD MMM YYYY");
+            } else {
+                $scope.deliveryDate = moment().add(1, 'days').format("DD MMM YYYY");
+                $scope.eDeliveryDate = moment().add(3, 'days').format("DD MMM YYYY");
+            }
 
-            $scope.tomorrowDate.setDate($scope.tomorrowDate.getDate() + 1);
-            $scope.deliveryDate.setDate($scope.deliveryDate.getDate() + 1);
-
-            $scope.eTomorrowDate.setDate($scope.eTomorrowDate.getDate() + 4);
-            $scope.eDeliveryDate.setDate($scope.eDeliveryDate.getDate() + 4);
 
         }
 

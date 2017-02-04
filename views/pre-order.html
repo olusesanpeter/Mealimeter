@@ -3,7 +3,11 @@
         <div ng-include="'views/partials/navbar.html'" ng-show="show"></div>
     </div>
 </div>
-
+<style>
+    .datepicker {
+        z-index: 99999 !important;
+    }
+</style>
 <div style="width: 100%; height: 100px;">
     <img src="assets/images/foodlist.jpg" style="width: 100%" />
 </div>
@@ -228,14 +232,17 @@
                                 <div class="col-md-6 offset-md-3 bg--white">
                                     <div class="row">
                                         <div class="col-md-12" style="text-align: center">
-                                            <span ng-hide="foodEvent == 'active'"><b>Select a delivery date</b></span>
-                                            <span ng-show="foodEvent == 'active'">Birthday Date (*when it would be delivered)</span>
+                                            <span ng-hide="foodEvent == 'active'"><b>Select a delivery date</b></span><br />
+                                            <span ng-hide="foodEvent == 'active'"><small>We only deliver on weekdays</small></span><br />
+                                            <span ng-show="foodEvent == 'active'">Birthday Date (*when it would be delivered)</span><br />
+                                            <span ng-show="foodEvent == 'active'"><small>minimum of 3 days notice</small></span>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-8 offset-md-2" style="text-align: center">
-                                            <input type="date" ng-if="foodEvent != 'active'" name="deliverydate" ng-model="deliveryDate" min="{{tomorrowDate | date: 'yyyy-MM-dd'}}" class="form-control" />
-                                            <input type="date" ng-if="foodEvent == 'active'" name="deliverydate" ng-model="eDeliveryDate" min="{{eTomorrowDate | date: 'yyyy-MM-dd'}}" class="form-control" />
+                                        <div class="col-md-10 offset-md-1" style="text-align: center">
+                                            <!--<input type="text" id="deliveryDate1" class="form-control input-lg datepicker" />-->
+                                            <input type="text" readonly='true' id="datepicker1" ng-if="foodEvent != 'active'" name="deliverydate" ng-model="deliveryDate" min="{{tomorrowDate | date: 'yyyy-MM-dd'}}" class="form-control input-lg datepicker" />
+                                            <input type="text" readonly='true' id="datepicker2" ng-if="foodEvent == 'active'" name="deliverydate" ng-model="eDeliveryDate" min="{{eTomorrowDate | date: 'yyyy-MM-dd'}}" class="form-control input-lg datepicker" />
                                             <br />
                                         </div>
                                     </div>
@@ -287,7 +294,7 @@
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" ng-click="selectTab('breakfast')" showtab role="tab" data-toggle="tab">
-                                            <h5 class="toggleitem"> Breakfasts <small style="color: silver; font-size: smaller" ng-show="searchQuery != '' ">{{getAmount('breakfast')}}</small></h5>
+                                            <h5 class="toggleitem"> Breakfast <small style="color: silver; font-size: smaller" ng-show="searchQuery != '' ">{{getAmount('breakfast')}}</small></h5>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -335,7 +342,7 @@
                                             <div><small>(from {{foods.rating.total}} ratings)</small></div>
                                         </div>
                                         <div class="col-md-3 col-sm-12" style=" text-align: center">
-                                            <div style="font-weight: bold; font-size: larger; ">{{ foods.price | currency:"₦ ":0 }}</div>
+                                            <div style="font-weight: bold; font-size: 24px; ">{{ foods.price | currency:"₦ ":0 }}</div>
 
                                             <div style="margin-top: 10px;">
                                                 <button class="btn btn-success" ng-click="addToCart(foods)">
@@ -416,9 +423,53 @@
 </div>
 
 <script type="text/javascript">
+    $(function() {
+        $("body").delegate("#datepicker1", "focusin", function() {
+            var dt = new Date();
+            dt.setDate(dt.getDate() + 1);
+            $(this).datepicker({
+                beforeShowDay: $.datepicker.noWeekends,
+                minDate: dt,
+                dateFormat: "dd M yy",
+                altFormat: "yy-mm-dd"
+            });
+        });
+        $("body").delegate("#datepicker2", "focusin", function() {
+            var dt = new Date();
+            dt.setDate(dt.getDate() + 4);
+            $(this).datepicker({
+                beforeShowDay: $.datepicker.noWeekends,
+                minDate: dt,
+                dateFormat: "dd M yy",
+                altFormat: "yy-mm-dd"
+            });
+        });
+    });
+    $('#date').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        dateFormat: 'dd MM'
+    });
     $('a.nav-link').click(function(e) {
         e.preventDefault();
         $(this).tab('show');
+    });
+    $(document).ready(function() {
+        $('#date').datepicker();
+        $('.datepricker').datepicker();
+
+        $('#ui-datepicker-div').css('z-index', '999999');
+        // $('#deliveryDate1').datepicker({
+        //     changeMonth: true,
+        //     changeYear: true,
+        //     showButtonPanel: true,
+        //     dateFormat: 'dd MM YYYY',
+        //     beforeShowDay: $.datepicker.noWeekends,
+        // });
+        // $('#deliveryDate2').datepicker({
+        //     beforeShowDay: $.datepicker.noWeekends,
+        // });
     });
 </script>
 <div ng-include="'views/partials/footer.html'"></div>
